@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sevgilim için Mini Quiz — Anatomi </title>
+  <style>
+    :root{
+      --bg:#ffeef5;
+      --card:#ffd7ec;
+      --accent:#ff7fb3;
+      --accent-dark:#e0558f;
+      --text:#3b2130;
+      --muted:#6b4957;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #fff7fc 100%);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      overflow:hidden;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:920px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+      border-radius:18px;
+      box-shadow: 0 10px 30px rgba(224,97,154,0.12);
+      padding:20px;
+      border:1px solid rgba(255,127,179,0.12);
+      position:relative;
+      overflow:hidden;
+    }
+
+    header{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:24px;box-shadow:0 6px 18px rgba(255,127,179,0.18)}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+
+    .card{background:var(--card);border-radius:14px;padding:18px;margin-top:14px;min-height:260px;display:flex;flex-direction:column;gap:12px;align-items:stretch}
+    .question-row{display:flex;align-items:center;gap:12px}
+    .qnum{background:rgba(255,127,179,0.12);padding:8px 12px;border-radius:10px;font-weight:600}
+    .question{font-size:18px}
+
+    .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+    .btn{padding:12px;border-radius:10px;border:2px solid transparent;background:rgba(255,255,255,0.6);cursor:pointer;font-weight:700;box-shadow:0 6px 12px rgba(0,0,0,0.04);transition:transform .12s ease, box-shadow .12s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn:hover{box-shadow:0 10px 20px rgba(0,0,0,0.06)}
+    .btn[disabled]{opacity:0.6;cursor:not-allowed} /* Yeni eklenen */
+
+    .feedback{min-height:64px;display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;flex-direction:column;justify-content:center;text-align:center}
+    .feedback.correct{background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,127,179,0.06));border:1px solid rgba(233,81,130,0.12)}
+    .feedback.wrong{background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,127,179,0.02));border:1px solid rgba(200,80,120,0.06)}
+
+    .message{font-weight:700}
+    .explain{font-size:13px;color:var(--muted)}
+    .muted{color:var(--muted);font-size:13px}
+
+    .controls{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+    .ghost{background:transparent;border:0;color:var(--accent-dark);font-weight:700;cursor:pointer}
+    .ghost[disabled]{opacity:0.4;cursor:not-allowed} /* Yeni eklenen */
+
+
+    .hearts{position:absolute;left:0;right:0;bottom:0;pointer-events:none;overflow:visible;height:100%}
+    .heart{position:absolute;bottom:0;left:50%;transform:translateX(-50%) scale(0.8);font-size:22px;opacity:0;animation:flyUp 2000ms ease-out forwards}
+    @keyframes flyUp{0%{opacity:0;transform:translateX(-50%) translateY(0) scale(0.7)}10%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-220px) scale(1.25)}}
+
+    @media(max-width:820px){.choices{grid-template-columns:1fr}.wrap{padding:14px}}
+
+    footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+    .progress{height:8px;background:rgba(255,255,255,0.4);border-radius:6px;overflow:hidden}
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-dark));width:0%}
+
+    .shake{animation:shake .5s}
+    @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}100%{transform:translateX(0)}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">A</div>
+      <div>
+        <h1>Mini Quiz — Anatomi </h1>
+        <p class="lead">Başarılar Aşkımm</p>
+      </div>
+    </header>
+
+    <div class="card" id="card">
+      <div class="question-row">
+        <div class="qnum" id="qnum">1 / 100</div>
+        <div class="question" id="question">Yükleniyor...</div>
+      </div>
+
+      <div class="choices" id="choices"></div>
+
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+
+      <div class="controls">
+        <button class="ghost" id="prevBtn">Önceki</button>
+        <button class="ghost" id="nextBtn">Sonraki</button>
+      </div>
+
+      <div style="position:relative;height:2px;margin-top:12px">
+        <div class="progress"><i id="prog"></i></div>
+      </div>
+    </div>
+
+    <footer style="margin-top:10px">
+      <div class="muted"></div>
+      <div class="muted">Sorular: kaslar, kemikler, sinirler ve konuşma organları</div>
+    </footer>
+  </div>
+
+  <div class="hearts" id="heartsContainer" aria-hidden="true"></div>
+
+  <script>
+    // 100 özgün soru — her soru: {q, choices:[...], a:index, explanation: string}
+    const quiz = [
+      {q:"1) Anatomi temel terimi: 'anterior' genellikle hangi yönü ifade eder?", choices:["Arkaya doğru","Öne doğru","Aşağıya doğru","İçeri doğru"], a:1, explanation:"Anterior öne doğru, vücudun ön tarafına doğru olan yönü ifade eder."},
+      {q:"2) Anatomi terimi: 'posterior' hangi yönü belirtir?", choices:["Ön taraf","Sağ taraf","Arka taraf","Sol taraf"], a:2, explanation:"Posterior arka, vücudun arka kısmına yönelik olan yön ifade eder."},
+      {q:"3) Dilin üst yüzeyine ne ad verilir?", choices:["Dorsum","Ventrikül","Frenulum","Alveol"], a:0, explanation:"Dorsum linguae dilin üst yüzeyinin tıbbi adıdır."},
+      {q:"4) Dilin alt yüzeyini hangi yapı bağlar?", choices:["Lingual frenulum","Palatum","Epiglottis","Velum"], a:0, explanation:"Lingual frenulum dilin alt yüzeyini ağız tabanına bağlayan banttır."},
+      {q:"5) Hyoid kemiğin önemi nedir?", choices:["Kulağı destekler","Dil ve bazı kaslar için asılı bir tutunma sağlar","Omurgayı korur","Göz kaslarını tutar"], a:1, explanation:"Hyoid kemik, diğer kemiklerle eklem yapmadan dil ve bazı boyun kaslarına tutunma sağlar."},
+      {q:"6) Mandibula hangi işleve sahiptir?", choices:["Alt çene; çiğneme ve konuşmada ana hareketi sağlar","İşitme işlevi görür","Solunumu düzenler","Yutma refleksini durdurur"], a:0, explanation:"Mandibula alt çenedir ve çiğneme ile konuşmada önemli rol oynar."},
+      {q:"7) Maksilla hangi yapıyı oluşturur?", choices:["Alt çene","Üst çene","Şakak kemiği","Alın kemiği"], a:1, explanation:"Maksilla üst çeneyi ve dişlerin üst dizilimini oluşturur."},
+      {q:"8) Alveolar sırt (alveolar ridge) hangi seslerin üretiminde önemlidir?", choices:["Labial sesler","Velar sesler","Alveolar sesler (/t/, /d/ gibi)","Gırtlak sesleri"], a:2, explanation:"Alveolar ridge alveolar konsonantların oluştuğu artikülasyon bölgesidir."},
+      {q:"9) Velum (yumuşak damak) konuşmada ne işe yarar?", choices:["Ses tellerini titreştirir","Nazal ve oral kaçışı kontrol ederek rezonansı etkiler","Dudakları kapatır","Dil hareketlerini sağlar"], a:1, explanation:"Velum nazal kaçışı kapatarak konuşma rezonansını ve nazaliteyi kontrol eder."},
+      {q:"10) Palatum durum (sert damak) hangi kemiğin bir parçasıdır?", choices:["Mandibula","Maksilla (horzontal plak)","Hyoid","Ethmoid"], a:1, explanation:"Sert damak maksillanın horizontal plak kısmı ve palatum durum olarak anılır."},
+      {q:"11) Dil kasları iki grupta incelenir: hangi tanım doğrudur?", choices:["İç ve dış kaslar — iç kaslar dili şekillendirir, dış kaslar pozisyon verir","Sadece tek tip kas vardır","Tüm kaslar iskelet değil düz kastır","Kaslar sinirlerden bağımsız çalışır"], a:0, explanation:"İç kaslar dilin şeklini, dış kaslar dilin pozisyonunu kontrol eder."},
+      {q:"12) Genioglossus kası hangi hareketi sağlar?", choices:["Dil gövdesini öne çekme (protrüzyon)","Dil ucunu aşağı bastırma","Velumu yukarı kaldırma","Epiglottisi kapatma"], a:0, explanation:"Genioglossus dilin protrüzyonunda ana kastır."},
+      {q:"13) Hyoglossus kasının görevi nedir?", choices:["Dili öne çıkarmak","Dili aşağı ve geriye çekmek","Dil ucunu yukarı kaldırmak","Dudakları kapatmak"], a:1, explanation:"Hyoglossus dili aşağı ve geriye çeker, dilin stabilizasyonuna yardımcı olur."},
+      {q:"14) Styloglossus kası hangi hareketle ilişkilidir?", choices:["Dili yukarı ve geriye çekme","Dil ucu protrüzyonu","Alt çeneyi kapatma","Hyoid stabilizasyonu"], a:0, explanation:"Styloglossus dili yukarı ve geriye çekerek yutmaya destek olur."},
+      {q:"15) Hangi sinir dilin motor innervasyonunda en önemlidir?", choices:["VII. (Facial)","V. (Trigeminal)","XII. (Hypoglossal)","IX. (Glossopharyngeal)"], a:2, explanation:"Hypoglossal (XII) dili motor olarak innerve eden ana kranial sinirdir."},
+      {q:"16) Ön 2/3 dilin tat duyusu hangi sinirle taşınır (tat için)?", choices:["VII. facial'ın chorda tympani dalı","IX. glossopharyngeal","X. vagus","V. trigeminal"], a:0, explanation:"Ön 2/3'ün tat duyusu chorda tympani (VII) aracılığıyla taşınır."},
+      {q:"17) Lingual tonsil hangi bölgededir?", choices:["Dil kökünün arka yüzeyinde","Dil ucunda","Ağız tabanında","Alt dudakta"], a:0, explanation:"Lingual tonsil dil kökünün arkasında lenfoid doku olarak bulunur."},
+      {q:"18) M. orbicularis oris hangi görevi yapar?", choices:["Dudakları kapatma ve sirküler hareket sağlama","Dil ucu hareketi","Alt çeneyi kapatma","Ses tellerini titreştirme"], a:0, explanation:"Orbicularis oris dudakların çevresini sarar ve dudak hareketlerini sağlar."},
+      {q:"19) M. buccinator konuşmada neden önemlidir?", choices:["Yanakları içeri doğru tutarak basınç kontrolü sağlar","Ses tınısını artırır","Dil kaslarını kontrol eder","Epiglottisi kapatır"], a:0, explanation:"Buccinator ağız içi basıncı ve artikülasyonu destekler."},
+      {q:"20) Masseter kası hangi işlevdedir?", choices:["Mandibulayı yükselterek çiğnemeye yardımcı olur","Dil hareketini sağlar","Ses tınısını değiştirir","Yutma refleksini durdurur"], a:0, explanation:"Masseter güçlü bir çiğneme kasıdır ve mandibulayı yükseltir."},
+      {q:"21) Temporalis kası hangi hareketi yapar?", choices:["Mandibulayı yukarı ve geriye çeker","Dil ucunu yukarı kaldırır","Velumu kapatır","Ses tellerini açar"], a:0, explanation:"Temporalis mandibulayı yukarı ve kısmen geriye çeker."},
+      {q:"22) Hyoid kemiğin konumu hangi yapıya yakındır?", choices:["Alt çene ve boyun bölgesine","Kafatasının üstüne","Göğüs boşluğuna","Sırta"], a:0, explanation:"Hyoid çene ile larenks arasında, boyun önünde yer alır."},
+      {q:"23) Epiglottis hangi işlevi görür?", choices:["Yutma sırasında larenksi örter","Dil tat alma duyusunu sağlar","Ses tellerini gerer","Orta kulağı havalandırır"], a:0, explanation:"Epiglottis yutma esnasında hava yolunu kapatır ve materyalin solunum yoluna kaçmasını önler."},
+      {q:"24) Larynx hangi ana işlevleri sağlar?", choices:["Ses üretimi, hava yolunu koruma ve solunum kontrolü","Tat alma","Görme","Denge"], a:0, explanation:"Gırtlak (larynx) ses üretimi ve solunum yolunun korunmasında kritik role sahiptir."},
+      {q:"25) Vocal fold'ların titreşimi neyi oluşturur?", choices:["Sesin temel frekansını (pitch) ve tone'u","Tat duyusunu","Görsel algıyı","Yutma refleksini"], a:0, explanation:"Vokal foldların titreşimi sesin temel özelliklerini belirler."},
+      {q:"26) Temporal kemik hangi önemli organı içerir?", choices:["İç ve orta kulak yapıları","Dil kaslarını","Göz küresini","Burun septumunu"], a:0, explanation:"Temporal kemik orta ve iç kulağı barındırır; işitme için önemlidir."},
+      {q:"27) Occipital kemik hangi bölgeyi oluşturur?", choices:["Kafanın arka kısmını","Alın bölgesini","Çene altını","Burun sırtını"], a:0, explanation:"Occipital kemik kafatasının arka ve alt kısmını oluşturur."},
+      {q:"28) Sphenoid kemik neden önemlidir?", choices:["Kafatasının tabanında merkezi bir yapı olarak birçok yapıyla ilişkilidir","Alt çeneyi destekler","Dil kaslarını oluşturur","Gırtlağı oluşturur"], a:0, explanation:"Sphenoid kafatası tabanında yer alır ve birçok sinir ve damarı çevreler."},
+      {q:"29) Maxilla ve mandibula arasındaki temel fark nedir?", choices:["Maxilla üst çene, mandibula alt çenedir ve mandibula hareketlidir","İkisi de sabittir","Mandibula üst çenedir","Maxilla hareketlidir"], a:0, explanation:"Mandibula hareketli alt çene, maksilla ise sabit üst çenedir."},
+      {q:"30) Zygomatic kemik hangi bölgededir?", choices:["Elmacık kemiği bölgesi","Alın bölgesi","Çene altı","Kulak arkası"], a:0, explanation:"Zygomatic (elmacık) kemiği yüzün yan bölgesini oluşturur."},
+      {q:"31) Nasal septum hangi yapılardan oluşur (genel)?", choices:["Vomer ve ethmoid'in perpendicular plakı","Hyoid ve mandibula","Sphenoid ve zygoma","Temporal ve occipital"], a:0, explanation:"Nazal septum posteriorde vomer ve ethmoid'in perp. plakı ile anteriorde kıkırdak içerir."},
+      {q:"32) Ethmoid kemik nerede bulunur?", choices:["Nazal boşluk ve orbit bölgesinde","Alt çenede","Kulak kanalında","Gırtlakta"], a:0, explanation:"Ethmoid burun boşluğunun üst kısmında ve orbitin medyal duvarında bulunur."},
+      {q:"33) Palatine kemik hangi yapıya katkıda bulunur?", choices:["Sert damağın arka kısmına","Alt çene dişlerine","Hyoid kemiğe","Gırtlağa"], a:0, explanation:"Palatine kemik sert damağın arka bölümünü oluşturur."},
+      {q:"34) Vomer kemiğin görevi nedir?", choices:["Nazal septumun posterior alt kısmını oluşturur","Dil kökünü destekler","Epiglottisi oluşturur","Hyoid ile birleşir"], a:0, explanation:"Vomer nazal septumun bir parçasıdır ve burun bölmesini oluşturur."},
+      {q:"35) Orbit (göz çukuru) hangi kemiklerin birleşimiyle oluşur (kısaca)?", choices:["Birden fazla kemik: frontal, zygomatic, maxilla, sphenoid vb.","Sadece frontal kemiğe bağlıdır","Sadece mandibula oluşturur","Sadece ethmoid'ten oluşur"], a:0, explanation:"Orbit çoklu kemiklerin birleşmesiyle oluşan kompleks bir yapıdır."},
+      {q:"36) Foramen magnum hangi kemiğin parçasıdır?", choices:["Occipital kemik","Temporal kemik","Mandibula","Maxilla"], a:0, explanation:"Foramen magnum omuriliğin geçtiği büyük deliktir ve occipital kemikte yer alır."},
+      {q:"37) Hyoid kemiğe hangi kaslar bağlanır (örnek)?", choices:["M. mylohyoideus, geniohyoideus, sternohyoideus","Orbicularis oris","Masseter","Temporalis"], a:0, explanation:"Hyoid birçok dil ve yutma kasına tutunma sağlar; örnek kaslar mylohyoideus ve geniohyoideus'tur."},
+      {q:"38) Ağız boşluğunu sınırlayan üst sınır hangisidir?", choices:["Sert damak (palatum durum)","Hyoid kemik","Epiglottis","Mandibula"], a:0, explanation:"Ağız boşluğunun üst sınırı sert damaktır."},
+      {q:"39) Orofarenks hangi yapılar arasında yer alır?", choices:["Ağız boşluğu ve laringeal bölge/farenks arasında","İç kulak ve dış kulak arasında","Göz ve burun arasında","Omurga ile kafatası arasında"], a:0, explanation:"Orofarenks ağız boşluğu arkasında yer alır ve yutma sürecinde rol oynar."},
+      {q:"40) Nazal konka (conchae) ne işe yarar?", choices:["Hava akımını ısıtır, nemlendirir ve filtreler","Ses tellerini oluşturur","Dilin duyu alma bölgesidir","Mandibulayı hareket ettirir"], a:0, explanation:"Nazal konkal arından geçen havayı ısıtıp nemlendirerek solunumu iyileştirir."},
+      {q:"41) M. palatoglossus hangi yapının bir parçasıdır ve işlevi nedir?", choices:["Yumuşak damağın bir kası; ağız boşluğunu daraltır ve yutmaya yardımcı olur","Dil ucu kası; protrüzyon sağlar","Gırtlak kası; ses ürer","Mandibula kası; çiğneme yapar"], a:0, explanation:"Palatoglossus velum ve dil arasındaki bir kastır ve ağız-farenks geçişini düzenler."},
+      {q:"42) M. palatopharyngeus'un rolü nedir?", choices:["Yutma sırasında farinks duvarını yukarı çeker","Dudakları kapatır","Dil ucu hareketi sağlar","Orta kulağı havalandırır"], a:0, explanation:"Palatopharyngeus yutma sırasında farinksi yükseltir ve velumu destekler."},
+      {q:"43) Pharyngeal plexus hangi sinirlerin birleşimiyle oluşur (kısaca)?", choices:["Vagus (X) ve glossopharyngeal (IX) katkılarıyla","Sadece facial (VII)","Sadece trigeminal (V)","Sadece hypoglossal (XII)"], a:0, explanation:"Faringeal pleksus X ve IX sinirlerinin dallarından oluşur ve farinks fonksiyonunda önemlidir."},
+      {q:"44) Stylopharyngeus kasını hangi sinir innerve eder?", choices:["IX. (Glossopharyngeal)","XII. (Hypoglossal)","VII. (Facial)","V. (Trigeminal)"], a:0, explanation:"Stylopharyngeus glossopharyngeal sinir tarafından innerve edilir ve farinksi yükseltir."},
+      {q:"45) Glossopharyngeal sinirin (IX) görevlerinden biri nedir?", choices:["Tonsiller bölge ve dilin arka 1/3'ünün tat ve duyusunu taşımak","Dudak hareketini sağlamak","Göz hareketlerini kontrol etmek","Kulak zarı titreşimini oluşturmak"], a:0, explanation:"IX tat ve duyuyu dilin arka 1/3'ünden ve faringeal bölgeden taşır."},
+      {q:"46) Vagus sinir (X) konuşma üretiminde hangi yapıyı etkiler?", choices:["Gırtlak kasları ve vokal foldlar (motor)","Dil kasları (motor)","Dudak kasları","Orta kulak"], a:0, explanation:"Vagus larynks kaslarını innerve ederek ses üretimine doğrudan katkıda bulunur."},
+      {q:"47) Trigeminal sinirin (V) mandibular dalı hangi görevi sağlar?", choices:["Alt yüzün duyusal innervasyonu ve mastikasyon kaslarının motor kontrolü","Gırtlak kaslarının motor kontrolü","Göz hareketleri","İç kulağın drenajı"], a:0, explanation:"V3 hem algı (alt yüz) hem de motor (çene kasları) fonksiyonları taşır."},
+      {q:"48) Facial sinirin (VII) motor fonksiyonu nedir?", choices:["Yüz ifadeleri ve orbicularis oris gibi kasları kontrol etme","Dil motoru","Solunum kontrolü","Göz kırpma dışında"], a:0, explanation:"VII yüz mimik kaslarını innerve ederek dudak ve yüz hareketlerini sağlar."},
+      {q:"49) Hypoglossal sinirin (XII) lezyonunda görülebilecek bulgu nedir?", choices:["Dil fasikülasyonları ve güçsüzlük (özellikle etkilenen tarafta)","İşitme kaybı","Gözde hareket kısıtlılığı","Dudak şişmesi"], a:0, explanation:"XII hasarı dilde motor güçsüzlüğe ve fasikülasyonlara yol açabilir."},
+      {q:"50) Dilin kanlanmasında ana arter hangisidir?", choices:["Lingual arter","Fasiyal arter","Karotis interna","Subclavian arter"], a:0, explanation:"Lingual arter dilin ana arteriyel beslemesini sağlar."},
+      {q:"51) Ağız tabanını oluşturan kaslardan biri hangisidir?", choices:["Mylohyoideus","Deltoid","Sternocleidomastoid","Temporalis"], a:0, explanation:"Mylohyoideus ağız tabanında yer alır ve dil ile ağız tabanını destekler."},
+      {q:"52) Geniohyoideus kası ne işe yarar?", choices:["Hyoid'i öne çekerek dil hareketini etkiler","Göz hareketi sağlar","Ses tellerini uzatır","Burun deliklerini açar"], a:0, explanation:"Geniohyoideus hyoidi öne çekerek dilin pozisyonunu etkileyebilir."},
+      {q:"53) Sternohyoideus kasının temel rolü nedir?", choices:["Hyoid'i aşağı çekmek","Vokal foldları germe","Dudakları kapama","Dil tatını iletme"], a:0, explanation:"Sternohyoideus hyoidi indirerek yutma sonrası yeniden konumlanmasına yardım eder."},
+      {q:"54) Hangi kas yutağın (pharynx) elevasyonuna katkıda bulunur?", choices:["Stylopharyngeus","Masseter","Orbicularis oris","Temporalis"], a:0, explanation:"Stylopharyngeus farinksi yukarı çekerek yutmaya yardımcı olur."},
+      {q:"55) Vokal kordları hangi bağ dokusundan oluşmaz?", choices:["Kıkırdak olmayan elastik ligament değil","Epitel","Ligament ve muskular yapı","Vokal ligament"], a:0, explanation:"Vokal foldlar epitel, ligament ve kas liflerinden oluşur; seçenek kafa karıştırıcı olarak ifade edilmiştir."},
+      {q:"56) Cricothyroid kası hangi işlevi sağlar?", choices:["Vokal kordları gerip pitch yükseltir","Dudakları kapatır","Dil ucunu öne çıkarır","Epiglottisi kapatır"], a:0, explanation:"Cricothyroid vokal kordu gererek ses perdesini yükseltir."},
+      {q:"57) Arytenoid kıkırdakların hareketi neyi etkiler?", choices:["Vokal foldların açılıp kapanmasını ve gerilimini","Dilin tat algısını","Burun akışını","Çene hareketini"], a:0, explanation:"Arytenoidler vocal foldların pozisyonunu kontrol eden kıkırdaklardır."},
+      {q:"58) Trakea nereye kadar uzanır?", choices:["Bronşlara kadar (göğüs boşluğunda) ve larynx yukarıdadır","Dilin ucuna kadar","Orta kulağa kadar","Nazal kaviteye kadar"], a:0, explanation:"Trakea laringeal açıklıktan başlayıp bronşlara kadar iner; solunum yolunun bir parçasıdır."},
+      {q:"59) Pulmoner hava akımı konuşmada neden önemlidir?", choices:["Ses üretimi için gerekli enerjiyi sağlar","Tat alma için gerekli","Görsel odaklamayı sağlar","İşitme hassasiyetini arttırır"], a:0, explanation:"Akciğerlerden gelen hava akımı vokal foldları titreştirir ve sesi oluşturur."},
+      {q:"60) Nazal rezonans artarsa konuşmada hangi özellik belirginleşir?", choices:["Hipernazalite (aşırı burun sesi)","Ses tamamen kaybolur","Tat kaybı oluşur","Gözlerde sulanma"], a:0, explanation:"Velofaringeal kapanma yetersizse nazal rezonans artar (hipernazalite)."},
+      {q:"61) Oral kavitenin anterior sınırı nedir?", choices:["Dudaklar","Epiglottis","Hyoid","Nasopharynx"], a:0, explanation:"Ağız boşluğunun ön sınırı dudaklardır."},
+      {q:"62) Orofarengeal transit (yutma) hangi adımı içermez?", choices:["Solunumun durması ve farinks kaslarının koordinasyonu sırasında yiyecek ilerlemesi","Gırtlağın tamamen kapanmadan yutma olmaması","Epiglottisin yatması","Yiyeceğin yemek borusuna iletilmesi"], a:1, explanation:"Yutma sırasında solunum kısa süreliğine inhibe olur; gırtlak tam kapanmadan yutma gerçekleşemez ifadesi yanlış cümledir."},
+      {q:"63) Mylohyoid kasının fonksiyonu nedir?", choices:["Ağız tabanını destekleyerek dilin hareketine yardımcı olmak","Göz kırpmayı kontrol etmek","Ses frekansını ayarlamak","Burun akışını sağlamak"], a:0, explanation:"Mylohyoid ağız tabanının birincil kasıdır ve dil üstünde destek sağlar."},
+      {q:"64) Dilin posterior 1/3 tat duyusu hangi sinir tarafından taşınır?", choices:["IX. glossopharyngeal","VII. facial","V. trigeminal","X. vagus"], a:0, explanation:"Dil kökünün tat ve duyusu glossopharyngeal (IX) tarafından taşınır."},
+      {q:"65) Palatum durumun posterior kısmına hangisi yakındır?", choices:["Uvula ve yumuşak damak","Dudaklar","Mandibula","Hyoid"], a:0, explanation:"Posteriorde yumuşak damak ve uvula bulunur."},
+      {q:"66) Uvula'nın konuşmadaki rolü nedir?", choices:["Velofaringeal kapanmaya yardımcı olarak nazal kaçışı düzenler","Dil kaslarını innerve eder","Epiglottisi destekler","Mandibulayı kapatır"], a:0, explanation:"Uvula velumun hareketine katkıda bulunur ve nazal resonansı etkiler."},
+      {q:"67) Dilin anterior 2/3 duyusal innervasyonu (genel duyu) hangi sinirle taşınır?", choices:["V3 (mandibular dalı) via lingual nerve","VII. facial","IX. glossopharyngeal","XII. hypoglossal"], a:0, explanation:"Lingual sinir (V3) anterior 2/3'ün genel duyusunu taşır."},
+      {q:"68) Parotis bezinin ana salgılama türü nedir?", choices:["Seröz (sulu) salgı","Müküsal salgı","Hormon salgısı","Yağ salgısı"], a:0, explanation:"Parotis çoğunlukla seröz, sulu tükürük salgılar."},
+      {q:"69) Submandibular bez hangi bölgededir?", choices:["Mandibulanın alt bölgesi (ağız tabanı civarı)","Gırtlak içinde","Nazal kavitede","Temporal bölgede"], a:0, explanation:"Submandibular bez ağız tabanında, alt çene kemiği yakınındadır."},
+      {q:"70) Tükürüğün konuşma üzerinde etkisi nedir?", choices:["Ağız nemini sağlayarak artikülasyonu kolaylaştırır","Ses perdesini belirler","Gırtlağı oluşturur","Dil kaslarını innerve eder"], a:0, explanation:"Yeterli tükürük artikülasyonu ve ağız içi nemi destekleyerek konuşmayı kolaylaştırır."},
+      {q:"71) Tonsilla palatina'yı hangi yapı çevreler?", choices:["Palatoglossal ve palatopharyngeal arklar arasında","Dil ucu ve hyoid arasında","Epiglottis ve larynx arasında","Mandibula ve maxilla arasında"], a:0, explanation:"Palatine tonsillalar palatal arklar arasında yer alır."},
+      {q:"72) Dilin hareketleri hangi sinirlerle koordine edilir?", choices:["Motor: XII; sensor: V ve VII/IX (tat)","Motor: VII; sensor: X","Motor: V; sensor: XII","Motor: IX; sensor: VII"], a:0, explanation:"Motorinnervasyon çoğunlukla XII; duyusal ve tat farklı sinirlerle taşınır."},
+      {q:"73) Velofaringeal kapanma bozukluğu hangi konuşma sorununa yol açar?", choices:["Hipernazalite","Hipoartikülasyon","Fazla yüksek pitch","İşitme kaybı"], a:0, explanation:"Velofaringeal kapanma eksikse konuşmada hipernazalite görülür."},
+      {q:"74) Nazal pasajın tıkanması konuşmayı nasıl etkiler?", choices:["Nazal rezonansı azaltıp/degistirerek artikülasyonu etkiler","Sesin temel frekansını %90 artırır","Dil hareketlerini durdurur","Tat alma kaybına neden olur"], a:0, explanation:"Nazal pasaj tıkalıysa nazal resonans ve bazı konsonant üretimleri etkilenir."},
+      {q:"75) Fonasyon için gerekli en temel üç unsur hangileridir?", choices:["Hava akımı, vokal foldlar ve rezonans yolları","Göz, kulak, dil","El, ayak, baş","Sadece akciğerler"], a:0, explanation:"Fonasyon hava akımı, vokal foldlar ve rezonans boşluklarının etkileşimiyle gerçekleşir."},
+      {q:"76) Labial seslerin (ör. /p/, /b/) üretiminde ana artikülatör nedir?", choices:["Dudaklar","Dil ucu","Damak","Gırtlak"], a:0, explanation:"Labial konsonantlar dudakların kapatılması/ayrılması ile üretilir."},
+      {q:"77) Dental (diş) seslerin üretimi için hangi yapı gereklidir?", choices:["Dişler ve dil ucu","Velum","Epiglottis","Hyoid"], a:0, explanation:"Dental sesler diş ve dil ucu etkileşimi ile oluşur."},
+      {q:"78) Velar sesler (ör. /k/, /g/) hangi bölgede üretilir?", choices:["Yumuşak damak (velum) ile arka dil bölgesi","Dudaklar","Alveolar bölge","Gırtlak"], a:0, explanation:"Velar sesler velum ve arka dilin temasıyla oluşur."},
+      {q:"79) Nasal konsonant üretiminde hava hangi yoldan çıkar?", choices:["Burundan","Ağızdan","Gırtlaktan","Orta kulaktan"], a:0, explanation:"Nazal konsonantlarda ağız yolu kapalı iken hava burundan çıkar."},
+      {q:"80) Konsonant üretiminde 'manner of articulation' neyi ifade eder?", choices:["Subglottal basınç ve hava akımı şekli","Sadece sesin perdesini","Dil tat profilini","Göz hareketini"], a:0, explanation:"Manner artikülasyonun hava akımı ve engellenme şeklini tanımlar."},
+      {q:"81) Artikülasyon bozukluğunda hangi yapı sıkça hedeflenir?", choices:["Dil ve dudak motor kontrolü","Orta kulak kemikleri","Göz kasları","Omurga"], a:0, explanation:"Artikülasyon çalışmaları genellikle dil ve dudak hareketlerini hedef alır."},
+      {q:"82) Ses patolojilerinde laringeal incelemede hangi yapı sıkça değerlendirilir?", choices:["Vokal foldlar","Lingual tonsil","Parotis bezleri","Nasal septum"], a:0, explanation:"Vokal foldların görünümü ve hareketi ses patolojilerinde temel değerlendirme noktasıdır."},
+      {q:"83) Fonasyon sırasında subglottal basınç ne işe yarar?", choices:["Vokal foldların titreşimini başlatır ve sürdürür","Dudaklara tat verir","Epiglottisi açar","Nazal konkalari kapatır"], a:0, explanation:"Subglottal basınç vokal foldların titreşimi için gereken hava basıncıdır."},
+      {q:"84) Laryngeal elevasyon yutma sırasında neden önemlidir?", choices:["Laringeal elevasyon hava yolunu korur ve özefagusa geçişi kolaylaştırır","Tat alma artar","Konuşma sesi yükselir","Göz kırpma artar"], a:0, explanation:"Laringeal elevasyon yutma esnasında üst hava yolunun güvenliğini sağlar."},
+      {q:"85) Rezonansın değişimi konuşmada hangi faktörlerle ilişkilidir?", choices:["Ağız, nazal ve farengeal boşlukların şekli ve açıklığı","Sadece akciğer kapasitesi","Sadece diş sayısı","Sadece boyun uzunluğu"], a:0, explanation:"Rezonans boşluklarının anatomik özellikleri konuşma sesinin karakterini belirler."},
+      {q:"86) Oral motor terapi hangi durumda kullanılmaz?", choices:["İleri derecedeki kas dejenerasyonunda tek başına yeterli olmaması","Konuşma üretimiyle ilgili kas güçlendirme gerektiğinde","Yutma güçlüğü rehabilitasyonunda","Artikülasyon alıştırmalarında"], a:0, explanation:"İleri nörodejeneratif durumlarda tek başına oral motor terapi yeterli olmayabilir; multidisipliner yaklaşım gerekir."},
+      {q:"87) Phonation için optimal akciğer desteği ne sağlar?", choices:["Diyafram ve interkostal kasların koordinasyonu","Sadece boyun kasları","Sadece yüz kasları","Sadece ağız kasları"], a:0, explanation:"Diyafram ve interkostaller akciğerden kontrollü hava sağlayarak fonasyonu destekler."},
+      {q:"88) M. levator veli palatini hangi işlevi yapar?", choices:["Velumu kaldırarak velofaringeal kapanmayı sağlar","Dudakları kapatır","Vocal foldları açar","Dil tatını sağlar"], a:0, explanation:"Levator veli palatini velumu kaldırarak nazal kaçışı önler."},
+      {q:"89) Tensor veli palatini kası hangi işlevi yerine getirir?", choices:["Tuba auditiva'nın açılmasına yardımcı olur ve velumu gerer","Dil hareketini sağlar","Göz kaslarını kontrol eder","Mastoid process'i hareket ettirir"], a:0, explanation:"Tensor veli palatini östaki borusunun açılmasına yardımcı olur ve velumu gerer."},
+      {q:"90) Konuşma sırasında ağız açıklığının ayarlanması hangi kaslarla ilişkilidir?", choices:["Masseter, temporalis ve pterygoid kaslar","Epiglottis ve hyoid","Lingual tonsil ve uvula","Parotis ve submandibular bezler"], a:0, explanation:"Çiğneme kasları ağız açıklığını ve alt çenenin pozisyonunu kontrol eder; bu da konuşmayı etkiler."},
+      {q:"91) Hangi yapı yutma sırasında larenksi korur?", choices:["Epiglottis","Uvula","Palatum durum","Dorsum linguae"], a:0, explanation:"Epiglottis solunum yolunu kapatarak yutma sırasında larenksi korur."},
+      {q:"92) Superior laryngeal sinirin internal dalı neyi taşır?", choices:["Laringeal mukozanın duyusunu taşır","Vokal foldların motor kontrolünü sağlar","Dil tatını iletir","Göz hareketlerini kontrol eder"], a:0, explanation:"Internal dal laringeal mukozanın duyusunu taşır ve öksürük refleksinde rol oynar."},
+      {q:"93) Recurrent laryngeal sinir hangi görevi üstlenir?", choices:["Vokal foldların motor kontrolünü sağlar","Dil hareketlerini yapar","Dudak hissini taşır","Burun mukozasını innerv eder"], a:0, explanation:"Recurrent laryngeal sinir vokal fold kaslarına motor sağlamakta anahtar rol oynar."},
+      {q:"94) Konuşma terapi değerlendirmesinde 'oral diadochokinesis' neyi ölçer?", choices:["Hızlı tekrarlı hareketlerin koordinasyonunu (ör. /pa-ta-ka/)","İşitme hassasiyetini","Tat alma eşiğini","Damar basıncını"], a:0, explanation:"ODK hızlı tekrarlı artikülatuvar hareketlerin hız ve koordinasyonunu ölçer."},
+      {q:"95) Dilin motor kontrolünde hangi yapı eklemlendirme sağlar?", choices:["Hyoid kemik ve çene (mandibula)","Epiglottis","Temporal kemik","Orbit"], a:0, explanation:"Hyoid ve mandibula dilin pozisyonunu ve motor kontrolünü etkiler."},
+      {q:"96) Fonolojik üretimde solunum neden önemlidir?", choices:["Akciğerlerden gelen hava akımı ses üretimi için enerji sağlar","Sadece tat alma için önemli","Göz kırpmayı etkiler","Saç rengini değiştirir"], a:0, explanation:"Solunum konuşma için gerekli güç kaynağını sağlar."},
+      {q:"97) Dilin şekil ve pozisyonunu kontrol eden kaslardan biri değil hangisidir?", choices:["Sternocleidomastoid","Genioglossus","Hyoglossus","Styloglossus"], a:0, explanation:"Sternocleidomastoid boynun başını hareket ettirir; dil kası değildir."},
+      {q:"98) Konuşma sırasında açık ağız rezonansı hangi duruma işaret edebilir?", choices:["Ağız boşluğu şekli ve çenenin pozisyonu rezonansı etkiler","İç kulak hasarı","Göz kası spazmı","Dil tat problemleri"], a:0, explanation:"Ağız boşluğu oranı ve çene pozisyonu rezonansı etkileyerek ses rengini değiştirir."},
+      {q:"99) Dilin anterior kısmında yoğun olarak bulunan tat reseptörleri hangi tatları algılamakta etkilidir?", choices:["Tat spektrumu; tat bölgeleri sınırlı değildir ama tat reseptörleri ön kısımda yoğundur","Sadece acıyı algılar","Sadece tuzluluğu algılar","Tat reseptörleri sadece dil kökünde bulunur"], a:0, explanation:"Tat reseptörleri tüm dilde bulunur; klasik 'harita' aşırı basitleştirir ancak anterior bölüm tat spektrumunda aktiftir."},
+      {q:"100) Quiz sonunda hangi bilgiler gösterilecektir?", choices:["Toplam doğru ve yanlış sayısı","Sadece doğru sayısı","Sadece yanlışların listesi","Hiçbir sonuç gösterilmez"], a:0, explanation:"Bu quizin sonunda kullanıcıya toplam doğru ve yanlış sayısı gösterilecektir."}
+    ];
+
+    // state
+    const state = {i:0, correct:0, wrong:0, answered:[]};
+    const qnum = document.getElementById('qnum');
+    const question = document.getElementById('question');
+    const choicesEl = document.getElementById('choices');
+    const feedback = document.getElementById('feedback');
+    const prog = document.getElementById('prog');
+    const heartsContainer = document.getElementById('heartsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const card = document.getElementById('card');
+
+    function render(){
+      const item = quiz[state.i];
+      qnum.textContent = (state.i+1) + ' / ' + quiz.length;
+      question.textContent = item.q;
+      choicesEl.innerHTML = '';
+      feedback.className = 'feedback';
+      feedback.innerHTML = '';
+      // İleriki sorularda, eğer bu soru cevaplanmışsa 'Sonraki' butonu aktif olmalı.
+      nextBtn.disabled = !state.answered[state.i];
+      prevBtn.disabled = state.i === 0; // İlk soruda 'Önceki' devre dışı olmalı
+      
+      for(let j=0;j<item.choices.length;j++){
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.textContent = item.choices[j];
+        btn.dataset.idx = j;
+        btn.addEventListener('click', onAnswer);
+        choicesEl.appendChild(btn);
+        
+        // Eğer soru cevaplanmışsa, butonları devre dışı bırak ve doğru/yanlışı işaretle
+        if (state.answered[state.i]) {
+            btn.disabled = true;
+            if (j === item.a) {
+                btn.style.borderColor = 'green';
+                btn.style.backgroundColor = 'rgba(150, 255, 150, 0.6)';
+            } else if (j === state.answered[state.i].chosen) {
+                btn.style.borderColor = 'red';
+                btn.style.backgroundColor = 'rgba(255, 150, 150, 0.6)';
+            }
+        }
+      }
+
+      prog.style.width = ((state.i)/quiz.length*100)+'%';
+      
+      // Cevap verilmişse feedback'i tekrar göster
+      if (state.answered[state.i]) {
+          const item = quiz[state.i];
+          const isCorrect = state.answered[state.i].chosen === item.a;
+          if (isCorrect) {
+              showCorrect(item, false); // Otomatik geçiş yapma
+          } else {
+              showWrong(item, false); // Otomatik geçiş yapma
+          }
+      }
+    }
+
+    function onAnswer(e){
+      const chosen = Number(e.currentTarget.dataset.idx);
+      const item = quiz[state.i];
+      if(state.answered[state.i]) return; // prevent double answers
+      
+      // Tüm cevap butonlarını devre dışı bırak
+      Array.from(choicesEl.children).forEach(btn => btn.disabled = true);
+      
+      state.answered[state.i] = {chosen: chosen}; // Cevabı kaydet
+      
+      // Butonu işaretle
+      e.currentTarget.style.borderColor = chosen === item.a ? 'green' : 'red';
+      e.currentTarget.style.backgroundColor = chosen === item.a ? 'rgba(150, 255, 150, 0.6)' : 'rgba(255, 150, 150, 0.6)';
+
+      if(chosen === item.a){
+        state.correct++;
+        showCorrect(item, true); // Otomatik geçişi aktif et
+      } else {
+        state.wrong++;
+        showWrong(item, true); // Otomatik geçişi aktif et
+      }
+      
+      nextBtn.disabled = false; // Cevaplandıktan sonra 'Sonraki' butonu aktif edilsin
+    }
+
+    // shouldAutoAdvance: otomatik olarak bir sonraki soruya geçmesi gerekip gerekmediğini kontrol eder
+    function showCorrect(item, shouldAutoAdvance){
+      feedback.classList.add('correct');
+      feedback.classList.remove('wrong');
+      feedback.innerHTML = `<div class="message">Tebrikler aşkım çok iyi gidiyorsun 💖 Seni çok seviyorum!</div><div class="explain">${item.explanation}</div>`;
+      if (shouldAutoAdvance) {
+          spawnHearts(10);
+          setTimeout(()=>nextQuestion(),1600);
+      }
+    }
+
+    // shouldAutoAdvance: otomatik olarak bir sonraki soruya geçmesi gerekip gerekmediğini kontrol eder
+    function showWrong(item, shouldAutoAdvance){
+      feedback.classList.add('wrong');
+      feedback.classList.remove('correct');
+      const correctAns = item.choices[item.a];
+      feedback.innerHTML = `<div class="message"> 💕</div><div class="explain">Doğru cevap: <b>${correctAns}</b>. ${item.explanation}</div>`;
+      
+      // Doğru cevabı işaretle
+      Array.from(choicesEl.children).forEach(btn => {
+          if (Number(btn.dataset.idx) === item.a) {
+              btn.style.borderColor = 'green';
+              btn.style.backgroundColor = 'rgba(150, 255, 150, 0.6)';
+          }
+      });
+      
+      if (shouldAutoAdvance) {
+          card.classList.add('shake');
+          setTimeout(()=>card.classList.remove('shake'),600);
+          // Yanlış cevapta 2.5 saniye sonra otomatik geçiş yap (açıklamayı okuması için daha uzun süre)
+          setTimeout(()=>nextQuestion(),4000); 
+      }
+    }
+
+    function spawnHearts(n){
+      for(let k=0;k<n;k++){
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.style.left = (10 + Math.random()*80) + '%';
+        h.style.fontSize = (14 + Math.random()*28) + 'px';
+        h.style.animationDuration = (1400 + Math.random()*1200) + 'ms';
+        h.textContent = '❤️';
+        heartsContainer.appendChild(h);
+        setTimeout(()=>h.remove(),2400);
+      }
+    }
+
+    function nextQuestion(){
+      if(state.i < quiz.length -1){
+        state.i++;
+        render();
+      } else {
+        showSummary();
+      }
+    }
+
+    function prevQuestion(){ 
+        if(state.i>0){ 
+            state.i--; 
+            render(); 
+        } 
+    }
+
+    function showSummary(){
+      choicesEl.innerHTML = '';
+      feedback.className = 'feedback correct';
+      feedback.innerHTML = `<div class="message">Quiz tamamlandı 💐</div><div class="explain">Doğru sayısı: <b>${state.correct}</b><br>Yanlış sayısı: <b>${state.wrong}</b><br>Toplam: <b>${quiz.length}</b></div>`;
+      question.textContent = 'Harikasın aşkım!';
+      qnum.textContent = 'Sonuç';
+      prog.style.width = '100%';
+      nextBtn.disabled = true;
+      prevBtn.disabled = true;
+    }
+
+    prevBtn.addEventListener('click', prevQuestion);
+    nextBtn.addEventListener('click', nextQuestion);
+
+    // initial render
+    render();
+  </script>
+</body>
+</html>
