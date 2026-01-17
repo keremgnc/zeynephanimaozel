@@ -2,400 +2,456 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> Bu site size özel hazırlanmıştır <3 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Çok çok kalp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#ffeef5;
-      --card:#ffd7ec;
-      --accent:#ff7fb3;
-      --accent-dark:#e0558f;
-      --text:#3b2130;
-      --muted:#6b4957;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, var(--bg) 0%, #fff7fc 100%);
-      color:var(--text);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      overflow:hidden;
+    :root {
+      --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #ffebee 100%);
+      --accent-pink: #ff4081;
+      --accent-soft: #ff80ab;
+      --accent-glow: rgba(255, 64, 129, 0.5);
+      --glass-bg: rgba(255, 255, 255, 0.80);
+      --glass-border: rgba(255, 255, 255, 0.4);
+      --text-main: #4a148c;
+      --text-muted: #880e4f;
+      --shadow: 0 15px 35px rgba(255, 64, 129, 0.15);
+      --success-bg: #e8f5e9;
+      --success-text: #2e7d32;
+      --error-bg: #fff3e0;
+      --error-text: #e65100;
     }
 
-    .wrap{
-      width:100%;
-      max-width:920px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
-      border-radius:18px;
-      box-shadow: 0 10px 30px rgba(224,97,154,0.12);
-      padding:20px;
-      border:1px solid rgba(255,127,179,0.12);
-      position:relative;
-      overflow:hidden;
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      color: var(--text-main);
+      overflow-x: hidden;
     }
 
-    header{display:flex;gap:12px;align-items:center;margin-bottom:12px}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:24px;box-shadow:0 6px 18px rgba(255,127,179,0.18)}
-    h1{font-size:20px;margin:0}
-    p.lead{margin:0;color:var(--muted)}
+    .bg-blobs {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1; pointer-events: none; overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      background: var(--accent-soft);
+      filter: blur(80px);
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: floatBlob 15s infinite alternate ease-in-out;
+    }
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 60px) scale(1.1); }
+    }
 
-    .card{background:var(--card);border-radius:14px;padding:18px;margin-top:14px;min-height:260px;display:flex;flex-direction:column;gap:12px;align-items:stretch}
-    .question-row{display:flex;align-items:center;gap:12px}
-    .qnum{background:rgba(255,127,179,0.12);padding:8px 12px;border-radius:10px;font-weight:600}
-    .question{font-size:18px}
+    .wrap {
+      width: 100%;
+      max-width: 650px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      /* Kenarlara ışık efekti eklendi */
+      border-top: 1px solid rgba(255,255,255,0.7);
+      border-left: 1px solid rgba(255,255,255,0.7);
+      border-radius: 35px;
+      box-shadow: var(--shadow);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
 
-    .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
-    .btn{padding:12px;border-radius:10px;border:2px solid transparent;background:rgba(255,255,255,0.6);cursor:pointer;font-weight:700;box-shadow:0 6px 12px rgba(0,0,0,0.04);transition:transform .12s ease, box-shadow .12s ease}
-    .btn:active{transform:translateY(1px)}
-    .btn:hover{box-shadow:0 10px 20px rgba(0,0,0,0.06)}
-    .btn[disabled]{opacity:0.6;cursor:not-allowed} /* Yeni eklenen */
+    header { text-align: center; margin-bottom: 35px; }
 
-    .feedback{min-height:64px;display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;flex-direction:column;justify-content:center;text-align:center}
-    .feedback.correct{background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,127,179,0.06));border:1px solid rgba(233,81,130,0.12)}
-    .feedback.wrong{background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,127,179,0.02));border:1px solid rgba(200,80,120,0.06)}
+    /* GÜNCELLENDİ: Gerçek Kalp Şeklinde Logo */
+    .logo-area { position: relative; display: inline-block; margin-bottom: 15px; }
+    .logo {
+      width: 100px; height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 48px;
+      font-family: 'Dancing Script', cursive;
+      /* CSS ile kalp şekli zor olduğu için SVG background kullanıyoruz */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff4081'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      /* Box-shadow yerine drop-shadow filtresi kullanıyoruz ki kalbin şeklini alsın */
+      filter: drop-shadow(0 8px 15px var(--accent-glow));
+      animation: heartbeat 1.3s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+      padding-top: 5px; /* Z'yi ortalamak için */
+    }
 
-    .message{font-weight:700}
-    .explain{font-size:13px;color:var(--muted)}
-    .muted{color:var(--muted);font-size:13px}
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); filter: drop-shadow(0 12px 20px var(--accent-glow)); }
+      50% { transform: scale(1); filter: drop-shadow(0 8px 15px var(--accent-glow)); }
+      100% { transform: scale(1); }
+    }
 
-    .controls{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
-    .ghost{background:transparent;border:0;color:var(--accent-dark);font-weight:700;cursor:pointer}
-    .ghost[disabled]{opacity:0.4;cursor:not-allowed} /* Yeni eklenen */
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 42px;
+      margin: 10px 0 5px;
+      color: var(--accent-pink);
+      text-shadow: 2px 2px 4px rgba(255, 64, 129, 0.1);
+    }
+    .lead { font-size: 18px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
 
+    .card {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 28px;
+      padding: 35px;
+      box-shadow: inset 0 2px 5px rgba(255,255,255,0.9);
+    }
 
-    .hearts{position:absolute;left:0;right:0;bottom:0;pointer-events:none;overflow:visible;height:100%}
-    .heart{position:absolute;bottom:0;left:50%;transform:translateX(-50%) scale(0.8);font-size:22px;opacity:0;animation:flyUp 2000ms ease-out forwards}
-    @keyframes flyUp{0%{opacity:0;transform:translateX(-50%) translateY(0) scale(0.7)}10%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-220px) scale(1.25)}}
+    /* YENİ: Sorular arası yumuşak geçiş efekti */
+    .fade-content { animation: fadeIn 0.5s ease-out; }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-    @media(max-width:820px){.choices{grid-template-columns:1fr}.wrap{padding:14px}}
+    .question-row { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+    .qnum {
+      align-self: flex-start;
+      background: var(--accent-pink);
+      color: white;
+      padding: 7px 20px;
+      border-radius: 25px;
+      font-size: 15px; font-weight: 700;
+      box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
+    }
+    .question { font-size: 22px; font-weight: 700; line-height: 1.6; }
 
-    footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-    .progress{height:8px;background:rgba(255,255,255,0.4);border-radius:6px;overflow:hidden}
-    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-dark));width:0%}
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .btn {
+      background: white;
+      border: 2px solid transparent;
+      padding: 20px 18px;
+      border-radius: 22px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text-main);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+      position: relative; overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    @media (hover: hover) {
+      .btn:hover:not([disabled]) {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 15px 25px rgba(255, 64, 129, 0.15);
+        border-color: var(--accent-soft);
+        background: #fff5f8;
+      }
+    }
+    .btn:active:not([disabled]) { transform: scale(0.97); }
 
-    .shake{animation:shake .5s}
-    @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}100%{transform:translateX(0)}}
+    .btn.correct-choice { background: var(--success-bg) !important; border-color: var(--success-text) !important; color: var(--success-text) !important; }
+    .btn.wrong-choice { background: var(--error-bg) !important; border-color: var(--error-text) !important; color: var(--error-text) !important; }
+    .btn:disabled { cursor: default; opacity: 0.9; }
+
+    .feedback {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 22px;
+      display: none; /* Başlangıçta gizli, JS ile açacağız */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: slideUp 0.4s ease-out forwards;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .feedback.correct { display: flex; background: var(--success-bg); border: 1px solid #a5d6a7; }
+    .feedback.wrong { display: flex; background: var(--error-bg); border: 1px solid #ffcc80; }
+    .message { font-weight: 800; font-size: 20px; margin-bottom: 10px; }
+    .explain { font-size: 16px; line-height: 1.5; }
+
+    .controls { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
+    .ghost {
+      background: none; border: none;
+      color: var(--accent-pink); font-weight: 800;
+      cursor: pointer; font-size: 17px; padding: 12px 25px;
+      font-family: 'Quicksand', sans-serif; transition: all 0.3s ease;
+      border-radius: 15px;
+    }
+    .ghost:hover:not(:disabled) { background: rgba(255, 64, 129, 0.1); transform: translateX(5px); }
+    #prevBtn:hover:not(:disabled) { transform: translateX(-5px); }
+    .ghost:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .progress-container {
+      width: 100%; height: 14px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 14px; margin-top: 35px;
+      overflow: hidden; padding: 3px;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-soft), var(--accent-pink));
+      width: 0%; border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 2px 0 10px rgba(255, 64, 129, 0.4);
+    }
+
+    .heart-particle {
+      position: fixed; pointer-events: none; z-index: 9999;
+      animation: floatUpFadeOut 3s forwards cubic-bezier(0, 0.2, 0.5, 1);
+    }
+    @keyframes floatUpFadeOut {
+      0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-70vh) rotate(360deg) scale(1.8); opacity: 0; }
+    }
+
+    /* GÜNCELLENDİ: Daha Kibar Titreme Efekti */
+    .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); } /* 2px'e düşürüldü */
+      20%, 80% { transform: translate3d(2px, 0, 0); } /* 4px'e düşürüldü */
+      30%, 50%, 70% { transform: translate3d(-2px, 0, 0); }
+      40%, 60% { transform: translate3d(2px, 0, 0); }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .wrap { padding: 30px 20px; border-radius: 30px; }
+      .logo { width: 85px; height: 75px; font-size: 38px; }
+      h1 { font-size: 32px; margin-top: 5px; }
+      .lead { font-size: 16px; }
+      .card { padding: 25px 20px; }
+      .question { font-size: 20px; }
+      .choices { grid-template-columns: 1fr; gap: 15px; }
+      .btn { padding: 18px; font-size: 16px; }
+      .feedback { padding: 20px; }
+      footer { font-size: 12px; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
+
+  <div class="bg-blobs">
+    <div class="blob" style="width: 400px; height: 400px; top: -15%; left: -15%;"></div>
+    <div class="blob" style="width: 350px; height: 350px; bottom: -15%; right: -15%; animation-delay: -5s;"></div>
+  </div>
+
+  <div class="wrap" id="mainWrap">
     <header>
-      <div class="logo">A</div>
-      <div>
-        <h1> Mini Quiz </h1>
-        <p class="lead"> Başarılar Aşkımm </p>
+      <div class="logo-area">
+        <div class="logo">Z</div>
       </div>
+      <h1>Mini Quiz</h1>
+      <p class="lead">Başarılar Aşkımm ✨</p>
     </header>
 
     <div class="card" id="card">
-      <div class="question-row">
-        <div class="qnum" id="qnum">1 / 100</div>
-        <div class="question" id="question">Yükleniyor...</div>
+      <div id="quiz-content" class="fade-content">
+        <div class="question-row">
+          <div class="qnum" id="qnum">1 / 100</div>
+          <div class="question" id="question">Soru yükleniyor...</div>
+        </div>
+        <div class="choices" id="choices"></div>
       </div>
 
-      <div class="choices" id="choices"></div>
-
-      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="feedback" id="feedback"></div>
 
       <div class="controls">
-        <button class="ghost" id="prevBtn">Önceki</button>
-        <button class="ghost" id="nextBtn">Sonraki</button>
+        <button class="ghost" id="prevBtn" disabled>← Geri</button>
+        <button class="ghost" id="nextBtn" disabled>İleri →</button>
       </div>
 
-      <div style="position:relative;height:2px;margin-top:12px">
-        <div class="progress"><i id="prog"></i></div>
+      <div class="progress-container">
+        <div class="progress-bar" id="prog"></div>
       </div>
     </div>
 
-    <footer style="margin-top:10px">
-      <div class="muted"></div>
-      <div class="muted">Sorular çok sevgi içerir...</div>
+    <footer style="margin-top: 30px; text-align: center; font-size: 14px; opacity: 0.8; font-weight: 600; color: var(--text-muted); letter-spacing: 1px;">
+        ❤️ Fazla güzel ve zekisin ❤️
     </footer>
   </div>
 
-  <div class="hearts" id="heartsContainer" aria-hidden="true"></div>
-
   <script>
-    // 100 özgün soru — her soru: {q, choices:[...], a:index, explanation: string}
+    // NOT: Orijinal 100 soruluk listenizi buraya yapıştırın.
     const quiz = [
-  {q:"1) Dudaklar ve alveollar gebeliğin yaklaşık kaçıncı haftasında gelişir?", choices:["4. hafta","6. hafta","8. hafta","12. hafta"], a:1, explanation:"Dudaklar ve alveollar gebeliğin 6. haftasında gelişir."},
-  {q:"2) Sert damak (hard palate) gelişimi gebeliğin hangi haftalarında tamamlanır?", choices:["6-7. hafta","8-9. hafta","10-11. hafta","12-14. hafta"], a:1, explanation:"Sert damak gelişimi gebeliğin 8-9. haftasında gerçekleşir."},
-  {q:"3) Velum ve uvula gelişimi gebeliğin kaçıncı haftasında tamamlanır?", choices:["6. hafta","9. hafta","12. hafta","16. hafta"], a:2, explanation:"Velum ve uvula gelişimi gebeliğin 12. haftasında tamamlanır."},
-  {q:"4) Dudak ve damak kısmının birleştiği anatomik nokta aşağıdakilerden hangisidir?", choices:["Hamulus","Palatine bone","Incisive foramen","Uvula"], a:2, explanation:"Incisive foramen, dudak ve damak kısmının birleştiği yerdir."},
-  {q:"5) Yarık damaklı bireylerde işlevsiz olan ve Östaki tüpünün açılıp kapanmasında rol oynayan kas hangisidir?", choices:["Levator veli palatini","Tensor veli palatini","Musculus uvulae","Palatoglossus"], a:1, explanation:"Tensor veli palatini, Östaki tüpünün açılıp kapanmasında rol oynar ve yarık damakta işlevsizdir."},
-  {q:"6) Velofarengeal kapanma için en önemli olan ve yumuşak damağı yukarı-arkaya çeken kas hangisidir?", choices:["Tensor veli palatini","Palatopharyngeus","Levator veli palatini","Superior farengeal konstriktör"], a:2, explanation:"Levator veli palatini velofarengeal kapanma için kritiktir; yumuşak damağı yukarı ve arkaya çeker."},
-  {q:"7) Yapısal bir bozukluk nedeniyle velofarengeal kapağın tam kapanamamasına ne ad verilir?", choices:["Velofarengeal yetersizlik","Velofarengeal yetmezlik","Hipernazalite","Hiponazalite"], a:1, explanation:"Yapısal bozukluklar (örneğin velumun kısa olması) için 'Velofarengeal yetmezlik' terimi kullanılır."},
-  {q:"8) İşlevsel bir bozukluk (kasın görevini yapamaması) sonucu kapanmanın sağlanamamasına ne ad verilir?", choices:["Velofarengeal yetmezlik","Velofarengeal yetersizlik","Cul-de-sac rezonans","Nazal emisyon"], a:1, explanation:"İşlevde bozukluk varsa (kapanma gerçekleşmiyorsa) 'Velofarengeal yetersizlik' terimi kullanılır."},
-  {q:"9) Submukozal yarık damağın ağız içi muayenesindeki tipik belirtilerinden biri değildir?", choices:["Bifid uvula","Zona pellucida","Inverted V görüntüsü","Sert damakta fistül"], a:3, explanation:"Submukozal yarık belirtileri arasında bifid uvula, zona pellucida ve inverted V bulunur; fistül açık yarıklarla ilişkilidir."},
-  {q:"10) Türkiye'de dudak-damak yarıklığı görülme sıklığı yaklaşık kaçtır?", choices:["400-500 doğumda 1","600-700 doğumda 1","1000-1200 doğumda 1","2000 doğumda 1"], a:1, explanation:"Türkiye'de 600-700 doğumda 1 dudak-damak yarıklığı veya her ikisinin bir arada görülmesi saptanmıştır."},
-  {q:"11) Yarık damaklı bebeklerin beslenmesinde dikkat edilmesi gereken temel kural nedir?", choices:["Bebek tamamen yatay yatırılmalı","Bebek daima baş yukarıda pozisyonda tutulmalı","Beslenme süresi 1 saati aşmalı","Beslenme sonrası hemen yatırılmalı"], a:1, explanation:"Beslenme sırasında çocuk daima baş yukarıda tutulmalı ve beslenmeden sonra 20-30 dk dik konumda bekletilmelidir."},
-  {q:"12) Yarık damaklı bireylerde orta kulak iltihabı (Otitis Media) riskinin yüksek olma sebebi nedir?", choices:["Dış kulak yolunun darlığı","Tensor veli palatini kasının işlevsizliği","Nazal kavitenin genişliği","Dilin arkada konumlanması"], a:1, explanation:"Tensor veli palatini kası işlevsiz olduğu için Östaki tüpü açılmaz ve orta kulak ventilasyonu sağlanamaz."},
-  {q:"13) Alt çenenin üst çeneye göre daha önde olduğu maloklüzyon tipi hangisidir?", choices:["Tip I","Tip II","Tip III","Normal oklüzyon"], a:2, explanation:"Tip III maloklüzyonda alt çene öndedir (underbite)."},
-  {q:"14) Velofarengeal disfonksiyon sonucu konuşurken burundan hava kaçmasına ne ad verilir?", choices:["Hipernazalite","Hiponazalite","Nazal emisyon","Cul-de-sac"], a:2, explanation:"Konuşurken burundan hava kaçması olayı nazal emisyondur."},
-  {q:"15) Hipernazalite ve hiponazaliteyi ayırt etmek için kullanılan değerlendirme yöntemi hangisidir?", choices:["Stroboskopi","Kummer Testi","VHI-10","AMR Testi"], a:1, explanation:"Kummer testi, rezonans bozukluklarını ayırt etmek için kullanılır."},
-  {q:"16) 'Zorunlu hatalar' ile 'Telafi edici hatalar' arasındaki temel fark nedir?", choices:["Zorunlu hatalar öğrenilmiştir","Telafi edici hatalar yapısal bozukluk sonucudur","Zorunlu hatalar yapısal bozukluk sonucudur, telafi edici hatalar ise yanlış yerleşimdir","Aralarında fark yoktur"], a:2, explanation:"Zorunlu hatalar yapısal (yetmezlik/yetersizlik) sonuçtur; telafi edicilerde ise ses üretimi yanlış yerden yapılır."},
-  {q:"17) Kelime ediniminde en hızlı gelişim hangi yaş aralığında görülür?", choices:["0-1 yaş","1,6 - 2,6 yaş","3-4 yaş","5-6 yaş"], a:1, explanation:"Kelime ediniminde en hızlı gelişim 1,6y ile 2,6y arasında görülür."},
-  {q:"18) Çocukların yeni bir kelimeyi bir veya iki kez duyduklarında anlamına dair hızlıca bilgi oluşturmasına ne denir?", choices:["Slow Mapping","Fast Mapping","Leksikal Erişim","Semantik Kodlama"], a:1, explanation:"Küçük çocukların duydukları kelimenin anlamına dair bilgiyi hemen oluşturmasına 'fast mapping' denir."},
-  {q:"19) 18 aylık bir çocuğun kelime öğreniminde kullandığı en önemli kaynak nedir?", choices:["Sözlükler","Okuma kitapları","Sosyal hayatta edindiği bilgiler ve bağlam","Televizyon"], a:2, explanation:"18 aylık bir çocuk sosyal hayatta edindiği bilgileri ve bağlamı kelime öğrenimi için kaynak olarak kullanır."},
-  {q:"20) Okul dönemiyle birlikte yeni kelime öğrenimi ağırlıklı olarak nasıl gerçekleşir?", choices:["Sadece oyunla","Okuma parçalarıyla","Sadece ebeveynleri dinleyerek","Görsel sanatlarla"], a:1, explanation:"Okul hayatıyla birlikte yeni kelime öğrenimi okuma parçalarıyla gerçekleşir."},
-  {q:"21) Kelime ediniminde etkili olan fonolojik süreçlerle ilgili hangisi doğrudur?", choices:["Semantik gelişimle ilgisi yoktur","Fonolojik temsilin oluşmaması semantik temsile zarar verir","Çocuklar sadece anlamı öğrenir, sesi öğrenmez","Kısa süreli bellek etkisizdir"], a:1, explanation:"Kelimenin fonolojik temsilinin oluşmaması semantik temsilin oluşmasına da zarar verir."},
-  {q:"22) Sık kullanılan ses dizilimlerinden oluşan kelimelerin daha hızlı öğrenilmesi hangi özellikle açıklanır?", choices:["Semantik özellik","Fonotaktik özellik","Morfolojik özellik","Sentaktik özellik"], a:1, explanation:"Fonotaktik özellikler (uygun fonem kombinasyonları) kelime edinim hızını etkiler."},
-  {q:"23) Sekiz yaş itibariyle çocuklar kelimenin semantik bileşenini oluştururken neye odaklanır?", choices:["Dış görünüşe","Ses benzerliğine","Kelimenin özelliklerine","Kelimenin uzunluğuna"], a:2, explanation:"Okul öncesi çocuklar dış görünüşe odaklanırken, 8 yaş itibariyle kelimenin özelliklerine odaklanırlar."},
-  {q:"24) Kelime ediniminde 'birleşik kelimeler' ile ilgili hangisi doğrudur?", choices:["Deyimlerden daha zordur","Türemiş kelimelerden daha zordur","Çekimli ve türemiş kelimelere göre daha kolay öğrenilir","En son öğrenilen yapılardır"], a:2, explanation:"Birleşik kelimelerin çekimli ve türemiş kelimeler ile deyimlere göre daha kolay öğrenildiği görülmüştür."},
-  {q:"25) Kelime bilgisini ölçmede 'Sözcük-resim eşleme' görevlerinin dezavantajı nedir?", choices:["Çok pahalı olması","Şans faktörü ve dilsel olmayan stratejilerin kullanımı","Çocuğun sıkılması","Zaman alıcı olması"], a:1, explanation:"Resim eşleme görevlerinde çocuğun doğruyu göstermesi şansa veya strateji kullanımına bağlı olabilir."},
-  {q:"26) Kelime tanımlama becerisi hakkında hangisi yanlıştır?", choices:["Meta-linguistik beceri gerektirir","7 yaşından önce tanımlar basittir","Büyük çocuklar sosyal bilgileri içeren karmaşık ifadeler kullanır","Her yaşta aynı kolaylıktadır"], a:3, explanation:"Kelime tanımlama gizli ilerleyen ve ifade edilmesi her yaştaki çocuk için zor olan bir beceridir."},
-  {q:"27) Özgül Öğrenme Bozukluğu (ÖÖB) olan çocuklarda leksikal gelişimde hangisi görülür?", choices:["Leksikal bağlantılar çok güçlüdür","Fiil edinimi oldukça geride kalır","Kelime çağırma çok hızlıdır","Hiç kelime öğrenemezler"], a:1, explanation:"ÖÖB olan çocuklarda fiil edinimi geride kalır ve leksikal bağlantılar zayıftır."},
-  {q:"28) Kelime ediniminde ailenin etkisi nasıldır?", choices:["Etkisizdir","Sadece genetik aktarım yapar","Ailenin kullandığı kelime sayısı edinimde önemli bir faktördür","Sadece okul etkilidir"], a:2, explanation:"Ailenin kullandığı kelime sayısı ve çocuğun maruz kalma sayısı edinimde kritik faktörlerdir."},
-  {q:"29) Leksikal sözlükten (lexicon) kelime seçimi hangi süreci ifade eder?", choices:["Fonetik","Semantik","Morfolojik","Artikülasyon"], a:1, explanation:"Uygun kelimenin sözlükten seçilmesi semantik ve leksikal bir işlemdir."},
-  {q:"30) Çocuklar soyut kelimeleri ne zaman kullanmaya başlayabilirler?", choices:["Anlamını tam kavramadan önce bazı bağlamlarda","Sadece yetişkinlikte","Anlamını tam çözdükten sonra","Okula başlamadan asla"], a:0, explanation:"Çocuklar bazı soyut kelimeleri, anlamını tam oluşturmadan önce bazı bağlamlarda üretebilirler."},
-  {q:"31) Kelime bilgisi fazla olan çocukların okuma başarısı nasıldır?", choices:["Okuma hızını etkilemez","Okuduğunu daha iyi anladığından daha fazla kelime öğrenirler","Daha az kitap okurlar","Kelime bilgisi okumayı etkilemez"], a:1, explanation:"Kelime bilgisi fazla olanlar okuduğunu daha iyi anlar, bu da akademik başarıyı etkiler."},
-  {q:"32) Fiil edinimi neden isim ediniminden daha zor olabilir?", choices:["Daha kısa oldukları için","İsimlere göre daha fazla ek almaları ve cümle içindeki pozisyonları nedeniyle","Sadece görsel oldukları için","İsimler daha nadir kullanıldığı için"], a:1, explanation:"Fiiller isimlere göre daha fazla ek alır ve cümledeki pozisyonları edinimini zorlaştırabilir."},
-  {q:"33) Kekemelik nedir?", choices:["Ses kısıklığıdır","Konuşma akıcılığının bloklar, tekrarlar ve uzatmalarla bozulmasıdır","Zeka geriliğidir","Kelime unutkanlığıdır"], a:1, explanation:"Kekemelik; blok, tekrar ve uzatmalarla karakterize bir akıcısızlık bozukluğudur."},
-  {q:"34) Kekemelik genellikle hangi yaşlar arasında başlar?", choices:["0-2 yaş","2-5 yaş","7-10 yaş","Ergenlikten sonra"], a:1, explanation:"Kekemelik tipik olarak 2-5 yaş arasında başlar."},
-  {q:"35) Okul öncesi dönemdeki kekemeliklerin yüzde kaçı kendiliğinden iyileşir?", choices:["%20","%50","%80","%100"], a:2, explanation:"Okul öncesi çağı kekemeliklerin %80'i kendiliğinden iyileşir."},
-  {q:"36) Aşağıdakilerden hangisi kekemelikte kronikleşmeyi etkileyen faktörlerden biri değildir?", choices:["Cinsiyet","Başlama yaşı","Çocuğun boyu","Ailede kekemelik öyküsü"], a:2, explanation:"Kekemeliğin kronikleşmesinde cinsiyet, yaş, süre ve aile öyküsü etkilidir; fiziksel boyun bir etkisi yoktur."},
-  {q:"37) Kekemelikte kaçınma davranışı olarak 'problemli kelimelerden kaçınmak için kelime değiştirme'ye ne denir?", choices:["Blocks","Repetitions","Circumlations","Prolongations"], a:2, explanation:"Kelimeleri değiştirmeye veya etrafından dolanmaya circumlations denir."},
-  {q:"38) İnme veya beyin hasarı sonrası oluşan kekemelik türü hangisidir?", choices:["Gelişimsel kekemelik","Nörojenik kekemelik","Psikojenik kekemelik","İnatçı kekemelik"], a:1, explanation:"Nörolojik hasarlar sonrası oluşan kekemeliğe nörojenik kekemelik denir."},
-  {q:"39) Nörojenik kekemeliğin gelişimsel kekemelikten ayırt edici bir özelliği nedir?", choices:["Sadece kelime başında görülür","Genellikle kelime sonundaki tekrarlarla kendini gösterir","Asla blok görülmez","Çocuklukta başlar"], a:1, explanation:"Nörojenik kekemelik genellikle kelime sonu tekrarlarla kendini gösterir."},
-  {q:"40) Kekemelikte görülen 'göz kırpma, el vurma' gibi fiziksel hareketlere ne ad verilir?", choices:["Birincil davranışlar","İkincil davranışlar","Tics","Refleksler"], a:1, explanation:"Kekemeliğe eşlik eden fiziksel hareketlere ikincil davranışlar denir."},
-  {q:"41) Kekemelikle birlikte sıkça görülen psikolojik durum hangisidir?", choices:["Depresyon","Sosyal kaygı","Şizofreni","Öfke kontrol bozukluğu"], a:1, explanation:"Kekemeliğe sahip bireylerde sosyal kaygı sık görülen bir durumdur."},
-  {q:"42) Çocukluk çağı başlangıçlı akıcısızlık bozukluklarında görülen 'duyulabilir veya sessiz duraklar'a ne denir?", choices:["Tekrar","Uzatma","Blok","Arama"], a:2, explanation:"Konuşma akışındaki duraklara blok (block) denir."},
-  {q:"43) Bir metni üst üste okurken kekemeliğin azalması durumuna ne denir?", choices:["Tutarlılık","Adaptasyon","Bitişiklik","Hazırlık"], a:1, explanation:"Uyaran kontrolünde aynı metnin tekrarlı okunmasıyla kekemeliğin azalmasına adaptasyon denir."},
-  {q:"44) Kekemeliğin yetişkinliğe kadar devam etmesi durumuna ne ad verilebilir?", choices:["Geçici kekemelik","İnatçı (Persistent) kekemelik","Akut kekemelik","Fonolojik bozukluk"], a:1, explanation:"Yetişkinliğe kadar süren kekemeliğe inatçı kekemelik denir."},
-  {q:"45) Kekemelikte 'Yatkınlık/Bitişiklik' (Adjacency) etkisi nedir?", choices:["Kekelenen kelimelerin yanındaki kelimelerde de kekeleme eğilimi","Hiç kekelememe","Hızlı konuşma","Sadece isimlerde kekeleme"], a:0, explanation:"Adjacency, kekelenen kelimelerin komşuluğunda kekeleme olasılığının artmasıdır."},
-  {q:"46) İşitme engelli bireylerin sözcük dağarcığı (lexicon) hakkında hangisi doğrudur?", choices:["Normal gelişim gösterenlerden daha geniştir","Soyut ifadeleri daha iyi anlarlar","Normal gelişim gösteren bireylere göre daha zayıf/sınırlıdır","Somut ifadeleri anlamazlar"], a:2, explanation:"İşitme engelli bireylerin lexiconları daha zayıftır ve soyut ifadeleri anlamakta güçlük çekerler."},
-  {q:"47) İşitme engelli çocuklarda babıldama (babbling) süreci ne zaman sapma gösterir?", choices:["İlk 3 ayda","İlk 9 ay normaldir, sonrasında sapma gösterir","Doğar doğmaz","Hiç babıldamazlar"], a:1, explanation:"İşitme engelli bireylerin fonolojik gelişimleri ilk 9 ay normaldir, ancak sonrasında sapma gösterirler."},
-  {q:"48) İşitme engelli bireylerde en fazla sıkıntı yaşanan dil bileşeni hangisidir?", choices:["Semantik","Sentaks","Fonoloji","Pragmatik"], a:2, explanation:"Fonoloji, işitme engelli bireylerin en fazla sıkıntı yaşadığı dil bileşenidir."},
-  {q:"49) İşitme engelli bireylerin cümle yapısı hakkında hangisi söylenebilir?", choices:["Yaşıtlarından daha uzun cümleler kurarlar","Daha kısa cümleler kullanırlar ve OSU (MLU) değerleri düşüktür","Asla jest kullanmazlar","Sentaktik hata yapmazlar"], a:1, explanation:"Daha kısa cümleler kullanırlar ve Ortalama Sözce Uzunlukları (OSU) düşüktür."},
-  {q:"50) İşitme engelli bireylerde pragmatik alanda görülen sınırlılık hangisidir?", choices:["Göz kontağı kuramazlar","Mecaz, atasözü ve deyimleri anlamakta zorlanırlar","Jest ve mimikleri yoktur","Hiç soru soramazlar"], a:1, explanation:"Mecazlar, atasözleri ve metaforları anlamak konusunda sınırlıdırlar."},
-  {q:"51) Sese duygu yükleme ve sesteki anlam farklılığını fark etme zorluğu hangi dil bileşeniyle ilgilidir?", choices:["Fonoloji","Sentaks","Pragmatik","Morfoloji"], a:2, explanation:"Vurgu, tonlama ve duygu yükleme pragmatik beceriler arasındadır."},
-  {q:"52) Rezonans nedir?", choices:["Sesin şiddetidir","Bir titreşimin başka bir titreşimi etkilemesidir","Sadece burundan konuşmaktır","Yutma hızıdır"], a:1, explanation:"Rezonans, bir titreşimin başka bir titreşimi etkilemesi olayıdır."},
-  {q:"53) 'Ses enerjisinin ağız veya burun boşluğundan dışarı çıkamaması' hangi rezonans bozukluğudur?", choices:["Hipernazalite","Hiponazalite","Cul-de-sac rezonans","Nasal emisyon"], a:2, explanation:"Ses enerjisinin hapsolup dışarı çıkamamasına Cul-de-sac rezonans denir."},
-  {q:"54) Cul-de-sac rezonansa sahip bir bireyin konuşması nasıl tarif edilir?", choices:["Burundan konuşuyor gibi","Ağzında top varmış gibi","Çok tiz bir ses","Fısıltı gibi"], a:1, explanation:"Cul-de-sac rezonansta bireyler sanki 'ağzında top varmış gibi' konuşurlar."},
-  {q:"55) Nazal seslerin (m, n, ng) yeteri kadar rezonans sağlamaması durumuna ne denir?", choices:["Hipernazalite","Hiponazalite","Karma rezonans","Afoni"], a:1, explanation:"Nazal seslerin az rezonans almasına hiponazalite denir."},
-  {q:"56) Hiponazalite durumunda 'm' sesi nasıl duyulabilir?", choices:["n","b","s","m"], a:1, explanation:"Hiponazalitede 'm' sesi 'b' olarak, 'n' sesi 'd' olarak duyulabilir."},
-  {q:"57) Larinksin (gırtlak) en önemli ve ilk gelişen görevi nedir?", choices:["Şarkı söylemek","Sfinkter (alt solunum yollarını koruma)","Konuşmak","Öksürmek"], a:1, explanation:"Larinksin en önemli ve filogenetik olarak ilk gelişen görevi sfinkter (koruma) fonksiyonudur."},
-  {q:"58) Ses telleri (vokal kordlar) histolojik olarak kaç katmanda incelenir?", choices:["2 (iç-dış)","3 (örtü, geçiş, gövde)","5 (epitel, reinke, ligament, kas, mukoza)","1 (tek parça)"], a:1, explanation:"Fonksiyonel olarak örtü, geçiş bölgesi ve gövde olmak üzere 3 kısımda incelenir."},
-  {q:"59) Vokal kordların 'Örtü' (cover) tabakası nelerden oluşur?", choices:["Vokal kas","Vokal ligament","Epitel ve Lamina proprianın yüzeyel tabakası","Sadece kıkırdak"], a:2, explanation:"Örtü tabakası epitel ve Reinke boşluğunu (yüzeyel lamina propria) içerir."},
-  {q:"60) Larinkste bulunan 'tek' kıkırdaklar hangi seçenekte doğru verilmiştir?", choices:["Aritenoid, Tiroid, Krikoid","Tiroid, Krikoid, Epiglot","Epiglot, Aritenoid, Kuneiform","Kornikulat, Kuneiform, Krikoid"], a:1, explanation:"Tek kıkırdaklar: Tiroid, Krikoid ve Epiglottur."},
-  {q:"61) Larinkste bulunan 'çift' kıkırdaklar hangileridir?", choices:["Tiroid, Krikoid, Epiglot","Aritenoid, Kornikulat, Kuneiform","Hiyoid, Tiroid, Aritenoid","Krikoid, Epiglot, Hiyoid"], a:1, explanation:"Çift kıkırdaklar: Aritenoid, Kornikulat ve Kuneiformdur."},
-  {q:"62) Larinksin en büyük kıkırdağı aşağıdakilerden hangisidir?", choices:["Krikoid","Aritenoid","Tiroid","Epiglot"], a:2, explanation:"Tiroid kıkırdak larinksin en büyük kıkırdağıdır."},
-  {q:"63) Kadınlarda tiroid laminaları arasındaki açı yaklaşık kaç derecedir?", choices:["90 derece","120 derece","45 derece","180 derece"], a:1, explanation:"Laminalar önde kadınlarda ~120, erkeklerde ~90 derecelik açıyla birleşir."},
-  {q:"64) Yutkunma sırasında larinks girişini kapatarak besinlerin akciğere kaçmasını önleyen yapı hangisidir?", choices:["Uvula","Epiglot","Glottis","Vokal kord"], a:1, explanation:"Epiglot yutkunma sırasında larinks girişini kapatır."},
-  {q:"65) Krikotiroid kası hariç tüm iç larinks kaslarını hangi sinir innerve eder?", choices:["Superior laringeal sinir","Rekürren laringeal sinir","Vagus ana dalı","Trigeminal sinir"], a:1, explanation:"Krikotiroid kası superior laringeal sinirin eksternal dalı, diğerleri rekürren sinir tarafından uyarılır."},
-  {q:"66) Sesin fiziksel karşılığı olan saniyedeki titreşim sayısına ne ad verilir?", choices:["Şiddet","Kalite","Frekans","Rezonans"], a:2, explanation:"Frekans, vokal kordların bir saniyedeki titreşim sayısıdır (Hz)."},
-  {q:"67) Erkeklerde ortalama temel frekans (F0) aralığı nedir?", choices:["50-80 Hz","100-150 Hz","200-250 Hz","400 Hz"], a:1, explanation:"Erkeklerde temel frekans 100-150 Hz, kadınlarda 200-250 Hz civarındadır."},
-  {q:"68) Ses tellerinin açılıp kapanma teorisi aşağıdakilerden hangisidir?", choices:["Yerçekimi Teorisi","Miyoelastik-Aerodinamik Teori (Bernoulli Etkisi)","Nörolojik Titreşim Teorisi","Kasılma Teorisi"], a:1, explanation:"Ses oluşumu miyoelastik ve aerodinamik kuvvetlerin etkileşimiyle açıklanır."},
-  {q:"69) Bernoulli etkisine göre daralan bir bölgeden (glottis) geçen hava akımı için hangisi doğrudur?", choices:["Hızı azalır, basıncı artar","Hızı artar, negatif basınç oluşturur","Hızı değişmez","Basınç pozitiftir"], a:1, explanation:"Daralan bölgeden geçen akım hızlanır ve etrafında negatif basınç oluşturarak emme etkisi yaratır."},
-  {q:"70) Ses şiddetinin birimi nedir?", choices:["Hertz (Hz)","Desibel (dB)","Milisaniye (ms)","Oktav"], a:1, explanation:"Ses şiddetinin (gürlük) birimi desibeldir (dB)."},
-  {q:"71) Ses kalitesinde frekans pertürbasyonuna (titreşimdeki düzensizlik) ne ad verilir?", choices:["Shimmer","Jitter","Disfoni","Afoni"], a:1, explanation:"Frekans pertürbasyonuna jitter, şiddet pertürbasyonuna shimmer denir."},
-  {q:"72) Ses tellerinde 'nasırımsı' yapılar olarak tanımlanan ve genellikle kötü kullanıma bağlı oluşan yapı nedir?", choices:["Polip","Kist","Nodül","Granülom"], a:2, explanation:"Nodüller ses telleri üzerindeki nasırımsı yapılardır."},
-  {q:"73) Nodül ve poliplerin tedavisinde ilk aşama genellikle hangisidir?", choices:["Cerrahi","Ses terapisi ve vokal hijyen","İlaç tedavisi","Ses istirahati"], a:1, explanation:"Nodül sağaltımında ses terapisi sağaltımın ilk aşamasını oluşturur."},
-  {q:"74) Özellikle kadınlarda görülen, 'balon gibi şişlik' ve 'aşırı düşük perde' ile karakterize durum hangisidir?", choices:["Sulkus vokalis","Reinke ödemi","Püberfoni","Vokal kord felci"], a:1, explanation:"Reinke ödemi (polipoid dejenerasyon) düşük perdeden konuşma ve balon gibi şişliklerle görülür."},
-  {q:"75) 'Mide asidinin gırtlağa kadar gelerek tahriş etmesi' durumuna ne ad verilir?", choices:["Gastrit","Laringofaringeal Reflü (LFR)","Ülser","Disfaji"], a:1, explanation:"Mide asidinin gırtlağı etkilemesine laringofaringeal reflü denir."},
-  {q:"76) Ergenlik sonrası çocuksu sesi kullanmaya devam etme durumuna ne denir?", choices:["Püberfoni (Mutasyonel Falsetto)","Diplofoni","Disfoni","Spazmodik Disfoni"], a:0, explanation:"Ergenlik sonrası yüksek perdeli sesi kullanmada ısrar etme püberfonidir."},
-  {q:"77) Ses teli dokusu boyunca görülen 'oluk' şeklindeki yapılara ne ad verilir?", choices:["Granülom","Sulkus vokalis","Kist","Hemoraj"], a:1, explanation:"Ses teli dokusu üzerindeki oluklara sulkus vokalis denir."},
-  {q:"78) Spazmodik Disfoni tedavisinde en yaygın kullanılan yöntem hangisidir?", choices:["Ses terapisi","Botolinum toksin (Botoks) enjeksiyonu","Larenjektomi","Antibiyotik kullanımı"], a:1, explanation:"Spazmodik disfoni (odaksal distoni) için ana sağaltım botoks enjeksiyonudur."},
-  {q:"79) Parkinson hastalarında ses genellikle nasıl etkilenir?", choices:["Çok gür ve net olur","Zayıflar, kötüleşir ve hipokinetik özellikler gösterir","Sadece fısıltıyla konuşurlar","Sesi etkilemez"], a:1, explanation:"Parkinson hastalarında zamanla ses zayıflar ve kötüleşir; Lee Silverman tekniği tedavide etkilidir."},
-  {q:"80) Ses telleri arasındaki açıklığın (glottis) tam ortada olduğu pozisyona ne denir?", choices:["Abdüksiyon","Median (midline)","Paramedian","İntermediate"], a:1, explanation:"VK'ın tam orta hatta olduğu pozisyon median'dır."},
-  {q:"81) Maksimum fonasyon süresi (MFS) normal değeri kadınlarda yaklaşık ne kadardır?", choices:["5-10 sn","16-25 sn","22-34 sn","60 sn"], a:1, explanation:"MFS normal değeri bayanlarda 16-25 sn, erkeklerde 22-34 sn arasındadır."},
-  {q:"82) s/z oranı kaçın üzerindeyse ses teli kapanmasında bir sorun olduğundan şüphelenilir?", choices:["0.5","1.0","1.4","2.0"], a:2, explanation:"Normalde s/z oranı 1,4 veya daha küçük olmalıdır."},
-  {q:"83) Motor konuşma bozuklukları hangi iki ana gruba ayrılır?", choices:["Afazi ve Disleksi","Apraksi ve Dizatri","Kekemelik ve Artikülasyon","Disfoni ve Rezonans"], a:1, explanation:"Motor konuşma bozuklukları apraksi ve dizatri olarak ikiye ayrılır."},
-  {q:"84) 'Konuşmanın programlı bir şekilde yürütülememesi' sonucu oluşan nörojenik bozukluk hangisidir?", choices:["Dizatri","Konuşma Apraksisi","Afazi","Gecikmiş Dil"], a:1, explanation:"Konuşma apraksisi, konuşmanın programlanması ve planlanmasıyla ilgili bir bozukluktur."},
-  {q:"85) Aprakside görülen artikülatör hatalar hakkında hangisi doğrudur?", choices:["Hatalar tutarlıdır","Hatalar genellikle tutarsızdır ve vaka durumun farkındadır","Hata yapmazlar","Sadece kelime sonunda hata olur"], a:1, explanation:"Aprakside deneme-yanılmalar vardır ve hatalar genellikle tutarsızdır."},
-  {q:"86) Apraksili vakaların kelimeleri çıkarmak için ağız hareketlerini ayarlamaya çalışmasına ne ad verilir?", choices:["Blok","Arama davranışı (groping)","Ekolali","Mutizm"], a:1, explanation:"Pozisyonlamada zorluk çekip ağzı şekle sokma çabasına arama davranışı denir."},
-  {q:"87) Apraksili bireylerin hangi tür konuşmaları daha iyidir?", choices:["Okuma","Kendiliğinden konuşma","Otomatik sözcükler/kalıplar","Şarkı söyleme"], a:2, explanation:"Aprakside otomatik sözcüklerde üretim daha iyidir."},
-  {q:"88) Dizatri nedir?", choices:["Planlama bozukluğudur","Kas zayıflığına bağlı icra (execution) bozukluğudur","Zeka geriliğidir","İşitme kaybıdır"], a:1, explanation:"Dizatri, kas zayıflığı veya koordinasyon bozukluğu nedeniyle konuşmanın icra edilememesidir."},
-  {q:"89) Dizatride hatalar nasıldır?", choices:["Tutarsızdır","Tutarlı ve tahmin edilebilirdir","Sadece hece tekrarı şeklindedir","Görülmez"], a:1, explanation:"Dizatri kas zayıflığına dayandığı için artikülasyon bozuklukları tutarlıdır."},
-  {q:"90) Serebellar sistem hasarı sonucu oluşan, 'sarhoşvari konuşma' ile karakterize dizatri hangisidir?", choices:["Flaksid Dizatri","Ataksik Dizatri","Spastik Dizatri","Hipokinetik Dizatri"], a:1, explanation:"Ataksik dizatri serebellar hasar sonucu oluşur ve sarhoşvari konuşma andırır."},
-  {q:"91) Periferik sinir sistemi (kranial ve spinal sinirler) zedelenmesiyle oluşan dizatri tipi hangisidir?", choices:["Flaksid Dizatri","Hiperkinetik Dizatri","Ataksik Dizatri","Spastik Dizatri"], a:0, explanation:"Flaksid dizatri periferik sistem hasarı (alt motor nöron) sonucu oluşur."},
-  {q:"92) Bazal Ganglia hasarı sonucu oluşan, Parkinson hastalığıyla ilişkilendirilen dizatri hangisidir?", choices:["Hiperkinetik Dizatri","Hipokinetik Dizatri","Ataksik Dizatri","UUMN Dizatri"], a:1, explanation:"Hipokinetik dizatri bazal ganglia hasarı sonucu oluşur (örn: Parkinson)."},
-  {q:"93) Hipokinetik dizatrisi olan bir bireyin tipik yüz ifadesi nasıldır?", choices:["Çok hareketli","Gülümseyen","Maske gibi ifadesiz","Sürekli göz kırpan"], a:2, explanation:"Hipokinetik dizatride maske gibi bir yüz ifadesi tipiktir."},
-  {q:"94) Çift taraflı üst motor nöron hasarında görülen dizatri tipi hangisidir?", choices:["Flaksid","Ataksik","Spastik","Hiperkinetik"], a:2, explanation:"Spastik dizatri çift taraflı üst motor nöron hasarında görülür."},
-  {q:"95) Karma Dizatriye (Flaksid + Spastik) en iyi örnek olan hastalık hangisidir?", choices:["Parkinson","MS","ALS","İnme"], a:2, explanation:"ALS, hem alt hem üst motor nöronları etkilediği için flaksid-spastik karma dizatri görülür."},
-  {q:"96) Motor konuşma değerlendirmesinde kullanılan 'AMR' açılımı nedir?", choices:["Anlık Motor Reaksiyon","Alternating Motion Rate (Ardışık Hareket Hızı)","Artikülasyon Motor Raporu","Ağız Muayene Rehberi"], a:1, explanation:"AMR (pa-pa-pa gibi) ardışık hareket hızını ölçer."},
-  {q:"97) Sesin 'yüksekliği' (pitch) ile 'tizliği' arasındaki fark nedir?", choices:["Fark yoktur","Yükseklik fiziksel (frekans), tizlik algısal (perde) bir terimdir","Biri sadece erkeklerde görülür","Yükseklik şiddettir"], a:1, explanation:"Perde (tizlik) algısal, frekans (yükseklik) fiziksel bir terimdir."},
-  {q:"98) Konuşma apraksisinde yutma problemi görülür mü?", choices:["Evet, her zaman","Hayır, yutma problemleri yoktur","Sadece çocuklarda","Sadece yaşlılarda"], a:1, explanation:"Aprakside genellikle yutma problemi yoktur; bu dizatri ile arasındaki farklardan biridir."},
-  {q:"99) Hiperkinetik dizatri hangi sistemin hasarı sonucu oluşur?", choices:["Piramidal sistem","Ekstraprimidal sistem (Bazal Ganglia)","Periferik sistem","Serebellum"], a:1, explanation:"Hiperkinetik dizatri bazal ganglia (ekstraprimidal) hasarı sonucu oluşur."},
-  {q:"100) Bir titreşimin saniyedeki devre sayısına ne denir?", choices:["Genlik","Periyot","Temel Frekans","Harmonik"], a:2, explanation:"Saniyedeki devre sayısına temel frekans denir."}
-]
-    // state
-    const state = {i:0, correct:0, wrong:0, answered:[]};
-    const qnum = document.getElementById('qnum');
-    const question = document.getElementById('question');
-    const choicesEl = document.getElementById('choices');
-    const feedback = document.getElementById('feedback');
-    const prog = document.getElementById('prog');
-    const heartsContainer = document.getElementById('heartsContainer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const card = document.getElementById('card');
+      {q:"1) Anatomi temel terimi: 'anterior' genellikle hangi yönü ifade eder?", choices:["Arkaya doğru","Öne doğru","Aşağıya doğru","İçeri doğru"], a:1, explanation:"Anterior öne doğru, vücudun ön tarafına doğru olan yönü ifade eder."},
+      {q:"2) Üst ekstremite kemikleri: Humerus hangi bölgeye aittir?", choices:["Omuz kuşağı","Üst kol","Ön kol","El"], a:1, explanation:"Humerus üst kol kemiğidir (brachium)."},
+      {q:"3) Alt ekstremite kemikleri: Femur hangi eklemle doğrudan bağlantılıdır?", choices:["Dirsek eklemi","Kalça eklemi","Ayak bileği","Omuz eklemi"], a:1, explanation:"Femur proksimal ucuyla kalça eklemi (acetabulum) ile eklemleşir."},
+      {q:"4) Kas işlevi: Biceps brachii hangi hareketi yapar?", choices:["Dirsek fleksiyonu ve önkol supinasyonu","Dirsek ekstansiyonu","Omuz adduksiyonu","El bileği fleksiyonu"], a:0, explanation:"Biceps brachii dirsek fleksiyonunda ve önkolun supinasyonunda aktiftir."},
+      {q:"5) Eklemler: Diz eklemi hangi tip eklem sınıfına girer?", choices:["Sabit eklem","Sürünür eklem","Tipel eklem (ginglimo) — menteşe tipi","Yassı eklem"], a:2, explanation:"Diz genellikle menteşe tipi (ginglimo) eklem olarak kabul edilir ancak karma bir yapıya sahiptir."},
+      // ... Buraya kendi 100 sorunu yapıştır ...
+    ];
 
-    function render(){
+    let state = { i: 0, correct: 0, wrong: 0, answered: [] };
+    
+    const elements = {
+      qnum: document.getElementById('qnum'),
+      question: document.getElementById('question'),
+      choices: document.getElementById('choices'),
+      feedback: document.getElementById('feedback'),
+      prog: document.getElementById('prog'),
+      nextBtn: document.getElementById('nextBtn'),
+      prevBtn: document.getElementById('prevBtn'),
+      card: document.getElementById('card'),
+      quizContent: document.getElementById('quiz-content')
+    };
+
+    function render() {
+      // YENİ: Geçiş efekti için içeriği gizle-göster
+      elements.quizContent.classList.remove('fade-content');
+      void elements.quizContent.offsetWidth; // Animasyonu tetiklemek için reflow hack
+      elements.quizContent.classList.add('fade-content');
+
       const item = quiz[state.i];
-      qnum.textContent = (state.i+1) + ' / ' + quiz.length;
-      question.textContent = item.q;
-      choicesEl.innerHTML = '';
-      feedback.className = 'feedback';
-      feedback.innerHTML = '';
-      // İleriki sorularda, eğer bu soru cevaplanmışsa 'Sonraki' butonu aktif olmalı.
-      nextBtn.disabled = !state.answered[state.i];
-      prevBtn.disabled = state.i === 0; // İlk soruda 'Önceki' devre dışı olmalı
+      elements.qnum.textContent = `Soru ${state.i + 1} / ${quiz.length}`;
+      elements.question.textContent = item.q;
+      elements.choices.innerHTML = '';
+      // Feedback'i gizle (CSS'te display:none yaptık, class ekleyince açılacak)
+      elements.feedback.className = 'feedback'; 
+      elements.feedback.innerHTML = '';
       
-      for(let j=0;j<item.choices.length;j++){
+      elements.nextBtn.disabled = !state.answered[state.i];
+      elements.prevBtn.disabled = state.i === 0;
+
+      item.choices.forEach((choice, idx) => {
         const btn = document.createElement('button');
         btn.className = 'btn';
-        btn.textContent = item.choices[j];
-        btn.dataset.idx = j;
-        btn.addEventListener('click', onAnswer);
-        choicesEl.appendChild(btn);
+        btn.textContent = choice;
+        btn.onclick = () => onAnswer(idx);
         
-        // Eğer soru cevaplanmışsa, butonları devre dışı bırak ve doğru/yanlışı işaretle
         if (state.answered[state.i]) {
-            btn.disabled = true;
-            if (j === item.a) {
-                btn.style.borderColor = 'green';
-                btn.style.backgroundColor = 'rgba(150, 255, 150, 0.6)';
-            } else if (j === state.answered[state.i].chosen) {
-                btn.style.borderColor = 'red';
-                btn.style.backgroundColor = 'rgba(255, 150, 150, 0.6)';
-            }
+          btn.disabled = true;
+          if (idx === item.a) btn.classList.add('correct-choice');
+          else if (idx === state.answered[state.i].chosen) btn.classList.add('wrong-choice');
         }
-      }
+        elements.choices.appendChild(btn);
+      });
 
-      prog.style.width = ((state.i)/quiz.length*100)+'%';
+      setTimeout(() => {
+         elements.prog.style.width = `${((state.i + 1) / quiz.length) * 100}%`;
+      }, 150);
       
-      // Cevap verilmişse feedback'i tekrar göster
       if (state.answered[state.i]) {
-          const item = quiz[state.i];
-          const isCorrect = state.answered[state.i].chosen === item.a;
-          if (isCorrect) {
-              showCorrect(item, false); // Otomatik geçiş yapma
-          } else {
-              showWrong(item, false); // Otomatik geçiş yapma
-          }
+        showFeedback(state.answered[state.i].chosen === item.a);
       }
     }
 
-    function onAnswer(e){
-      const chosen = Number(e.currentTarget.dataset.idx);
+    function onAnswer(chosen) {
+      if (state.answered[state.i]) return;
       const item = quiz[state.i];
-      if(state.answered[state.i]) return; // prevent double answers
+      state.answered[state.i] = { chosen };
       
-      // Tüm cevap butonlarını devre dışı bırak
-      Array.from(choicesEl.children).forEach(btn => btn.disabled = true);
-      
-      state.answered[state.i] = {chosen: chosen}; // Cevabı kaydet
-      
-      // Butonu işaretle
-      e.currentTarget.style.borderColor = chosen === item.a ? 'green' : 'red';
-      e.currentTarget.style.backgroundColor = chosen === item.a ? 'rgba(150, 255, 150, 0.6)' : 'rgba(255, 150, 150, 0.6)';
-
-      if(chosen === item.a){
+      const isCorrect = chosen === item.a;
+      if (isCorrect) {
         state.correct++;
-        showCorrect(item, true); // Otomatik geçişi aktif et
+        spawnHearts();
       } else {
         state.wrong++;
-        showWrong(item, true); // Otomatik geçişi aktif et
+        elements.card.classList.add('shake');
+        setTimeout(() => elements.card.classList.remove('shake'), 500);
       }
+
+      render();
       
-      nextBtn.disabled = false; // Cevaplandıktan sonra 'Sonraki' butonu aktif edilsin
+      // Bekleme süreleri: Doğruysa 2sn, yanlışsa 5sn
+      setTimeout(() => {
+        if (state.i < quiz.length - 1) {
+            state.i++;
+            render();
+        } else {
+            showSummary();
+        }
+      }, isCorrect ? 2000 : 4000);
     }
 
-    // shouldAutoAdvance: otomatik olarak bir sonraki soruya geçmesi gerekip gerekmediğini kontrol eder
-    function showCorrect(item, shouldAutoAdvance){
-      feedback.classList.add('correct');
-      feedback.classList.remove('wrong');
-      feedback.innerHTML = `<div class="message">Tebrikler aşkım çok iyi gidiyorsun 💖 Seni çok seviyorum!</div><div class="explain">${item.explanation}</div>`;
-      if (shouldAutoAdvance) {
-          spawnHearts(10);
-          setTimeout(()=>nextQuestion(),1600);
-      }
-    }
-
-    // shouldAutoAdvance: otomatik olarak bir sonraki soruya geçmesi gerekip gerekmediğini kontrol eder
-    function showWrong(item, shouldAutoAdvance){
-      feedback.classList.add('wrong');
-      feedback.classList.remove('correct');
-      const correctAns = item.choices[item.a];
-      feedback.innerHTML = `<div class="message"> 💕</div><div class="explain">Doğru cevap: <b>${correctAns}</b>. ${item.explanation}</div>`;
-      
-      // Doğru cevabı işaretle
-      Array.from(choicesEl.children).forEach(btn => {
-          if (Number(btn.dataset.idx) === item.a) {
-              btn.style.borderColor = 'green';
-              btn.style.backgroundColor = 'rgba(150, 255, 150, 0.6)';
-          }
-      });
-      
-      if (shouldAutoAdvance) {
-          card.classList.add('shake');
-          setTimeout(()=>card.classList.remove('shake'),600);
-          // Yanlış cevapta 2.5 saniye sonra otomatik geçiş yap (açıklamayı okuması için daha uzun süre)
-          setTimeout(()=>nextQuestion(),4000); 
-      }
-    }
-
-    function spawnHearts(n){
-      for(let k=0;k<n;k++){
-        const h = document.createElement('div');
-        h.className = 'heart';
-        h.style.left = (10 + Math.random()*80) + '%';
-        h.style.fontSize = (14 + Math.random()*28) + 'px';
-        h.style.animationDuration = (1400 + Math.random()*1200) + 'ms';
-        h.textContent = '❤️';
-        heartsContainer.appendChild(h);
-        setTimeout(()=>h.remove(),2400);
-      }
-    }
-
-    function nextQuestion(){
-      if(state.i < quiz.length -1){
-        state.i++;
-        render();
+    function showFeedback(isCorrect) {
+      const item = quiz[state.i];
+      // Feedback görünür hale geliyor
+      elements.feedback.className = `feedback visible ${isCorrect ? 'correct' : 'wrong'}`;
+      if (isCorrect) {
+        const praises = ["Harikasın Aşkım! ✨", "Mükemmel gidiyorsun! 💖", "Waoooww! 🧠❤️", "Süpersin! 🎉", "Doğru cevap ! 👑"];
+        const randomPraise = praises[Math.floor(Math.random() * praises.length)];
+        elements.feedback.innerHTML = `<div class="message">${randomPraise}</div><div class="explain">${item.explanation}</div>`;
       } else {
-        showSummary();
+        elements.feedback.innerHTML = `<div class="message">Yanlış oldu 💕</div><div class="explain" style="color: var(--text-main)">Doğru cevap: <b>${item.choices[item.a]}</b><br><br>${item.explanation}</div>`;
       }
     }
 
-    function prevQuestion(){ 
-        if(state.i>0){ 
-            state.i--; 
-            render(); 
-        } 
+    function spawnHearts() {
+      const heartCount = 45; 
+      const container = document.body;
+      for (let i = 0; i < heartCount; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart-particle';
+        h.innerHTML = ['❤️', '💖', '💝', '💕'][Math.floor(Math.random() * 4)];
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.top = (Math.random() * 20 + 85) + 'vh';
+        const size = Math.random() * 30 + 15;
+        h.style.fontSize = size + 'px';
+        h.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        h.style.animationDelay = Math.random() * 0.5 + 's';
+        container.appendChild(h);
+        setTimeout(() => h.remove(), 3500);
+      }
     }
 
-    function showSummary(){
-      choicesEl.innerHTML = '';
-      feedback.className = 'feedback correct';
-      feedback.innerHTML = `<div class="message"> Quiz tamamlandı 𓆩❤︎𓆪𓆩❤︎𓆪𓆩❤︎𓆪  Umarım işine yaramıştır aşkım seni seviyorum sınavda bol şans 𓆩❤︎𓆪𓆩❤︎𓆪𓆩❤︎𓆪  </div><div class="explain">Doğru sayısı: <b>${state.correct}</b><br>Yanlış sayısı: <b>${state.wrong}</b><br>Toplam: <b>${quiz.length}</b></div>`;
-      question.textContent = 'Harikasın aşkım!';
-      qnum.textContent = 'Sonuç';
-      prog.style.width = '100%';
-      nextBtn.disabled = true;
-      prevBtn.disabled = true;
+    function showSummary() {
+      const scorePct = Math.round((state.correct / quiz.length) * 100);
+      let finalMessage = "";
+      if(scorePct > 90) finalMessage = "Mükkemmelsin işte buu 💖";
+      else if(scorePct > 70) finalMessage = "Sen çözmüşsün bu işi  🎉❤️";
+      else finalMessage = " Sınavda bol şansssss ❤️✨";
+
+      elements.card.innerHTML = `
+        <div style="text-align:center; padding: 40px 25px; animation: fadeIn 0.8s ease-out;">
+          <div class="logo" style="margin: 0 auto 25px; animation: none; transform: scale(1.3); filter: drop-shadow(0 10px 20px var(--accent-glow));">🎉</div>
+          <h2 style="color:var(--accent-pink); font-family:'Dancing Script'; font-size:42px; margin-bottom:15px;">Quiz Tamamlandı!</h2>
+          <p class="lead" style="margin-bottom: 35px; font-size: 20px;">${finalMessage}</p>
+          
+          <div style="display:flex; justify-content:center; gap:25px; margin-bottom:40px;">
+            <div style="background:var(--success-bg); padding:20px 30px; border-radius:20px; color:var(--success-text); font-weight:bold; box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);">
+              <div style="font-size:28px;">${state.correct}</div>
+              <div style="font-size:16px; opacity:0.8;">Doğru</div>
+            </div>
+            <div style="background:var(--error-bg); padding:20px 30px; border-radius:20px; color:var(--error-text); font-weight:bold; box-shadow: 0 5px 15px rgba(230, 81, 0, 0.2);">
+              <div style="font-size:28px;">${state.wrong}</div>
+              <div style="font-size:16px; opacity:0.8;">Yanlış</div>
+            </div>
+          </div>
+          
+          <button class="btn" onclick="location.reload()" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-soft)); color:white; padding: 18px 45px; font-size: 19px; box-shadow: 0 15px 30px rgba(255,64,129,0.4); border:none;">Tekrar Çöz 💖</button>
+        </div>
+      `;
+      spawnHearts();
     }
 
-    prevBtn.addEventListener('click', prevQuestion);
-    nextBtn.addEventListener('click', nextQuestion);
+    elements.nextBtn.onclick = () => { if (state.i < quiz.length - 1) { state.i++; render(); } };
+    elements.prevBtn.onclick = () => { if (state.i > 0) { state.i--; render(); } };
 
-    // initial render
-    render();
+    // Sayfa yüklendiğinde yumuşak bir giriş efekti
+    document.getElementById('mainWrap').style.opacity = '0';
+    document.getElementById('mainWrap').style.transform = 'translateY(20px)';
+    setTimeout(() => {
+        document.getElementById('mainWrap').style.opacity = '1';
+        document.getElementById('mainWrap').style.transform = 'translateY(0)';
+        render();
+    }, 300);
   </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
