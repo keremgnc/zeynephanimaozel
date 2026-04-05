@@ -3,479 +3,460 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Çok çok kalp</title>
+  <title>Aşkımın Akademisi 🐱✨</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* Işık Modu Renkleri */
       --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #ffebee 100%);
       --accent-pink: #ff4081;
       --accent-soft: #ff80ab;
       --accent-glow: rgba(255, 64, 129, 0.5);
-      --glass-bg: rgba(255, 255, 255, 0.80);
+      --glass-bg: rgba(255, 255, 255, 0.82);
       --glass-border: rgba(255, 255, 255, 0.4);
       --text-main: #4a148c;
       --text-muted: #880e4f;
       --shadow: 0 15px 35px rgba(255, 64, 129, 0.15);
+      --btn-bg: #ffffff;
       --success-bg: #e8f5e9;
       --success-text: #2e7d32;
       --error-bg: #fff3e0;
       --error-text: #e65100;
     }
 
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    /* GECE MODU AYARLARI */
+    body.dark-mode {
+      --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      --accent-pink: #ff4081;
+      --accent-soft: #ff80ab;
+      --accent-glow: rgba(255, 64, 129, 0.3);
+      --glass-bg: rgba(26, 26, 46, 0.9);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-main: #e0e0e0;
+      --text-muted: #ff80ab;
+      --shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      --btn-bg: #1f4068;
+      --success-bg: #1b5e20;
+      --success-text: #81c784;
+      --error-bg: #bf360c;
+      --error-text: #ffab91;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; transition: all 0.3s ease; }
     
     body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Quicksand', sans-serif;
-      background: var(--bg-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-      color: var(--text-main);
-      overflow-x: hidden;
+      margin: 0; min-height: 100vh; font-family: 'Quicksand', sans-serif;
+      background: var(--bg-gradient); display: flex; align-items: center;
+      justify-content: center; padding: 15px; color: var(--text-main); overflow-x: hidden;
     }
 
-    .bg-blobs {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; pointer-events: none; overflow: hidden;
+    /* Dark Mode Toggle Butonu */
+    .dark-mode-toggle {
+      position: absolute; top: 20px; right: 20px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      color: var(--text-main); padding: 10px; border-radius: 50%;
+      cursor: pointer; font-size: 20px; z-index: 100; box-shadow: var(--shadow);
     }
-    .blob {
-      position: absolute;
-      background: var(--accent-soft);
-      filter: blur(80px);
-      border-radius: 50%;
-      opacity: 0.15;
-      animation: floatBlob 15s infinite alternate ease-in-out;
-    }
-    @keyframes floatBlob {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, 60px) scale(1.1); }
-    }
+
+    .bg-blobs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
+    .blob { position: absolute; background: var(--accent-soft); filter: blur(80px); border-radius: 50%; opacity: 0.15; animation: floatBlob 15s infinite alternate ease-in-out; }
+    @keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, 60px) scale(1.1); } }
 
     .wrap {
-      width: 100%;
-      max-width: 650px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      /* Kenarlara ışık efekti eklendi */
-      border-top: 1px solid rgba(255,255,255,0.7);
-      border-left: 1px solid rgba(255,255,255,0.7);
-      border-radius: 35px;
-      box-shadow: var(--shadow);
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
+      width: 100%; max-width: 650px; background: var(--glass-bg);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border); border-top: 1px solid rgba(255,255,255,0.2);
+      border-radius: 35px; box-shadow: var(--shadow); padding: 40px; position: relative; z-index: 1;
     }
 
     header { text-align: center; margin-bottom: 35px; }
-
-    /* GÜNCELLENDİ: Gerçek Kalp Şeklinde Logo */
-    .logo-area { position: relative; display: inline-block; margin-bottom: 15px; }
     .logo {
-      width: 100px; height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 48px;
-      font-family: 'Dancing Script', cursive;
-      /* CSS ile kalp şekli zor olduğu için SVG background kullanıyoruz */
+      width: 100px; height: 90px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 48px; font-family: 'Dancing Script', cursive;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff4081'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      /* Box-shadow yerine drop-shadow filtresi kullanıyoruz ki kalbin şeklini alsın */
-      filter: drop-shadow(0 8px 15px var(--accent-glow));
-      animation: heartbeat 1.3s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-      padding-top: 5px; /* Z'yi ortalamak için */
+      background-repeat: no-repeat; background-position: center; background-size: contain;
+      filter: drop-shadow(0 8px 15px var(--accent-glow)); animation: heartbeat 1.3s infinite; padding-top: 5px;
     }
+    @keyframes heartbeat { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.1); } }
 
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      25% { transform: scale(1.1); filter: drop-shadow(0 12px 20px var(--accent-glow)); }
-      50% { transform: scale(1); filter: drop-shadow(0 8px 15px var(--accent-glow)); }
-      100% { transform: scale(1); }
-    }
+    h1 { font-family: 'Dancing Script', cursive; font-size: 42px; margin: 10px 0; color: var(--accent-pink); }
+    .lead { font-size: 18px; color: var(--text-muted); font-weight: 600; }
 
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 42px;
-      margin: 10px 0 5px;
-      color: var(--accent-pink);
-      text-shadow: 2px 2px 4px rgba(255, 64, 129, 0.1);
-    }
-    .lead { font-size: 18px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+    .card { background: rgba(0, 0, 0, 0.05); border-radius: 28px; padding: 35px; min-height: 200px; }
 
-    .card {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 28px;
-      padding: 35px;
-      box-shadow: inset 0 2px 5px rgba(255,255,255,0.9);
+    .subject-list { display: grid; grid-template-columns: 1fr; gap: 15px; animation: fadeIn 0.5s ease-out; }
+    .subject-btn {
+      background: var(--btn-bg); border: 1px solid var(--glass-border); padding: 22px; border-radius: 22px;
+      cursor: pointer; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 19px;
+      color: var(--text-main); box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      display: flex; align-items: center; justify-content: space-between;
     }
+    .subject-btn:hover { transform: translateY(-4px); border-color: var(--accent-soft); }
 
-    /* YENİ: Sorular arası yumuşak geçiş efekti */
-    .fade-content { animation: fadeIn 0.5s ease-out; }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .question-row { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
-    .qnum {
-      align-self: flex-start;
-      background: var(--accent-pink);
-      color: white;
-      padding: 7px 20px;
-      border-radius: 25px;
-      font-size: 15px; font-weight: 700;
-      box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
-    }
-    .question { font-size: 22px; font-weight: 700; line-height: 1.6; }
+    .qnum { display: inline-block; background: var(--accent-pink); color: white; padding: 7px 20px; border-radius: 25px; font-size: 15px; font-weight: 700; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3); }
+    .question { font-size: 22px; font-weight: 700; line-height: 1.6; margin-bottom: 25px; }
 
     .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .btn {
-      background: white;
-      border: 2px solid transparent;
-      padding: 20px 18px;
-      border-radius: 22px;
-      cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-      color: var(--text-main);
-      box-shadow: 0 5px 10px rgba(0,0,0,0.04);
-      position: relative; overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    @media (hover: hover) {
-      .btn:hover:not([disabled]) {
-        transform: translateY(-4px) scale(1.01);
-        box-shadow: 0 15px 25px rgba(255, 64, 129, 0.15);
-        border-color: var(--accent-soft);
-        background: #fff5f8;
-      }
-    }
-    .btn:active:not([disabled]) { transform: scale(0.97); }
-
+    .btn { background: var(--btn-bg); border: 1px solid var(--glass-border); padding: 20px 18px; border-radius: 22px; cursor: pointer; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 17px; color: var(--text-main); box-shadow: 0 5px 10px rgba(0,0,0,0.04); }
+    .btn:hover:not([disabled]) { transform: translateY(-4px); border-color: var(--accent-soft); }
     .btn.correct-choice { background: var(--success-bg) !important; border-color: var(--success-text) !important; color: var(--success-text) !important; }
     .btn.wrong-choice { background: var(--error-bg) !important; border-color: var(--error-text) !important; color: var(--error-text) !important; }
-    .btn:disabled { cursor: default; opacity: 0.9; }
 
-    .feedback {
-      margin-top: 30px;
-      padding: 25px;
-      border-radius: 22px;
-      display: none; /* Başlangıçta gizli, JS ile açacağız */
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      animation: slideUp 0.4s ease-out forwards;
-    }
+    .feedback { margin-top: 30px; padding: 25px; border-radius: 22px; display: none; text-align: center; flex-direction: column; align-items: center; animation: slideUp 0.4s ease-out forwards; }
     @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .feedback.correct { display: flex; background: var(--success-bg); border: 1px solid #a5d6a7; }
-    .feedback.wrong { display: flex; background: var(--error-bg); border: 1px solid #ffcc80; }
+    .feedback.correct { display: flex; background: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-text); }
+    .feedback.wrong { display: flex; background: var(--error-bg); color: var(--error-text); border: 1px solid var(--error-text); }
     .message { font-weight: 800; font-size: 20px; margin-bottom: 10px; }
-    .explain { font-size: 16px; line-height: 1.5; }
+    .explain { font-size: 16px; line-height: 1.5; color: var(--text-main); }
 
     .controls { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
-    .ghost {
-      background: none; border: none;
-      color: var(--accent-pink); font-weight: 800;
-      cursor: pointer; font-size: 17px; padding: 12px 25px;
-      font-family: 'Quicksand', sans-serif; transition: all 0.3s ease;
-      border-radius: 15px;
-    }
-    .ghost:hover:not(:disabled) { background: rgba(255, 64, 129, 0.1); transform: translateX(5px); }
-    #prevBtn:hover:not(:disabled) { transform: translateX(-5px); }
-    .ghost:disabled { opacity: 0.4; cursor: not-allowed; }
+    .ghost { background: none; border: 1px solid transparent; color: var(--accent-pink); font-weight: 800; cursor: pointer; font-size: 17px; padding: 12px 25px; border-radius: 15px; }
+    .ghost:hover:not(:disabled) { background: rgba(255, 64, 129, 0.1); }
+    .ghost:disabled { opacity: 0.3; cursor: not-allowed; }
 
-    .progress-container {
-      width: 100%; height: 14px;
-      background: rgba(255,255,255,0.5);
-      border-radius: 14px; margin-top: 35px;
-      overflow: hidden; padding: 3px;
-      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent-soft), var(--accent-pink));
-      width: 0%; border-radius: 10px;
-      transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 2px 0 10px rgba(255, 64, 129, 0.4);
-    }
+    .progress-container { width: 100%; height: 14px; background: rgba(0,0,0,0.1); border-radius: 14px; margin-top: 35px; overflow: hidden; padding: 3px; }
+    .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-soft), var(--accent-pink)); width: 0%; border-radius: 10px; transition: width 0.6s; }
 
-    .heart-particle {
-      position: fixed; pointer-events: none; z-index: 9999;
-      animation: floatUpFadeOut 3s forwards cubic-bezier(0, 0.2, 0.5, 1);
-    }
-    @keyframes floatUpFadeOut {
-      0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 1; }
-      100% { transform: translateY(-70vh) rotate(360deg) scale(1.8); opacity: 0; }
-    }
+    .heart-particle { position: fixed; pointer-events: none; z-index: 9999; animation: floatUpFadeOut 3s forwards; }
+    @keyframes floatUpFadeOut { 0% { transform: translateY(0) scale(0.5); opacity: 1; } 100% { transform: translateY(-70vh) scale(1.8); opacity: 0; } }
 
-    /* GÜNCELLENDİ: Daha Kibar Titreme Efekti */
-    .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
-    @keyframes shake {
-      10%, 90% { transform: translate3d(-1px, 0, 0); } /* 2px'e düşürüldü */
-      20%, 80% { transform: translate3d(2px, 0, 0); } /* 4px'e düşürüldü */
-      30%, 50%, 70% { transform: translate3d(-2px, 0, 0); }
-      40%, 60% { transform: translate3d(2px, 0, 0); }
-    }
+    .shake { animation: shake 0.5s both; }
+    @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } }
 
     @media (max-width: 600px) {
-      body { padding: 10px; }
-      .wrap { padding: 30px 20px; border-radius: 30px; }
-      .logo { width: 85px; height: 75px; font-size: 38px; }
-      h1 { font-size: 32px; margin-top: 5px; }
-      .lead { font-size: 16px; }
-      .card { padding: 25px 20px; }
-      .question { font-size: 20px; }
-      .choices { grid-template-columns: 1fr; gap: 15px; }
-      .btn { padding: 18px; font-size: 16px; }
-      .feedback { padding: 20px; }
-      footer { font-size: 12px; }
+      .wrap { padding: 30px 20px; }
+      .choices { grid-template-columns: 1fr; }
+      h1 { font-size: 32px; }
     }
   </style>
 </head>
 <body>
 
+  <button class="dark-mode-toggle" id="darkModeBtn" title="Modu Değiştir">🌙</button>
+
   <div class="bg-blobs">
     <div class="blob" style="width: 400px; height: 400px; top: -15%; left: -15%;"></div>
-    <div class="blob" style="width: 350px; height: 350px; bottom: -15%; right: -15%; animation-delay: -5s;"></div>
+    <div class="blob" style="width: 350px; height: 350px; bottom: -15%; right: -15%;"></div>
   </div>
 
   <div class="wrap" id="mainWrap">
     <header>
-      <div class="logo-area">
-        <div class="logo">Z</div>
-      </div>
-      <h1>Mini Quiz</h1>
-      <p class="lead">Başarılar Aşkımm ✨</p>
+      <div class="logo">Z</div>
+      <h1 id="mainTitle">Ders Seçimi</h1>
+      <p class="lead" id="mainSub">Bugün ne çalışmak istersin Aşkım? ✨</p>
     </header>
 
-    <div class="card" id="card">
-      <div id="quiz-content" class="fade-content">
-        <div class="question-row">
-          <div class="qnum" id="qnum">1 / 100</div>
-          <div class="question" id="question">Soru yükleniyor...</div>
+    <div class="card" id="card"></div>
+
+    <div id="quizControls" style="display: none;">
+        <div class="controls">
+          <button class="ghost" id="prevBtn">← Geri</button>
+          <button class="ghost" id="nextBtn">İleri →</button>
         </div>
-        <div class="choices" id="choices"></div>
-      </div>
-
-      <div class="feedback" id="feedback"></div>
-
-      <div class="controls">
-        <button class="ghost" id="prevBtn" disabled>← Geri</button>
-        <button class="ghost" id="nextBtn" disabled>İleri →</button>
-      </div>
-
-      <div class="progress-container">
-        <div class="progress-bar" id="prog"></div>
-      </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progBar"></div>
+        </div>
     </div>
 
-    <footer style="margin-top: 30px; text-align: center; font-size: 14px; opacity: 0.8; font-weight: 600; color: var(--text-muted); letter-spacing: 1px;">
-        ❤️ Fazla güzel ve zekisin ❤️
+    <footer style="margin-top: 30px; text-align: center; font-size: 14px; opacity: 0.8; font-weight: 600; color: var(--text-muted);">
+        ❤️ Opuldunuzz ❤️
     </footer>
   </div>
 
   <script>
-    // NOT: Orijinal 100 soruluk listenizi buraya yapıştırın.
-   // Hatalı satırı düzelttik ve virgülleri ekledik
-    const quiz = [
-      {q:"1) Merkezi sinir sistemi (MSS) hangi temel yapılardan oluşur?", choices:["Beyin, beyin sapı ve omurilik","Kranial ve spinal sinirler","Ganglionlar ve pleksuslar","Sadece beyin ve beyincik"], a:0, explanation:"Merkezi sinir sistemi; kafatası içindeki beyin ve beyin sapı ile omurga içindeki omurilikten (medulla spinalis) meydana gelir."},
-      {q:"2) Merkezi sinir sisteminde nöron gövdelerinin yoğunlaştığı koyu renkli bölgelere ne ad verilir?", choices:["Substantia alba","Substantia grisea","Ganglion","Nükleus"], a:1, explanation:"MSS'de nöron gövdelerinin yerleştiği koyu renkli bölgeler gri cevher (substantia grisea) adını alır."},
-  {q:"3) Tipik bir nöronun kısımları aşağıdakilerden hangisidir?", choices:["Soma, akson ve dendrit","Soma ve myelin","Glia ve nükleus","Sadece akson ve sinaps"], a:0, explanation:"Bir nöron; gövde (soma), bir büyük uzantı (akson) ve birden fazla küçük uzantıdan (dendrit) oluşur."},
-  {q:"4) MSS dışında, vücudun başka bölgelerinde bir araya gelen nöron gövdesi topluluklarına ne ad verilir?", choices:["Nükleus","Tractus","Ganglion","Fasciculus"], a:2, explanation:"MSS içindeki topluluklara nükleus, MSS dışındaki (periferik) topluluklara ise ganglion denir."},
-  {q:"5) İki sinir hücresi arasındaki bağlantı noktasına ne ad verilir?", choices:["Akson terminali","Dendrit ucu","Sinaps","Nörotransmitter"], a:2, explanation:"Sinaps, iki sinir hücresi arasındaki iletişimin gerçekleştiği bağlantı yeridir."},
-  {q:"6) Beyin hemisferlerini birbirinden ayıran derin yarığa ne ad verilir?", choices:["Sulcus centralis","Fissura longitudinalis cerebri","Sulcus lateralis","Fissura transversa"], a:1, explanation:"Fissura longitudinalis cerebri, iki beyin hemisferini orta hatta birbirinden ayıran derin yarıktır."},
-  {q:"7) Beyin kabuğunda (cortex cerebri) primer motor merkez hangi lobda bulunur?", choices:["Lobus parietalis","Lobus temporalis","Lobus occipitalis","Lobus frontalis"], a:3, explanation:"Primer motor merkez (Brodmann 4), frontal lobdaki gyrus precentralis'te yer alır."},
-  {q:"8) Primer görme merkezi (Brodmann 17) hangi lobda yerleşmiştir?", choices:["Lobus frontalis","Lobus occipitalis","Lobus temporalis","Lobus parietalis"], a:1, explanation:"Görme ile ilgili primer merkez oksipital lobda bulunur."},
-  {q:"9) Beyin sapını oluşturan bölümlerin yukarıdan aşağıya doğru sıralanışı hangisidir?", choices:["Mesencephalon - Pons - Bulbus","Bulbus - Pons - Mesencephalon","Pons - Mesencephalon - Bulbus","Thalamus - Pons - Bulbus"], a:0, explanation:"Beyin sapı; mesencephalon (orta beyin), pons (köprü) ve bulbus (medulla oblongata) kısımlarından oluşur."},
-  {q:"10) Vücudun dengesini sağlayan ve kas gruplarının uyumlu çalışmasını koordine eden organ hangisidir?", choices:["Cerebrum","Cerebellum","Thalamus","Hypothalamus"], a:1, explanation:"Cerebellum (beyincik), vücut dengesi ve kas koordinasyonundan sorumludur."},
-  {q:"11) Erişkin bir bireyde omurilik (medulla spinalis) hangi vertebra seviyesinde sonlanır?", choices:["S2","L2","L5","T12"], a:1, explanation:"Medulla spinalis, erişkinde genellikle 1. veya 2. lumbal vertebra (L2) seviyesinde sonlanır."},
-  {q:"12) Omurilikten çıkan toplam spinal sinir çifti sayısı kaçtır?", choices:["12 çift","31 çift","33 çift","8 çift"], a:1, explanation:"Medulla spinalis'ten toplam 31 çift spinal sinir çıkar."},
-  {q:"13) Omurilikte duyu liflerini taşıyan kök hangisidir?", choices:["Radix anterior","Radix posterior","Radix lateralis","Fissura mediana"], a:1, explanation:"Radix posterior (arka kök) duyu ile ilgili lifleri taşırken, radix anterior (ön kök) motor lifleri taşır."},
-  {q:"14) Beyni dıştan saran en sert ve en dıştaki zar hangisidir?", choices:["Pia mater","Arachnoid mater","Dura mater","Subarachnoid membran"], a:2, explanation:"En dıştaki sert zar dura mater, ortadaki arachnoid mater ve en içteki pia mater'dir."},
-  {q:"15) Beyin Omurilik Sıvısı (BOS) hangi aralıkta dolaşır?", choices:["Subdural aralık","Subarachnoid aralık","Epidural aralık","Sentral kanal"], a:1, explanation:"BOS, arachnoid mater ile pia mater arasındaki subarachnoid aralıkta bulunur."},
-  {q:"16) Toplam kaç çift kranial sinir vardır?", choices:["31 çift","10 çift","12 çift","7 çift"], a:2, explanation:"Kafatası boşluğundan çıkan toplam 12 çift kranial sinir bulunur."},
-  {q:"17) Koku duyusunu alan 1. kranial sinir hangisidir?", choices:["N. opticus","N. olfactorius","N. facialis","N. vagus"], a:1, explanation:"N. olfactorius 1. kranial sinir olup koku duyusundan sorumludur."},
-  {q:"18) Endokrin sistemin 'orkestra şefi' olarak bilinen bez hangisidir?", choices:["Tiroid","Epifiz","Hipofiz","Böbrek üstü"], a:2, explanation:"Hipofiz bezi (hypophysis), vücuttaki diğer endokrin bezlerin salgılarını kontrol eder."},
-  {q:"19) Biyoritmin ayarlanmasından sorumlu olduğu düşünülen beyin bölümü hangisidir?", choices:["Hipofiz","Epifiz","Tiroid","Talamus"], a:1, explanation:"Epifiz, beynin arka alt kısmında yer alır ve biyoritmi düzenlediği varsayılır."},
-  {q:"20) Boynun ön kısmında bulunan ve metabolizmayı kontrol eden bez hangisidir?", choices:["Glandula parotidea","Glandula thyroidea","Glandula suprarenalis","Thymus"], a:1, explanation:"Tiroid bezi, salgıladığı hormonlarla vücudun metabolik faaliyetlerini düzenler."},
-  {q:"21) Kandaki kalsiyum ve fosfor düzeylerini ayarlayan hormon hangi bezden salgılanır?", choices:["Hipofiz","Tiroid","Paratiroid","Pankreas"], a:2, explanation:"Tiroid bezinin arkasında bulunan 4 adet küçük paratiroid bezi parathormon salgılar."},
-  {q:"22) Böbrek üstü bezinin medulla kısmından hangi hormonlar salgılanır?", choices:["Kortizol ve Aldosteron","Adrenalin ve Noradrenalin","Östrojen ve Progesteron","İnsülin ve Glukagon"], a:1, explanation:"Surrenal bezin medulla kısmı sempatik sistemle ilişkili olup adrenalin ve noradrenalin salgılar."},
-  {q:"23) Sempatik sinir sisteminin genel etkisi aşağıdakilerden hangisidir?", choices:["Vücudu dinlenmeye hazırlar","Savaş ya da kaç tepkisi oluşturur","Sindirimi hızlandırır","Kalp atımını yavaşlatır"], a:1, explanation:"Sempatik sistem, vücudu saldırı veya kaçma durumuna (stres) hazırlar."},
-  {q:"24) Sempatik sistem aktive olduğunda göz bebeklerinde ne olur?", choices:["Küçülür (Miosis)","Büyür (Midriasis)","Değişmez","Kapanır"], a:1, explanation:"Sempatik etkiyle göz bebekleri genişler (midriasis)."},
-  {q:"25) Otonom sinir sisteminin koordinasyon merkezi beynin hangi bölgesidir?", choices:["Cerebellum","Thalamus","Hypothalamus","Bulbus"], a:2, explanation:"Hypothalamus, otonom sinir sisteminin koordinasyon merkezidir."},
-  {q:"26) Parasempatik sistemin lifleri MSS'den hangi bölgelerden çıkar?", choices:["Sadece kranial","Torakal ve lumbal","Kranial ve sakral","Servikal ve torakal"], a:2, explanation:"Parasempatik sisteme kraniosakral sistem de denir çünkü lifleri kranial ve sakral bölgelerden çıkar."},
-  {q:"27) Hangi kranial sinir vücudun en geniş parasempatik dağılımına sahiptir?", choices:["N. oculomotorius","N. facialis","N. vagus","N. glossopharyngeus"], a:2, explanation:"N. vagus (10. kranial sinir), toraks ve karın içindeki birçok organa parasempatik lif götürür."},
-  {q:"28) Parasempatik sistem aktive olduğunda kalp atım hızı nasıl değişir?", choices:["Hızlanır","Yavaşlar","Sabit kalır","Tamamen durur"], a:1, explanation:"Parasempatik sistem dinlenme modudur ve kalp atım hızını yavaşlatır."},
-  {q:"29) Pankreastan salgılanan ve kan şekerini düşüren hormon hangisidir?", choices:["Glukagon","İnsülin","Adrenalin","Kortizol"], a:1, explanation:"İnsülin kan şekerini düşürürken, glukagon yükseltir."},
-  {q:"30) Sempatik liflerin çıktığı omurilik segmentleri nedeniyle bu sisteme ne ad verilir?", choices:["Kraniosakral sistem","Torakolumbal sistem","Servikotorakal sistem","Sadece lumbal sistem"], a:1, explanation:"Sempatik lifler T1-L3 segmentlerinden çıktığı için torakolumbal sistem olarak adlandırılır."},
-  {q:"31) Gözyaşı bezini uyaran parasempatik lifler hangi kranial sinirle taşınır?", choices:["3. (N. oculomotorius)","7. (N. facialis)","9. (N. glossopharyngeus)","10. (N. vagus)"], a:1, explanation:"7. kranial sinir (N. facialis) gözyaşı ve bazı tükürük bezlerine parasempatik lif götürür."},
-  {q:"32) Parasempatik sistemin sindirim üzerindeki etkisi nedir?", choices:["Peristaltizmi durdurur","Salgıları azaltır","Bağırsak hareketlerini hızlandırır","Ağız kuruluğu yapar"], a:2, explanation:"Parasempatik sistem sindirimi aktif hale getirir, bağırsak hareketlerini artırır."},
-  {q:"33) Testislerden salgılanan temel androjenik hormon hangisidir?", choices:["Östrojen","Testosteron","Progesteron","Kortizol"], a:1, explanation:"Testislerden hipofiz kontrolünde testosteron salgılanır."},
-  {q:"34) Kadınlarda üreme hücresi olan ovumun olgunlaşmasını sağlayan hormonlar hangileridir?", choices:["İnsülin ve Glukagon","FSH ve LH","Adrenalin ve TSH","ADH ve Oksitosin"], a:1, explanation:"FSH ve LH, gonadların (testis/ovarium) faaliyetlerini kontrol eder."},
-  {q:"35) Kalbi dıştan saran iki yapraklı zarın adı nedir?", choices:["Endocardium","Myocardium","Pericardium","Pleura"], a:2, explanation:"Kalp, pericardium adı verilen iki yapraklı bir zarla çevrilidir."},
-  {q:"36) Kalbin tepe noktasına ne ad verilir?", choices:["Basis cordis","Apex cordis","Septum","Sulcus"], a:1, explanation:"Kalbin tepesi aşağıda ve solda olup apex cordis olarak adlandırılır."},
-  {q:"37) Kalbin sağ atriumu ile sağ ventrikülü arasındaki kapak hangisidir?", choices:["Mitral kapak","Biküspit kapak","Triküspit kapak","Aort kapağı"], a:2, explanation:"Sağ tarafta triküspit (üçlü), sol tarafta mitral (biküspit/ikili) kapak bulunur."},
-  {q:"38) Akciğerlerden gelen temiz kan kalbin hangi odacığına dökülür?", choices:["Sağ atrium","Sağ ventrikül","Sol atrium","Sol ventrikül"], a:2, explanation:"Akciğerlerden gelen 4 adet pulmoner ven, oksijenli kanı sol atriuma getirir."},
-  {q:"39) Kalbin sol ventrikülünden çıkan en büyük atardamar hangisidir?", choices:["Truncus pulmonalis","Aorta","Vena cava superior","Arteria renalis"], a:1, explanation:"Sol ventrikül temiz kanı aorta aracılığıyla tüm vücuda pompalar."},
-  {q:"40) Vücudun üst kısımlarından gelen kirli kanı sağ atriuma getiren damar hangisidir?", choices:["Vena cava inferior","Vena cava superior","Aorta ascendens","Vena pulmonalis"], a:1, explanation:"Vena cava superior üst ekstremite, baş ve boyundan gelen kanı toplar."},
-  {q:"41) Kalbin kendi dokusunu besleyen damarlara ne ad verilir?", choices:["Pulmoner arterler","Koroner arterler","Juguler venler","İliak arterler"], a:1, explanation:"Kalbin beslenmesi sağ ve sol koroner arterler (arteria coronaria) tarafından sağlanır."},
-  {q:"42) Kalbin ana ritmini (pacemaker) başlatan düğüm hangisidir?", choices:["AV düğümü","SA düğümü (Sinonatriyal)","His demeti","Purkinje lifleri"], a:1, explanation:"SA düğümü kalbin pacemaker'ıdır (ritim belirleyici)."},
-  {q:"43) En büyük lenfatik damar aşağıdakilerden hangisidir?", choices:["Ductus lymphaticus dexter","Ductus thoracicus","Cisterna chyli","Vena subclavia"], a:1, explanation:"Ductus thoracicus vücuttaki en büyük lenf kanalıdır."},
-  {q:"44) Vücudun en büyük lenfatik organı hangisidir?", choices:["Thymus","Dalak (Lien)","Karaciğer","Bademcik"], a:1, explanation:"Dalak (lien/splen), en büyük lenfatik organdır ve kanı süzer."},
-  {q:"45) Puberteden sonra küçülen ve T hücrelerinin olgunlaştığı organ hangisidir?", choices:["Dalak","Pankreas","Thymus","Kemik iliği"], a:2, explanation:"Thymus çocuklukta aktiftir, T lenfositlerinin olgunlaştığı yerdir."},
-  {q:"46) Kirli kanın temizlenmek üzere sağ ventrikülden akciğerlere gidişine ne ad verilir?", choices:["Büyük dolaşım","Sistemik dolaşım","Küçük (pulmoner) dolaşım","Portal dolaşım"], a:2, explanation:"Küçük dolaşım sağ ventrikülde başlar ve akciğerlerde sonlanır."},
-  {q:"47) Kalp kası dokusuna ne ad verilir?", choices:["Pericardium","Endocardium","Myocardium","Epicardium"], a:2, explanation:"Kalp duvarının kas tabakası myocardium'dur."},
-  {q:"48) Arcus aortae'den çıkan ilk ana dal hangisidir?", choices:["A. carotis communis sinistra","Truncus brachiocephalicus","A. subclavia sinistra","A. renalis"], a:1, explanation:"Arcus aortae'den çıkan ilk dal truncus brachiocephalicus'tur."},
-  {q:"49) IV enjeksiyonlarda en sık kullanılan venler nerede bulunur?", choices:["Ayak parmakları","Fossa cubitalis ve el sırtı","Boyun bölgesi","Karın bölgesi"], a:1, explanation:"Dirsek önü (fossa cubitalis) ve el sırtındaki venler IV girişimler için uygundur."},
-  {q:"50) Venleri arterlerden ayıran yapısal özellik nedir?", choices:["Daha kalın duvarlı olmaları","Kapakçık (valvula venosa) içermeleri","Daha yüksek basınca sahip olmaları","Oksijenli kan taşımaları"], a:1, explanation:"Venler, kanın geriye kaçmasını önleyen kapakçıklar içerir."},
-  {q:"51) Sindirim kanalı ve dalaktan gelen kanın karaciğere girdiği ana ven hangisidir?", choices:["Vena cava inferior","Vena porta","Vena hepatica","Vena renalis"], a:1, explanation:"Vena porta, sindirim sisteminden gelen besin yüklü kanı karaciğere taşır."},
-  {q:"52) Solunum sisteminde gaz değişiminin gerçekleştiği en küçük yapı birimi hangisidir?", choices:["Bronş","Bronşiyol","Alveol","Trakea"], a:2, explanation:"Gaz değişimi sadece respiratuvar bronşiyol ve alveollerde gerçekleşir."},
-  {q:"53) Solunum sisteminin ana kası hangisidir?", choices:["M. intercostalis","M. sternocleidomastoideus","Diyafram","M. rectus abdominis"], a:2, explanation:"Diyafram ana solunum kasıdır ve inspirasyonun %75'inden sorumludur."},
-  {q:"54) Alveollerin çökmesini önleyen sürfaktan maddesi hangi hücreden salgılanır?", choices:["Tip I hücre","Tip II hücre","Makrofaj","Goblet hücresi"], a:1, explanation:"Tip II epitel hücrelerinden salgılanan sürfaktan yüzey gerilimini düşürür."},
-  {q:"55) Normal bir soluk alış-verişte akciğerlere giren hava miktarına ne ad verilir?", choices:["Vital kapasite","Tidal hacim (Soluk hacmi)","Rezidüel hacim","İnspirasyon rezerv hacim"], a:1, explanation:"Tidal hacim (V_T) normal solunumla alınan havadır ve yaklaşık 500 ml'dir."},
-  {q:"56) En zorlu ekspirasyondan sonra akciğerlerde kalan hava miktarına ne denir?", choices:["Vital kapasite","Fonksiyonel rezidüel kapasite","Rezidüel hacim (Artık hacim)","Ekspirasyon rezerv hacmi"], a:2, explanation:"Rezidüel hacim (RV) asla boşaltılamayan, akciğerde kalan havadır."},
-  {q:"57) Akciğerlerin dışını saran zara ne ad verilir?", choices:["Perikard","Periton","Plevra","Meninks"], a:2, explanation:"Akciğerleri saran iki yapraklı zara plevra denir."},
-  {q:"58) Kandaki oksijenin yaklaşık %97'si ne şekilde taşınır?", choices:["Plazmada çözünmüş halde","Bikarbonat olarak","Oksihemoglobin (Hb-O2) olarak","Karbaminohemoglobin olarak"], a:2, explanation:"Oksijenin büyük çoğunluğu hemoglobin molekülüne bağlı olarak taşınır."},
-  {q:"59) Solunum merkezleri beyin sapının hangi bölümlerinde bulunur?", choices:["Cerebellum ve Talamus","Medulla oblongata ve Pons","Mesencephalon ve Korteks","Sadece omurilik"], a:1, explanation:"Solunumun otomatik kontrolü medulla ve ponstaki nöron grupları tarafından yapılır."},
-  {q:"60) Kanda karbondioksit (CO2) artışı solunumu nasıl etkiler?", choices:["Yavaşlatır","Durdurur","Hızlandırır ve derinleştirir","Etkilemez"], a:2, explanation:"Artan PCO2 ve düşen pH solunum merkezini uyararak ventilasyonu artırır."},
-  {q:"61) Bronşlarda düz kasların gevşemesine (bronkodilatasyon) neden olan sistem hangisidir?", choices:["Sempatik sistem","Parasempatik sistem","Somatik sistem","Enterik sistem"], a:0, explanation:"Sempatik uyarı hava yollarını genişleterek daha fazla hava girişini sağlar."},
-  {q:"62) Gırtlak (Larynx) için aşağıdakilerden hangisi doğrudur?", choices:["Sadece hava geçişini sağlar","Ses tellerini barındırır (fonasyon)","Sindirimin başladığı yerdir","Kemik yapıdadır"], a:1, explanation:"Larynx (gırtlak) hava geçişinin yanı sıra ses üretiminden (fonasyon) sorumludur."},
-  {q:"63) Mukosiliyer klirens mekanizması neyi temizler?", choices:["Kanı","Mukusu ve yabancı partikülleri","Alveolleri","Safra kesesini"], a:1, explanation:"Silyalar mukusla tutulan partikülleri farenkse doğru süpürür."},
-  {q:"64) Karbonmonoksit (CO) neden zehirlidir?", choices:["CO kana geçemez","Hemoglobine oksijenden çok daha güçlü bağlanır","Akciğerleri deler","Kanın pıhtılaşmasını önler"], a:1, explanation:"CO, hemoglobinin oksijen taşıma kapasitesini bloke eder."},
-  {q:"65) Spirometre cihazı ile doğrudan ölçülemeyen hacim hangisidir?", choices:["Tidal hacim","Vital kapasite","Rezidüel hacim","İnspirasyon kapasitesi"], a:2, explanation:"Rezidüel hacim (RV) spirometre ile doğrudan ölçülemez."},
-  {q:"66) Alt solunum yollarında kıkırdak içermeyen bölüm hangisidir?", choices:["Trakea","Ana bronşlar","Bronşiyoller","Larenks"], a:2, explanation:"Bronşiyoller kıkırdak desteğinden yoksundur ve düz kas içerir."},
-  {q:"67) Hava-kan bariyerini oluşturan temel hücre tipi hangisidir?", choices:["Tip I hücreler","Tip II hücreler","Makrofajlar","Goblet hücreleri"], a:0, explanation:"Tip I hücreler alveol yüzeyinin %90'ını oluşturur ve gaz değişiminden sorumludur."},
-  {q:"68) Nefes alırken (inspirasyon) göğüs içi basınç nasıl değişir?", choices:["Artar","Azalır (negatifleşir)","Sabit kalır","Sıfırlanır"], a:1, explanation:"Hacim arttığı için basınç azalır ve dışarıdaki hava içeri dolar."},
-  {q:"69) Besin maddelerinin ağız yolu ile alınmasına ne ad verilir?", choices:["Deglutio","Masticatio","Ingestio","Defekasyon"], a:2, explanation:"Beslenme veya besin alımı ingestio olarak tanımlanır."},
-  {q:"70) Sindirim kanalında düz kasların ritmik kasılmasıyla besinlerin ilerletilmesine ne denir?", choices:["Masticatio","Peristaltizm","Absorbtio","Secretio"], a:1, explanation:"Peristaltizm, sindirim kanalındaki besinlerin ilerlemesini sağlayan dalgalı harekettir."},
-  {q:"71) Sindirim kanalının anatomik sıralaması nasıldır?", choices:["Ağız-Mide-Yutak-İnce Bağırsak","Ağız-Yutak-Yemek Borusu-Mide","Mide-Duodenum-Pankreas-Kalın Bağırsak","Yutak-Trakea-Gaster-Anüs"], a:1, explanation:"Sıralama: Ağız -> Yutak -> Yemek borusu -> Mide şeklindedir."},
-  {q:"72) Ağız boşluğunun arkada yutağa açıldığı geçite ne ad verilir?", choices:["Rima oris","Isthmus faucium","Vestibulum oris","Uvula"], a:1, explanation:"Isthmus faucium, ağız ile orofarenks arasındaki yutak geçididir."},
-  {q:"73) Dilin tat duyusunu alan kranial sinirler hangileridir?", choices:["1, 2 ve 5","3, 4 ve 6","7, 9 ve 10","8, 11 ve 12"], a:2, explanation:"Dilin tadını N. facialis (7), N. glossopharyngeus (9) ve N. vagus (10) alır."},
-  {q:"74) Dişin tacını örten en dış ve en sert tabaka nedir?", choices:["Dentin","Sementum","Mine (Enamelum)","Pulpa"], a:2, explanation:"Diş tacının üzerini örten en sert tabaka mine tabakasıdır."},
-  {q:"75) Midenin yemek borusuyla birleştiği giriş kısmına ne ad verilir?", choices:["Pylor","Fundus","Cardia","Corpus"], a:2, explanation:"Mide girişi cardia, çıkışı ise pylor'dur."},
-  {q:"76) İnce bağırsağın 'C' harfi şeklindeki ilk bölümü hangisidir?", choices:["Jejunum","Ileum","Duodenum","Caecum"], a:2, explanation:"Duodenum (on iki parmak bağırsağı), ince bağırsağın ilk kısmıdır."},
-  {q:"77) Besinlerin ve suyun büyük bir kısmının emilimi nerede olur?", choices:["Mide","İnce bağırsak","Kalın bağırsak","Ağız"], a:1, explanation:"İnce bağırsaklar (özellikle jejunum ve ileum) temel emilim yeridir."},
-  {q:"78) Kalın bağırsağın başlangıç kısmındaki kör keseye ne ad verilir?", choices:["Rectum","Colon sigmoideum","Caecum","Appendix"], a:2, explanation:"Kalın bağırsak caecum (çekum) ile başlar."},
-  {q:"79) İnsan vücudunun en büyük solid organı olup safra üreten yapı hangisidir?", choices:["Dalak","Pankreas","Karaciğer","Mide"], a:2, explanation:"Karaciğer (yaklaşık 1,5 kg) safra üretimi ve metabolizma merkezidir."},
-  {q:"80) Hem iç hem dış salgı üreten karma bez hangisidir?", choices:["Karaciğer","Pankreas","Tükürük bezleri","Tiroid"], a:1, explanation:"Pankreas hem hormon (endokrin) hem enzim (egzokrin) salgılar."},
-  {q:"81) Safra kesesinin temel görevi nedir?", choices:["Safra üretmek","Safrayı depolamak ve yoğunlaştırmak","Besinleri parçalamak","İnsülin salgılamak"], a:1, explanation:"Safra karaciğerde üretilir, safra kesesinde depolanır."},
-  {q:"82) Karın boşluğu duvarını ve organlarını örten zara ne denir?", choices:["Plevra","Perikard","Periton","Dura mater"], a:2, explanation:"Karın zarı periton (peritoneum) olarak adlandırılır."},
-  {q:"83) Yemek borusu (Oesophagus) diyaframı hangi delikten geçer?", choices:["Foramen venae cavae","Hiatus aorticus","Hiatus oesophagus","Canalis inguinalis"], a:2, explanation:"Yemek borusu kendine ait hiatus oesophagus adlı delikten geçer."},
-  {q:"84) Mide çıkışında bulunan sfinkter kası hangisidir?", choices:["M. sphincter ani","M. sphincter pyloricus","M. masseter","Alt özofagus sfinkteri"], a:1, explanation:"Pilor sfinkteri, mide içeriğinin kontrollü boşalmasını sağlar."},
-  {q:"85) Göz küresinin en dıştaki beyaz renkli tabakası nedir?", choices:["Retina","Choroidea","Sclera","Cornea"], a:2, explanation:"Gözün beyaz kısmına sclera denir; önündeki saydam kısım ise cornea'dır."},
-  {q:"86) Gözün rengini belirleyen ve ışık miktarını ayarlayan kısım hangisidir?", choices:["Pupilla","İris","Lens","Retina"], a:1, explanation:"İris, ortasında pupilla (göz bebeği) bulunan renkli kısımdır."},
-  {q:"87) Gözde fotoreseptörlerin (koni ve basil) bulunduğu tabaka hangisidir?", choices:["Tunica fibrosa","Tunica vasculosa","Retina","Sclera"], a:2, explanation:"Görüntünün algılandığı sinir tabakası retina'dır."},
-  {q:"88) Göz merceğinin ışığı kırma gücünü ayarlayan yapı hangisidir?", choices:["İris","Corpus ciliare","Pupilla","Cornea"], a:1, explanation:"Corpus ciliare içindeki kaslar lensin kalınlığını değiştirerek uyumu sağlar."},
-  {q:"89) Gözde görme sinirinin çıktığı kör noktaya ne denir?", choices:["Macula lutea","Fovea centralis","Discus nervi optici","Pupilla"], a:2, explanation:"Discus nervi optici bölgesinde reseptör yoktur, bu yüzden kör nokta denir."},
-  {q:"90) Gözyaşı bezi (Glandula lacrimalis) orbitanın neresinde bulunur?", choices:["Alt iç kısımda","Üst dış kısımda","Burun kökünde","Alt göz kapağında"], a:1, explanation:"Gözyaşı bezi orbitanın (göz çukuru) üst dış kadranında bulunur."},
-  {q:"91) Dış kulak yolu ile orta kulağı ayıran yapı hangisidir?", choices:["Malleus","Kulak zarı (Membrana tympani)","Östaki borusu","Oval pencere"], a:1, explanation:"Kulak zarı dış ve orta kulak arasındaki sınırdır."},
-  {q:"92) Orta kulak kemikçiklerinin dıştan içe sıralanışı nasıldır?", choices:["Malleus-Incus-Stapes","Incus-Malleus-Stapes","Stapes-Incus-Malleus","Malleus-Stapes-Incus"], a:0, explanation:"Kemikçikler dıştan içe: Malleus (Çekiç), Incus (Örs) ve Stapes (Üzengi)'dir."},
-  {q:"93) İç kulakta işitme duyusundan sorumlu temel organ hangisidir?", choices:["Utriculus","Sacculus","Cochlea (Salyangoz)","Yarım daire kanalları"], a:2, explanation:"Cochlea işitme, diğerleri ise denge ile ilgilidir."},
-  {q:"94) Dil üzerinde acı tadını en yoğun alan papilla grubu hangisidir?", choices:["Papilla filiformis","Papilla vallata","Papilla fungiformis","Papilla foliata"], a:1, explanation:"Papilla vallata'lar dilin arkasında yer alır ve acı duyusunu alır."},
-  {q:"95) Koku reseptörleri burun boşluğunun neresinde yoğunlaşmıştır?", choices:["Alt konka","Üst konka ve regio olfactoria","Burun delikleri","Nazofarenks"], a:1, explanation:"Koku bölgesi (regio olfactoria) burun boşluğu tavanında yer alır."},
-  {q:"96) Denge ve işitme siniri olan 8. kranial sinirin adı nedir?", choices:["N. opticus","N. vestibulocochlearis","N. trigeminus","N. abducens"], a:1, explanation:"8. sinir hem denge (vestibular) hem işitme (cochlear) lifleri taşır."},
-  {q:"97) Göz küresinin içini dolduran jelatinöz madde nedir?", choices:["Humor aqueous","Corpus vitreum","Gözyaşı","Kan"], a:1, explanation:"Lens ile retina arasını dolduran şeffaf kütle corpus vitreum'dur."},
-  {q:"98) Dilin 2/3 ön kısmının tat duyusunu hangi sinir alır?", choices:["N. facialis","N. glossopharyngeus","N. vagus","N. trigeminus"], a:0, explanation:"Dilin ön 2/3'lük kısmının tadı 7. kranial sinir (N. facialis) tarafından taşınır."},
-  {q:"99) Ses dalgaları tarafından titreştirilen ilk anatomik yapı hangisidir?", choices:["Stapes","Kulak zarı","Cochlea","Örs kemiği"], a:1, explanation:"Hava yoluyla gelen ses dalgaları önce kulak zarını titreştirir."},
-      {q:"100) Gözün ışığı kıran ortamları sırasıyla hangileridir?", choices:["Pupilla-Lens-Retina","Cornea-Humor aqueous-Lens-Corpus vitreum","Sclera-Iris-Pupilla","Retina-Cornea-Kör nokta"], a:1, explanation:"Işık sırasıyla kornea, ön oda sıvısı, mercek ve camsı cisimden geçerek retinaya ulaşır."},
-      {q:"101) Scapula'nın (kürek kemiği) acromion çıkıntısı hangi kemikle eklem yapar?", choices:["Humerus","Clavicula","Sternum","Costa"], a:1, explanation:"Acromion, clavicula'nın extremitas acromialis ucu ile articulatio acromioclavicularis'i oluşturur."},
-      {q:"102) Humerus gövdesindeki 'Sulcus nervi radialis'ten hangi yapı geçer?", choices:["Nervus axillaris","Arteria brachialis","Nervus radialis","Nervus ulnaris"], a:2, explanation:"Humerus'un arkasındaki bu oluktan n. radialis ve a. profunda brachii geçer."},
-      {q:"103) Ön kolun dış (lateral) tarafında bulunan kemik hangisidir?", choices:["Ulna","Humerus","Radius","Fibula"], a:2, explanation:"Anatomik duruşta radius dışta (baş parmak tarafı), ulna içte yer alır."},
-      {q:"104) Carpal (el bileği) kemiklerinin proksimal sırasında dıştan içe doğru sıralaması hangisidir?", choices:["Scaphoideum-Lunatum-Triquetrum-Pisiforme","Trapezium-Trapezoideum-Capitatum-Hamatum","Pisiforme-Triquetrum-Lunatum-Scaphoideum","Hamatum-Capitatum-Trapezoideum-Trapezium"], a:0, explanation:"Proksimal sıra lateralden mediale: Scaphoideum, Lunatum, Triquetrum ve Pisiforme şeklindedir."},
-      {q:"105) Articulatio humeri (omuz eklemi) ne tip bir eklemdir?", choices:["Ginglymus","Articulatio spheroidea","Articulatio plana","Articulatio trochoidea"], a:1, explanation:"Omuz eklemi çok eksenli, küre başı şeklinde (spheroidea) bir eklemdir."},
-      {q:"106) Omuz ekleminin hareket açıklığını artıran ve cavitas glenoidalis'i derinleştiren yapı hangisidir?", choices:["Labrum glenoidale","Ligamentum coracohumerale","Bursa subacromialis","Membrana interossea"], a:0, explanation:"Labrum glenoidale, fibröz kıkırdaktan yapılmış bir halkadır ve eklem çukurunu derinleştirir."},
-      {q:"107) Aşağıdakilerden hangisi pelvis iskeletini (kemik pelvis) oluşturmaz?", choices:["Os coxae","Os sacrum","Os coccygis","L5 vertebrası"], a:3, explanation:"Kemik pelvis; iki adet os coxae, bir sacrum ve bir coccyx'ten oluşur."},
-      {q:"108) Os coxae'yi oluşturan üç kemik hangi yapıda birleşir?", choices:["Spina iliaca","Symphysis pubica","Acetabulum","Crista iliaca"], a:2, explanation:"Ilium, ischium ve pubis kemikleri acetabulum adı verilen eklem çukurunda birleşir."},
-      {q:"109) Vücudun en uzun ve en kuvvetli kemiği hangisidir?", choices:["Tibia","Femur","Humerus","Fibula"], a:1, explanation:"Femur (uyluk kemiği) vücudun en uzun ve dayanıklı kemiğidir."},
-      {q:"110) Patella (diz kapağı) ne tür bir kemiktir?", choices:["Yassı kemik","Sesamoid (susamarsı) kemik","Düzensiz kemik","Kısa kemik"], a:1, explanation:"Patella, m. quadriceps femoris tendonu içinde gelişen vücudun en büyük sesamoid kemiğidir."},
-      {q:"111) Tibia'nın proksimal ucunda bulunan ve m. quadriceps femoris'in tutunduğu yapı hangisidir?", choices:["Malleolus medialis","Tuberositas tibiae","Condylus lateralis","Linea musculi solei"], a:1, explanation:"Ligamentum patellae aracılığıyla quadriceps kası tuberositas tibiae'ye tutunur."},
-      {q:"112) Articulatio genus (diz eklemi) içinde bulunan ve eklem yüzlerini uyumlu hale getiren yapılar hangileridir?", choices:["Meniscuslar","Lig. cruciatumlar","Bursalar","Labrumlar"], a:0, explanation:"Meniscus medialis ve lateralis, diz ekleminde şok emici ve yüzey uyumlayıcı görev yapar."},
-      {q:"113) Topuk kemiği olarak bilinen en büyük tarsal kemik hangisidir?", choices:["Talus","Os cuboideum","Calcaneus","Os naviculare"], a:2, explanation:"Calcaneus, ayak bileği kemiklerinin en büyüğüdür ve topuğu oluşturur."},
-      {q:"114) Tipik bir vertebrada (omur) foramen vertebrale'yi arkadan sınırlayan yapı hangisidir?", choices:["Corpus vertebrae","Arcus vertebrae","Processus spinosus","Processus transversus"], a:1, explanation:"Foramen vertebrale, önde gövde (corpus) arkada ise omur kemeri (arcus) ile çevrelenir."},
-      {q:"115) 1. Cervical vertebra (C1) olan Atlas'ın ayırt edici özelliği nedir?", choices:["Çatallı processus spinosus","Gövdesinin (corpus) olmaması","Dens çıkıntısı","En büyük vertebra olması"], a:1, explanation:"Atlas'ın korpusu ve processus spinosusu yoktur; iki ark (arcus) ve iki kütleden (massa lateralis) oluşur."},
-      {q:"116) Axis (C2) vertebrasına ait olan ve başın dönme hareketinde eksen görevi gören çıkıntı hangisidir?", choices:["Processus xiphoideus","Dens axis","Promontorium","Processus mamillaris"], a:1, explanation:"Dens axis (processus odontoideus), Atlas ile eklem yaparak başın dönmesini sağlar."},
-      {q:"117) Thoracal (sırt) vertebraları diğerlerinden ayıran en temel özellik nedir?", choices:["Foramen transversarium bulunması","Processus spinosus'un kısa olması","Costalar için eklem yüzleri (fovea costalis) içermesi","Gövdesinin çok büyük olması"], a:2, explanation:"Sadece göğüs omurları kaburgalarla (costa) eklem yapar."},
-      {q:"118) Sacrum'un üst kısmında öne doğru çıkıntı yapan ve pelvimetride önemli olan nokta hangisidir?", choices:["Apex ossis sacri","Promontorium","Crista sacralis","Hiatus sacralis"], a:1, explanation:"Promontorium, S1 omurunun korpusunun üst ön kenarıdır."},
-      {q:"119) Omurganın yana doğru olan patolojik eğriliğine ne ad verilir?", choices:["Lordoz","Kifoz","Skolyoz","Gibbus"], a:2, explanation:"Skolyoz, columna vertebralis'in frontal düzlemdeki lateral eğriliğidir."},
-      {q:"120) Cervical ve lumbar bölgedeki normal anatomik eğrilik aşağıdakilerden hangisidir?", choices:["Lordoz","Kifoz","Skolyoz","Sertleşme"], a:0, explanation:"Boyun ve bel bölgesinde açıklığı arkaya bakan eğriliğe lordoz denir."},
-      {q:"121) Musculus pectoralis major'un temel fonksiyonu nedir?", choices:["Kola abdüksiyon yaptırmak","Kola addüksiyon ve iç rotasyon yaptırmak","Kürek kemiğini yukarı kaldırmak","Ön kola fleksiyon yaptırmak"], a:1, explanation:"Pectoralis major kolun en güçlü adduktor ve iç rotator kaslarından biridir."},
-      {q:"122) Kolun en güçlü abdüktör kası hangisidir?", choices:["M. biceps brachii","M. deltoideus","M. triceps brachii","M. brachialis"], a:1, explanation:"M. deltoideus (özellikle orta lifleri) kola 15-90 derece arası abdüksiyon yaptırır."},
-      {q:"123) 'Rotator Cuff' (çevirici kılıf) kas grubunda hangisi yer almaz?", choices:["M. supraspinatus","M. infraspinatus","M. teres major","M. subscapularis"], a:2, explanation:"Rotator cuff: Supraspinatus, Infraspinatus, Teres minor ve Subscapularis'ten oluşur (SITS). Teres major bu grupta değildir."},
-      {q:"124) M. biceps brachii'nin (pazı kası) temel görevleri nelerdir?", choices:["Kol ekstansiyonu","Ön kol fleksiyonu ve supinasyonu","Ön kol pronasyonu","Omuz addüksiyonu"], a:1, explanation:"Biceps brachii hem dirsek fleksörü hem de ön kolun en güçlü supinatörüdür."},
-      {q:"125) Ön kolun arka bölgesinde bulunan ve dirsek eklemine ekstansiyon yaptıran kas hangisidir?", choices:["M. brachialis","M. coracobrachialis","M. triceps brachii","M. anconeus"], a:2, explanation:"M. triceps brachii, ön kolun ana ekstansör kasıdır."},
-      {q:"126) El bileğine fleksiyon yaptıran kaslar genellikle nerede yerleşir?", choices:["Ön kolun ön yüzünde","Ön kolun arka yüzünde","Kolun ön yüzünde","Elin sırtında"], a:0, explanation:"Fleksör kaslar ön kolun ön (anterior) kompartmanında yer alır."},
-      {q:"127) M. trapezius kasını hangi sinir uyarır (innervasyon)?", choices:["Nervus phrenicus","Nervus accessorius (11. kafa çifti)","Nervus radialis","Nervus axillaris"], a:1, explanation:"Trapezius ve sternocleidomastoideus n. accessorius tarafından uyarılır."},
-      {q:"128) Vücudun en geniş kası olan ve 'tırmanma kası' olarak bilinen kas hangisidir?", choices:["M. trapezius","M. latissimus dorsi","M. rhomboideus","M. serratus anterior"], a:1, explanation:"M. latissimus dorsi gövdenin en geniş kasıdır, kola addüksiyon, iç rotasyon ve ekstansiyon yaptırır."},
-      {q:"129) 'Kanat Scapula' (Scapula alata) görünümü hangi kasın felcinde ortaya çıkar?", choices:["M. deltoideus","M. serratus anterior","M. pectoralis minor","M. subclavius"], a:1, explanation:"M. serratus anterior felç olursa scapula toraks duvarından uzaklaşır ve kanat görünümü oluşur."},
-      {q:"130) Diaphragma kasının temel fonksiyonu nedir?", choices:["Gövdeye fleksiyon yaptırmak","En önemli inspirasyon (nefes alma) kasıdır","Karın organlarını korumak","Öksürmeyi engellemek"], a:1, explanation:"Diaphragma solunumun ana kasıdır; kasıldığında göğüs boşluğu hacmini artırarak nefes almayı sağlar."},
-      {q:"131) M. gluteus maximus'un temel görevi nedir?", choices:["Uyluk fleksiyonu","Uyluğun en güçlü ekstansörü ve dış rotatorudur","Uyluk abdüksiyonu","Diz fleksiyonu"], a:1, explanation:"Gluteus maximus uyluğun en güçlü ekstansör kasıdır (merdiven çıkma, ayağa kalkma)."},
-      {q:"132) Musculus sartorius (terzi kası) ile ilgili hangisi doğrudur?", choices:["Vücudun en kısa kasıdır.","Hem kalça hem diz eklemine hareket yaptırır.","Sadece diz ekstansiyonu yaptırır.","Arka bacak grubunda yer alır."], a:1, explanation:"Sartorius vücudun en uzun kasıdır; kalçaya fleksiyon/dış rotasyon, dize fleksiyon/iç rotasyon yaptırır."},
-      {q:"133) M. quadriceps femoris'in hangi parçası hem kalça hem diz eklemini çaprazlar?", choices:["M. vastus lateralis","M. vastus medialis","M. rectus femoris","M. vastus intermedius"], a:2, explanation:"Rectus femoris spina iliaca anterior inferior'dan başladığı için iki eklemlidir."},
-      {q:"134) Uyluğun iç yan (medial) kompartmanında bulunan kasların genel görevi nedir?", choices:["Ekstansiyon","Addüksiyon","Abdüksiyon","Fleksiyon"], a:1, explanation:"Medial grup kaslar (adductor longus, brevis, magnus vb.) uyluğun addüktörleridir."},
-      {q:"135) Hamstring kas grubu (arka uyluk) hangisini içermez?", choices:["M. biceps femoris","M. semitendinosus","M. semimembranosus","M. gracilis"], a:3, explanation:"Hamstring grubu: Biceps femoris, Semitendinosus ve Semimembranosus'tur. Gracilis addüktör gruptadır."},
-      {q:"136) Ayağa 'dorsifleksiyon' yaptıran kaslar bacağın hangi bölgesinde bulunur?", choices:["Ön bölge","Arka bölge","Dış yan bölge","Uyluk bölgesi"], a:0, explanation:"M. tibialis anterior gibi dorsifleksörler bacağın ön kompartmanındadır."},
-      {q:"137) M. triceps surae'yi oluşturan kaslar hangileridir?", choices:["M. tibialis posterior - M. soleus","M. gastrocnemius - M. soleus","M. peroneus longus - M. brevis","M. popliteus - M. plantaris"], a:1, explanation:"M. gastrocnemius ve m. soleus birleşerek triceps surae'yi ve aşil tendonunu oluşturur."},
-      {q:"138) Vücudun en kalın tendonu olan Tendo Calcaneus (Aşil) hangi kemiğe tutunur?", choices:["Talus","Calcaneus","Os naviculare","Tibia"], a:1, explanation:"Aşil tendonu calcaneus'un arka yüzündeki tuber calcanei'ye tutunur."},
-      {q:"139) 'Pes Anserinus' (Kaz ayağı) yapısına hangi kas katılmaz?", choices:["M. sartorius","M. gracilis","M. semitendinosus","M. semimembranosus"], a:3, explanation:"Pes anserinus: Sartorius, Gracilis ve Semitendinosus kaslarının tendonlarından oluşur."},
-      {q:"140) Columna vertebralis'te toplam kaç adet omur (vertebra) bulunur?", choices:["24","26","33","31"], a:2, explanation:"Omurga; 7 boyun, 12 sırt, 5 bel, 5 sakral ve 4 koksigeal olmak üzere 33 omurdan oluşur."},
-      {q:"141) Dirsek eklemi (Articulatio cubiti) hangi kemikler arasındadır?", choices:["Humerus-Radius-Ulna","Humerus-Scapula","Radius-Ulna-Carpal kemikler","Clavicula-Humerus"], a:0, explanation:"Dirsek eklemi humerus, radius ve ulna'nın birbirleriyle yaptığı eklemler bütünüdür."},
-      {q:"142) El bileği (Articulatio radiocarpalis) eklemine katılan ön kol kemiği hangisidir?", choices:["Sadece Ulna","Sadece Radius","Hem Radius hem Ulna","Humerus"], a:1, explanation:"El bileği eklemine radius katılır; ulna ile karpal kemikler arasında discus articularis bulunur."},
-      {q:"143) Ligamentum cruciatum anterius (Ön çapraz bağ) hangi eklemdedir?", choices:["Omuz eklemi","Kalça eklemi","Diz eklemi","Ayak bileği"], a:2, explanation:"Ön ve arka çapraz bağlar diz ekleminin stabilizasyonundan sorumludur."},
-      {q:"144) M. deltoideus'un siniri aşağıdakilerden hangisidir?", choices:["N. radialis","N. ulnaris","N. axillaris","N. medianus"], a:2, explanation:"Nervus axillaris, humerus boynu kırıklarında hasar görebilen ve deltoid kası uyaran sinirdir."},
-      {q:"145) Vertebraların gövdeleri arasında bulunan ve darbe emici özellik gösteren yapı hangisidir?", choices:["Ligamentum flavum","Discus intervertebralis","Processus transversus","Meniscus"], a:1, explanation:"Discus intervertebralis, omurlar arası yastıkçık görevi gören fibrokartilaj yapıdır."},
-      {q:"146) 'Düşük ayak' tablosu hangi sinirin hasarında görülür?", choices:["N. femoralis","N. tibialis","N. fibularis (peroneus) communis","N. obturatorius"], a:2, explanation:"N. fibularis communis bacağın ön ve dış yanındaki kasları uyarır, hasarında ayak dorsifleksiyon yapamaz."},
-      {q:"147) Omuz ekleminde kola 'adduksiyon' yaptıran kas hangisidir?", choices:["M. supraspinatus","M. latissimus dorsi","M. deltoideus","M. teres minor"], a:1, explanation:"Latissimus dorsi kolun en güçlü adduktorlarından biridir."},
-      {q:"148) Omurga kanalında (Canalis vertebralis) hangi yapı yer alır?", choices:["Özofagus","Medulla spinalis (Omurilik)","Trachea","Aorta"], a:1, explanation:"Omurga kanalı içinden merkezi sinir sistemine ait medulla spinalis geçer."},
-      {q:"149) Kalça eklemi (Articulatio coxae) ne tip bir eklemdir?", choices:["Ginglymus","Art. spheroidea","Art. trochoidea","Sutura"], a:1, explanation:"Kalça eklemi, caput femoris ile acetabulum arasındaki çok eksenli küresel bir eklemdir."},
-      {q:"150) Boyun bölgesinde sağa-sola bakarken belirginleşen, başa fleksiyon ve rotasyon yaptıran kas hangisidir?", choices:["M. trapezius","M. sternocleidomastoideus (SCM)","M. scalenus anterior","M. platysma"], a:1, explanation:"SCM kası boynun en belirgin yüzeyel kasıdır; tek taraflı kasıldığında başı karşı tarafa döndürür."},
-      {q:"151) Clavicula (köprücük kemiği) ile ilgili hangisi yanlıştır?", choices:["Vücutta en erken kemikleşmeye başlayan kemiktir.","Medial ucu sternum ile eklem yapar.","İskelet sisteminde 'uzun kemik' sınıfında değerlendirilir.","Alt yüzünde sulcus musculi subclavii bulunur."], a:2, explanation:"Clavicula morfolojik olarak uzun kemiklere benzese de içinde kemik iliği boşluğu (cavum medullare) bulunmadığı için 'yassı-uzun' arası özel bir kemik olarak kabul edilir."} 
-    ];
-
-    let state = { i: 0, correct: 0, wrong: 0, answered: [] };
-    
-    const elements = {
-      qnum: document.getElementById('qnum'),
-      question: document.getElementById('question'),
-      choices: document.getElementById('choices'),
-      feedback: document.getElementById('feedback'),
-      prog: document.getElementById('prog'),
-      nextBtn: document.getElementById('nextBtn'),
-      prevBtn: document.getElementById('prevBtn'),
-      card: document.getElementById('card'),
-      quizContent: document.getElementById('quiz-content')
+    const subjects = {
+      "Ders-1 Sinir Sistemine Giriş": [
+  {q:"1) Merkezi sinir sistemi (MSS) hangi temel yapılardan oluşur?", choices:["Beyin, beyin sapı ve omurilik","Kranial ve spinal sinirler","Ganglionlar ve pleksuslar","Sadece beyin ve beyincik"], a:0, explanation:"Merkezi sinir sistemi; kafatası içindeki beyin ve beyin sapı ile omurga içindeki omurilikten (medulla spinalis) meydana gelir.", topic: "Merkezi Sinir Sistemi"},
+  {q:"2) Periferik sinir sistemi (PSS) içeriğinde aşağıdakilerden hangisi yer almaz?", choices:["Kranial sinirler","Spinal sinirler","Medulla spinalis","Ganglionlar"], a:2, explanation:"Medulla spinalis (omurilik) MSS'ye aittir. PSS; kranial ve spinal sinirler ile MSS dışındaki ganglionlardan oluşur.", topic: "Periferik Sinir Sistemi"},
+  {q:"3) Sinir sisteminin fonksiyonel ve yapısal en küçük birimi nedir?", choices:["Nörogliya","Nöron","Akson","Sinaps"], a:1, explanation:"Sinir sisteminin temel fonksiyonel birimi nörondur.", topic: "Nöron Yapısı"},
+  {q:"4) Nöron gövdesine (soma) ne ad verilir?", choices:["Dendrit","Akson","Perikaryon","Miyelin"], a:2, explanation:"Nöronun çekirdeğini içeren gövde kısmına perikaryon veya soma denir.", topic: "Nöron Yapısı"},
+  {q:"5) Nöronda diğer hücrelerden gelen uyarıları alan kısa ve çok sayıdaki uzantılara ne ad verilir?", choices:["Akson","Dendrit","Sinaptik yumru","Nissl cisimciği"], a:1, explanation:"Dendritler uyarımı (resepsiyon) alan kısa uzantılardır.", topic: "Nöron Yapısı"},
+  {q:"6) Uyarıyı hücre gövdesinden uzağa, diğer hücrelere ileten tek ve uzun uzantı hangisidir?", choices:["Akson","Dendrit","Mikrotübül","Reseptör"], a:0, explanation:"Aksonlar uyarıyı başka hücrelere taşıyan tek uzantılardır.", topic: "Nöron Yapısı"},
+  {q:"7) Aksonun hücre gövdesinden çıktığı bölgeye ne ad verilir?", choices:["Ranvier boğumu","Akson tepeciği (Hillock)","Terminal arborizasyon","Sinaps"], a:1, explanation:"Aksonun soma ile birleştiği konik bölge akson hillock (tepecik) bölgesidir.", topic: "Nöron Yapısı"},
+  {q:"8) Nöron gövdesinde bulunan yoğun granüllü endoplazmik retikulum bölgelerine ne ad verilir?", choices:["Lipofuscin","Melanin","Nissl cisimcikleri","Glikojen"], a:2, explanation:"Nissl cisimcikleri protein sentezinden sorumlu yoğun RER bölgeleridir.", topic: "Nöron Yapısı"},
+  {q:"9) Bir nöronda uyarının akış yönü genellikle nasıldır?", choices:["Aksondan dendrite","Dendritten aksona","Gövdeden dendrite","Aksondan gövdeye"], a:1, explanation:"Uyarı dendritlerle alınır, gövdede işlenir ve aksonla iletilir.", topic: "Nöron Yapısı"},
+  {q:"10) Duyusal uyarıları periferden MSS'ye taşıyan nöron tipi hangisidir?", choices:["Motor nöron","İnternöron","Afferent nöron","Efferent nöron"], a:2, explanation:"Afferent (duyusal) nöronlar bilgiyi merkeze taşır.", topic: "Nöron Tipleri"},
+  {q:"11) Yanıtı (emir) MSS'den efektör organlara (kas, bez) taşıyan nöron tipi hangisidir?", choices:["Afferent nöron","Efferent nöron","Bipolar nöron","Duyu nöronu"], a:1, explanation:"Efferent (motor) nöronlar cevabı çevresel dokulara taşır.", topic: "Nöron Tipleri"},
+  {q:"12) Sinir sistemi içindeki nöronları birbirine bağlayan ve MSS'deki nöronların %99'unu oluşturan nöron tipi nedir?", choices:["Afferent nöron","Efferent nöron","İnternöron","Psödounipolar nöron"], a:2, explanation:"İnternöronlar nöronlar arası bağlantıyı kuran ara nöronlardır.", topic: "Nöron Tipleri"},
+  {q:"13) Tek bir akson ve tek bir dendriti olan nöron tipi hangisidir?", choices:["Unipolar nöron","Bipolar nöron","Multipolar nöron","Anaksonik nöron"], a:1, explanation:"Bipolar nöronlar iki uzantıya (bir akson, bir dendrit) sahiptir; retina ve koku mukozasında bulunur.", topic: "Nöron Tipleri"},
+  {q:"14) Omurgalı nöronlarının çoğunluğunu (motor nöronlar gibi) oluşturan nöron tipi nedir?", choices:["Bipolar nöron","Psödounipolar nöron","Multipolar nöron","Anaksonik nöron"], a:2, explanation:"Çok sayıda dendriti ve bir aksonu olan multipolar nöronlar en yaygın tiptir.", topic: "Nöron Tipleri"},
+  {q:"15) Arka kök ganglionlarında bulunan, gövdeden çıkan tek bir uzantının ikiye ayrıldığı nöron tipi hangisidir?", choices:["Psödounipolar nöron","Multipolar nöron","Bipolar nöron","Anaksonik nöron"], a:0, explanation:"Duyu ganglionlarında bulunan bu hücrelerin tek bir uzantısı T şeklinde ikiye ayrılır.", topic: "Nöron Tipleri"},
+  {q:"16) MSS'de nöronlara destek olan, onlardan sayıca 10 kat fazla olan hücre grubuna ne ad verilir?", choices:["Epitel hücreleri","Nörogliya (Glia)","Bağ doku hücreleri","Efektör hücreler"], a:1, explanation:"Glia hücreleri nöronların destekçisidir ve bölünme yetenekleri vardır.", topic: "Glia Hücreleri"},
+  {q:"17) MSS'de en büyük, yıldız şeklinde ve kan-beyin bariyeri oluşumuna katılan glia hücresi hangisidir?", choices:["Mikrogliya","Oligodendrosit","Astrosit","Ependim hücresi"], a:2, explanation:"Astrositler en büyük glia hücreleridir ve ayakçıklarıyla damarları sararak bariyer oluşturur.", topic: "Glia Hücreleri"},
+  {q:"18) MSS'de birden fazla aksonu miyelin kılıf ile saran glia hücresi hangisidir?", choices:["Schwann hücresi","Oligodendrosit","Astrosit","Mikrogliya"], a:1, explanation:"Oligodendrositler merkezi sinir sisteminde miyelin kılıfı oluşturur.", topic: "Glia Hücreleri"},
+  {q:"19) PSS'de (çevresel sinirlerde) miyelin kılıfı oluşturan hücre hangisidir?", choices:["Oligodendrosit","Schwann hücresi","Astrosit","Ependim hücresi"], a:1, explanation:"Periferik sinir sisteminde miyelin yapımı Schwann hücrelerine aittir.", topic: "Glia Hücreleri"},
+  {q:"20) MSS'de fagositoz yapan, immün sistem savunmasından sorumlu küçük hücreler hangileridir?", choices:["Mikrogliya","Makrogliya","Astrosit","Oligodendrosit"], a:0, explanation:"Mikrogliya hücreleri MSS'nin makrofajlarıdır.", topic: "Glia Hücreleri"},
+  {q:"21) Beyin ventriküllerini (karıncıklarını) ve omurilik kanalını döşeyen hücreler hangileridir?", choices:["Astrosit","Schwann hücresi","Ependim hücreleri","Satellit hücreleri"], a:2, explanation:"Ependim hücreleri BOS akışına yardımcı olur ve bu boşlukları döşer.", topic: "Glia Hücreleri"},
+  {q:"22) Miyelin kılıf nöronda hangi işlevi görür?", choices:["Protein sentezi yapar","İletim hızını artırır","Duyuyu alır","Çekirdeği korur"], a:1, explanation:"Miyelin kılıf elektriksel yalıtım sağlayarak iletim hızını ciddi oranda artırır.", topic: "Miyelin"},
+  {q:"23) Miyelin kılıfın akson boyunca kesintiye uğradığı, iyon değişiminin olduğu bölgelere ne ad verilir?", choices:["Sinaps","Dendritik diken","Ranvier boğumu","Akson ucu"], a:2, explanation:"Ranvier boğumları atlamalı iletimin gerçekleştiği çıplak bölgelerdir.", topic: "Miyelin"},
+  {q:"24) Nöronlar arasındaki iletişim bölgelerine ne ad verilir?", choices:["Ganglion","Sinaps","Pleksus","Gövde"], a:1, explanation:"Sinapslar uyarının bir hücreden diğerine aktarıldığı özelleşmiş bağlantılardır.", topic: "Sinaps"},
+  {q:"25) Çoğu sinapsta iletişimi sağlayan kimyasal maddelere ne ad verilir?", choices:["Hormon","Reseptör","Nörotransmitter","Antikor"], a:2, explanation:"Asetilkolin, dopamin gibi nörotransmitterler sinaptik boşluğa salınır.", topic: "Sinaps"},
+  {q:"26) Bir nörondan salınan nörotransmitterin bağlandığı diğer nörondaki yapıya ne denir?", choices:["Vezikül","Postsinaptik reseptör","Presinaptik membran","Akson tepeciği"], a:1, explanation:"Nörotransmitterler postsinaptik hücredeki özel reseptörlere bağlanır.", topic: "Sinaps"},
+  {q:"27) İletinin (impulsun) çok hızlı, gap junctionlar üzerinden iyon akışı ile doğrudan geçtiği sinaps tipi nedir?", choices:["Kimyasal sinaps","Elektriksel sinaps","Dendritik sinaps","Karışık sinaps"], a:1, explanation:"Elektriksel sinapslarda vezikül yoktur, ileti iyon kanalları üzerinden doğrudan geçer.", topic: "Sinaps"},
+  {q:"28) Bir aksonun başka bir nörondaki dendrit ile yaptığı sinaps tipine ne denir?", choices:["Aksosomatik","Aksoaksonik","Aksodendritik","Somatosomatik"], a:2, explanation:"Aksondan dendrite olan sinapslara aksodendritik denir.", topic: "Sinaps"},
+  {q:"29) Bir aksonun başka bir nörondaki hücre gövdesi (soma) ile yaptığı sinaps tipi nedir?", choices:["Aksodendritik","Aksosomatik","Aksoaksonik","Dendrodendritik"], a:1, explanation:"Aksonun somaya bağlanması aksosomatik sinapstır.", topic: "Sinaps"},
+  {q:"30) İmpuls hızı üzerinde aşağıdakilerden hangisi doğrudan etkilidir?", choices:["Miyelin varlığı ve akson çapı","Hücrenin rengi","Dendrit sayısı","Nissl cisimciği miktarı"], a:0, explanation:"Akson çapı ne kadar büyük ve miyelinliyse ileti o kadar hızlıdır.", topic: "İletim"},
+  {q:"31) Beyin ve beyinciğin dış kısmında bulunan, nöron gövdelerinin yoğun olduğu dokuya ne ad verilir?", choices:["Ak madde","Gri madde (Boz madde)","Miyelinli doku","Retiküler yapı"], a:1, explanation:"Substantia grisea (gri madde) nöron gövdelerinden oluşur.", topic: "Doku Yapısı"},
+  {q:"32) Beyin ve omuriliğin iç kısımlarında bulunan, miyelinli aksonların yoğun olduğu dokuya ne ad verilir?", choices:["Gri madde","Ak madde","BOS","Meninks"], a:1, explanation:"Substantia alba (ak madde) miyelinli uzantıları içerir.", topic: "Doku Yapısı"},
+  {q:"33) MSS dışında nöron gövdelerinin oluşturduğu kümelere ne ad verilir?", choices:["Nükleus","Ganglion","Traktus","Fasikül"], a:1, explanation:"Merkezi sistem dışındaki gövde topluluklarına ganglion denir.", topic: "Periferik Sinir Sistemi"},
+  {q:"34) MSS içinde benzer işlevi gören akson demetlerine (yollara) ne ad verilir?", choices:["Sinir","Pleksus","Traktus (Tract)","Ganglion"], a:2, explanation:"MSS içindeki akson yollarına traktus denir.", topic: "Merkezi Sinir Sistemi"},
+  {q:"35) PSS'de (çevresel sinir sisteminde) akson demetlerinin oluşturduğu yapıya ne ad verilir?", choices:["Nükleus","Ganglion","Sinir (Nervus)","Traktus"], a:2, explanation:"PSS'deki akson demetleri 'sinir' olarak adlandırılır.", topic: "Periferik Sinir Sistemi"},
+  {q:"36) Serebrumun (uç beyin) yüzeyindeki kıvrımların çıkıntılı kısımlarına ne ad verilir?", choices:["Sulkus","Gyrus","Fissür","Lokus"], a:1, explanation:"Gyruslar kıvrımların tepe (çıkıntı) kısımlarıdır.", topic: "Beyin Anatomisi"},
+  {q:"37) Beyin kabuğundaki oluklara (girintilere) ne ad verilir?", choices:["Gyrus","Sulkus","Korteks","Lobus"], a:1, explanation:"Sulkuslar beyin yüzeyindeki oluklardır.", topic: "Beyin Anatomisi"},
+  {q:"38) Beynin iki hemisferi (yarımküre) arasındaki derin yarığa ne ad verilir?", choices:["Sulkus centralis","Fissura longitudinalis","Sulkus lateralis","Kiazma"], a:1, explanation:"Hemisferleri boyuna ayıran derin yarık fissura longitudinalis cerebri'dir.", topic: "Beyin Anatomisi"},
+  {q:"39) Beyincik (Serebellum) temel olarak hangi fonksiyondan sorumludur?", choices:["Görme","Duyma","Denge ve kas koordinasyonu","Karar verme"], a:2, explanation:"Serebellum dengenin ve hareket koordinasyonunun merkezidir.", topic: "Beyincik"},
+  {q:"40) MSS'yi dıştan içe saran zarlar (meninksler) sırasıyla hangileridir?", choices:["Pia-Araknoid-Dura","Dura-Araknoid-Pia","Dura-Pia-Araknoid","Araknoid-Dura-Pia"], a:1, explanation:"Dışta en sert olan Dura mater, ortada Arachnoidea mater, en içte Pia mater bulunur.", topic: "Meninksler"},
+  {q:"41) Beyin omurilik sıvısı (BOS) nerede üretilir?", choices:["Dura mater","Mikrogliya","Pleksus koroideus","Akson tepeciği"], a:2, explanation:"BOS, ventriküllerdeki pleksus koroideus yapıları tarafından üretilir.", topic: "BOS"},
+  {q:"42) Beyin omurilik sıvısı (BOS) hangi aralıkta dolaşır?", choices:["Epidural aralık","Subdural aralık","Subaraknoid aralık","İntraserebral aralık"], a:2, explanation:"BOS, araknoid zar ile pia mater arasındaki subaraknoid boşlukta bulunur.", topic: "BOS"},
+  {q:"43) Medulla spinalis (omurilik) nerede sonlanır (erişkinlerde)?", choices:["Kuyruk sokumu","L1-L2 vertebra seviyesi","Boyun bölgesi","L5 seviyesi"], a:1, explanation:"Omurilik yaklaşık L1-L2 vertebra seviyesinde conus medullaris olarak sonlanır.", topic: "Omurilik"},
+  {q:"44) Omurilikten çıkan sinir köklerinin oluşturduğu, at kuyruğuna benzeyen yapıya ne denir?", choices:["Filum terminale","Conus medullaris","Cauda equina","Ganglion spinale"], a:2, explanation:"L2'den sonraki sinir köklerinin aşağı uzanan demetine cauda equina (at kuyruğu) denir.", topic: "Omurilik"},
+  {q:"45) Somatik sinir sistemi hangi yapıları kontrol eder?", choices:["Düz kaslar","Kalp kası","İskelet kasları","Bezler"], a:2, explanation:"Somatik sistem irademizle çalışan iskelet kaslarını kontrol eder.", topic: "Somatik Sistem"},
+  {q:"46) Otonom sinir sistemi hangi yapıları kontrol eder?", choices:["İsteğe bağlı hareketler","İç organlar, düz kaslar ve bezler","Sadece beyin korteksi","Parmak kasları"], a:1, explanation:"Otonom sistem irade dışı çalışan iç organları ve bezleri yönetir.", topic: "Otonom Sistem"},
+  {q:"47) 'Savaş ya da kaç' (fight or flight) yanıtından sorumlu otonom bölüm hangisidir?", choices:["Parasempatik sistem","Sempatik sistem","Somatik sistem","Duyu sistemi"], a:1, explanation:"Sempatik sistem stres anında vücudu hazırlayan bölümdür.", topic: "Otonom Sistem"},
+  {q:"48) 'Dinlen ve sindir' (rest and digest) yanıtından sorumlu otonom bölüm hangisidir?", choices:["Sempatik sistem","Parasempatik sistem","Motor sistem","Kortikal sistem"], a:1, explanation:"Parasempatik sistem enerji depolama ve dinlenme anında aktiftir.", topic: "Otonom Sistem"},
+  {q:"49) Akson ucunda nörotransmitter içeren keseciklere ne ad verilir?", choices:["Nissl cisimciği","Lizozom","Sinaptik vezikül","Ribozom"], a:2, explanation:"Veziküller uyarının kimyasal iletimi için neurotransmitter depolar.", topic: "Sinaps"},
+  {q:"50) Sinaptik aralık (boşluk) yaklaşık ne kadar genişliktedir?", choices:["1 mm","20-30 nanometre (nm)","1 mikrometre","1 santimetre"], a:1, explanation:"Sinaptik yarık nm (nanometre) düzeyinde çok dar bir boşluktur.", topic: "Sinaps"}
+      ],
+      "Ders-2 Beyin Zarları": [
+        {q:"1) Merkezi sinir sistemini dıştan içe doğru saran üç zar (meninks) sırasıyla hangisidir?", choices:["Pia-Araknoid-Dura","Dura-Araknoid-Pia","Dura-Pia-Araknoid","Araknoid-Dura-Pia"], a:1, explanation:"MSS; dıştan içe doğru Dura mater, Arachnoidea mater ve Pia mater tabakalarıyla sarılıdır.", topic: "Meninksler"},
+  {q:"2) Dura mater'in kafatası kemiğine yapışık olan dış tabakasına ne ad verilir?", choices:["Lamina interna","Lamina externa (Periosteal tabaka)","Lamina meningealis","Pia mater"], a:1, explanation:"Dura mater kraniumda iki tabakadır; dıştaki periosteal tabaka (lamina externa) kemiğe yapışıktır.", topic: "Dura Mater"},
+  {q:"3) İki beyin yarımküresi (hemisfer) arasındaki fissura longitudinalis'e giren dural yansıma hangisidir?", choices:["Tentorium cerebelli","Falx cerebelli","Falx cerebri","Diaphragma sellae"], a:2, explanation:"Falx cerebri, iki serebral hemisfer arasında uzanan orak şeklindeki dura mater kıvrımıdır.", topic: "Dural Yansımalar"},
+  {q:"4) Serebrumun oksipital lobları ile serebellum (beyincik) arasında yatay olarak uzanan yapı hangisidir?", choices:["Falx cerebri","Tentorium cerebelli","Falx cerebelli","Diaphragma sellae"], a:1, explanation:"Tentorium cerebelli, serebrum ve serebellumu birbirinden ayıran çadır benzeri yapıdır.", topic: "Dural Yansımalar"},
+  {q:"5) Tentorium cerebelli'nin ön kenarındaki, beyin sapının (mesencephalon) geçtiği açıklığa ne denir?", choices:["Foramen magnum","İncisura tentorii","Sella turcica","Foramen jugulare"], a:1, explanation:"İncisura tentorii (tentorial çentik), beyin sapının geçişine izin veren açıklıktır.", topic: "Dural Yansımalar"},
+  {q:"6) İki beyincik yarımküresi arasında uzanan küçük dural kıvrım hangisidir?", choices:["Falx cerebri","Falx cerebelli","Tentorium cerebelli","Diaphragma sellae"], a:1, explanation:"Falx cerebelli, serebellum hemisferleri arasında sagital planda uzanır.", topic: "Dural Yansımalar"},
+  {q:"7) Hipofiz bezinin üzerinde bulunan ve sapının geçmesi için ortası delik olan dural yapı hangisidir?", choices:["Falx cerebri","Diaphragma sellae","Tentorium cerebelli","Cavum trigeminale"], a:1, explanation:"Diaphragma sellae, sella turcica üzerini örten ve hipofiz sapı için deliği olan yapıdır.", topic: "Dural Yansımalar"},
+  {q:"8) Falx cerebri'nin üst kenarında, kafatası kemiğine tutunduğu hatta bulunan dural sinüs hangisidir?", choices:["Sinus sagittalis inferior","Sinus sagittalis superior","Sinus rectus","Sinus transversus"], a:1, explanation:"Sinus sagittalis superior, falx cerebri'nin üst kenarı boyunca seyreder.", topic: "Dural Sinüsler"},
+  {q:"9) Falx cerebri'nin serbest alt kenarında yer alan sinüs hangisidir?", choices:["Sinus sagittalis superior","Sinus sagittalis inferior","Sinus rectus","Sinus sigmoideus"], a:1, explanation:"Sinus sagittalis inferior, falx cerebri'nin serbest alt kenarında bulunur.", topic: "Dural Sinüsler"},
+  {q:"10) Sinus sagittalis inferior ile Vena cerebri magna'nın (Galen veni) birleşmesiyle oluşan sinüs hangisidir?", choices:["Sinus rectus","Sinus transversus","Sinus cavernosus","Sinus occipitalis"], a:0, explanation:"Sinus rectus (düz sinüs), bu iki yapının birleşmesiyle oluşur ve tentorium cerebelli boyunca uzanır.", topic: "Dural Sinüsler"},
+  {q:"11) Sinus sagittalis superior, sinus rectus ve sinus transversus'un arkada birleştiği kavşağa ne denir?", choices:["Confluens sinuum","Sinus cavernosus","Foramen jugulare","Sella turcica"], a:0, explanation:"Confluens sinuum (Herophili havuzu), oksipital bölgedeki sinüslerin birleşme yeridir.", topic: "Dural Sinüsler"},
+  {q:"12) Confluens sinuum'dan ayrılıp tentorium cerebelli'nin dış kenarı boyunca seyreden sinüs hangisidir?", choices:["Sinus sigmoideus","Sinus transversus","Sinus petrosus superior","Sinus occipitalis"], a:1, explanation:"Sinus transversus, confluens sinuum'dan yanlara doğru uzanan sinüstür.", topic: "Dural Sinüsler"},
+  {q:"13) Sinus transversus'un devamı olan ve 'S' harfi çizerek foramen jugulare'ye yönelen sinüs hangisidir?", choices:["Sinus petrosus inferior","Sinus sigmoideus","Sinus rectus","Sinus cavernosus"], a:1, explanation:"Sinus sigmoideus, transvers sinüsün devamıdır ve jugüler vene açılır.", topic: "Dural Sinüsler"},
+  {q:"14) Sella turcica'nın iki yanında bulunan ve içinden önemli kranial sinirlerin geçtiği sinüs hangisidir?", choices:["Sinus transversus","Sinus cavernosus","Sinus rectus","Sinus occipitalis"], a:1, explanation:"Sinus cavernosus, kafa tabanında kritik bir venöz yapıdır.", topic: "Dural Sinüsler"},
+  {q:"15) Sinus cavernosus'un tam içinden (venöz kanın ortasından) geçen arter hangisidir?", choices:["A. basilaris","A. carotis interna","A. vertebralis","A. cerebri media"], a:1, explanation:"A. carotis interna, kavernöz sinüsün içinden geçen en önemli arterdir.", topic: "Dural Sinüsler"},
+  {q:"16) Aşağıdaki sinirlerden hangisi Sinus cavernosus'un içinden geçer?", choices:["N. trigeminus (V3)","N. abducens (VI)","N. opticus (II)","N. facialis (VII)"], a:1, explanation:"N. abducens (6. sinir), kavernöz sinüsün içinden (arterin hemen yanında) geçer.", topic: "Dural Sinüsler"},
+  {q:"17) Hangisi kavernöz sinüsün dış duvarında yer alan sinirlerden biri değildir?", choices:["N. oculomotorius (III)","N. trochlearis (IV)","N. ophthalmicus (V1)","N. mandibularis (V3)"], a:3, explanation:"V3 (mandibular dal) foramen ovale'den çıkar, kavernöz sinüs duvarında bulunmaz.", topic: "Dural Sinüsler"},
+  {q:"18) Beyin omurilik sıvısının (BOS) emilerek venöz sisteme katıldığı yapılar hangisidir?", choices:["Plexus choroideus","Granulationes arachnoideae","Sinus rectus","Vena cerebri magna"], a:1, explanation:"Araknoid granülasyonlar (Pacchioni cisimcikleri), BOS'u dural sinüslere aktarır.", topic: "BOS"},
+  {q:"19) Kafatası kemiği ile Dura mater arasındaki potansiyel boşluğa ne ad verilir?", choices:["Spatium subarachnoideum","Spatium subdurale","Spatium epidurale (extradurale)","Sinus sagittalis"], a:2, explanation:"Epidural mesafe, dura ile kemik arasındadır.", topic: "Kafa İçi Boşluklar"},
+  {q:"20) Dura mater ile Arachnoidea mater arasındaki potansiyel boşluk hangisidir?", choices:["Spatium subdurale","Spatium subarachnoideum","Spatium epidurale","Foramen magnum"], a:0, explanation:"Subdural mesafe, dura ile araknoid zar arasındadır.", topic: "Kafa İçi Boşluklar"},
+  {q:"21) Beyin omurilik sıvısının (BOS) bulunduğu, araknoid ile pia mater arasındaki gerçek boşluk hangisidir?", choices:["Spatium subdurale","Spatium subarachnoideum","Spatium epidurale","Cavum trigeminale"], a:1, explanation:"Subaraknoid mesafe gerçek bir boşluktur ve içinde BOS dolaşır.", topic: "Kafa İçi Boşluklar"},
+  {q:"22) Beyin dokusuna en içten, tüm kıvrımları takip ederek yapışan zar hangisidir?", choices:["Dura mater","Arachnoidea mater","Pia mater","Periosteum"], a:2, explanation:"Pia mater en içteki narin zardır ve beyin yüzeyine tam yapışıktır.", topic: "Meninksler"},
+  {q:"23) Arteria meningea media'nın yırtılması sonucu oluşan kanama tipi hangisidir?", choices:["Subdural kanama","Epidural kanama","Subaraknoid kanama","İntraserebral kanama"], a:1, explanation:"A. meningea media kanamaları tipik olarak epidural (kemik-dura arası) kanamaya yol açar.", topic: "Klinik"},
+  {q:"24) Köprü venlerin (bridging veins) yırtılması sonucu oluşan kanama tipi hangisidir?", choices:["Epidural kanama","Subdural kanama","Subaraknoid kanama","İntraventriküler kanama"], a:1, explanation:"Köprü venler dural sinüslere açılırken subdural mesafeden geçer, yırtılmaları subdural kanama yapar.", topic: "Klinik"},
+  {q:"25) Dura mater'in duyusunu taşıyan ana sinir hangisidir?", choices:["N. facialis","N. trigeminus","N. vagus","N. glossopharyngeus"], a:1, explanation:"Dura mater'in ana duyusal siniri N. trigeminus (5. kranial sinir)'dur.", topic: "İnnervasyon"},
+  {q:"26) Medulla spinalis'te (omurilik) epidural mesafe kranial bölgeye göre nasıl bir fark gösterir?", choices:["Yoktur","Gerçek bir boşluktur ve yağ dokusu içerir","BOS ile doludur","Pia mater ile komşudur"], a:1, explanation:"Spinal epidural mesafe gerçektir, venöz pleksuslar ve yağ dokusu içerir (Anestezi uygulamaları için önemlidir).", topic: "Omurilik Zarları"},
+  {q:"27) Beyni besleyen arterlerin (Willis poligonu gibi) bulunduğu boşluk hangisidir?", choices:["Subdural boşluk","Subaraknoid boşluk","Epidural boşluk","Ventriküller"], a:1, explanation:"Serebral arterler subaraknoid mesafede seyreder.", topic: "Anatomi"},
+  {q:"28) Sinus sigmoideus kafatasından hangi açıklıktan geçerek çıkar?", choices:["Foramen magnum","Foramen ovale","Foramen jugulare","Canalis caroticus"], a:2, explanation:"Sigmoid sinüs foramen jugulare'ye girerek Vena jugularis interna adını alır.", topic: "Dural Sinüsler"},
+  {q:"29) Subaraknoid boşluğun genişleyerek oluşturduğu 'havuzcuklara' ne denir?", choices:["Sinus","Cisterna","Ganglion","Plexus"], a:1, explanation:"Cisterna (Sarnıç), subaraknoid mesafenin geniş olduğu bölgelerdir (Örn: Cisterna magna).", topic: "Kafa İçi Boşluklar"},
+  {q:"30) Falx cerebelli'nin oksipital kemiğe tutunduğu hatta bulunan küçük sinüs hangisidir?", choices:["Sinus rectus","Sinus occipitalis","Sinus petrosus","Sinus transversus"], a:1, explanation:"Sinus occipitalis, falx cerebelli'nin arka kenarında bulunur.", topic: "Dural Sinüsler"},
+  {q:"31) Aşağıdaki kranial sinirlerden hangisi tentorium cerebelli'nin serbest kenarı altından geçer?", choices:["N. opticus","N. trochlearis","N. abducens","N. olfactorius"], a:1, explanation:"N. trochlearis (IV), tentorium'un altından geçerek öne ilerler.", topic: "Anatomi"},
+  {q:"32) Dura mater'in kranial ve spinal kısımları nerede birleşir?", choices:["C1 seviyesi","L2 seviyesi","Foramen magnum","Sella turcica"], a:2, explanation:"Dura mater foramen magnum düzeyinde kafa içi tabakadan spinal tabakaya geçer.", topic: "Meninksler"},
+  {q:"33) Medulla spinalis'te Dura mater ile Arachnoidea mater nerede sonlanır?", choices:["L1-L2","S2","C7","Coccyx"], a:1, explanation:"Dura ve araknoid kesesi S2 vertebra seviyesinde kör bir sonlanma yapar.", topic: "Omurilik Zarları"},
+  {q:"34) Pia mater'in omurilik sonunda oluşturduğu ipliksi uzantıya ne denir?", choices:["Cauda equina","Conus medullaris","Filum terminale","Ligamentum denticulatum"], a:2, explanation:"Filum terminale, pia mater'in aşağı uzanan son parçasıdır.", topic: "Omurilik Zarları"},
+  {q:"35) Medulla spinalis'i dura mater'e asan pia mater uzantılarına ne denir?", choices:["Ligamentum denticulatum","Filum terminale","Radix anterior","Ganglion"], a:0, explanation:"Ligamentum denticulatumlar omuriliği yanlardan dural keseye asar.", topic: "Omurilik Zarları"},
+  {q:"36) Sinus cavernosus'u birbirine bağlayan venöz yapılara ne ad verilir?", choices:["Sinus petrosus","Sinus intercavernosus","Vena emissaria","Sinus rectus"], a:1, explanation:"Ön ve arka interkavernöz sinüsler iki yan sinüsü birleştirir.", topic: "Dural Sinüsler"},
+  {q:"37) Beyin yüzeyindeki venleri dural sinüslere bağlayan venler hangisidir?", choices:["Emisery venler","Köprü venler (Bridging veins)","Diplodik venler","Jugüler ven"], a:1, explanation:"Köprü venler beyin dokusundaki kanı dural sinüslere taşır.", topic: "Venler"},
+  {q:"38) Skalp (kafa derisi) venlerini dural sinüslere bağlayan, enfeksiyon taşıma riski olan venler hangisidir?", choices:["Vena emissaria (Emisery ven)","Vena diploica","Vena jugularis","Vena basilaris"], a:0, explanation:"Emisery venler kafatası kemiği üzerindeki deliklerden geçerek dış-iç bağlantısı kurar.", topic: "Venler"},
+  {q:"39) Sinus cavernosus'u sinus sigmoideus'a bağlayan sinüs hangisidir?", choices:["Sinus petrosus superior","Sinus occipitalis","Sinus sagittalis","Sinus rectus"], a:0, explanation:"Sinus petrosus superior, kavernöz sinüsün kanını arkadaki sigmoid sinüse iletir.", topic: "Dural Sinüsler"},
+  {q:"40) Sinus cavernosus'u bulbus superior venae jugularis'e bağlayan sinüs hangisidir?", choices:["Sinus petrosus inferior","Sinus transversus","Sinus sigmoideus","Sinus frontalis"], a:0, explanation:"Sinus petrosus inferior, kavernöz kanı doğrudan jugüler vene taşır.", topic: "Dural Sinüsler"},
+  {q:"41) Dura mater'in kranial tabakaları arasında yer alan yapılar hangisidir?", choices:["Arterler","Nöronlar","Dural venöz sinüsler","Kas lifleri"], a:2, explanation:"Dural sinüsler, dura mater'in periosteal ve meningeal tabakaları arasında kalan boşluklardır.", topic: "Dura Mater"},
+  {q:"42) Menenjit hastalığında enfeksiyonun yayıldığı boşluk hangisidir?", choices:["Epidural boşluk","Subdural boşluk","Subaraknoid boşluk","Sinus sagittalis"], a:2, explanation:"Menenjit, leptomeninksleri (araknoid ve pia) etkiler, irin subaraknoid mesafede birikir.", topic: "Klinik"},
+  {q:"43) Lumbal ponksiyon (LP) girişimi sırasında iğne en son hangi zarı geçer?", choices:["Pia mater","Arachnoidea mater","Dura mater","Ligamentum flavum"], a:1, explanation:"LP'de iğne dura ve araknoidi geçerek subaraknoid boşluğa (L3-L4 arası) ulaşır.", topic: "Klinik"},
+  {q:"44) Dura mater'in iç (meningeal) tabakasının dural sinüsleri içermeyen kısımlarına ne denir?", choices:["Fissür","Septum (Yansıma)","Korteks","Lob"], a:1, explanation:"Falx ve Tentorium gibi yapılara dural septumlar denir.", topic: "Dura Mater"},
+  {q:"45) Trigeminus ganglionunun bulunduğu dural keseye ne ad verilir?", choices:["Cavum trigeminale (Meckel çıkmazı)","Sella turcica","Foramen rotundum","Fossa cranii"], a:0, explanation:"Meckel çıkmazı, kavernöz sinüsün dış tarafında trigeminal ganglionu barındırır.", topic: "Anatomi"},
+  {q:"46) Sinus sagittalis superior'un ön ucu nerede başlar?", choices:["Foramen magnum","Crista galli (Foramen caecum)","Sella turcica","Protuberantia occipitalis"], a:1, explanation:"Üst sagital sinüs önde crista galli ve foramen caecum bölgesinden başlar.", topic: "Dural Sinüsler"},
+  {q:"47) Clivus üzerinde yer alan ve kavernöz sinüsleri birleştiren pleksus hangisidir?", choices:["Plexus choroideus","Plexus basilaris","Plexus venosus vertebralis","Plexus pterygoideus"], a:1, explanation:"Basiler venöz pleksus, kafa tabanında clivus üzerindedir.", topic: "Dural Sinüsler"},
+  {q:"48) Tentorium cerebelli'nin tutunan (dış) kenarında yer alan sinüsler hangisidir?", choices:["Sinus transversus ve Sinus petrosus superior","Sinus sagittalis inferior","Sinus occipitalis","Sinus sigmoideus"], a:0, explanation:"Tentorium'un kenarlarında transvers ve üst petrozal sinüsler bulunur.", topic: "Dural Sinüsler"},
+  {q:"49) Dura mater'in mikroskobik yapısında hangi doku hakimdir?", choices:["Gevşek bağ dokusu","Sıkı kollajen lifli bağ dokusu","Epitel dokusu","Sinir dokusu"], a:1, explanation:"Dura mater (sert zar) çok sağlam kollajen liflerden oluşur.", topic: "Histoloji"},
+  {q:"50) Kafa travması sonrası 'lucid interval' (geçici iyilik hali) hangi kanamada karakteristiktir?", choices:["Subaraknoid kanama","Subdural kanama","Epidural kanama","İntraserebral kanama"], a:2, explanation:"Epidural hematomlarda hasta önce bayılır, sonra ayılır (lucid interval) ve sonra tekrar kötüleşir.", topic: "Klinik"}
+      ]
+      "Ders-3 Beyin Ventrikülleri": [
+        {q:"1) Beyin ve beyin sapı içinde yer alan, birbirleriyle bağlantılı ve içleri BOS ile dolu boşluklara ne ad verilir?", choices:["Sinüsler","Ventriküller","Gyruslar","Ganglionlar"], a:1, explanation:"Beyin içindeki bu boşluk sistemine ventrikül (karıncık) adı verilir.", topic: "Ventrikül Anatomisi"},
+  {q:"2) Ventriküllerin iç yüzeyini döşeyen hücre tipi aşağıdakilerden hangisidir?", choices:["Astrosit","Nöron","Epandim hücreleri","Oligodendrosit"], a:2, explanation:"Ventriküllerin iç yüzü silli epitel hücreleri olan epandim hücreleri ile kaplıdır.", topic: "Ventrikül Anatomisi"},
+  {q:"3) Beyin omurilik sıvısı (BOS) temel olarak nerede üretilir?", choices:["Duramater","Plexus choroideus","Araknoid granülasyonlar","Corpus callosum"], a:1, explanation:"BOS, ventriküllerin içinde bulunan damardan zengin plexus choroideus yapılarında üretilir.", topic: "BOS"},
+  {q:"4) Her iki serebral hemisferin içinde bulunan en büyük ventriküller hangileridir?", choices:["Ventriculus tertius","Ventriculus quartus","Ventriculus lateralis","Aquaeductus cerebri"], a:2, explanation:"Lateral ventriküller (1. ve 2. ventrikül) en büyük boşluklardır ve hemisferlerin içinde yer alırlar.", topic: "Lateral Ventriküller"},
+  {q:"5) Lateral ventriküllerin bölümleri arasında aşağıdakilerden hangisi yer almaz?", choices:["Cornu anterius","Pars centralis","Cornu inferius","Aquaeductus"], a:3, explanation:"Lateral ventrikül; ön boynuz, merkezi kısım, arka boynuz ve alt boynuzdan oluşur. Aquaeductus bir bağlantı kanalıdır.", topic: "Lateral Ventriküller"},
+  {q:"6) Lateral ventrikülün hangi bölümlerinde plexus choroideus bulunmaz?", choices:["Cornu anterius ve cornu posterius","Pars centralis","Cornu inferius","Tüm bölümlerde bulunur"], a:0, explanation:"Lateral ventriküllerin ön (anterior) ve arka (posterior) boynuzlarında plexus choroideus yer almaz.", topic: "Lateral Ventriküller"},
+  {q:"7) Lateral ventrikülleri üçüncü ventriküle bağlayan açıklığın adı nedir?", choices:["Aquaeductus cerebri","Foramen interventriculare (Monro)","Apertura lateralis","Canalis centralis"], a:1, explanation:"Foramen interventriculare (Monro deliği), lateral ventriküller ile 3. ventrikül arasındaki geçişi sağlar.", topic: "Bağlantı Kanalları"},
+  {q:"8) İki diencephalon (talamuslar) arasında bulunan dar, yarık şeklindeki ventrikül hangisidir?", choices:["Ventriculus lateralis","Ventriculus tertius","Ventriculus quartus","Sinus rectus"], a:1, explanation:"3. ventrikül, sağ ve sol talamus/hipotalamus arasında yer alan merkezi boşluktur.", topic: "Üçüncü Ventrikül"},
+  {q:"9) Üçüncü ventrikül ile dördüncü ventrikülü birbirine bağlayan kanal hangisidir?", choices:["Foramen Monro","Foramen Magendie","Aquaeductus cerebri (Sylvius)","Apertura Luschka"], a:2, explanation:"Sylvius kanalı (aquaeductus cerebri), mesencephalon içinden geçerek 3. ve 4. ventrikülü bağlar.", topic: "Bağlantı Kanalları"},
+  {q:"10) Pons, bulbus ve serebellum arasında yer alan çadır şeklindeki ventrikül hangisidir?", choices:["Ventriculus lateralis","Ventriculus tertius","Ventriculus quartus","Ventriculus terminalis"], a:2, explanation:"4. ventrikül beyin sapı ile beyincik arasında yer alır.", topic: "Dördüncü Ventrikül"},
+  {q:"11) Dördüncü ventrikülün tavanında bulunan ve BOS'un subaraknoid mesafeye çıkmasını sağlayan tek orta hat deliği hangisidir?", choices:["Apertura lateralis (Luschka)","Apertura mediana (Magendie)","Foramen Monro","Foramen ovale"], a:1, explanation:"Magendie deliği, 4. ventrikülden cisterna magna'ya açılan orta hat deliğidir.", topic: "BOS Dolaşımı"},
+  {q:"12) Dördüncü ventrikülün yan köşelerinde bulunan ve BOS geçişini sağlayan çift açıklıklara ne denir?", choices:["Apertura lateralis (Luschka)","Apertura mediana (Magendie)","Aqueductus","Canalis centralis"], a:0, explanation:"Luschka delikleri, 4. ventrikülü subaraknoid boşluğa bağlayan yan açıklıklardır.", topic: "BOS Dolaşımı"},
+  {q:"13) Erişkin bir insanda toplam BOS hacmi yaklaşık ne kadardır?", choices:["50 ml","150 ml","500 ml","1000 ml"], a:1, explanation:"Erişkinlerde toplam BOS hacmi yaklaşık 130-150 ml civarındadır.", topic: "BOS Özellikleri"},
+  {q:"14) Günlük üretilen toplam BOS miktarı yaklaşık ne kadardır?", choices:["150 ml","500 ml","100 ml","1500 ml"], a:1, explanation:"Günlük yaklaşık 450-500 ml BOS üretilir, bu da sıvının günde 3-4 kez yenilendiği anlamına gelir.", topic: "BOS Özellikleri"},
+  {q:"15) Normal BOS'un görünümü nasıldır?", choices:["Sarımtırak ve bulanık","Kırmızı ve yoğun","Berrak, renksiz, su gibi","Koyu kıvamlı"], a:2, explanation:"Normal BOS, berrak ve renksizdir (limpid).", topic: "BOS Özellikleri"},
+  {q:"16) BOS'un venöz sinüslere geri emildiği ana yapılar hangileridir?", choices:["Plexus choroideus","Granulationes arachnoideae","Vena cerebri magna","Foramen Luschka"], a:1, explanation:"Araknoid granülasyonlar (Pacchioni cisimcikleri), BOS'u üst sagital sinüse drene eder.", topic: "BOS Dolaşımı"},
+  {q:"17) BOS basıncının artması ve ventriküllerin genişlemesiyle karakterize duruma ne ad verilir?", choices:["Menenjit","Hidrosefali","Mikrosefali","Anensefali"], a:1, explanation:"Hidrosefali (beyinde su toplanması), BOS dolaşımının engellenmesi veya emilimin azalmasıyla oluşur.", topic: "Klinik"},
+  {q:"18) BOS dolaşım yolunda tıkanıklık sonucu oluşan hidrosefali tipine ne ad verilir?", choices:["Komünike (irtibatlı) hidrosefali","Non-komünike (obstrüktif) hidrosefali","Ekz-vakuo hidrosefali","Normal basınçlı hidrosefali"], a:1, explanation:"Ventrikül sistemi içindeki bir tıkanıklık sonucu oluşan tipe obstrüktif (tıkayıcı) hidrosefali denir.", topic: "Klinik"},
+  {q:"19) Aquaeductus cerebri tıkanırsa hangi ventriküllerde genişleme görülmesi beklenir?", choices:["Sadece 4. ventrikül","Sadece 3. ventrikül","Lateral ventriküller ve 3. ventrikül","Tüm ventriküller"], a:2, explanation:"Tıkanıklığın üstündeki boşluklar (Lateral ve 3.) genişler, 4. ventrikül normal kalır.", topic: "Klinik"},
+  {q:"20) Normal bir BOS içeriğinde hangisinin bulunması beklenmez (veya çok azdır)?", choices:["Sodyum","Potasyum","Lökosit (hücre)","Glikoz"], a:2, explanation:"Normal BOS'ta hücre (lökosit) sayısı çok azdır (0-5/mm3). Fazlası enfeksiyon belirtisidir.", topic: "BOS içeriği"},
+  {q:"21) BOS'taki glikoz oranı kan şekerine oranla yaklaşık ne kadardır?", choices:["Aynıdır","Kan şekerinin 2/3'ü kadardır","Kan şekerinden fazladır","Glikoz bulunmaz"], a:1, explanation:"BOS glikozu, plazma glikozunun yaklaşık %60-70'i (2/3) kadardır.", topic: "BOS içeriği"},
+  {q:"22) BOS protein miktarı hakkında hangisi doğrudur?", choices:["Plazmaya göre çok düşüktür","Plazma ile aynıdır","Çok yüksektir","Protein içermez"], a:0, explanation:"BOS'un protein içeriği plazmaya göre oldukça düşüktür.", topic: "BOS içeriği"},
+  {q:"23) Lateral ventriküllerin bölümlerinden 'Cornu inferius' hangi beyin lobunda yer alır?", choices:["Frontal lob","Parietal lob","Temporal lob","Oksipital lob"], a:2, explanation:"Alt boynuz (inferior) temporal lobun içine doğru uzanır.", topic: "Lateral Ventriküller"},
+  {q:"24) Lateral ventriküllerin bölümlerinden 'Cornu anterius' hangi lobdadır?", choices:["Frontal lob","Temporal lob","Oksipital lob","Serebellum"], a:0, explanation:"Ön boynuz frontal lobun içindedir.", topic: "Lateral Ventriküller"},
+  {q:"25) Lateral ventriküllerin bölümlerinden 'Cornu posterius' hangi lobdadır?", choices:["Frontal lob","Temporal lob","Oksipital lob","Parietal lob"], a:2, explanation:"Arka boynuz oksipital lobun içindedir.", topic: "Lateral Ventriküller"},
+  {q:"26) Lateral ventriküllerin gövde kısmına (pars centralis) ne ad verilir?", choices:["Cella media","Trigonum","Atrium","İstmus"], a:0, explanation:"Merkezi kısım cella media olarak da bilinir ve parietal lobdadır.", topic: "Lateral Ventriküller"},
+  {q:"27) Üçüncü ventrikülün ön duvarını oluşturan yapı hangisidir?", choices:["Corpus callosum","Lamina terminalis","Serebellum","Pons"], a:1, explanation:"Lamina terminalis, 3. ventrikülün ön sınırını belirleyen ince bir zardır.", topic: "Üçüncü Ventrikül"},
+  {q:"28) Dördüncü ventrikülün tabanına (beyin sapı yüzü) ne ad verilir?", choices:["Tegmentum","Fossa rhomboidea","Vellum","Fastigium"], a:1, explanation:"Pons ve bulbusun arka yüzündeki bu eşkenar dörtgen şeklindeki alana fossa rhomboidea denir.", topic: "Dördüncü Ventrikül"},
+  {q:"29) BOS'un subaraknoid mesafeden venöz kana geçişi hangi mekanizma ile olur?", choices:["Aktif taşıma","Basınç farkı (Pasif difüzyon)","Endositoz","Pinositoz"], a:1, explanation:"BOS basıncı venöz basınçtan yüksek olduğu için kapakçık benzeri granülasyonlardan pasif geçiş olur.", topic: "BOS Dolaşımı"},
+  {q:"30) Kan-beyin bariyeri oluşumuna katılan temel glia hücresi hangisidir?", choices:["Oligodendrosit","Astrosit","Mikrogliya","Ependim"], a:1, explanation:"Astrositlerin perivasküler ayakçıkları bariyerin önemli bir parçasıdır.", topic: "Bariyerler"},
+  {q:"31) Kan-BOS bariyerini hangi yapı oluşturur?", choices:["Kan damarı endoteli ve plexus choroideus epiteli","Sadece duramater","Pia mater","Araknoid zar"], a:0, explanation:"Kandaki maddelerin BOS'a geçişi koroit pleksus epiteli ve damar duvarı tarafından kontrol edilir.", topic: "Bariyerler"},
+  {q:"32) Ventriküllerin içinde plexus choroideus'un en yoğun olduğu ve kireçlenmelerin sık görüldüğü geniş bölgeye ne denir?", choices:["Trigonum (Atrium)","Cornu anterius","Foramen Monro","İncisura"], a:0, explanation:"Lateral ventrikülün gövde, arka ve alt boynuzunun birleştiği bölgeye trigonum denir.", topic: "Lateral Ventriküller"},
+  {q:"33) Üçüncü ventrikülün tabanında yer alan girintilere (resessus) hangisi örnektir?", choices:["Resessus opticus","Resessus pinealis","Resessus suprapinealis","Hepsi"], a:3, explanation:"3. ventrikül çevresinde optik, infundibuler ve pineal girintiler bulunur.", topic: "Üçüncü Ventrikül"},
+  {q:"34) Serebellumun fastigium bölgesi hangi ventrikülle ilişkilidir?", choices:["1. ventrikül","2. ventrikül","3. ventrikül","4. ventrikül"], a:3, explanation:"4. ventrikülün tavanı serebellumun fastigium bölgesine doğru bir tepe yapar.", topic: "Dördüncü Ventrikül"},
+  {q:"35) Medulla spinalis'in tam ortasında boylu boyunca uzanan dar kanal hangisidir?", choices:["Aquaeductus","Canalis centralis","Sulkus","Fissür"], a:1, explanation:"Canalis centralis, 4. ventrikülün devamı olarak omurilik içinde uzanır.", topic: "Omurilik"},
+  {q:"36) Lumbal ponksiyon (LP) ile BOS örneği genellikle hangi aralıktan alınır?", choices:["L1-L2","L3-L4","T12-L1","C1-C2"], a:1, explanation:"Erişkinlerde omurilik L1-L2'de bittiği için güvenli alan olan L3-L4 arasından girilir.", topic: "Klinik"},
+  {q:"37) BOS analizi hangi hastalığın tanısında en kritiktir?", choices:["Hipertansiyon","Menenjit","Diyabet","Gastrit"], a:1, explanation:"Merkezi sinir sistemi enfeksiyonu olan menenjitte BOS içeriği (hücre, şeker, protein) değişir.", topic: "Klinik"},
+  {q:"38) Komünike (iletişimli) hidrosefali nedeni genellikle nedir?", choices:["Sylvius kanalı tıkanıklığı","BOS emilim bozukluğu (Araknoid granülasyon sorunu)","Monro deliği darlığı","Tümör"], a:1, explanation:"Ventrikül çıkışları açıktır ancak BOS emilemediği için tüm sistem genişler.", topic: "Klinik"},
+  {q:"39) Foramen interventriculare tıkanırsa ne olur?", choices:["Sadece o taraftaki lateral ventrikül genişler","Tüm ventriküller genişler","BOS üretimi durur","Hidrosefali oluşmaz"], a:0, explanation:"Monro deliği tek taraflı tıkanırsa sadece ilgili taraftaki lateral ventrikül şişer.", topic: "Klinik"},
+  {q:"40) BOS'un sirkülasyon (akış) yönü hangisinde doğru verilmiştir?", choices:["4 -> 3 -> Lateral","Lateral -> 3 -> 4 -> Subaraknoid","Subaraknoid -> 4 -> 3","3 -> Lateral -> 4"], a:1, explanation:"Akış lateralden başlar, 3. ve 4. ventrikülden geçerek beyin dış yüzeyindeki boşluğa (subaraknoid) çıkar.", topic: "BOS Dolaşımı"},
+  {q:"41) Ventrikülleri döşeyen epandim hücreleri arasındaki sıkı bağlantılar (tight junction) hangi bariyeri oluşturur?", choices:["Kan-beyin bariyeri","BOS-Beyin bariyeri","Kan-BOS bariyeri","Dura-beyin bariyeri"], a:1, explanation:"BOS ile beyin dokusu arasındaki madde geçişini düzenler.", topic: "Bariyerler"},
+  {q:"42) Plexus choroideus'un oluşumuna katılan vasküler (damarsal) pia mater katmanına ne ad verilir?", choices:["Lamina terminalis","Tela choroidea","Septum pellucidum","Velum medullare"], a:1, explanation:"Tela choroidea, ventrikül içine kıvrılarak plexus choroideus'u oluşturur.", topic: "BOS"},
+  {q:"43) İki lateral ventrikülün ön boynuzlarını birbirinden ayıran ince perdeye ne ad verilir?", choices:["Corpus callosum","Septum pellucidum","Fornix","Talamus"], a:1, explanation:"Septum pellucidum, orta hatta iki boşluğu ayıran zardır.", topic: "Lateral Ventriküller"},
+  {q:"44) BOS'un özgül ağırlığı yaklaşık kaçtır?", choices:["1.000 (su ile aynı)","1.005 - 1.008","1.100","2.000"], a:1, explanation:"BOS, sudan çok az daha yoğun bir sıvıdır.", topic: "BOS Özellikleri"},
+  {q:"45) BOS, beyni travmalara karşı nasıl korur?", choices:["Isıtarak","Mekanik destek (yastık görevi) sağlayarak","Sertleşerek","Vitamin depolayarak"], a:1, explanation:"BOS içinde 'yüzen' beyin, darbelere karşı bir su yastığı desteği alır.", topic: "BOS"},
+  {q:"46) 4. ventrikülün tavanının arka kısmını oluşturan yapı hangisidir?", choices:["Pons","Velum medullare inferius","Talamus","Hipofiz"], a:1, explanation:"4. ventrikülün tavanını superior ve inferior medüller velumlar oluşturur.", topic: "Dördüncü Ventrikül"},
+  {q:"47) Kan-beyin bariyeri hangi bölgelerde bulunmaz (Bariyersiz bölgeler)?", choices:["Korteks","Talamus","Sirkumventriküler organlar (Örn: Area postrema)","Lobus frontalis"], a:2, explanation:"Kandaki maddelerin doğrudan algılanması gereken alanlarda bariyer yoktur.", topic: "Bariyerler"},
+  {q:"48) BOS üretiminde hangi enzim kritik rol oynar?", choices:["Amilaz","Karbonik anhidraz","Lipaz","Pepsin"], a:1, explanation:"Karbonik anhidraz enzimi BOS salgılanması sürecinde aktiftir.", topic: "BOS"},
+  {q:"49) BOS'un pH değeri yaklaşık kaçtır?", choices:["5.0 (Asidik)","7.3 (Hafif alkali)","9.0 (Bazik)","2.0"], a:1, explanation:"BOS pH'ı kan pH'ına benzer şekilde hafif alkalidir.", topic: "BOS Özellikleri"},
+  {q:"50) Spinal anestezi ilacı nereye verilir?", choices:["Epidural mesafe","Subaraknoid mesafe (BOS içine)","Kas içine","Damar içine"], a:1, explanation:"Spinal anestezide ilaç doğrudan subaraknoid boşluktaki BOS içine enjekte edilir.", topic: "Klinik"}
+      ]
+      "Ders-4 Telencephalon": [
+        {q:"1) Telencephalon'u oluşturan temel yapılar aşağıdakilerden hangisidir?", choices:["Talamus ve Hipotalamus","Hemispherium cerebralis'ler","Mesencephalon","Pons ve Bulbus"], a:1, explanation:"Telencephalon, sağ ve sol iki beyin yarımküresinden (hemisfer) oluşur.", topic: "Genel Anatomi"},
+  {q:"2) Sağ ve sol iki hemisferi birbirinden ayıran derin yarığa ne ad verilir?", choices:["Sulcus lateralis","Sulcus centralis","Fissura longitudinalis cerebri","Sulcus calcarinus"], a:2, explanation:"Fissura longitudinalis cerebri, hemisferleri boyuna ayıran ana yarıktır ve içinde falx cerebri bulunur.", topic: "Yüzey Anatomisi"},
+  {q:"3) Hemisferlerin en dış katmanını oluşturan ve nöron gövdelerinin bulunduğu gri cevher tabakasına ne ad verilir?", choices:["Corpus callosum","Cortex cerebri","Capsula interna","Basal ganglion"], a:1, explanation:"Cortex cerebri (beyin kabuğu), telencephalon'un en dışındaki gri cevher tabakasıdır.", topic: "Cortex"},
+  {q:"4) Beyin yüzeyindeki çıkıntılı kıvrımlara ne ad verilir?", choices:["Sulcus","Gyrus","Fissura","İncisura"], a:1, explanation:"Gyruslar beyin yüzeyindeki kıvrımlardır; sulcuslar ise bu kıvrımlar arasındaki oluklardır.", topic: "Yüzey Anatomisi"},
+  {q:"5) Frontal lob ile parietal lobu birbirinden ayıran ana oluk hangisidir?", choices:["Sulcus lateralis (Sylvius)","Sulcus centralis (Rolando)","Sulcus parietooccipitalis","Sulcus cinguli"], a:1, explanation:"Sulcus centralis, motor ve duyu merkezlerini ayıran kritik bir sınırdır.", topic: "Sulkuslar"},
+  {q:"6) Frontal ve parietal lobları temporal lobdan ayıran derin yarık hangisidir?", choices:["Sulcus centralis","Sulcus lateralis (Sylvius)","Sulcus calcarinus","Sulcus olfactorius"], a:1, explanation:"Sulcus lateralis, temporal lobu üstteki loblardan ayıran ana lateral yarıktır.", topic: "Sulkuslar"},
+  {q:"7) Primer motor merkez (Brodmann 4. alan) hangi gyrus üzerinde yer alır?", choices:["Gyrus postcentralis","Gyrus precentralis","Gyrus frontalis superior","Gyrus temporalis superior"], a:1, explanation:"Gyrus precentralis, istemli hareketlerin başlatıldığı ana motor alandır.", topic: "Korteks Alanları"},
+  {q:"8) Primer somatosensoriyel merkez (Duyu merkezi - 3, 1, 2. alanlar) nerededir?", choices:["Gyrus precentralis","Gyrus postcentralis","Lobulus parietalis superior","Gyrus cinguli"], a:1, explanation:"Sulcus centralis'in hemen arkasındaki gyrus postcentralis genel vücut duyularının merkezidir.", topic: "Korteks Alanları"},
+  {q:"9) Broca alanı (Motor konuşma merkezi - 44, 45. alanlar) frontal lobun hangi gyrusunda bulunur?", choices:["Gyrus frontalis superior","Gyrus frontalis medius","Gyrus frontalis inferior (Pars opercularis ve triangularis)","Gyrus orbitalis"], a:2, explanation:"Broca alanı, baskın hemisferde gyrus frontalis inferior üzerinde yer alır.", topic: "Korteks Alanları"},
+  {q:"10) Primer görme merkezi (17. alan) hangi sulcusun çevresinde yer alır?", choices:["Sulcus centralis","Sulcus calcarinus","Sulcus lateralis","Sulcus lunatus"], a:1, explanation:"Görme merkezi oksipital lobda, sulcus calcarinus'un her iki dudağında bulunur.", topic: "Korteks Alanları"},
+  {q:"11) Primer işitme merkezi (41, 42. alanlar) nerede bulunur?", choices:["Gyrus temporalis superior (Heschl gyrusları)","Gyrus temporalis inferior","Gyrus angularis","Gyrus supramarginalis"], a:0, explanation:"İşitme duyusu, temporal lobun üst yüzeyindeki transvers temporal gyruslara gelir.", topic: "Korteks Alanları"},
+  {q:"12) Wernicke alanı (Sensoriyel konuşma/anlama merkezi) temel olarak nerede yer alır?", choices:["Frontal lob","Temporal lob (22. alan)","Oksipital lob","İnsula"], a:1, explanation:"Wernicke alanı temporal lobun üst-arka kısmında, konuşulan dilin anlaşılmasından sorumludur.", topic: "Korteks Alanları"},
+  {q:"13) Sulcus lateralis'in derinliklerinde yer alan, diğer loblar tarafından örtülmüş olan beyin lobu hangisidir?", choices:["Lobus limbicus","İnsula (Reil adası)","Lobus occipitalis","Lobus frontalis"], a:1, explanation:"İnsula, operculum adı verilen kapakçıkların altında gizlenmiş beşinci lobdur.", topic: "Loblar"},
+  {q:"14) Duygular, hafıza ve davranışlar ile ilişkili olan lob hangisidir?", choices:["Lobus frontalis","Lobus parietalis","Lobus limbicus","Lobus occipitalis"], a:2, explanation:"Limbik lob (gyrus cinguli, gyrus parahippocampalis vb.) duygusal beyin olarak bilinir.", topic: "Loblar"},
+  {q:"15) Vücudun karşı yarısındaki bölgelerin kortekste temsil edildiği haritaya ne ad verilir?", choices:["Homunculus","Ventrikül","Traktus","Fasikül"], a:0, explanation:"Motor ve duyu homunculus'u, vücut kısımlarının beyindeki yerleşimini gösterir.", topic: "Korteks"},
+  {q:"16) İki hemisferi birbirine bağlayan en büyük komissural lif demeti hangisidir?", choices:["Fornix","Commissura anterior","Corpus callosum","Capsula interna"], a:2, explanation:"Corpus callosum, sağ ve sol hemisfer arasındaki bilgi alışverişini sağlayan ana köprüdür.", topic: "Beyaz Cevher"},
+  {q:"17) Corpus callosum'un bölümleri önden arkaya doğru nasıldır?", choices:["Genu-Rostrum-Splenium-Truncus","Rostrum-Genu-Truncus-Splenium","Splenium-Truncus-Genu-Rostrum","Truncus-Genu-Rostrum-Splenium"], a:1, explanation:"Corpus callosum; rostrum (gaga), genu (diz), truncus (gövde) ve splenium (arka uç) kısımlarından oluşur.", topic: "Beyaz Cevher"},
+  {q:"18) Aynı hemisfer içindeki farklı korteks alanlarını birbirine bağlayan liflere ne denir?", choices:["Komissural lifler","Projeksiyon lifleri","Assosiasyon lifleri","Efferent lifler"], a:2, explanation:"Assosiasyon lifleri (kısa ve uzun) aynı yarımküre içindeki bölgeleri bağlar.", topic: "Beyaz Cevher"},
+  {q:"19) Korteks ile alt merkezler (talamus, beyin sapı, omurilik) arasında dikey uzanan liflere ne denir?", choices:["Assosiasyon lifleri","Projeksiyon lifleri","Komissural lifler","U-lifleri"], a:1, explanation:"Projeksiyon lifleri bilgiyi beyin kabuğuna taşır veya oradan aşağı indirir.", topic: "Beyaz Cevher"},
+  {q:"20) Projeksiyon liflerinin talamus ve bazal çekirdekler arasından geçerken oluşturduğu yelpaze şeklindeki yapıya ne denir?", choices:["Corpus callosum","Capsula interna","Fornix","Stria terminalis"], a:1, explanation:"Capsula interna, beyindeki projeksiyon liflerinin en yoğun toplandığı kritik geçit bölgesidir.", topic: "Beyaz Cevher"},
+  {q:"21) Capsula interna'nın bölümleri arasında hangisi yoktur?", choices:["Crus anterius","Genu","Crus posterius","Rostrum"], a:3, explanation:"Capsula interna'da crus anterius, genu ve crus posterius bulunur; rostrum corpus callosum'a aittir.", topic: "Beyaz Cevher"},
+  {q:"22) Tractus corticospinalis (piramidal yol) capsula interna'nın neresinden geçer?", choices:["Crus anterius","Genu","Crus posterius","Pars retrolentiformis"], a:2, explanation:"İskelet kaslarına giden motor lifler (corticospinal) crus posterius'ta yer alır.", topic: "Beyaz Cevher"},
+  {q:"23) Capsula interna'nın 'Genu' (diz) kısmından hangi lifler geçer?", choices:["Tractus corticospinalis","Fibrae corticonucleares (Kranial sinirlere giden lifler)","Görme radyasyonu","İşitme radyasyonu"], a:1, explanation:"Corticonuclear lifler genu bölgesinden geçerek kranial sinir çekirdeklerine gider.", topic: "Beyaz Cevher"},
+  {q:"24) Hippocampus'u hipotalamusa (corpus mammillare) bağlayan ve limbik sistemin parçası olan yapı hangisidir?", choices:["Fornix","Commissura posterior","Septum pellucidum","Capsula externa"], a:0, explanation:"Fornix, hafıza halkasının önemli bir efferent yoludur.", topic: "Beyaz Cevher"},
+  {q:"25) Koku duyusu ile ilgili lifleri içeren komissural yapı hangisidir?", choices:["Commissura posterior","Commissura anterior","Corpus callosum","Splenium"], a:1, explanation:"Commissura anterior, bulbus olfactorius'ları ve temporal lobları birbirine bağlar.", topic: "Beyaz Cevher"},
+  {q:"26) Beyin hemisferlerinin içinde yer alan derin gri cevher kitlelerine (nuclei basales) ne ad verilir?", choices:["Ventriküller","Bazal Ganglionlar","Serebellum","Tektum"], a:1, explanation:"Bazal ganglionlar (caudatus, putamen, pallidum vb.) hareket kontrolünde görevlidir.", topic: "Bazal Ganglionlar"},
+  {q:"27) Nucleus caudatus ve Putamen'in birlikte oluşturduğu yapıya ne denir?", choices:["Nucleus lentiformis","Striatum (Neostriatum)","Corpus albicans","Fornix"], a:1, explanation:"Striatum, caudatus ve putamen'den oluşur; bazal çekirdeklerin ana giriş kapısıdır.", topic: "Bazal Ganglionlar"},
+  {q:"28) Putamen ve Globus pallidus'un birlikte oluşturduğu lens şeklindeki yapıya ne denir?", choices:["Striatum","Nucleus lentiformis","Claustrum","Amygdala"], a:1, explanation:"Nucleus lentiformis, fonksiyonel olarak farklı olsa da anatomik olarak komşu olan putamen ve pallidum'un ismidir.", topic: "Bazal Ganglionlar"},
+  {q:"29) Korku ve öfke gibi emosyonel yanıtların merkezi olan bazal yapı hangisidir?", choices:["Nucleus caudatus","Putamen","Corpus amygdaloideum (Amygdala)","Claustrum"], a:2, explanation:"Amygdala, limbik sistemle ilişkili olup duygusal hafıza ve korku merkezidir.", topic: "Bazal Ganglionlar"},
+  {q:"30) Nucleus lentiformis ile claustrum arasında kalan ince beyaz cevher tabakası hangisidir?", choices:["Capsula interna","Capsula externa","Capsula extrema","Corona radiata"], a:1, explanation:"Capsula externa, putamen ile claustrum arasındadır.", topic: "Beyaz Cevher"},
+  {q:"31) Korteksten çıkan liflerin yukarıda oluşturduğu geniş yelpaze şeklindeki görünüme ne denir?", choices:["Capsula interna","Corona radiata","Fornix","İndusium griseum"], a:1, explanation:"Corona radiata (ışınsal taç), liflerin capsula interna'ya girmeden önceki yayılımıdır.", topic: "Beyaz Cevher"},
+  {q:"32) Okuma ve yazma fonksiyonları ile ilişkili olan, parietal lobdaki gyrus hangisidir?", choices:["Gyrus supramarginalis","Gyrus angularis (39. alan)","Gyrus cinguli","Gyrus rectus"], a:1, explanation:"Gyrus angularis hasarında okuma-yazma bozuklukları (aleksi, agrafi) görülür.", topic: "Korteks Alanları"},
+  {q:"33) Frontal lobun en ön kısmında bulunan ve kişilik, karar verme, sosyal davranışlardan sorumlu alan hangisidir?", choices:["Motor alan","Prefrontal korteks","Görme alanı","Somatosensoriyel alan"], a:1, explanation:"Prefrontal korteks, beynin en yüksek yönetim (executive) merkezidir.", topic: "Korteks Alanları"},
+  {q:"34) Sulcus centralis'in üst ucunun iç yüzdeki devamı olan ve 'mikrisyon/defekasyon' kontrolü yapan alan hangisidir?", choices:["Gyrus cinguli","Lobulus paracentralis","Cuneus","Precuneus"], a:1, explanation:"Lobulus paracentralis, bacakların motor-duyu alanı ve boşaltım kontrol merkezidir.", topic: "Korteks Alanları"},
+  {q:"35) Oksipital lobun iç yüzünde, sulcus parietooccipitalis ile sulcus calcarinus arasında kalan üçgen şeklindeki alana ne denir?", choices:["Precuneus","Cuneus","Lingual gyrus","Gyrus rectus"], a:1, explanation:"Cuneus (kama), görme ile ilgili bir sahadır.", topic: "Yüzey Anatomisi"},
+  {q:"36) Beyin hemisferlerinin iç yüzünde corpus callosum'u çevreleyen gyrus hangisidir?", choices:["Gyrus paraterminalis","Gyrus cinguli","Gyrus dentatus","Gyrus fusiformis"], a:1, explanation:"Gyrus cinguli, limbik sistemin ana bileşenlerinden biridir.", topic: "Yüzey Anatomisi"},
+  {q:"37) Beyin ağırlığı yetişkin bir insanda ortalama ne kadardır?", choices:["500-600 gr","1300-1400 gr","2000-2500 gr","100-200 gr"], a:1, explanation:"Yetişkin beyni ortalama 1.3-1.4 kg civarındadır.", topic: "Genel Bilgi"},
+  {q:"38) Beyin yüzey alanı gyrus ve sulcuslar sayesinde yaklaşık ne kadardır?", choices:["100 cm2","500 cm2","2000-2500 cm2","10000 cm2"], a:2, explanation:"Kıvrımlar sayesinde beynin yüzey alanı ciddi şekilde artırılmıştır.", topic: "Genel Bilgi"},
+  {q:"39) Sulcus lateralis'in arka ucunu çevreleyen parietal lob gyrus'u hangisidir?", choices:["Gyrus angularis","Gyrus supramarginalis (40. alan)","Gyrus postcentralis","Gyrus frontalis superior"], a:1, explanation:"Gyrus supramarginalis, sulcus lateralis'in bittiği yerdedir.", topic: "Yüzey Anatomisi"},
+  {q:"40) Frontal lobun alt (orbital) yüzünde, orta hattın hemen yanında uzanan düz gyrus hangisidir?", choices:["Gyrus rectus","Gyrus orbitalis","Gyrus lingualis","Gyrus parahippocampalis"], a:0, explanation:"Gyrus rectus, frontal lobun tabanında yer alır.", topic: "Yüzey Anatomisi"},
+  {q:"41) Koku soğanının (Bulbus olfactorius) üzerinde oturduğu sulcus hangisidir?", choices:["Sulcus orbitalis","Sulcus olfactorius","Sulcus rhinalis","Sulcus cinguli"], a:1, explanation:"Sulcus olfactorius, frontal lobun altında koku sinirini barındırır.", topic: "Yüzey Anatomisi"},
+  {q:"42) Primer görme alanının çevresindeki görsel hafıza ve yorumlama alanları hangileridir?", choices:["3, 1, 2","18 ve 19. alanlar","44 ve 45","41 ve 42"], a:1, explanation:"18 ve 19. alanlar sekonder görme merkezleridir.", topic: "Korteks Alanları"},
+  {q:"43) Broca alanı hasarında ne tür bir klinik tablo görülür?", choices:["Anlama bozukluğu","Motor afazi (Konuşamama/kelime üretememe)","Görme kaybı","İşitme kaybı"], a:1, explanation:"Broca afazisinde hasta anlar ama kelimeleri telaffuz edemez (tutuk konuşma).", topic: "Klinik"},
+  {q:"44) Wernicke alanı hasarında ne görülür?", choices:["Motor felç","Sensoryel afazi (Anlamı olmayan akıcı konuşma)","Koku kaybı","Denge bozukluğu"], a:1, explanation:"Wernicke afazisinde konuşma akıcıdır ama içerik anlamsızdır (kelime salatası).", topic: "Klinik"},
+  {q:"45) Corpus callosum hasarı veya cerrahi olarak kesilmesi sonucu oluşan duruma ne denir?", choices:["Afazi","Agrafi","Yabancı el sendromu (Split-brain)","Apraksi"], a:2, explanation:"İki hemisfer bağlantısı kopunca elin irade dışı hareket etmesi gibi durumlar oluşabilir.", topic: "Klinik"},
+  {q:"46) 'Gyrus dentatus' hangi yapının bir parçasıdır?", choices:["Talamus","Hippocampus (Formis hippocampi)","Bazal ganglion","Serebellum"], a:1, explanation:"Gyrus dentatus, hippocampus ile birlikte hafıza oluşumunda görevlidir.", topic: "Limbik Sistem"},
+  {q:"47) Beyin hemisferlerinde 'Ak Madde' (beyaz cevher) nerede bulunur?", choices:["En dışta","Korteks altında, gri cevherin iç kısmında","Sadece ventriküllerde","Bulunmaz"], a:1, explanation:"Serebrumda gri cevher dışta (korteks), beyaz cevher içtedir (omuriliğin tersi).", topic: "Genel Anatomi"},
+  {q:"48) Parietal lobun ana fonksiyonu nedir?", choices:["Görme","Hareket planlama","Duyusal algı ve entegrasyon","İşitme"], a:2, explanation:"Parietal lob dokunma, basınç ve mekansal algı merkezidir.", topic: "Loblar"},
+  {q:"49) Oksipital lobun ana fonksiyonu nedir?", choices:["Koku","Tat","Görme","Motor kontrol"], a:2, explanation:"Oksipital lob beynin ana görme merkezidir.", topic: "Loblar"},
+  {q:"50) Frontal lobun ana fonksiyonu nedir?", choices:["Duyma","İstemli motor hareket ve yürütücü işlevler","Denge","Duyu"], a:1, explanation:"Frontal lob hareketin başlatılması ve sosyal davranışların merkezidir.", topic: "Loblar"}
+      ]
     };
 
-    function render() {
-      // YENİ: Geçiş efekti için içeriği gizle-göster
-      elements.quizContent.classList.remove('fade-content');
-      void elements.quizContent.offsetWidth; // Animasyonu tetiklemek için reflow hack
-      elements.quizContent.classList.add('fade-content');
+    let state = {
+      currentSubject: null,
+      questions: [],
+      i: 0,
+      correct: 0,
+      wrong: 0,
+      answered: [],
+      mistakeMode: false // Yeni: Yanlışları tekrar etme modu kontrolü
+    };
 
-      const item = quiz[state.i];
-      elements.qnum.textContent = `Soru ${state.i + 1} / ${quiz.length}`;
-      elements.question.textContent = item.q;
-      elements.choices.innerHTML = '';
-      // Feedback'i gizle (CSS'te display:none yaptık, class ekleyince açılacak)
-      elements.feedback.className = 'feedback'; 
-      elements.feedback.innerHTML = '';
+    const card = document.getElementById('card');
+    const mainTitle = document.getElementById('mainTitle');
+    const mainSub = document.getElementById('mainSub');
+    const quizControls = document.getElementById('quizControls');
+    const progBar = document.getElementById('progBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const darkModeBtn = document.getElementById('darkModeBtn');
+
+    // --- GECE MODU ---
+    darkModeBtn.onclick = () => {
+      document.body.classList.toggle('dark-mode');
+      darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    };
+
+    // --- BAŞLANGIÇ EKRANI ---
+    function showSubjectSelection() {
+      state.currentSubject = null;
+      state.mistakeMode = false;
+      quizControls.style.display = 'none';
+      mainTitle.textContent = "Ders Seçimi";
+      mainSub.textContent = "Bugün ne çalışmak istersin Aşkım? ✨";
       
-      elements.nextBtn.disabled = !state.answered[state.i];
-      elements.prevBtn.disabled = state.i === 0;
+      let html = '<div class="subject-list">';
+      for (let s in subjects) {
+        html += `<button class="subject-btn" onclick="startQuiz('${s}')">${s} <span>🐾</span></button>`;
+      }
+      html += '</div>';
+      card.innerHTML = html;
+    }
 
-      item.choices.forEach((choice, idx) => {
+    // --- QUIZ BAŞLAT ---
+    function startQuiz(subjectName, onlyMistakes = false) {
+      state.currentSubject = subjectName;
+      
+      if (onlyMistakes) {
+        // Sadece yanlışları filtrele
+        state.questions = state.questions.filter((q, index) => {
+            return state.answered[index] && state.answered[index].chosen !== q.a;
+        });
+        state.mistakeMode = true;
+      } else {
+        state.questions = subjects[subjectName];
+        state.mistakeMode = false;
+      }
+
+      state.i = 0; state.correct = 0; state.wrong = 0; state.answered = [];
+      quizControls.style.display = 'block';
+      mainTitle.textContent = state.mistakeMode ? "Yanlışları Tekrarla" : subjectName;
+      mainSub.textContent = "Hadi başaralım! ✨🩷";
+      renderQuestion();
+    }
+
+    // --- SORU GÖSTER ---
+    function renderQuestion() {
+      if (state.questions.length === 0) {
+          showSubjectSelection();
+          return;
+      }
+      const q = state.questions[state.i];
+      
+      card.innerHTML = `
+        <div class="fade-content">
+          <div class="qnum">Soru ${state.i + 1} / ${state.questions.length}</div>
+          <div class="question">${q.q}</div>
+          <div class="choices" id="choices"></div>
+          <div class="feedback" id="feedback"></div>
+        </div>
+      `;
+
+      const choicesBox = document.getElementById('choices');
+      q.choices.forEach((choice, idx) => {
         const btn = document.createElement('button');
         btn.className = 'btn';
         btn.textContent = choice;
@@ -483,124 +464,96 @@
         
         if (state.answered[state.i]) {
           btn.disabled = true;
-          if (idx === item.a) btn.classList.add('correct-choice');
+          if (idx === q.a) btn.classList.add('correct-choice');
           else if (idx === state.answered[state.i].chosen) btn.classList.add('wrong-choice');
         }
-        elements.choices.appendChild(btn);
+        choicesBox.appendChild(btn);
       });
 
-      setTimeout(() => {
-         elements.prog.style.width = `${((state.i + 1) / quiz.length) * 100}%`;
-      }, 150);
-      
       if (state.answered[state.i]) {
-        showFeedback(state.answered[state.i].chosen === item.a);
+        showFeedback(state.answered[state.i].chosen === q.a);
       }
+
+      updateUI();
     }
 
     function onAnswer(chosen) {
       if (state.answered[state.i]) return;
-      const item = quiz[state.i];
+      const q = state.questions[state.i];
       state.answered[state.i] = { chosen };
       
-      const isCorrect = chosen === item.a;
-      if (isCorrect) {
-        state.correct++;
-        spawnHearts();
-      } else {
-        state.wrong++;
-        elements.card.classList.add('shake');
-        setTimeout(() => elements.card.classList.remove('shake'), 500);
-      }
+      const isCorrect = chosen === q.a;
+      if (isCorrect) { state.correct++; spawnHearts(); } 
+      else { state.wrong++; card.classList.add('shake'); setTimeout(() => card.classList.remove('shake'), 500); }
 
-      render();
+      renderQuestion();
       
-      // Bekleme süreleri: Doğruysa 2sn, yanlışsa 5sn
       setTimeout(() => {
-        if (state.i < quiz.length - 1) {
+        if (state.i < state.questions.length - 1 && state.answered[state.i]) {
             state.i++;
-            render();
-        } else {
+            renderQuestion();
+        } else if (state.i === state.questions.length - 1) {
             showSummary();
         }
-      }, isCorrect ? 2000 : 4000);
+      }, 3000);
     }
 
     function showFeedback(isCorrect) {
-      const item = quiz[state.i];
-      // Feedback görünür hale geliyor
-      elements.feedback.className = `feedback visible ${isCorrect ? 'correct' : 'wrong'}`;
-      if (isCorrect) {
-        const praises = ["Harikasın Aşkım! ✨", "Mükemmel gidiyorsun! 💖", "Waoooww! 🧠❤️", "Süpersin! 🎉", "Doğru cevap ! 👑"];
-        const randomPraise = praises[Math.floor(Math.random() * praises.length)];
-        elements.feedback.innerHTML = `<div class="message">${randomPraise}</div><div class="explain">${item.explanation}</div>`;
-      } else {
-        elements.feedback.innerHTML = `<div class="message">Yanlış oldu 💕</div><div class="explain" style="color: var(--text-main)">Doğru cevap: <b>${item.choices[item.a]}</b><br><br>${item.explanation}</div>`;
-      }
+      const q = state.questions[state.i];
+      const fb = document.getElementById('feedback');
+      fb.className = `feedback visible ${isCorrect ? 'correct' : 'wrong'}`;
+      fb.innerHTML = `
+        <div class="message">${isCorrect ? 'Harikasın Aşkım! ✨' : 'Yanlış oldu 💕'}</div>
+        <div class="explain">${q.explanation}</div>
+      `;
     }
 
-    function spawnHearts() {
-      const heartCount = 45; 
-      const container = document.body;
-      for (let i = 0; i < heartCount; i++) {
-        const h = document.createElement('div');
-        h.className = 'heart-particle';
-        h.innerHTML = ['❤️', '💖', '💝', '💕'][Math.floor(Math.random() * 4)];
-        h.style.left = Math.random() * 100 + 'vw';
-        h.style.top = (Math.random() * 20 + 85) + 'vh';
-        const size = Math.random() * 30 + 15;
-        h.style.fontSize = size + 'px';
-        h.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        h.style.animationDelay = Math.random() * 0.5 + 's';
-        container.appendChild(h);
-        setTimeout(() => h.remove(), 3500);
-      }
+    function updateUI() {
+      prevBtn.disabled = state.i === 0;
+      nextBtn.disabled = !state.answered[state.i];
+      progBar.style.width = `${((state.i + 1) / state.questions.length) * 100}%`;
     }
 
     function showSummary() {
-      const scorePct = Math.round((state.correct / quiz.length) * 100);
-      let finalMessage = "";
-      if(scorePct > 90) finalMessage = "Mükkemmelsin işte buu 💖";
-      else if(scorePct > 70) finalMessage = "Sen çözmüşsün bu işi  🎉❤️";
-      else finalMessage = " Sınavda bol şansssss ❤️✨";
+      quizControls.style.display = 'none';
+      mainTitle.textContent = "Sonuçlar 🎉";
+      
+      let mistakeTopics = [...new Set(state.answered.filter((a, idx) => a.chosen !== state.questions[idx].a).map((a, idx) => state.questions[idx].topic))];
 
-      elements.card.innerHTML = `
-        <div style="text-align:center; padding: 40px 25px; animation: fadeIn 0.8s ease-out;">
-          <div class="logo" style="margin: 0 auto 25px; animation: none; transform: scale(1.3); filter: drop-shadow(0 10px 20px var(--accent-glow));">🎉</div>
-          <h2 style="color:var(--accent-pink); font-family:'Dancing Script'; font-size:42px; margin-bottom:15px;">Quiz Tamamlandı!</h2>
-          <p class="lead" style="margin-bottom: 35px; font-size: 20px;">${finalMessage}</p>
-          
-          <div style="display:flex; justify-content:center; gap:25px; margin-bottom:40px;">
-            <div style="background:var(--success-bg); padding:20px 30px; border-radius:20px; color:var(--success-text); font-weight:bold; box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);">
-              <div style="font-size:28px;">${state.correct}</div>
-              <div style="font-size:16px; opacity:0.8;">Doğru</div>
-            </div>
-            <div style="background:var(--error-bg); padding:20px 30px; border-radius:20px; color:var(--error-text); font-weight:bold; box-shadow: 0 5px 15px rgba(230, 81, 0, 0.2);">
-              <div style="font-size:28px;">${state.wrong}</div>
-              <div style="font-size:16px; opacity:0.8;">Yanlış</div>
-            </div>
+      let retryMistakesBtn = state.wrong > 0 ? `<button class="subject-btn" onclick="startQuiz('${state.currentSubject}', true)" style="background:var(--accent-pink); color:white; border:none; justify-content:center; margin-top:15px;">❌ Yanlışları Tekrar Çöz</button>` : '';
+
+      card.innerHTML = `
+        <div style="text-align:center; animation: fadeIn 0.8s;">
+          <h2 style="color:var(--accent-pink); font-size:32px;">${state.mistakeMode ? "Tekrar" : state.currentSubject} Bitti!</h2>
+          <div style="display:flex; justify-content:center; gap:20px; margin:20px 0;">
+            <div style="background:var(--success-bg); padding:15px; border-radius:15px; color:var(--success-text); border:1px solid var(--success-text);"><b>${state.correct}</b> Doğru</div>
+            <div style="background:var(--error-bg); padding:15px; border-radius:15px; color:var(--error-text); border:1px solid var(--error-text);"><b>${state.wrong}</b> Yanlış</div>
           </div>
           
-          <button class="btn" onclick="location.reload()" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-soft)); color:white; padding: 18px 45px; font-size: 19px; box-shadow: 0 15px 30px rgba(255,64,129,0.4); border:none;">Tekrar Çöz 💖</button>
+          ${mistakeTopics.length > 0 ? '<div style="text-align:left; background:rgba(0,0,0,0.05); padding:15px; border-radius:15px; border:1px solid var(--accent-soft);"><p style="font-weight:800; color:var(--accent-pink); margin-top:0;">💡 Bu konulara dikkat Aşkım:</p><ul style="font-size:14px; line-height:1.6;">' + mistakeTopics.map(t => `<li>${t}</li>`).join('') + '</ul></div>' : '<p>Harikasın, hiçbir hatan yok! 👑</p>'}
+          
+          ${retryMistakesBtn}
+
+          <button class="subject-btn" onclick="showSubjectSelection()" style="width:100%; margin-top:10px; border:1px solid var(--accent-pink); justify-content:center;">🏠 Ana Menüye Dön</button>
         </div>
       `;
-      spawnHearts();
     }
 
-    elements.nextBtn.onclick = () => { if (state.i < quiz.length - 1) { state.i++; render(); } };
-    elements.prevBtn.onclick = () => { if (state.i > 0) { state.i--; render(); } };
+    prevBtn.onclick = () => { if (state.i > 0) { state.i--; renderQuestion(); } };
+    nextBtn.onclick = () => { if (state.i < state.questions.length - 1) { state.i++; renderQuestion(); } };
 
-    // Sayfa yüklendiğinde yumuşak bir giriş efekti
-    document.getElementById('mainWrap').style.opacity = '0';
-    document.getElementById('mainWrap').style.transform = 'translateY(20px)';
-    setTimeout(() => {
-        document.getElementById('mainWrap').style.opacity = '1';
-        document.getElementById('mainWrap').style.transform = 'translateY(0)';
-        render();
-    }, 300);
+    function spawnHearts() {
+      for (let i = 0; i < 30; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart-particle'; h.innerHTML = '❤️';
+        h.style.left = Math.random() * 100 + 'vw'; h.style.top = '90vh';
+        h.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 3000);
+      }
+    }
+
+    showSubjectSelection();
   </script>
 </body>
 </html>
-
-
-
