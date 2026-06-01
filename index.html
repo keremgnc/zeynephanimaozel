@@ -164,118 +164,254 @@
   </div>
 
   <script>
-    const subjects = {
-      "Sağlık İletişimi ve Sağlık Okuryazarlığı": [
-{q:"1) CDC'ye göre; sağlığı geliştirmek, kararları iyileştirmek ve toplumun eylemlerini etkilemek amacıyla iletişim stratejilerinin uygulanmasına ne ad verilir?", choices:["Sağlık Sosyolojisi","Sağlık İletişimi","Halkla İlişkiler","Sağlık Yönetimi"], a:1, explanation:"CDC'ye göre sağlık iletişimi; sağlığı geliştirmek, kişilerin ve toplumun sağlıkla ilgili kararlarını iyileştirmek amacıyla iletişim bilimine ilişkin stratejilerin uygulanmasıdır.", topic: "Sağlık İletişimi Tanımı"},
-  {q:"2) Sağlık iletişiminin temel amacı aşağıdakilerden hangisidir?", choices:["Sadece tıbbi cihaz satışı yapmak","Halkı ve sağlık personellerini bilinçlendirerek hayat koşullarını iyileştirmek","Hastanelerin kar oranını artırmak","Sağlık çalışanlarının sayısını azaltmak"], a:1, explanation:"Temel amaç; toplumda sağlık hizmetinin gelişmesine katkı sağlamak, standartları yöneterek artırmak ve halkı bilinçlendirerek ikna etmektir.", topic: "Sağlık İletişimi Amaçları"},
-  {q:"3) Sağlık okuryazarlığı kavramı ilk kez hangi yıl kullanılmıştır?", choices:["1950","1974","2000","2010"], a:1, explanation:"Sağlık okuryazarlığı kavramı ilk olarak 1974 yılında Scott K. Simonds tarafından kullanılmıştır.", topic: "Tarihsel Gelişim"},
-  {q:"4) Bireylerin sağlıkla ilgili bilgilere ulaşma, bunları anlama ve sağlığını korumak için kullanma yeteneğine ne ad verilir?", choices:["Medya okuryazarlığı","Sağlık okuryazarlığı","Dijital okuryazarlık","Bilgi yönetimi"], a:1, explanation:"Sağlık okuryazarlığı, bireylerin sağlık bilgilerini okuma, anlama ve uygun sağlık kararları verebilme kapasitesini ifade eder.", topic: "Sağlık Okuryazarlığı"},
-  {q:"5) Nutbeam'e göre; temel okuma ve yazma becerilerini içeren sağlık okuryazarlığı düzeyi hangisidir?", choices:["Etkileşimli (İnteraktif) Sağlık Okuryazarlığı","Eleştirel Sağlık Okuryazarlığı","Temel/İşlevsel Sağlık Okuryazarlığı","İleri Sağlık Okuryazarlığı"], a:2, explanation:"Temel/İşlevsel düzey, günlük yaşamda sağlıkla ilgili temel mesajları anlama ve uygulamayı kapsar.", topic: "Nutbeam Modeli"},
-  {q:"6) Bireyin daha gelişmiş bilişsel becerilere sahip olduğu, bilgiyi süzebildiği ve kontrol edebildiği Nutbeam düzeyi hangisidir?", choices:["Temel düzey","Etkileşimli (İnteraktif) Sağlık Okuryazarlığı","Eleştirel düzey","Sınırlı düzey"], a:1, explanation:"Etkileşimli düzeyde birey, sosyal becerilerini de kullanarak bilgiyi çeşitli iletişim kanallarından çekip çıkarabilir.", topic: "Nutbeam Modeli"},
-  {q:"7) Bilgiyi eleştirel olarak analiz etme ve toplumsal eylemlerde bulunma yeteneğini içeren en üst düzey hangisidir?", choices:["İşlevsel düzey","Eleştirel Sağlık Okuryazarlığı","Dijital düzey","Sözel düzey"], a:1, explanation:"Eleştirel düzey, bireyin sağlıkla ilgili sosyal, siyasi ve çevresel belirleyicilere karşı toplumsal farkındalık geliştirmesini içerir.", topic: "Nutbeam Modeli"},
-  {q:"8) Sorensen ve arkadaşları tarafından geliştirilen Avrupa Sağlık Okuryazarlığı (HLS-EU) modelinde kaç temel boyut vardır?", choices:["2","3","4","6"], a:2, explanation:"Modelde; erişim (ulaşım), anlama, değerlendirme ve uygulama olmak üzere 4 temel boyut tanımlanmıştır.", topic: "Sorensen Modeli"},
-  {q:"9) Sorensen modeline göre; ulaşılan bilgiyi 'kişisel duruma göre yorumlama ve güvenilirliğini tartma' aşaması hangisidir?", choices:["Erişim","Anlama","Değerlendirme","Uygulama"], a:2, explanation:"Değerlendirme aşaması, bilginin kalitesini ve kişi için uygunluğunu analiz etme sürecidir.", topic: "Sorensen Modeli"},
-  {q:"10) Bireyin sağlık bilgilerini kullanarak sağlık sonuçlarını iyileştirme eylemine ne ad verilir?", choices:["Anlama","Erişim","Uygulama","Sınıflama"], a:2, explanation:"Uygulama, edinilen ve değerlendirilen bilginin davranışa dönüştürülmesidir.", topic: "Sorensen Modeli"},
-  {q:"11) Aşağıdakilerden hangisi sağlık okuryazarlığını etkileyen faktörlerden biri değildir?", choices:["Eğitim düzeyi","Yaş","Gelir durumu","Göz rengi"], a:3, explanation:"Eğitim, gelir, yaş, dil ve kültürel faktörler sağlık okuryazarlığını etkiler; fiziksel özelliklerin (göz rengi vb.) etkisi yoktur.", topic: "Etkileyen Faktörler"},
-  {q:"12) Sağlık okuryazarlığı düşük olan bireylerde aşağıdakilerden hangisinin görülme olasılığı daha yüksektir?", choices:["Daha az hastaneye yatış","İlaçları doğru kullanma","Önleyici hizmetleri (tarama, aşı vb.) daha az kullanma","Daha uzun yaşam süresi"], a:2, explanation:"Düşük sağlık okuryazarlığı; daha az koruyucu hizmet kullanımı, daha fazla acil servis başvurusu ve ilaç hatalarıyla ilişkilidir.", topic: "Sonuçlar ve Etkiler"},
-  {q:"13) 'Öğret-Geri Al' (Teach-Back) stratejisinin temel amacı nedir?", choices:["Hastanın hafızasını test etmek","Sağlık çalışanının bilgiyi ne kadar açık anlattığını teyit etmek","Hastayı azarlamak","Zaman kazanmak"], a:1, explanation:"Teach-back tekniğinde hastadan bilgiyi kendi kelimeleriyle anlatması istenir; amaç sağlık çalışanının mesajı doğru iletip iletmediğini ölçmektir.", topic: "İletişim Stratejileri"},
-  {q:"14) Sağlık okuryazarlığında iletişim stratejisi olarak 'Görsel Araç Kullanımı' neden tercih edilir?", choices:["Hastanın sıkılmasını önlemek için","Anlaşılırlığı artırmak ve mesajı somutlaştırmak için","Resim yapmayı sevmekten dolayı","Yazı yazmamak için"], a:1, explanation:"Görseller (piktogramlar, şemalar), özellikle okuma yazma düzeyi düşük veya karmaşık süreçlerde anlamayı %25-30 artırır.", topic: "İletişim Stratejileri"},
-  {q:"15) Sağlık çalışanının hasta ihtiyaçlarını daha iyi kavramasını sağlayan soru sorma stratejisi hangisidir?", choices:["Evet/Hayır soruları sormak","Açık uçlu soru sormak","Soru sormamak","Sadece teknik terimlerle sormak"], a:1, explanation:"Açık uçlu sorular hastanın kendini ifade etmesine ve ihtiyacın tam olarak belirlenmesine olanak tanır.", topic: "İletişim Stratejileri"},
-  {q:"16) 'Mesajın hedef kitleye göre hazırlanması' stratejisinde hangisi göz önünde bulundurulmalıdır?", choices:["Kültürel ve dilsel uyum","Sadece yüksek akademik dil","Maksimum sayfa sayısı","Karmaşık grafikler"], a:0, explanation:"Özellikle azınlık ve göçmen gruplarda kültürel değerlere ve dile uygun mesajlar daha etkilidir.", topic: "İletişim Stratejileri"},
-  {q:"17) Sağlık eğitiminde toplum tarafından kabul edilen liderlerin kullanılması neden etkili olabilir?", choices:["Daha ucuz oldukları için","Güven oluşturma ve ikna sürecini kolaylaştırdıkları için","Tıbbi bilgi sahibi oldukları için","Resmi görevli oldukları için"], a:1, explanation:"Toplum liderleri (kanaat önderleri) aracı rolü üstlenerek sağlık mesajlarının kabul görmesini sağlar.", topic: "İletişim Stratejileri"},
-  {q:"18) Medya okuryazarlığı ile sağlık okuryazarlığı arasındaki ilişki hakkında hangisi doğrudur?", choices:["Hiçbir ilişkisi yoktur","Medyadaki doğru sağlık bilgisini ayırt edebilmek sağlık okuryazarlığını destekler","Medya sağlık için zararlıdır","Sadece gazete okumak yeterlidir"], a:1, explanation:"Sağlık bilgilerinin büyük kısmı medyadan yayıldığı için, doğruyu yanlıştan ayırma becerisi (medya okuryazarlığı) sağlığı korumada kritiktir.", topic: "İletişim Stratejileri"},
-  {q:"19) Sağlık okuryazarlığı modellerinde 'Fonksiyonel Boyut' neyi temsil eder?", choices:["Bilimsel araştırma yapmayı","Okuma, yazma ve temel hesaplama (ilaç dozu vb.) becerilerini","Ameliyat yapmayı","Siyaset yapmayı"], a:1, explanation:"Fonksiyonel boyut, bireyin sağlık sisteminde hayatta kalması için gereken temel okur-yazarlık becerileridir.", topic: "Nutbeam Modeli"},
-  {q:"20) Sağlık iletişiminin tarihsel gelişiminde Piatrow (2003) tarafından vurgulanan gelişim süreci kaç döneme ayrılmıştır?", choices:["2","3","4","5"], a:2, explanation:"Piatrow ve arkadaşları sağlık iletişiminin gelişimini dört ana dönemle açıklamıştır.", topic: "Tarihsel Gelişim"}
-      ],
-      "Sözlü-Sözsüz İletişim": [
-{q:"1) İletişim sürecinde mesajın gönderildiği ortamı, zaman baskısını ve fiziksel koşulları ifade eden bileşen hangisidir?", choices:["Geri bildirim","Kanal","Bağlam","Gürültü"], a:2, explanation:"Bağlam, iletişimin gerçekleştiği ortamdır. Klinikte zaman baskısı, stres veya ekran kullanımı gibi faktörler mesajın çözümlenmesini etkileyen bağlamsal unsurlardır.", topic: "İletişim Süreci"},
-  {q:"2) İletişim sürecinde alıcının mesajı alıp yorumladıktan sonra göndericiye verdiği yanıta ne ad verilir?", choices:["Kodlama","Kanal","Geri bildirim (Feedback)","Gürültü"], a:2, explanation:"Geri bildirim, mesajın doğru anlaşılıp anlaşılmadığını teyit eden, alıcıdan göndericiye giden yanıttır.", topic: "İletişim Süreci"},
-  {q:"3) Aşağıdakilerden hangisi sözlü iletişimin (verbal communication) temel bileşenleri arasında yer alır?", choices:["Mimikler","Kelime seçimi ve cümle yapısı","Göz teması","Kişisel mesafe"], a:1, explanation:"Sözlü iletişim; kullanılan kelimeler, cümle yapıları, soru sorma ve özetleme gibi dilsel unsurları kapsar.", topic: "Sözlü İletişim"},
-  {q:"4) Sesin tonu, hızı, vurgusu ve sessizlik gibi unsurlar iletişimin hangi kategorisine girer?", choices:["Sözlü iletişim","Para-linguistik","Beden dili","Bağlam"], a:1, explanation:"Para-linguistik, kelimelerin 'nasıl' söylendiğiyle ilgili olan ses özelliklerini (ton, hız, duraklama vb.) ifade eder.", topic: "Sözsüz İletişim"},
-  {q:"5) Sözsüz iletişimin (non-verbal) ana bileşenlerinden olan 'Kinesics' neyi inceler?", choices:["Ses tonunu","Kişisel mesafeyi","Vücut hareketlerini ve duruşu","Sessizlik sürelerini"], a:2, explanation:"Kinesics; beden duruşu, jestler ve mimikler gibi vücut hareketlerini inceleyen alandır.", topic: "Sözsüz İletişim"},
-  {q:"6) Konuşma sırasında verilen kısa duraklamaların temel işlevi nedir?", choices:["Mesajı karmaşıklaştırmak","Karşı tarafa düşünme ve duygu işleme alanı açmak","Zaman kazanmak","İletişimi sonlandırmak"], a:1, explanation:"Sessizlik ve duraklamalar, alıcıya bilgiyi sindirme, düşünme ve soru sorma fırsatı verir.", topic: "Para-linguistik"},
-  {q:"7) Klinikte 'Uyum' (Congruence) kavramı neyi ifade eder?", choices:["Sadece kelimelerin doğru seçilmesini","Söylenen söz ile beden dili ve ses tonunun birbiriyle tutarlı olmasını","Hastanın her söylediğine onay vermeyi","Hızlı konuşmayı"], a:1, explanation:"Uyum, içerik (söz), ton ve beden dilinin aynı mesajı desteklemesidir. Güven oluşturmak için temeldir.", topic: "Uyum"},
-  {q:"8) Profesyonel bir duruşta 'Sıcaklık' (Warmth) bileşeni aşağıdakilerden hangisiyle sağlanır?", choices:["Tıbbi terimler kullanmak","Saygılı dil, etkin dinleme ve empati","Mesafeli durmak","Sadece teknik bilgi vermek"], a:1, explanation:"Sıcaklık; saygılı dil, gülümseme, empati ve etkin dinleme ile hastaya verilen değeri gösterir.", topic: "Profesyonel Duruş"},
-  {q:"9) Profesyonel duruşun 'Yetkinlik' (Competence) boyutu neyi temsil eder?", choices:["Duygusal yakınlığı","Bilgi birikimi, özgüven ve profesyonel sınırlar","Sadece kıyafet düzenini","Çok hızlı hareket etmeyi"], a:1, explanation:"Yetkinlik; uzmanın bilgisi, özgüveni ve mesleki sınırlarını koruyarak verdiği güveni temsil eder.", topic: "Profesyonel Duruş"},
-  {q:"10) İletişimde 'Açık Duruş' ne anlama gelir?", choices:["Kolların göğüste kavuşturulması","Vücudun karşı tarafa dönük, kolların serbest ve iletişime hazır olması","Sırtın hastaya dönülmesi","Gözlerin yere bakması"], a:1, explanation:"Açık duruş, savunmacı olmayan, karşıdakini dinlemeye ve kabul etmeye istekli bir beden dilidir.", topic: "Beden Dili"},
-  {q:"11) Sözlü iletişimde 'Özetleme' yapmanın temel amacı nedir?", choices:["Konuşmayı uzatmak","Anlaşılan noktaları teyit etmek ve bir sonraki aşamaya geçişi sağlamak","Hastanın sözünü kesmek","Zamanı doldurmak"], a:1, explanation:"Özetleme, karmaşık bilgilerin üzerinden geçerek yanlış anlaşılmaları önler ve iletişimi yapılandırır.", topic: "Sözlü İletişim"},
-  {q:"12) Ses tonunun 'Monoton' olması iletişimi nasıl etkiler?", choices:["Güveni artırır","Alıcının ilgisinin dağılmasına ve sıkılmasına neden olur","Daha profesyonel görünmeyi sağlar","Anlaşılırlığı artırır"], a:1, explanation:"Vurgusuz ve monoton bir ses, mesajın önem derecesini kaybetmesine ve dinleyicinin kopmasına neden olur.", topic: "Para-linguistik"},
-  {q:"13) 'Tele-sağlık' görüşmelerinde aşırı uzun sessizliğin en büyük riski nedir?", choices:["Hastanın uyuması","Bağlantının donduğu algısı ve kaygı yaratması","Daha iyi anlaşılmak","Maliyetin artması"], a:1, explanation:"Ekran aracılı iletişimde uzun sessizlik teknik bir sorun olduğu (donma) düşüncesine ve kaygıya yol açabilir.", topic: "Para-linguistik"},
-  {q:"14) Göz teması ile ilgili kliniklerde en ideal yaklaşım hangisidir?", choices:["Sürekli ve delici bir şekilde bakmak","Hiç bakmadan sadece not almak","Kültürel farklılıkları gözeterek, güven veren ve aşırıya kaçmayan bir temas","Hastanın gözlerini kaçırmasını beklemek"], a:2, explanation:"Göz teması ilgi göstergesidir ancak dozunda ve kültürel bağlama uygun olmalıdır.", topic: "Sözsüz İletişim"},
-  {q:"15) İletişim sürecindeki 'Gürültü' (Noise) kavramı hangisini kapsar?", choices:["Sadece dışarıdaki iş makinesi sesi","İletişimi engelleyen fiziksel, fizyolojik veya psikolojik her türlü faktör","Sadece yüksek sesli konuşma","Radyo sesi"], a:1, explanation:"Gürültü; fiziksel sesler kadar, önyargılar, ağrı veya stres gibi iletişimi bozan içsel faktörleri de kapsar.", topic: "İletişim Süreci"},
-  {q:"16) 'Kısa cümle + duraklama + kontrol sorusu' formülü neden kullanılır?", choices:["Hastayı yormak için","Bilginin parça parça ve anlaşılır şekilde aktarılmasını sağlamak için","Kısa konuşup dinlenmek için","Soru sormayı engellemek için"], a:1, explanation:"Bu yöntem, özellikle karmaşık tıbbi bilgilerin aktarımında hastanın bilgiyi sindirmesine yardımcı olur.", topic: "Sözlü İletişim"},
-  {q:"17) İletişimde 'Proxemics' neyi ifade eder?", choices:["Kelime anlamlarını","Kişiler arasındaki fiziksel mesafenin kullanımı","El hareketlerini","Göz bebeklerinin büyümesini"], a:1, explanation:"Proxemics, kişisel alan ve taraflar arasındaki mesafenin iletişimdeki etkisini inceler.", topic: "Sözsüz İletişim"},
-  {q:"18) Bir sağlık profesyonelinin hastasına 'Anlıyorum' derken aynı zamanda ekrana bakması hangi durumu oluşturur?", choices:["Güçlü iletişim","Uyumsuzluk (Incongruence)","Zaman yönetimi","Teknolojik yetkinlik"], a:1, explanation:"Söylenen söz (ilgi) ile beden dili (başka yere bakma) çeliştiği için uyumsuzluk oluşur ve güven azalır.", topic: "Uyum"},
-  {q:"19) Aşağıdakilerden hangisi profesyonel duruşta sıcaklığı destekleyen bir sözsüz işarettir?", choices:["Kaşları çatmak","Hafif öne eğilme ve açık el jestleri","Saat kontrolü yapmak","Sürekli notlara bakmak"], a:1, explanation:"İlgiyle hafifçe öne eğilmek ve açık eller, sıcaklık ve samimiyet sinyali gönderir.", topic: "Beden Dili"},
-  {q:"20) Sözlü iletişimde 'Geçiş' (Transition) ifadelerinin işlevi nedir?", choices:["Konuyu kapatmak","Farklı bir konuya geçileceğini bildirerek iletişimi yapılandırmak","Hastayı susturmak","Zamanı verimsiz kullanmak"], a:1, explanation:"Geçiş ifadeleri, görüşmenin akışını hastaya hissettirerek belirsizliği ortadan kaldırır.", topic: "Sözlü İletişim"}
-      ],
-      "Sağlıkta İletişim 1": [
-{q:"1) Güncel bir sistematik derlemeye göre (67.826 hasta), zayıf iletişim aşağıdakilerden hangisiyle doğrudan ilişkilendirilmiştir?", choices:["Hastanelerin fiziksel yapısıyla","Hasta güvenliği olaylarıyla","Sağlık çalışanlarının maaşlarıyla","Tıbbi cihazların bozulmasıyla"], a:1, explanation:"Zayıf iletişim, yüksek oranlarda tek başına veya diğer nedenlerle birlikte hasta güvenliğini tehdit eden olaylarla ilişkilendirilmiştir.", topic: "Sağlıkta İletişimin Önemi"},
-  {q:"2) Sağlıkta iletişimin temel amacı aşağıdakilerden hangisidir?", choices:["Hastalara daha fazla ilaç satmak","Hastanenin kar oranını artırmak","Hem hasta/aile hem de ekip içi iletişimi güvenilir hale getirmek","Görüşme sürelerini kısaltmak"], a:2, explanation:"Sağlıkta iletişimin çekirdek amacı, hem hasta/aile hem de ekip içi iletişimi güvenli ve etkili kılarak hasta güvenliğini sağlamaktır.", topic: "Sağlıkta İletişimin Önemi"},
-  {q:"3) Hastanın değerlerini, tercihlerini ve ihtiyaçlarını ön plana alan iletişim yaklaşımına ne ad verilir?", choices:["Hekim merkezli iletişim","Hasta merkezli iletişim (Patient-Centered Communication)","Otoriter iletişim","Teknik odaklı iletişim"], a:1, explanation:"Hasta merkezli iletişim, hastanın bireysel değerlerini ve tercihlerini merkeze koyan bir yaklaşımdır.", topic: "Hasta Merkezli İletişim"},
-  {q:"4) Hasta merkezli iletişimin temel özelliklerinden biri aşağıdakilerden hangisidir?", choices:["Hastanın sadece biyolojik verilerine odaklanmak","Bilgiyi hastadan saklamak","Klinik kararları hastayla birlikte (ortaklaşa) almak","Sadece teknik terimler kullanmak"], a:2, explanation:"Hasta merkezli iletişimde klinik kararlar, hastanın katılımıyla ortaklaşa alınır.", topic: "Hasta Merkezli İletişim"},
-  {q:"5) Aşağıdakilerden hangisi sağlıkta iletişimi zorlaştıran 'çevresel faktörlerden' biridir?", choices:["Halsizlik","Kaygı","Gürültü ve fiziksel engeller","Eğitim düzeyi"], a:2, explanation:"Gürültü, kalabalık ortamlar ve fiziksel engeller iletişimi bozan dışsal (çevresel) faktörlerdir.", topic: "İletişim Engelleri"},
-  {q:"6) İletişim sürecinde 'kod çözme' (decoding) aşamasında hata yapılmasına hangisi örnek olabilir?", choices:["Hekimin çok hızlı konuşması","Hastanın kullanılan tıbbi terimi yanlış anlaması","Hastanenin gürültülü olması","Yanlış ilaç yazılması"], a:1, explanation:"Kod çözme, alıcının (hastanın) mesajı yorumlama sürecidir; terimin yanlış anlaşılması bu aşamadaki bir hatadır.", topic: "İletişim Süreci"},
-  {q:"7) Sağlık ortamında yanlış anlamaya en sık eşlik eden durumlardan biri olan 'Handover' neyi ifade eder?", choices:["Hasta yatışı","Nöbet devri / Hasta devri","Ameliyat süreci","İlaç yazdırma"], a:1, explanation:"Handover (hasta devri), sağlık profesyonelleri arasındaki kritik bilgi aktarımıdır ve yanlış anlama riski yüksektir.", topic: "İletişim Hataları"},
-  {q:"8) Sağlık iletişiminde 'Geri Bildirim' (Feedback) döngüsünün eksik olması neye yol açar?", choices:["Daha hızlı hizmete","Mesajın doğru anlaşıldığından emin olunamamasına","Maliyetin düşmesine","Hekimin daha az yorulmasına"], a:1, explanation:"Geri bildirim yoksa, hastanın verilen talimatı doğru anlayıp anlamadığı kontrol edilemez; bu da başarısız iletişim döngüsüdür.", topic: "İletişim Döngüsü"},
-  {q:"9) Hastaya bir egzersizi gösterdikten sonra 'Siz de bana bir kez anlatır mısınız, evde nasıl yapacaksınız?' diyen bir terapist hangi tekniği kullanmaktadır?", choices:["Mülakat","Teach-Back (Öğret-Geri Al)","Sorgulama","Hipnotize etme"], a:1, explanation:"Teach-back tekniği, hastanın anlama düzeyini kendi kelimeleriyle ifade etmesini sağlayarak kontrol eder.", topic: "İletişim Teknikleri"},
-  {q:"10) Sağlık profesyonelinin hastaya 'Her şey yolunda mı?' diye sormasına karşılık hastanın 'Tamam' deyip aslında ne yapacağını anlamaması hangi iletişim türüdür?", choices:["Başarılı iletişim","Başarısız iletişim döngüsü","Hasta merkezli iletişim","Empatik iletişim"], a:1, explanation:"Hastanın anlamadığı halde 'tamam' demesi ve sağlıkçının bunu teyit etmemesi başarısız bir iletişim örneğidir.", topic: "İletişim Hataları"},
-  {q:"11) İletişimde 'Gürültü' kavramı sadece sesli gürültüyü mü ifade eder?", choices:["Evet, sadece dış seslerdir","Hayır; ağrı, stres ve teknik terimler de gürültü (mesajı bozan faktör) sayılır","Sadece radyo sesidir","Sadece hastanın bağırmasıdır"], a:1, explanation:"İletişimdeki gürültü; fiziksel, fizyolojik (ağrı gibi) veya semantik (anlam karmaşası) her türlü engelleyiciyi kapsar.", topic: "İletişim Süreci"},
-  {q:"12) 'Geçişler' (Transitions) sırasında yapılan iletişim hataları hangi grup için daha risklidir?", choices:["Sadece yetişkinler","Sadece çocuklar","Tüm hastalar ama özellikle bakımı devredilen hastalar","Sadece hastane personeli"], a:2, explanation:"Bakım birimlerinin değiştiği veya vardiya değişimlerinin olduğu geçiş anları iletişim kazaları için en riskli zamanlardır.", topic: "İletişim Hataları"},
-  {q:"13) Etkili sağlık iletişiminde 'Aktif Dinleme' neyi gerektirir?", choices:["Sadece susup beklemeyi","Hastanın sözünü kesmeden, geri bildirimler ve beden diliyle dinlediğini göstermeyi","Başka işle ilgilenirken dinlemeyi","Hastayı sürekli düzeltmeyi"], a:1, explanation:"Aktif dinleme, hem sözel hem de sözsüz ipuçlarıyla hastaya odaklandığını ve onu anladığını hissettirmektir.", topic: "Etkili İletişim"},
-  {q:"14) Tıbbi jargonu (teknik dil) aşırı kullanmak iletişimin hangi bileşeninde 'gürültü' yaratır?", choices:["Kaynakta","Kanalda","Anlamsal (Semantik) düzeyde","Geri bildirimde"], a:2, explanation:"Mesajın alıcı tarafından bilinen kelimelerle kodlanmaması anlamsal gürültüye ve yanlış anlaşılmaya neden olur.", topic: "İletişim Engelleri"},
-  {q:"15) Hasta merkezli iletişimin 'duygusal' boyutu aşağıdakilerden hangisidir?", choices:["İlaç dozunu hesaplamak","Empati kurmak ve hastanın kaygılarını anlamak","Bilgisayara veri girişi yapmak","Sadece fiziksel muayene yapmak"], a:1, explanation:"Empati, hasta merkezli yaklaşımın hastanın duygusal durumuna odaklanan en önemli parçasıdır.", topic: "Hasta Merkezli İletişim"},
-  {q:"16) 'Mesaj' (Message) iletişim sürecinde neyi temsil eder?", choices:["Hastanın ödediği ücreti","Aktarılmak istenen bilgi, düşünce veya duyguyu","Hastanenin adresini","Kullanılan stetoskopu"], a:1, explanation:"Mesaj, göndericinin alıcıya ulaştırmak istediği içeriğin kendisidir.", topic: "İletişim Süreci"},
-  {q:"17) İletişim hatalarının azaltılması için hangisi önerilen bir yöntemdir?", choices:["Daha az konuşmak","Standartlaştırılmış iletişim protokolleri kullanmak","Sadece yazılı not bırakmak","Soru sormayı yasaklamak"], a:1, explanation:"Protokoller ve net iletişim teknikleri (SBAR gibi), karmaşık ortamlarda hatayı minimize eder.", topic: "İletişim Hataları"},
-  {q:"18) Bir sağlık çalışanının hastaya 'Sorunuz var mı?' yerine 'Sizin için net olmayan ne var?' diye sorması neyi sağlar?", choices:["Zaman kaybını","Hastanın daha rahat soru sormasını ve açık uçlu iletişimi","Hekimin otoritesini","İletişimin kesilmesini"], a:1, explanation:"Açık uçlu ve teşvik edici sorular, hastanın anlamadığı noktaları dile getirmesini kolaylaştırır.", topic: "İletişim Teknikleri"},
-  {q:"19) İletişimde 'Kanal' (Channel) ne demektir?", choices:["Televizyon kanalı","Mesajın iletildiği yol (yüz yüze, telefon, yazı vb.)","Hastanenin koridoru","İlacın damar yolu"], a:1, explanation:"Kanal, iletinin göndericiden alıcıya hangi araç veya yol üzerinden ulaştığını ifade eder.", topic: "İletişim Süreci"},
-  {q:"20) Başarılı bir iletişim döngüsü için 'Alıcının' (hastanın) ne yapması gerekir?", choices:["Sadece dinlemesi","Hemen kabul etmesi","Gelen mesajı kodunu çözüp (anlayıp) geri bildirimde bulunması","Ücreti ödemesi"], a:2, explanation:"Alıcı mesajı doğru çözümlemeli ve doğru anladığını bir şekilde (sözlü veya sözsüz) teyit etmelidir.", topic: "İletişim Döngüsü"}
-      ],
-      "Etkin Dinleme,Empati,Yansıtma,Özetleme": [
-{q:"1) Etkin dinlemenin temel tanımı aşağıdakilerden hangisidir?", choices:["Sadece sessiz kalarak karşı tarafın bitirmesini beklemek","Anlamı kurmak için aktif çaba sarf etmek","Konuşmacının hatalarını bulmaya çalışmak","Kendi cevabını hazırlarken dinlemek"], a:1, explanation:"Etkin dinleme, sadece sessiz kalmak değil; içerik, duygu ve önceliği takip ederek anlamı kurmak için gösterilen aktif bir çabadır.", topic: "Etkin Dinleme"},
-  {q:"2) Aşağıdakilerden hangisi etkin dinlemenin amaçlarından biri değildir?", choices:["Güven ve iş birliği oluşturmak","Yanlış anlamaları azaltmak","Görüşmeyi zaman açısından daha verimsiz kılmak","Zor duyguların (kaygı/öfke) yönetilmesini sağlamak"], a:2, explanation:"Etkin dinleme ve özetleme gibi teknikler, yapıyı netleştirerek görüşmeyi zaman açısından daha verimli kılar.", topic: "Etkin Dinleme"},
-  {q:"3) İletişim tekniklerinde kullanılan OARS modelinin açılımı hangi seçenekte doğru verilmiştir?", choices:["Gözlem-Analiz-Rapor-Sonuç","Açık Uçlu Sorular-Onaylama-Yansıtma-Özetleme","Operasyon-Aktarım-Reaksiyon-Sentez","Okuma-Anlama-Rehberlik-Sorgulama"], a:1, explanation:"OARS; Open-ended questions (Açık uçlu sorular), Affirmations (Onaylama), Reflections (Yansıtma) ve Summaries (Özetleme) kelimelerinin baş harflerinden oluşur.", topic: "OARS Modeli"},
-  {q:"4) 'Bugün nasılsınız?' sorusu hangi soru tipine örnektir?", choices:["Kapalı uçlu soru","Açık uçlu soru","Yönlendirici soru","Yansıtma sorusu"], a:1, explanation:"Açık uçlu sorular, 'evet/hayır' gibi kısıtlı cevaplar yerine hastanın kendi kelimeleriyle anlatım yapmasına olanak tanır.", topic: "Açık Uçlu Sorular"},
-  {q:"5) Aşağıdakilerden hangisi bir 'Onaylama' (Affirmation) cümlesidir?", choices:["Neden daha erken gelmediniz?","Bu süreci yönetmek için gösterdiğiniz çaba takdire şayan.","Tam olarak nereniz ağrıyor?","Bir sonraki randevunuz haftaya."], a:1, explanation:"Onaylama; hastanın güçlü yanlarını, çabasını ve olumlu özelliklerini vurgulayarak motivasyonu artırır.", topic: "Onaylama"},
-  {q:"6) 'Yani gün sonunda ağrınızın arttığını söylüyorsunuz.' cümlesi hangi yansıtma türüne örnektir?", choices:["Duygu yansıtma","İçerik yansıtma","Anlam yansıtma","Karma yansıtma"], a:1, explanation:"İçerik yansıtma, hastanın söylediği olgusal bilginin veya durumun farklı kelimelerle geri bildirilmesidir.", topic: "Yansıtma"},
-  {q:"7) Hastanın 'Bu belirsizlik beni çok korkutuyor' ifadesine karşılık, 'Bu durum sizi oldukça kaygılandırmış' diyen terapist ne yapmaktadır?", choices:["İçerik yansıtma","Duygu yansıtma","Özetleme","Onaylama"], a:1, explanation:"Duygu yansıtma, hastanın hissettiği duyguyu isimlendirerek anlaşıldığını hissettirme tekniğidir.", topic: "Yansıtma"},
-  {q:"8) 'Sanırım sizin için en zor olan şey işe gidememek' cümlesi hangi yansıtma türüdür?", choices:["İçerik yansıtma","Anlam yansıtma","Basit yansıtma","Onaylama"], a:1, explanation:"Anlam yansıtma, durumun hasta için taşıdığı kişisel önemi veya zorluğu dile getirir.", topic: "Yansıtma"},
-  {q:"9) Görüşmenin sonunda veya bir bölümün bitiminde yapılan, konuşulanların derlenmesine ne ad verilir?", choices:["Yansıtma","Onaylama","Özetleme (Summary)","Mülakat"], a:2, explanation:"Özetleme, görüşmedeki ana noktaları bir araya getirerek hem yanlış anlamaları önler hem de bir sonraki aşamaya geçişi sağlar.", topic: "Özetleme"},
-  {q:"10) Empati ile ilgili aşağıdakilerden hangisi yanlıştır?", choices:["Karşı tarafın dünyasını onun gözüyle görmeye çalışmaktır.","Sadece 'üzüldüm' demektir.","Anlaşıldığını hissettirmek güveni artırır.","Tedaviye katılımı (uyumu) destekler."], a:1, explanation:"Empati, sadece bir acıma ifadesi değil, hastanın perspektifini anlama ve bunu ona geri bildirme becerisidir.", topic: "Empati"},
-  {q:"11) 'Geçen hafta egzersizlerinizi her gün yapmışsınız, bu büyük bir disiplin örneği.' ifadesi hangi OARS bileşenidir?", choices:["Açık uçlu soru","Onaylama","Yansıtma","Özetleme"], a:1, explanation:"Hastanın başarısını ve çabasını dile getirdiği için onaylama (affirmation) kategorisindedir.", topic: "OARS Modeli"},
-  {q:"12) Etkin dinlemede 'Cevabı hazırlamak yerine konuşanı anlamaya odaklanmak' neyi sağlar?", choices:["Zaman kaybını","Hastanın kendini daha iyi ifade etmesini ve doğru tanıyı","Hekimin daha çok yorulmasını","İletişimin kesilmesini"], a:1, explanation:"Cevap hazırlamaya odaklanmak dinleme kalitesini düşürür; anlamaya odaklanmak ise eksik bilgilerin tamamlanmasını sağlar.", topic: "Etkin Dinleme"},
-  {q:"13) Yansıtma tekniğinin (Reflections) en temel işlevi nedir?", choices:["Hastayı susturmak","Anlatılanın doğru anlaşılıp anlaşılmadığını test etmek ve derinleştirmek","Zamanı doldurmak","Hastalık tanısı koymak"], a:1, explanation:"Yansıtma, hastanın söylediklerini ona ayna gibi geri tutarak iletişimin derinleşmesini sağlar.", topic: "Yansıtma"},
-  {q:"14) 'Bugün, sıvı gıdalarda zorlandığınızı ve bunun sizi endişelendirdiğini konuştuk. Doğru mu anladım?' cümlesi hangisidir?", choices:["Onaylama","Yansıtma","Özetleme","Açık uçlu soru"], a:2, explanation:"Konuşulan içerik ve duyguyu birleştirerek teyit aldığı için bu bir özetleme örneğidir.", topic: "Özetleme"},
-  {q:"15) Aşağıdakilerden hangisi bir 'Kapalı Uçlu' sorudur?", choices:["Ağrınız ne zaman başladı?","İlacınızı her gün içiyor musunuz?","Kendinizi nasıl hissediyorsunuz?","Bana bu durumdan biraz bahseder misiniz?"], a:1, explanation:"'Evet/Hayır' ile cevaplanabilen sorular kapalı uçlu sorulardır.", topic: "Soru Sorma"},
-  {q:"16) Empatinin tedaviye etkisi üzerine yapılan sistematik derlemeler (Örn: Derksen vd.) neyi göstermiştir?", choices:["Empatinin hiçbir etkisi yoktur.","Empati memnuniyeti ve tedaviye katılımı artırır.","Sadece cerrahi branşlarda önemlidir.","Empati zaman kaybıdır."], a:1, explanation:"Bilimsel çalışmalar, empatik bir yaklaşımla yürütülen görüşmelerin hasta memnuniyeti ve tedavi başarısını artırdığını göstermektedir.", topic: "Empati"},
-  {q:"17) 'Ses tonu, duruş ve göz temasıyla buradayım mesajı vermek' hangi becerinin parçasıdır?", choices:["Rapor yazma","Etkin dinleme","Özetleme","Analiz"], a:1, explanation:"Etkin dinleme sadece sözel değil, sözsüz ipuçlarıyla da (buradayım mesajı) desteklenmelidir.", topic: "Etkin Dinleme"},
-  {q:"18) Açık uçlu sorular neden 'Nasıl' veya 'Neler' gibi kelimelerle başlar?", choices:["Daha uzun cümle kurmak için","Hastayı hikayesini anlatmaya teşvik etmek için","Soru sormak zor olduğu için","Yanlış cevap almak için"], a:1, explanation:"Bu kelimeler hastanın düşüncelerini ve deneyimlerini detaylandırmasına yardımcı olur.", topic: "Açık Uçlu Sorular"},
-  {q:"19) Onaylama (Affirmations) yaparken araştırmacı nelere odaklanmalıdır?", choices:["Sadece hatalara","Hastanın zayıf yönlerine","Çaba, niyet ve başarılara","Kendi başarılarına"], a:2, explanation:"Onaylama, hastanın olumlu eylemlerini ve başarma potansiyelini desteklemeyi amaçlar.", topic: "Onaylama"},
-  {q:"20) Yansıtma yaparken 'içerik' ile 'duygu' arasındaki fark nedir?", choices:["Fark yoktur","İçerik olaya, duygu ise o olayın yarattığı hisse odaklanır","Duygu daha önemsizdir","İçerik her zaman daha uzundur"], a:1, explanation:"İçerik ne olduğuyla (bilgi), duygu ise nasıl hissedildiğiyle (his) ilgilidir.", topic: "Yansıtma"}
-      ],
-      "Pekiştirme Testi (Toplam 20 Soru Tüm Konular Dahil": [
-{q:"1) İletişim sürecinde göndericinin mesajı bir sembol sistemine (dil, jest vb.) dönüştürmesi işlemine ne ad verilir?", choices:["Kod çözme (Decoding)","Kodlama (Encoding)","Kanal seçimi","Geri bildirim"], a:1, explanation:"Kodlama, zihindeki düşünce veya duygunun alıcıya gönderilmek üzere bir işaret sistemine dönüştürülmesidir.", topic: "İletişim Süreci"},
-  {q:"2) Sağlık okuryazarlığı düşük olan bir hastada hangisinin görülme ihtimali daha azdır?", choices:["Acil servis başvurularında artış","İlaç yan etkilerini bildirmede zorluk","Koruyucu sağlık hizmetlerinden (aşılama vb.) tam yararlanma","Hastaneye yatış oranlarında artış"], a:2, explanation:"Sağlık okuryazarlığı düşük bireyler genellikle tarama, aşılama gibi önleyici hizmetleri daha az kullanırlar.", topic: "Sağlık Okuryazarlığı"},
-  {q:"3) 'Aynalama' (Mirroring) olarak da bilinen, hastanın kullandığı anahtar kelimeleri tekrar ederek anlatmaya devam etmesini teşvik eden yansıtma türü hangisidir?", choices:["Karmaşık yansıtma","Basit yansıtma","Duygu yansıtma","Analitik yansıtma"], a:1, explanation:"Basit yansıtma, hastanın söylediklerini neredeyse aynı kelimelerle ona geri vererek dinlendiğini hissettirmektir.", topic: "İletişim Teknikleri"},
-  {q:"4) Sözsüz iletişimde 'Haptics' alanı neyi inceler?", choices:["Göz hareketlerini","Dokunma yoluyla kurulan iletişimi","Kişiler arası mesafeyi","Sesin tonlamasını"], a:1, explanation:"Haptics, iletişimde dokunmanın kullanımı ve etkilerini inceleyen disiplindir.", topic: "Sözsüz İletişim"},
-  {q:"5) Nutbeam modeline göre 'Eleştirel Sağlık Okuryazarlığı' seviyesine sahip bir bireyden hangisi beklenir?", choices:["Sadece ilaç prospektüsünü okuması","Sağlık bilgilerini toplumsal ve siyasal bağlamda değerlendirip eyleme geçmesi","Hekimin her dediğini sorgulamadan yapması","Randevu saatlerini karıştırmaması"], a:1, explanation:"Eleştirel düzey, bilginin analiz edilip toplumsal kararlara ve eylemlere dönüştürüldüğü en üst seviyedir.", topic: "Sağlık Okuryazarlığı"},
-  {q:"6) İletişimde 'Semantik Gürültü'ye aşağıdakilerden hangisi örnek olabilir?", choices:["Dışarıdan gelen ambulans sesi","Hastanın şiddetli baş ağrısı çekmesi","Sağlık çalışanının hastanın bilmediği Latince bir terim kullanması","İnternet bağlantısının kopması"], a:2, explanation:"Semantik gürültü, dil ve sembollerin kullanımıyla ilgili anlam karmaşalarından kaynaklanır.", topic: "İletişim Engelleri"},
-  {q:"7) OARS modelinde yer alan 'Onaylama' (Affirmation) tekniği hastada neyi geliştirmeyi amaçlar?", choices:["Suçluluk duygusunu","Öz-yeterlilik ve değişim motivasyonunu","Soru sorma isteğini","Hekime olan bağımlılığı"], a:1, explanation:"Onaylama, hastanın güçlü yanlarını vurgulayarak kendi sağlığı üzerinde kontrol sahibi olabileceğine dair inancını (öz-yeterlilik) pekiştirir.", topic: "İletişim Teknikleri"},
-  {q:"8) Bir sağlık profesyoneli hastasına 'Kilonuz hakkında ne düşünüyorsunuz?' yerine 'Kilonuz sağlığınızı nasıl etkiliyor?' diye sorduğunda hangi stratejiyi uygulamaktadır?", choices:["Kapalı uçlu soru","Yönlendirici soru","Daha derinlemesine anlamaya yönelik açık uçlu soru","Onaylama"], a:2, explanation:"Açık uçlu sorular hastanın deneyimine ve algısına odaklanarak daha zengin bilgi verir.", topic: "Sözlü İletişim"},
-  {q:"9) Avrupa Sağlık Okuryazarlığı (HLS-EU) modeline göre 'erişim' aşamasından sonra gelen adım hangisidir?", choices:["Değerlendirme","Anlama","Uygulama","Sınıflandırma"], a:1, explanation:"Birey önce bilgiye erişir, sonra onu anlamlandırır (anlama), ardından değerlendirir ve en son uygular.", topic: "Sağlık Okuryazarlığı"},
-  {q:"10) 'Pek çok şeyle aynı anda baş etmeye çalışmak sizi yormuş olmalı' cümlesi hangi iletişim becerisine örnektir?", choices:["Basit yansıtma","Empatik tepki / Duygu yansıtma","Özetleme","Soru sorma"], a:1, explanation:"Hastanın hissettiği yorgunluk ve yükü isimlendirerek paylaştığı için empatik bir duygu yansıtmasıdır.", topic: "Empati"},
-  {q:"11) Sözsüz iletişimde 'Vurgu' (Emphasis) para-linguistik özelliğinin temel görevi nedir?", choices:["Konuşmayı hızlandırmak","Cümledeki en önemli kelimeyi belirginleştirerek anlamı netleştirmek","Sessizliği bozmak","Duyguları gizlemek"], a:1, explanation:"Vurgu, mesajın can alıcı noktasını alıcının dikkatine sunar.", topic: "Para-linguistik"},
-  {q:"12) Sağlık iletişiminin 'ikna edici' yönü daha çok hangi alanda kullanılır?", choices:["Tıbbi kayıt tutmada","Sağlıklı yaşam tarzı değişikliklerini (sigara bırakma vb.) teşvik etmede","Ameliyat raporu yazmada","Laboratuvar sonuçlarını okumada"], a:1, explanation:"Sağlık iletişimi, bireyleri sağlıklı davranışlara yönlendirmek için ikna stratejilerini kullanır.", topic: "Sağlık İletişimi"},
-  {q:"13) Görüşme sırasında kullanılan 'Hı-hı', 'Evet', 'Sizi dinliyorum' gibi kısa tepkilere ne denir?", choices:["Özetleme","Kapalı soru","Asgari teşvik ediciler (Minimal encouragers)","Yansıtma"], a:2, explanation:"Bu kısa tepkiler, konuşmacının sözünü kesmeden dinlendiğini hissettiren 'buradayım' sinyalleridir.", topic: "Etkin Dinleme"},
-  {q:"14) Hasta 'Artık iyileşeceğime dair umudum kalmadı' dediğinde, terapistin 'Sanki her şey bitti gibi hissediyorsunuz' demesi hangi yansıtmadır?", choices:["İçerik yansıtma","Duygu/Anlam yansıtma","Onaylama","Özetleme"], a:1, explanation:"Hastanın hissettiği çaresizliği ve bu durumun onun için taşıdığı anlamı ona geri yansıtmaktadır.", topic: "Yansıtma"},
-  {q:"15) 'Öğret-Geri Al' (Teach-back) yöntemi uygulanırken sağlık çalışanı için en doğru tutum hangisidir?", choices:["Hastanın zekasını ölçmek","Suçu hastaya atmadan, 'Ben yeterince açık anlattım mı diye kontrol etmek istiyorum' yaklaşımıyla sormak","Hastaya sınav yapıyormuş gibi davranmak","Hızlıca 'Anladınız mı?' diye sormak"], a:1, explanation:"Teach-back, sağlık çalışanının kendi iletişim başarısını ölçtüğü, hasta dostu bir yöntem olmalıdır.", topic: "Sağlık Okuryazarlığı"},
-  {q:"16) 'Chronemics' iletişimin hangi boyutunu inceler?", choices:["Vücut tipini","Giyim tarzını","Zamanın kullanımını (randevuya sadakat, konuşma süresi vb.)","Ses tonunu"], a:2, explanation:"Zamanın nasıl yönetildiği ve kullanıldığı iletişimde sessiz bir mesaj verir.", topic: "Sözsüz İletişim"},
-  {q:"17) Sağlıkta 'Hasta Merkezli' yaklaşımın en önemli çıktısı aşağıdakilerden hangisidir?", choices:["Hekimin daha fazla otorite kurması","Görüşme süresinin kısalması","Hasta memnuniyeti ve tedaviye uyumun artması","Daha az test yapılması"], a:2, explanation:"Hastanın değerlerini merkeze alan iletişim, güveni ve tedavi başarısını artırır.", topic: "Hasta Merkezli İletişim"},
-  {q:"18) Bir görüşmenin orta kısmında, o ana kadar konuşulanları 1-2 cümleyle toparlamaya ne ad verilir?", choices:["Kapanış özeti","Ara özetleme","Açık uçlu soru","Yansıtma"], a:1, explanation:"Ara özetlemeler, karmaşık konuları bölümlere ayırarak anlaşılırlığı sağlar.", topic: "Özetleme"},
-  {q:"19) İletişimde 'Kişisel Mesafe' (Proxemics) bağlamında, sağlık muayenesi genellikle hangi mesafede gerçekleşir?", choices:["Kamusal alan (3-4 metre)","Sosyal alan (1-2 metre)","Kişisel/Samimi alan (0-45 cm veya 45-120 cm)","Uzak alan"], a:2, explanation:"Sağlık hizmeti, doğası gereği bireyin kişisel ve bazen mahrem alanına girilmesini gerektirir.", topic: "Sözsüz İletişim"},
-  {q:"20) Sağlık iletişiminde mesajın 'Hedef Kitleye Özgü' (Tailoring) olması neyi ifade eder?", choices:["Her hastaya aynı broşürü vermeyi","Mesajı alıcının yaşına, eğitimine ve kültürüne göre özelleştirmeyi","Sadece internetten mesaj göndermeyi","Hızlı konuşmayı"], a:1, explanation:"Tailoring, mesajın etkisini artırmak için bireysel veya grupsal özelliklere göre tasarlandığı bir stratejidir.", topic: "Sağlık İletişimi Stratejileri"}
-      ],
-      
+    const subjects = { 
+      "Fonetik": 
+[
+  {
+    "q": "1) Ses dalgalarının sıklığını, genliğini ve süresini laboratuvar ortamında dijital araçlarla inceleyen fonetik alt dalı aşağıdakilerden hangisidir?",
+    "choices": ["Artikülatuar (Söyleyiş) Fonetik", "Akustik Fonetik", "İşitsel Fonetik", "Aerodinamik Fonetik"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Akustik fonetik, ses tellerinden çıkan ses dalgalarının fiziksel özelliklerini (frekans, genlik, süre) araçlar yardımıyla inceleyen bilim dalıdır.\n\n💡 PÜF NOKTASI: Soru kökünde 'ses dalgası', 'sıklık/frekans' veya 'fiziksel özellik' geçiyorsa cevap her zaman 'Akustik' ile ilgilidir. Akustik fiziksel ses demektir."
+  },
+  {
+    "q": "2) Konuşma üretimi sırasında akciğerlerden gelen hava akımının basıncını ve akış hızını ölçmek için kullanılan yöntem aşağıdakilerden hangisidir?",
+    "choices": ["Akustik Ölçüm", "Aerodinamik Ölçüm", "Perseptüel Ölçüm", "Spektrografik Ölçüm"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Hava akımı, hava basıncı ve ciğer kapasitesi gibi doğrudan 'hava hareketleri' ile ilgili ölçümlere aerodinamik ölçüm denir.\n\n💡 PÜF NOKTASI: Kelime köküne bak! 'Aero-' Latince/Yunanca 'hava' demektir (Aerodinamik, uçak vb. gibi). Soru içinde 'hava akımı', 'basınç' görüyorsan hemen 'Aero' seçeneğine atla."
+  },
+  {
+    "q": "3) Akustik analizlerde sıklıkla karşımıza çıkan ve bir saniyedeki titreşim sayısını ifade eden temel fizik terimi hangisidir?",
+    "choices": ["Desibel", "Frekans", "Genlik", "Süre"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Frekans, bir ses dalgasının bir saniyede tekrarlanma sayısıdır ve birimi Hertz (Hz) olarak ifade edilir.\n\n💡 PÜF NOKTASI: Günlük hayattan düşün: Radyo frekansı, bir şeyin sıklığı (frequent). 'Saniyedeki titreşim sayısı' veya 'sıklık' eşittir Frekans."
+  },
+  {
+    "q": "4) Sesin şiddetini, yani halk dilindeki tabiriyle 'gürlüğünü/ses seviyesini' ölçmek için kullanılan birim aşağıdakilerden hangisidir?",
+    "choices": ["Hertz (Hz)", "Desibel (dB)", "Milisaniye (ms)", "Formant (F)"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Sesin gürlüğü ve şiddeti desibel (dB) ile ölçülür. Hertz frekansı, milisaniye zamanı ölçer.\n\n💡 PÜF NOKTASI: Telefonlardan veya kulaklık uyarılardan hatırla: 'Yüksek desibel kulağa zarar verir.' Sesin yüksekliği/bağırma şiddeti desibeldir."
+  },
+  {
+    "q": "5) Ses tellerinin saniyedeki titreşim hızını gösteren ve kişinin perdesini (pes/tiz) belirleyen temel akustik değer aşağıdakilerden hangisidir?",
+    "choices": ["Temel Frekans (F0)", "Formant 1 (F1)", "Formant 2 (F2)", "Yoğunluk"],
+    "a": 0,
+    "explanation": "AÇIKLAMA: Ses tellerinin bir saniyedeki açılıp kapanma sayısına Temel Frekans denir ve F0 sembolü ile gösterilir. Sesin pes veya tiz olmasını belirler.\n\n💡 PÜF NOKTASI: Her şeyin bir başlangıç noktası vardır. En 'temel' ses perdesi de '0' (sıfır) ile başlar, yani F0."
+  },
+  {
+    "q": "6) Dünya dillerindeki ünsüz harfler sınıflandırılırken aşağıdaki ölçütlerden hangisi kullanılmaz?",
+    "choices": ["Çıkış Yeri (Boğumlanma Yeri)", "Çıkış Biçimi (Boğumlanma Tarzı)", "Ses telleri durumu (Ötümlü/Ötümsüz)", "Dudakların Düz veya Yuvarlak Olması"],
+    "a": 3,
+    "explanation": "AÇIKLAMA: Dudakların düz veya yuvarlak olması 'ünlü' (vowel) harflerin özelliğidir (A, O, U vb.). Ünsüz harfler çıkış yeri, biçimi ve ötümlülüğe göre ayrılır.\n\n💡 PÜF NOKTASI: Türkçedeki ünlülerden hatırla: a, e, ı, i (düz) - o, ö, u, ü (yuvarlak). Yuvarlaklık/düzlük sadece ünlülere (sesli harflere) has bir durumdur."
+  },
+  {
+    "q": "7) Üretimi sırasında hava akımının tamamen engellenip ardından birden salıverilmesiyle oluşan ünsüz grubuna (Örn: p, t, k, b, d, g) ne ad verilir?",
+    "choices": ["Sürtünmeli Sesler", "Patlamalı Sesler", "Akıcı Sesler", "Geniz Sesleri"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Havanın önce tıkanıp sonra birden bırakılması patlama etkisi yaratır. Bu yüzden p, t, k gibi seslere patlamalı (plosive) sesler denir.\n\n💡 PÜF NOKTASI: Kendi kendine 'P!' veya 'K!' de. Ağzından havanın küçük bir patlamayla çıktığını hissedeceksin. İsmi mantığından gelir."
+  },
+  {
+    "q": "8) Ses tellerinin titreşmesiyle oluşan ünsüzlere 'ötümlü' (tonlu), ses telleri titreşmeden sadece hava sızıntısıyla oluşanlara 'ötümsüz' (tonsuz) denir. Buna göre hangisi ötümsüzdür?",
+    "choices": ["b", "d", "g", "s"],
+    "a": 3,
+    "explanation": "AÇIKLAMA: Fıstıkçı Şahap kelimelerindeki sesler ötümsüzdür. 's' sesi çıkarılırken ses telleri titreşmez, sadece sürtünme sesi gelir.\n\n💡 PÜF NOKTASI: İlkokul kodlamamız: Fıstıkçı Şahap. Bu kelimedeki ünsüzlerin hepsi ötümsüzdür (tonsuzdur). Seçeneklerde bu şifreden sadece 's' var."
+  },
+  {
+    "q": "9) Dünya dillerinde ünlülerin (vowels) sınıflandırılmasında dilin ağız içindeki dikey pozisyonuna göre yapılan ayrım aşağıdakilerden hangisidir?",
+    "choices": ["Ön - Arka", "Geniş (Alçak) - Dar (Yüksek)", "Ötümlü - Ötümsüz", "Uzun - Kısa"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Dil ağzın tabanına doğru alçaldığında geniş ünlüler (a, e), damağa doğru yükseldiğinde ise dar ünlüler (ı, i, u, ü) oluşur. Bu dikey bir harekettir.\n\n💡 PÜF NOKTASI: Dikey demek yukarı-aşağı demektir. Ağızda yukarı-aşağı yönlü hareket 'Yüksek/Dar' veya 'Alçak/Geniş' kavramlarıyla ifade edilir. Ön-arka yatay bir harekettir."
+  },
+  {
+    "q": "10) Akustik analizde ünlü harfleri (A, E, I, İ...) birbirinden ayırt etmek ve dilin ağızdaki pozisyonunu belirlemek için kullanılan frekans ceplerine ne ad verilir?",
+    "choices": ["Frekans Sıfır", "Formant Değerleri", "Gürlük Eğrisi", "Süreç Grafiği"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Ünlülerin ses kalitesini ve tınısını belirleyen, spektrogramda koyu şeritler halinde görülen yoğunlaşmış frekans bölgelerine 'Formant' denir.\n\n💡 PÜF NOKTASI: Eğer konu 'Ünlüler' (A-E-I-İ) ve onların akustik analizi ise, şıklarda mutlaka Formant (F1, F2 vb.) kelimesini aramalısın. Ünlü = Formant."
+  },
+  {
+    "q": "11) Konuşma sırasında ses birimlerin (harflerin) ötesinde; tonlama, vurgu, ezgi ve durak gibi tüm konuşmaya yayılan özelliklere ne ad verilir?",
+    "choices": ["Parçasal Özellikler", "Parça Üstü Özellikler (Bürünsel)", "Koartikülasyon", "Fonetik Çevriyazı"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Harfler tek tek 'parça'dır. Sesin tonu, hızı ve vurgusu ise bu harflerin 'üstüne' binen, konuşmanın bütününe yayılan özelliklerdir (Parça üstü).\n\n💡 PÜF NOKTASI: Soru kökündeki 'ötesinde' ve 'tüm konuşmaya yayılan' ifadeleri sana bir şeyin 'üstünde/yukarısında' olduğunu fısıldıyor. Cevap: Parça Üstü."
+  },
+  {
+    "q": "12) Bir cümlede veya kelimede belirli bir hecenin diğerlerine göre daha baskın, şiddetli ve belirgin söylenmesine ne ad verilir?",
+    "choices": ["Ezgi", "Tonlama", "Vurgu", "Durak"],
+    "a": 2,
+    "explanation": "AÇIKLAMA: Sesin şiddetini artırarak bir heceyi veya sözcüğü ön plana çıkarma eylemine vurgu (stress) denir.\n\n💡 PÜF NOKTASI: Günlük hayatta da önemli bir konuyu belirtirken ne deriz? 'Bu konunun altını çizerek vurgulamak istiyorum.' Baskınlık ve belirginlik vurgudur."
+  },
+  {
+    "q": "13) Düz bir cümle ile soru cümlesi arasındaki farkı (Örn: 'Geldi.' ve 'Geldi?'), kelimeler değişmediği halde sadece sesin perdesini değiştirerek sağlamaya ne ad verilir?",
+    "choices": ["Durak", "Tonlama/Ezgi", "Ulama", "Benzeşme"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Ses tonunun konuşma akışı içindeki melodik dalgalanmasına, yükselip alçalmasına tonlama veya ezgi (intonation) denir.\n\n💡 PÜF NOKTASI: Şarkılardaki melodi ve perdeden aklına gelsin. Değişen şey kelime değil, sesin melodisi yani 'ezgisi/tonu'dur."
+  },
+  {
+    "q": "14) Konuşma hızının (hızlı konuşma veya yavaş konuşma) akustik ve fonetik çalışmalardaki karşılığı aşağıdakilerden hangisidir?",
+    "choices": ["Genlik", "Süre / Tempo", "Frekans", "Formant"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Konuşmanın hızı, seslerin ne kadar zaman diliminde üretildiğiyle alakalıdır. Bu durum süre ve tempo olarak incelenir.\n\n💡 PÜF NOKTASI: Hız ve tempo doğrudan zamanla (süreyle) ilgilidir. Koşarken de tempoyu süre belirler, konuşurken de."
+  },
+  {
+    "q": "15) Konuşma esnasında anlamı netleştirmek, nefes almak veya dikkat çekmek amacıyla konuşma akışına verilen kısa aralara ne ad verilir?",
+    "choices": ["Vurgu", "Ezgi", "Durak", "Perde"],
+    "a": 2,
+    "explanation": "AÇIKLAMA: Konuşma sırasında verilen duraklamalara, ses analizinde 'durak' (pause) adı verilir.\n\n💡 PÜF NOKTASI: Çok basit düşün: Otobüs hareket ederken nerede durur? Durakta. Konuşma akışı nerede durur? Durakta."
+  },
+  {
+    "q": "16) Akıcı konuşma esnasında seslerin tek tek değil, birbirini etkileyerek, iç içe geçerek ve aynı anda boğumlanarak üretilmesi olayına ne ad verilir?",
+    "choices": ["Koartikülasyon (Eş Söyleyiş)", "Akustik Analiz", "Formant Kayması", "Segmentasyon"],
+    "a": 0,
+    "explanation": "AÇIKLAMA: Koartikülasyon, bir ses üretilirken organların bir sonraki sese hazırlanması nedeniyle seslerin birbirini etkilemesidir. Robot gibi tane tane konuşmayız, sesler iç içe geçer.\n\n💡 PÜF NOKTASI: İngilizcedeki 'Co-' eki (Cooperation vb.) 'birlikte/eş' anlamına gelir. 'Koartikülasyon' da seslerin birlikte, eş zamanlı söylenmesidir."
+  },
+  {
+    "q": "17) 'Ankara' kelimesini söylerken normalde diş-yuvası sesi olan 'n' harfinin, arkasındaki 'k' sesinin etkisiyle damaksıl bir 'ñ' sesine dönüşmesi hangi olaya örnektir?",
+    "choices": ["İşitsel Yanılma", "Koartikülasyon (Ses Etkileşimi/Benzeşme)", "Parça Üstü Tonlama", "Ses Perdesi Kayması"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Yanındaki harften dolayı bir harfin ağızdaki çıkış yerinin değişmesi tipik bir koartikülasyon (eş söyleyiş/benzeşme) örneğidir.\n\n💡 PÜF NOKTASI: Bir harf yanındaki harften 'etkilenip' ona benzemeye çalışıyorsa, bu durum bağlam içindeki konuşmanın getirdiği 'Koartikülasyon'dur."
+  },
+  {
+    "q": "18) Koartikülasyon (Eş söyleyiş) olgusunun ortaya çıkmasının temel biyolojik/motor sebebi aşağıdakilerden hangisidir?",
+    "choices": ["Konuşma organlarının tembelliği ve akıcı konuşmada zamandan tasarruf etme eğilimi", "Dillerin kelime haznelerinin yetersiz olması", "Ses tellerinin yorulması", "İşitme kaybı yaşanması"],
+    "a": 0,
+    "explanation": "AÇIKLAMA: İnsan beyni ve konuşma organları en az çaba yasasıyla çalışır. Hızlı konuşurken organlar bir sonraki harfe hemen geçmek için kestirme yollar arar.\n\n💡 PÜF NOKTASI: İnsanoğlu doğası gereği enerji tasarrufu yapmayı, yani 'en az çaba' harcamayı sever. Seslerin birbirine kayması tamamen bu 'kolaylık ve hız' isteğindendir."
+  },
+  {
+    "q": "19) Dünyadaki tüm dillerin seslerini standart bir şekilde yazıya dökmek ve doğru okunuşunu göstermek amacıyla geliştirilen evrensel sistem aşağıdakilerden hangisidir?",
+    "choices": ["Mors Alfabesi", "IPA (International Phonetic Alphabet)", "Göktürk Alfabesi", "ASCII Kodları"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Uluslararası Fonetik Alfabe (IPA), dillerdeki seslerin standart gösterimi için oluşturulmuş evrensel alfabedir.\n\n💡 PÜF NOKTASI: Görseldeki listede de açıkça yazıyor: 'IPA-Fonetik Çevriyazı'. Baş harflerinden yakala: International Phonetic Alphabet."
+  },
+  {
+    "q": "20) Fonetik çevriyazıda (IPA transcription) yazılan sembollerin, normal yazı harflerinden ayırt edilmesi için kullanılan ayırt edici işaret hangisidir?",
+    "choices": ["Parantez ( )", "Köşeli Parantez [ ] veya Eğik Çizgi / /", "Tırnak İşareti ' '", "Soru İşareti ?"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: IPA gösterimleri her zaman köşeli parantez [ ] veya fonemik gösterimlerde eğik çizgi / / arasına yazılır. Örn: [türkçe]\n\n💡 PÜF NOKTASI: Sözlüklerde bir kelimenin okunuşuna baktığında kelimenin yanında hep `/ ... /` veya `[ ... ]` işaretlerini görürsün. Bu fonetiğin imzasıdır."
+  },
+  {
+    "q": "21) Normal yazıda tek bir harfle gösterilen ancak konuşmada farklılaşan sesleri IPA neden farklı sembollerle gösterir?",
+    "choices": ["Görsel estetik sağlamak için", "Yazım kurallarını zorlaştırmak için", "Her bir benzersiz ses birimine (fona) tek bir standart sembol düşürmek için", "Yabancı dil öğrenimini engellemek için"],
+    "a": 2,
+    "explanation": "AÇIKLAMA: IPA'nın temel kuralı şudur: Bir ses = Tek bir sembol. Yazı alfabesindeki harfler yanıltıcı olabilir ancak IPA hata payını sıfıra indirir.\n\n💡 PÜF NOKTASI: Bilimsel bir alfabenin amacı kafa karıştırmak değil, tam aksine 'standart ve kesin' olmaktır. Şıklarda 'standart sembol' ifadesini görüyorsan doğru yerdesin."
+  },
+  {
+    "q": "22) Ses analizi çalışmalarında tüm dünyada ücretsiz ve standart olarak kullanılan, spektrogram çıkarma ve ses perdesi ölçme programı hangisidir?",
+    "choices": ["Photoshop", "PRAAT", "Excel", "SPSS"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: PRAAT, dilbilim ve fonetik alanında ses analizleri (akustik analiz) için geliştirilmiş en popüler bilgisayar yazılımıdır.\n\n💡 PÜF NOKTASI: Görseldeki son iki satıra bak: '...PRAAT Programı ile Akustik Olarak İncelenmesi'. Programın adı doğrudan müfredatında var."
+  },
+  {
+    "q": "23) Patlamalı ünsüzlerin (p, t, k, b, d, g) üretimindeki 'tam tıkanma' (hava akımının tamamen durduğu) anı PRAAT spektrogramında nasıl görünür?",
+    "choices": ["Çok koyu siyah bir şerit olarak", "Dikey ve beyaz/boş bir sessizlik boşluğu (gap) olarak", "Dalgalı renkli çizgiler olarak", "Sürekli yukarı bakan oklar olarak"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Patlamalı ses üretilirken ağız tamamen kapanır ve hava durur. Hava ve ses olmadığı için o milisaniyelerde spektrogramda 'beyaz/boş bir sessizlik' alanı oluşur.\n\n💡 PÜF NOKTASI: Mantık yürüt: Ses yoksa, enerji yoktur. Enerji yoksa grafik çizilemez, boş kalır. Boşluk = Sessizlik."
+  },
+  {
+    "q": "24) Patlamalı seslerde, ağzın açılıp havanın serbest kaldığı an ile arkasından gelen ünlünün ses tellerini titreştirmeye başladığı an arasındaki süreye (VOT) ne denir?",
+    "choices": ["Ses Başlangıç Zamanı (Voice Onset Time)", "Formant Süresi", "Frekans Boşluğu", "Desibel Tepesi"],
+    "a": 0,
+    "explanation": "AÇIKLAMA: Voice Onset Time (VOT) - Ses Başlangıç Zamanı, patlamalı ünsüzlerin akustik analizindeki en kritik ölçüttür.\n\n💡 PÜF NOKTASI: İngilizce terimlerin Türkçe çevirileri genelde birebirdir. Voice (Ses) Onset (Başlangıç) Time (Zaman). Baş harfleri VOT."
+  },
+  {
+    "q": "25) PRAAT programında ses dalgasının analiz edildiği ve frekansların zaman içerisindeki değişimini koyu gölgeler/şeritler halinde gösteren grafik türü hangisidir?",
+    "choices": ["Histogram", "Spektrogram", "Pasta Grafiği", "Çizgi Grafik"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Konuşma analizinin kalbi 'Spektrogram' grafiğidir. Zaman, frekans ve genlik boyutlarını tek bir ekranda gösterir.\n\n💡 PÜF NOKTASI: Ses analizi kelimesiyle ikiz kardeş olan grafik türü Spektrogramdır. Fonetik sınavında grafik sorulursa %99 cevap spektrogramdır."
+  },
+  {
+    "q": "26) Patlamalı seslerin aksine, 's, f, ş, h' gibi sürtünmeli seslerin üretiminde ağız tamamen kapanmaz; hava dar bir alandan sürtünerek geçer. Bu durum akustik grafikte nasıl görünür?",
+    "choices": ["Tamamen beyaz bir boşluk olarak", "Yüksek frekanslı, düzensiz ve karmaşık karıncalanma/gürültü (noise) şeklinde", "Düzenli ve temiz paralel çizgiler olarak", "Sadece tek bir ince çizgi olarak"],
+    "a": 1,
+    "explanation": "AÇIKLAMA: Sürtünme sesi fiziksel olarak bir 'gürültü'dür (noise). PRAAT spektrogramında sürtünmeli seslerin olduğu yerler televizyon çekmeyen televizyon ekranındaki karıncalanmaya benzer.\n\n💡 PÜF NOKTASI: Kendi kendine uzunca 'Sssssss' veya 'Ffffff' yap. Çıkan ses bir televizyon veya radyo hışırtısına (gürültüsüne) benziyor değil mi? Grafikteki görüntüsü de tam olarak budur."
+  },
+  {
+    "q": "27) Aşağıdaki ses çiftlerinden hangisi PRAAT programında 'Sürtünmeli Sesler' kategorisinde incelenir?",
+    "choices": ["p - b", "t - d", "s - z", "k - g"],
+    "a": 2,
+    "explanation": "AÇIKLAMA: s ve z harfleri çıkarılırken hava sürekli olarak dişlerin arasından sürtünerek akar. Diğer şıklardakiler ise patlamalı seslerdir.\n\n💡 PÜF NOKTASI: Harfleri uzatmayı dene: 'P' diyip uzatamazsın (patlar biter). Ama 'Sssssss' veya 'Zzzzzzz' diyerek saniyelerce uzatabilirsin çünkü hava 'sürtünerek' akmaya devam eder."
+  },
+  {
+    "q": "28) Sürtünmeli bir ses olan 's' sesinin akustik enerjisinin yoğunlaştığı frekans bölgesi, 'ş' sesine göre daha yukarıdadır (daha tizdir). Bunun sebebi nedir?",
+    "choices": ["'s' sesinde ağız içindeki ön boşluğun daha dar olması", "'s' sesinin daha az nefes gerektirmesi", "'ş' sesinin sadece kadınlar tarafından söylenmesi", "PRAAT programının hatası"],
+    "a": 0,
+    "explanation": "AÇIKLAMA: Ağız içindeki rezonans boşluğu ne kadar küçük ve darsa, üretilen ses o kadar tiz (yüksek frekanslı) olur. 's' sesinde hava çok daha önde ve dar bir alanda sıkışır.\n\n💡 PÜF NOKTASI: Islık çalarken ağzını büzüp daraltırsan ses tizleşir, açarsan pesleşir. Alan küçüldükçe ses perdesi (frekans) yukarı fırlar."
+  },
+  {
+    "q": "29) PRAAT spektrogramında ötümlü (tonlu) sürtünmeli sesleri (Örn: 'z'), ötümsüzlerden (Örn: 's') ayıran en net akustik gösterge, grafiğin en altında bulunan ve ses tellerinin titreşimi gösteren siyah şerittir. Bu şeride ne ad verilir?",
+    "choices": ["Sessizlik Kuşağı", "Ses Birim Tepesi", "Sesleme/Ses Telleri Bandı (Voice Bar)", "Boşluk"],
+    "a": 2,
+    "explanation": "AÇIKLAMA: Grafiğin en altında (genellikle 0-200 Hz arasında) kalın koyu bir çizgi şeklinde görünen bu yapıya 'Voice Bar' denir ve ses tellerinin çalıştığını kanıtlar.\n\n💡 PÜF NOKTASI: İçinde 'Voice' (Ses/Ses telleri) kelimesi geçen seçeneğe odaklan. Ses telleri titreşiyor ise orada bir 'Voice Bar' (Ses bandı) oluşur."
+  },
+  {
+    "q": "30) Akustik analizde 'gürültü' ve 'kaotik dalga yapısı' aşağıdaki ses gruplarından hangisinin temel ayırt edici özelliğidir?",
+    "choices": ["Ünlüler", "Patlamalı Sesler", "Sürtünmeli Sesler", "Akıcı Sesler"],
+    "a": 2,
+    "explanation": "AÇIKLAMA: Sürtünmeli sesler (fricatives) akustik olarak tamamen rastgele, kaotik ve gürültü bazlı frekanslardan oluşur.\n\n💡 PÜF NOKTASI: Soruda 'Gürültü' veya 'Hışırtı' geçiyorsa aklına rüzgarın ağaçlara 'sürtünmesi' gelsin. Cevap net bir şekilde Sürtünmeli Sesler."
+  }
+],
+"Fonetik İpuçları": 
+[
+{q:"PRAAT = Fonetik analizin standart yazılımı. Spektrogram + dalga formu + pitch track + formant + yoğunluk görüntülerini aynı anda gösterir. 'PRAAT mı, başka yazılım mı?' sorusunda PRAAT her zaman doğru cevap.", topic:"Fonetik Analiz Teknikleri"},
+
+{q:"Spektrogram eksenleri: YATAY = zaman, DİKEY = frekans, RENK YOĞUNLUĞU = enerji. Dalga formunda ise yatay = zaman, dikey = genlik. İkisini karıştırma: spektrogramda dikey = frekans, dalga formunda dikey = genlik.", topic:"Fonetik Analiz Teknikleri"},
+
+{q:"F1 = dilin yüksekliği (ters ilişki: F1 yüksek → dil aşağıda, açık ünlü). F2 = dilin öne/arkaya konumu (F2 yüksek → dil önde, ön ünlü). [i] = düşük F1 + yüksek F2. [a] = yüksek F1 + düşük F2. [u] = düşük F1 + düşük F2.", topic:"Fonetik Analiz Teknikleri"},
+
+{q:"Pitch track (F0) = ses teli titreşim hızı = melodiyi gösterir. Düz çizgi = sabit ton, dalgalı = vurgu/ton değişimi. Ötümsüz seslerde pitch track kesilir çünkü ses telleri titreşmez.", topic:"Fonetik Analiz Teknikleri"},
+
+{q:"Patlayıcı spektrogramı = 2 aşama: 1) BOŞLUK (kapanma/sessizlik), 2) DİKEY ÇİZGİ (patlama burstu). Frikativ spektrogramı = uzun, dağınık, düzensiz gürültü şeridi ('karlı TV görüntüsü'). Nazal = düşük frekansta zayıf formantlar.", topic:"Patlamalı ve Sürtünmeli Sesler"},
+
+{q:"Patlayıcılarda VOT (Voice Onset Time) kritiktir. Ötümsüz patlayıcılarda (p, t, k) uzun VOT, ötümlülerde (b, d, g) kısa/negatif VOT. Sınav sorusu: 'Bu spektrogramda hangi ses?' → boşluk + kısa dikey çizgi = patlayıcı.", topic:"Patlamalı Seslerin PRAAT ile İncelenmesi"},
+
+{q:"Frikativ enerjisi farklı frekans bölgelerinde: [s, z] = yüksek frekans (4000 Hz+), [ʃ, ʒ] = orta-yüksek frekans (2000-4000 Hz), [f, v] = geniş bant düşük enerji. Spektrogramda yüksekte mi altta mı → frikativ türünü söyler.", topic:"Sürtünmeli Seslerin PRAAT ile İncelenmesi"},
+
+{q:"Aerometrik sistem = hava akımı + basınç. EGG (Elektroglotatografi) = ses teli temas alanı. Nasoskop = nazal/oral hava ayrımı. Hangisi neyi ölçer sorusunda: 'Elektro + Gloto = gırtlak = ses teli', 'Aero = hava akımı'.", topic:"Aerodinamik Ölçüm Araçları"},
+
+{q:"IPA köşeli parantez [ ] = fonetik (gerçek ses, alofon dahil). Eğik çizgi / / = fonemik (soyut, anlam ayırt edici birim). Dar transkripsiyon = [ ], geniş transkripsiyon = / /. Sınav ipucu: 'alofonları göster' → [ ], 'anlam farkı var mı' → / /.", topic:"IPA-Fonetik Çeviriyazı uygulamaları"},
+
+{q:"Temel IPA sembolleri: [p]=ötümsüz çift dudak patlayıcı, [b]=ötümlü çift dudak patlayıcı, [t]=ötümsüz diş eti patlayıcı, [d]=ötümlü diş eti patlayıcı, [k]=ötümsüz artdamak patlayıcı, [g]=ötümlü artdamak patlayıcı.", topic:"IPA-Fonetik Çeviriyazı uygulamaları"},
+
+{q:"Temel IPA sembolleri devam: [f]=ötümsüz diş-dudak frikativ, [v]=ötümlü diş-dudak frikativ, [s]=ötümsüz diş eti frikativ, [z]=ötümlü diş eti frikativ, [ʃ]=ötümsüz 'ş', [ʒ]=ötümlü 'j', [h]=gırtlak frikativ.", topic:"IPA-Fonetik Çeviriyazı uygulamaları"},
+
+{q:"Nazal IPA sembolleri: [m]=bilabial nazal, [n]=alveolar nazal, [ŋ]=velar nazal ('ng' sesi, 'renk/pençe'). Test: o sesi söylerken burnu kapat → ses değişir/kesilir = nazal.", topic:"IPA-Fonetik Çeviriyazı uygulamaları"},
+
+{q:"Akıcılar: [l]=lateral (yan), [r]=tril/rhotik. Yaklaşıcılar (approximants): [j]='y' sesi, [w]='v/u' arası. Bunlar ne tam ünlü ne tam ünsüz gibi davranır, formantları vardır ama engellenme azdır.", topic:"Dünya Dillerinde Ünsüzler"},
+
+{q:"Evrensel ünlü üçgeni: [i] – [a] – [u]. Bu üç ses neredeyse tüm dillerde bulunur. Dil envanteri büyüdükçe [e], [o], [ɛ] eklenir. Sınav sorusu: 'En yaygın ünlü?' = [a]. 'En yaygın üç ünlü?' = [i, a, u].", topic:"Dünya Dillerinde Ünlüler"},
+
+{q:"Ünlü sınıflandırması 3 eksende: 1) Dilin yüksekliği (kapalı/açık), 2) Dilin öne/arkaya konumu (ön/arka), 3) Dudak şekli (yuvarlak/düz). [i]=kapalı-ön-düz, [u]=kapalı-arka-yuvarlak, [a]=açık-merkez-düz.", topic:"Dünya Dillerinde Ünlüler"},
+
+{q:"Ünsüz sınıflandırması 3 eksende: 1) Artikülasyon yeri (nerede), 2) Artikülasyon biçimi (nasıl), 3) Ötümlülük (ses teli titreşimi var mı). Sınav sorusu bir ses verilince bu 3 özelliği söyleyebilmek şart.", topic:"Dünya Dillerinde Ünsüzler"},
+
+{q:"Ötümlülük testi: boğaza el koy, sesi söyle. Titreşim var = ötümlü [b, d, g, v, z, m, n, l, r]. Titreşim yok = ötümsüz [p, t, k, f, s, ʃ, h]. Minimal çiftler: p/b, t/d, k/g, f/v, s/z, ʃ/ʒ.", topic:"Dünya Dillerinde Ünsüzler"},
+
+{q:"Fonem = soyut, zihinsel ses birimi, anlam ayırt eder, / / ile gösterilir. Alofon = aynı fonemin bağlama göre değişen gerçekleşmesi, [ ] ile gösterilir. Fonem testi = minimal çift: 'bal/dal' → /b/ ve /d/ ayrı fonemler.", topic:"Temel Kavramlar"},
+
+{q:"Minimal çift = yalnızca 1 ses farklı, anlam farklı. Örnek: bal/dal, kap/gap, at/it. Minimal çift varsa o sesler o dilde farklı fonemdir. Minimal çift yoksa aynı fonemin alofonları olabilir.", topic:"Temel Kavramlar"},
+
+{q:"Fonetik vs Fonoloji: Fonetik = sesin fiziksel/akustik gerçekliği (ölçülebilir, evrensel). Fonoloji = sesin bir dildeki işlevi ve sistemi (dile özgü, soyut). PRAAT fonetik aracıdır, minimal çift analizi fonoloji aracıdır.", topic:"Temel Kavramlar"},
+
+{q:"Koartikülasyon = sesler birbirini etkiler, organlar önceden hazırlanır. Bağlam içi konuşmada izole sesler gibi değil, örtüşerek üretilir. Sınav ipucu: 'Neden konuşmadaki ses laboratuvar sesinden farklı?' = koartikülasyon.", topic:"Bağlam İçinde Konuşma: Koartikülasyon"},
+
+{q:"Asimilasyon türleri: İlerleyici = önceki ses sonrakini etkiler (Türkçe ünlü uyumu). Gerileyici = sonraki ses öncekini etkiler ('in biri → im biri'). Tam asimilasyon = sesler aynılaşır. Kısmi = bir özellik geçer.", topic:"Bağlam İçinde Konuşma: Koartikülasyon"},
+
+{q:"Türkçe ünlü uyumu = ilerleyici asimilasyon. Kök ünlüsü, ek ünlüsünü etkiler. Düzlük-yuvarlaklık ve kalınlık-incelik olmak üzere 2 eksen. Sınav sorusu: 'Ünlü uyumu hangi sesbirimsel olaydır?' = asimilasyon.", topic:"Bağlam İçinde Konuşma: Koartikülasyon"},
+
+{q:"Parçaüstü (suprasegmental/prosodik) özellikler: vurgu, ton, ezgi, süre, ritim, konuşma hızı. Bunlar tek bir sesin değil, hece/sözcük/cümle düzeyinin özellikleridir. 'Parça = segment = tek ses' → parçaüstü = sesin ötesi.", topic:"Bağlam İçinde Konuşma: Parça Üstü Özellikler"},
+
+{q:"Vurgu = enerji/süre/pitch artışı. Ton = tek hecede pitch değişimi (ton dilleri: Çince, Yoruba). Ezgi (intonation) = cümle düzeyinde pitch kalıbı. Soru cümlesi ezgisi yükselir, bildirme cümlesi düşer.", topic:"Bağlam İçinde Konuşma: Parça Üstü Özellikler"},
+
+{q:"Prozodi işlevleri: 1) Anlam ayırt etme (vurgu yeri: 'adam GELDI' vs 'ADAM geldi'), 2) Duygu aktarma, 3) Söylem yapısı (cümle sonu ezgisi), 4) Odak ve önem vurgulama. Sınav sorusu: 'Prozodi ne işe yarar?' = bu 4 işlev.", topic:"Bağlam İçinde Konuşma: Parça Üstü Özellikler"},
+
+{q:"Bilabial sesler = iki dudak: [p, b, m]. Labiodental = alt dudak + üst diş: [f, v]. Dental = dişler: [θ, ð]. Alveolar = diş eti: [t, d, s, z, n, l]. Palatal = sert damak: [ʃ, ʒ, j]. Velar = yumuşak damak: [k, g, ŋ]. Glottal = gırtlak: [h].", topic:"Dünya Dillerinde Ünsüzler"},
+
+{q:"Ünsüz oluşum biçimleri: Patlayıcı (stop) = tam kapanma+patlama [p,b,t,d,k,g]. Frikativ = dar kanal+türbülans [f,v,s,z,ʃ]. Afrikat = stop+frikativ [tʃ=ç, dʒ=c]. Nazal = burundan [m,n,ŋ]. Lateral = yandan [l]. Tril = titrek [r].", topic:"Dünya Dillerinde Ünsüzler"},
+
+{q:"Dünya dillerinde ünsüz envanterleri: En az ünsüzü olan dil = Rotokas (~6 ünsüz). En çok ünsüzü olan dil = bazı Kafkas dilleri (80+). Türkçe = ~21 ünsüz. Evrensel olarak en yaygın ünsüzler: [m, n, p, t, k].", topic:"Dünya Dillerinde Ünsüzler"},
+
+{q:"Sınav stratejisi — ses tanımlama soruları: 1) Yer: dudak mı, diş mi, damak mı? 2) Biçim: patlıyor mu, sürtünüyor mu, nazal mı? 3) Ötümlülük: titreşim var mı? Bu 3 adımı uygularsan her IPA sorusunu çözebilirsin.", topic:"Genel Sınav Stratejisi"},
+
+{q:"Sınav stratejisi — spektrogram soruları: Boş alan+dikey çizgi = patlayıcı. Dağınık gürültü şeridi = frikativ. Düzenli yatay çizgiler (formantlar) = ünlü. Düşük frekansta zayıf formantlar = nazal. Pitch track = F0 = melodiyi gösterir.", topic:"Genel Sınav Stratejisi"},
+]      
 
     };
 
