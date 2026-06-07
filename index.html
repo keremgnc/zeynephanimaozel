@@ -165,73 +165,1834 @@
 
   <script>
     const subjects = { 
-  "Fonasyon": 
-[
-  { "q": "1) Vokal kıvrımların sinir impulsları tarafından değil, akciğerlerden gelen hava akımıyla aktive edildiğini, kasların ise bu kıvrımların elastikiyetini ve gerginliğini kontrol ettiğini savunan teori aşağıdakilerden hangisidir? ", "choices": ["Kaynak-Filtre Teorisi", "Miyofonetik Teori", "Miyoelastik Aerodinamik Teori", "Eylem Teorisi (Action Theory)"], "a": 2, "explanation": "Aerodinamik terimi vokal kıvrımların hava akımıyla aktive edildiğini [cite: 21], miyoelastik ise kasların elastikiyet ve gerginliği nasıl kontrol ettiğini ifade eder[cite: 22].", "topic": "Miyoelastik Aerodinamik Teori" },
-  { "q": "2) Erkek, kadın ve çocuk seslerinin ortalama temel titreşim frekansları (F0) düşünüldüğünde, ders notuna göre aşağıdakilerden hangisi doğrudur? ", "choices": ["Erkek: ~200 Hz, Kadın: ~150 Hz, Çocuk: >300 Hz", "Erkek: ~150 Hz, Kadın: >200 Hz, Çocuk: >300 Hz", "Erkek: ~80 Hz, Kadın: ~1000 Hz, Çocuk: ~150 Hz", "Erkek: >300 Hz, Kadın: ~200 Hz, Çocuk: ~150 Hz"], "a": 1, "explanation": "Erkek seslerinin ortalama F0 değeri yaklaşık 150 Hz [cite: 25], kadınların genellikle 200 Hz'den yüksek [cite: 26] ve çocukların F0 değeri ise 300 Hz'den yüksektir[cite: 27].", "topic": "Temel Frekans (F0)" },
-  { "q": "3) Belirli bir uzunluk ve kütleye sahip vokal kıvrımları olan bir kişinin ses perdesini (F0) belirlemede hangi faktörler uzunluktan daha önemlidir? ", "choices": ["Vokal kıvrımların sadece anatomik uzunluğu", "Kıvrımların kütlesi ve gerginliği", "Akciğerlerin toplam hava hacmi", "Supraglottal boşluğun genişliği"], "a": 1, "explanation": "Notlarda kütle ve gerginliğin, F0 değerini belirlemede uzunluktan daha önemli olduğu açıkça belirtilmiştir[cite: 34].", "topic": "F0 Belirleyicileri" },
-  { "q": "4) Fizyolojik olarak tiz (yüksek frekanslı) bir ses üretilirken ses tellerinde meydana gelen değişim ve bundan sorumlu temel kas aşağıdakilerden hangisidir? ", "choices": ["Cricothyroid kasının kasılarak vokal kıvrımları boyuna uzatması, inceltmesi ve gerginliği artırması", "Sternohyoid kasının gırtlağı aşağı çekerek telleri tamamen gevşetmesi", "Posterior Krikoaritenoid kasının kıvrımları kalınlaştırması", "Vokal kıvrımların kütlesinin ve kalınlığının artırılması"], "a": 0, "explanation": "Tiz ses için Cricothyroid kası kasılarak vokal kıvrımları boyuna uzatır, inceltir (efektif kütleyi azaltır) ve gerginliği artırır[cite: 43].", "topic": "Sesin Tizleşmesi" },
-  { "q": "5) Hava akımı açık glottisten hızla geçerken vokal kıvrımların hemen altındaki iç yüzeyde hava basıncının ani düşüşüyle (negatif basınç/vakum oluşması) tellerin birbirine doğru emilerek kapanmasını sağlayan aerodinamik fenomen hangisidir? ", "choices": ["Miyomotor Etki", "Yüksek Akış Etkisi", "Krikoaritenoid Etkisi", "Bernoulli Etkisi"], "a": 3, "explanation": "Hava daralan glottis boşluğundan geçerken hızlanır, hızlanan havanın iç yüzeydeki basıncı aniden düşer (negatif basınç/vakum oluşur) ve bu basınç düşüşü vokal kıvrımları birbirine doğru emerek hızla kapatır[cite: 280, 281, 282].", "topic": "Bernoulli Etkisi" },
-  { "q": "6) Konum olarak üstte yer alan, daha az kas ve daha çok mukoza yapısına sahip, pembe/kırmızımsı renkte olup ana görevi koruma ve basınç sağlamak olan yapı hangisidir? ", "choices": ["Yalancı ses telleri (Ventriküler kıvrımlar)", "Gerçek vokal kıvrımlar", "Epiglot kıkırdağı", "Hiyoid kemiği"], "a": 0, "explanation": "Notlardaki karşılaştırma tablosuna göre üstte yer alan, daha az kaslı, pembe/kırmızımsı renkli ve ana görevi koruma ve basınç olan yapı Yalancı Ses Telleridir[cite: 97].", "topic": "Yalancı Ses Telleri" },
-  { "q": "7) Larinksin arka kısmını oluşturan geniş plakası (lamina) ile diğer trakeal halkalardan ayrılan ve mühürlü bir yüzüğe benzeyen özel adapte olmuş en üst trakeal halka kıkırdağı hangisidir? ", "choices": ["Tiroid kıkırdak", "Krikoid kıkırdak", "Aritenoid kıkırdaklar", "Epiglot kıkırdağı"], "a": 1, "explanation": "Krikoid kıkırdak mühürlü bir yüzüğe benzediği için bu adı almıştır [cite: 99] ve trakeanın en üst halkası olup arkadaki geniş plakası (lamina) ile diğer halkalardan ayrılır[cite: 100].", "topic": "Larinks Kıkırdakları" },
-  { "q": "8) Her bir aritenoid kıkırdağın tabanında yer alan, öne doğru uzanan ve vokal ligamentin (ses telinin) doğrudan tutunma noktası olan küçük çıkıntıya ne ad verilir? ", "choices": ["Aritenoid kıkırdakların vokal prosesi", "Aritenoid kıkırdakların musküler prosesi", "Tiroid kıkırdağın üst boynuzu (superior horn)", "Hiyoid kemiğinin lateral ucu"], "a": 0, "explanation": "Her bir aritenoid kıkırdağın tabanındaki küçük bir çıkıntı (vokal proses) öne doğru uzanır ve vokal ligamentin tutunma noktasıdır[cite: 127].", "topic": "Larinks Anatomisi" },
-  { "q": "9) Gerçek vokal kıvrımların ve glottisin membranöz ve kıkırdaksı bölümleri ile ilgili aşağıda verilen yapısal oranlardan hangisi doğrudur? ", "choices": ["Ön 1/3'lük kısım kıkırdaksı, arka 2/3'lük kısım membranözdür.", "Ön 2/3'lük kısım membranöz (zarsı), arka 1/3'lük kısım kıkırdaksıdır.", "Tamamı membranöz yapılardan oluşur.", "Tamamı kıkırdaksı yapılardan oluşur."], "a": 1, "explanation": "Kıvrımların arka üçte birlik kısmına doğru uzanan vokal proses glottisin kıkırdaksı bölümünü oluştururken, ön üçte ikilik kısmı membranöz (zarsı) bölümleridir[cite: 140, 141].", "topic": "Glottis Anatomisi" },
-  { "q": "10) Ses tellerini birbirinden uzaklaştırarak glottisi açan (abdüksiyon yapan) ve nefes almamızı sağlayan HAYATİ öneme sahip tek larenks kası hangisidir? ", "choices": ["Lateral Krikoaritenoid (LCA) Kas", "Tiroaritenoid (TA) Kas", "Posterior Krikoaritenoid (PCA) Kas", "Transvers Interaritenoid Kas"], "a": 2, "explanation": "Posterior Krikoaritenoid (PCA) kası musküler prosesi arkaya çekerek aritenoid kıkırdağı döndürür ve ses tellerini açar (abdüksiyon); ses kıvrımlarını birbirinden uzaklaştıran tek kastır[cite: 162, 163, 209].", "topic": "Posterior Krikoaritenoid Kas" },
-  { "q": "11) Posterior Krikoaritenoid (PCA) kası dahil olmak üzere içsel (intrinsek) larenks kaslarının neredeyse tamamının sinirsel uyarımı (innervasyonu) hangi sinir tarafından sağlanır? ", "choices": ["Vagus sinirinin bir dalı olan Rekürrent laringeal sinir", "Trigeminal sinir", "Glossofaringeal sinir", "Süperiyor laringeal sinir"], "a": 0, "explanation": "Larenksin içsel kaslarının neredeyse tamamının sinir beslemesi (innervasyonu), onuncu kafa siniri olan vagusun bir dalı olan rekürrent sinir tarafından sağlanır[cite: 208].", "topic": "Sinirsel Uyarım" },
-  { "q": "12) Konuşmanın fonasyonlu (seslemeli) seslerini üretmek için normalde ayrı olan ses tellerini birbirine yaklaştıran (addüksiyon yapan) ana kaslar hangileridir? ", "choices": ["Transvers ve oblik interaritenoid kaslar ile Lateral krikoaritenoid (LCA) kası", "Posterior krikoaritenoid kası", "Sternohyoid kası", "Sadece tiroaritenoid kası"], "a": 0, "explanation": "Transvers interaritenoid kas ses kıvrımlarını birbirine yaklaştırır (birinci derecedeki adduktördür) [cite: 226, 227], Lateral krikoaritenoid (LCA) kası da vokal prosesleri birbirine bastırarak adduksiyona yardımcı olur[cite: 228].", "topic": "Adduktör Kaslar" },
-  { "q": "13) Tiroid kıkırdağın iki laminasının önde birleşerek oluşturduğu açı (Adem elması açısı) erkeklerde ve kadınlarda sırasıyla yaklaşık kaç derecedir? ", "choices": ["Erkeklerde ~120 derece, Kadınlarda ~90 derece", "Erkeklerde ~90 derece, Kadınlarda ~120 derece", "Erkeklerde ve kadınlarda eşit olarak ~90 derece", "Erkeklerde ~60 derece, Kadınlarda ~60 derece"], "a": 1, "explanation": "Tiroid kıkırdak açısı erkeklerde (yaklaşık 90 derece) kadınlara (yaklaşık 120 derece) göre daha dardır (akut)[cite: 175].", "topic": "Larinks Kıkırdakları" },
-  { "q": "14) Akıcı konuşma sırasında /s/ ve /k/ gibi ötümsüz ünsüzlerin üretimi esnasında glottis ve ses tellerinin durumu aşağıdakilerden hangisidir? ", "choices": ["Ünlü üretimi (Tam addüksiyon)", "Ötümsüz ses üretimi (Tam abdüksiyon)", "Ötümlü yüksek basınçlı ses (Gevşek addüksiyon)", "Fısıltı üretimi"], "a": 1, "explanation": "Akıcı konuşma sırasında, /s/ ve /k/ gibi ötümsüz ünsüzler için ses kıvrımları birbirinden ayrılarak tam abdüksiyon konumuna geçer[cite: 192, 196].", "topic": "Ünsüz Üretimi" },
-  { "q": "15) Ünlülerin akustik teorisinde ses tellerinden çıkan temel frekans ve harmonikleri 'kaynak', vokal kanalın rezonans işlevini ise 'filtre' olarak tanımlayan model hangisidir? ", "choices": ["Fant - Kaynak Filtre Modeli", "Liberman - Motor Teori", "Fairbanks - Servomekanizma Modeli", "MacNeilage - Uzamsal Hedef Modeli"], "a": 0, "explanation": "Ünlülerin akustik teorisi, Fant tarafından geliştirilen kaynak-filtre (source-filter) modeline dayanır[cite: 352].", "topic": "Kaynak-Filtre Modeli" },
-  { "q": "16) Vokal kanalın belirli şekillerine ve hacimlerine göre güçlenen rezonans zirvelerine ne ad verilir? ", "choices": ["Temel Frekans (F0)", "Harmonik", "Formant (F1, F2, F3 vb.)", "Aperiodik Gürültü"], "a": 2, "explanation": "Vokal kanalın belirli şekillerine göre güçlenen rezonans zirvelerine formant (F1, F2, F3 vb.) adı verilir[cite: 354].", "topic": "Formantlar" },
-  { "q": "17) /i/ ünlüsü (Yüksek Ön Düz Ünlü) üretilirken dil öne ve yukarı hareket ederek oral boşluğu küçültür, yutağı genişletir. Bu durumun akustik sonucu olan F1-F2 formant frekans ilişkisi nasıldır? ", "choices": ["Düşük F1 - Düşük F2", "Yüksek F1 - Yüksek F2", "Çok düşük F1 - Çok yüksek F2", "Yüksek F1 - Düşük F2"], "a": 2, "explanation": "Büyük yutak boşluğu çok düşük bir F1 frekansı sağlarken, kısa ön boşluk çok yüksek bir F2 frekansı üretir[cite: 360].", "topic": "Ünlü Akustiği" },
-  { "q": "18) Geleneksel ünlü dörtgeni ile F1-F2 formant frekanslarının akustik haritası arasındaki korelasyon kurallarından hangisi doğrudur? ", "choices": ["Dil aşağı indikçe F1 azalır; dil arkaya çekildikçe F2 artar.", "Dil aşağı indikçe (yutak boşluğu küçüldükçe) F1 frekansı artar; dil arkaya çekildikçe ve dudaklar yuvarlandıkça F2 frekansı düşer.", "Dil konumunun formant frekansları üzerinde hiçbir etkisi yoktur.", "Dudakların yuvarlanması tüm formant frekanslarını her zaman yükseltir."], "a": 1, "explanation": "Dil aşağı indikçe (yutak boşluğu küçüldükçe) F1 frekansı artar; dil arkaya doğru çekildikçe ve dudaklar yuvarlandıkça (ön oral boşluk uzadıkça) F2 frekansı düşer[cite: 367, 368].", "topic": "Akustik ve Artikülasyon İlişkisi" },
-  { "q": "19) Ünsüzlerin artikülasyon ve akustiği, ünlülerden hangi temel noktada ayrılır? ", "choices": ["Ünsüzler üretilirken vokal kanalda hava akımını tamamen durduracak veya çok ciddi kısıtlayacak daha uç düzeyde daralmalar meydana gelir.", "Ünsüzlerde sadece periyodik ses telleri titreşimi kaynak olarak kullanılır.", "Ünsüzlerin hiçbir şekilde formant yapısı veya geçişi bulunmaz.", "Ünsüz üretilerken vokal kanal şekli sabit kalır."], "a": 0, "explanation": "Ünsüzler üretilirken vokal kanalda hava akımını tamamen durduracak veya çok ciddi şekilde kısıtlayacak daha uç düzeyde daralmalar (konstriksiyonlar) meydana gelir[cite: 393].", "topic": "Ünsüz Artikülasyonu" },
-  { "q": "20) Yumuşak damağın (velum) inerek geniz yolunu açmasıyla üretilen, antirezonanslar nedeniyle akustik olarak zayıf olan ve 200-300 Hz civarında 'nasal murmur' rezonansına sahip olan ünsüz grubu hangisidir? ", "choices": ["Sürtünmeliler (Fricatives)", "Patlamalılar (Stops/Plosives)", "Genizsiller (Nasals)", "Yarı Ünlüler (Semivowels)"], "a": 2, "explanation": "Genizsiller (Nasals) velofaringeal portun açılmasıyla üretilir, antirezonanslar sebebiyle zayıftır ve 200-300 Hz civarında 'nasal murmur' adı verilen rezonansa sahiptir[cite: 401, 402, 403].", "topic": "Genizsiller" },
-  { "q": "21) Patlamalı ünsüzlerin (/p, b, t, d, k, g/) en temel akustik özellikleri aşağıdakilerden hangisinde birlikte verilmiştir? ", "choices": ["Sessiz boşluk (silent gap), geçici patlama gürültüsü (release burst) ve hızlı F1-F2 formant geçişleri", "Uzun süreli sürekli harmonik formant yapısı", "Yalnızca 200 Hz'lik nasal murmur rezonansı", "Hiçbir akustik ipucunun bulunmaması"], "a": 0, "explanation": "Patlamalıların temel akustik özellikleri; kapanma evresindeki 'sessiz boşluk', oluşan 'geçici patlama gürültüsü', hızlı rise/fall süreleri ve hızlı F1 ve F2 formant geçişleridir[cite: 411].", "topic": "Patlamalılar" },
-  { "q": "22) 'Stoop' kelimesini söylerken, henüz en baştaki /s/ ünsüzü üretilirken arkadan gelecek olan /u/ ünlüsü için dudakların öne doğru yuvarlanmaya başlaması hangi mekanizmaya örnektir? ", "choices": ["Benzeşme (Assimilation)", "Eş-eklemleme (Coarticulation)", "Prozodi (Prosody)", "Aşamalı İşleme"], "a": 1, "explanation": "İki farklı artikülatörün, farklı fonemler için zaman uyuşması (temporal overlap) ile aynı anda hareket etmesi eş-eklemlemedir (coarticulation)[cite: 423, 424].", "topic": "Eş-eklemleme" },
-  { "q": "23) Konuşmanın 'parçasal' özelliklerinden ziyade birden fazla ses biriminin üzerine binen 'üstparçasal' (suprasegmental) özelliklerini inceleyen prozodi akustiğinin temel bileşenleri nelerdir? ", "choices": ["Vurgu, entonasyon (ezgi), süre ve durak (juncture)", "Sadece ünlüler ve ünsüzler", "F1 ve F2 formant frekansları", "Yalnızca ses teli titreşim sayısı"], "a": 0, "explanation": "Ünlüler ve ünsüzler parçasal birimlerken; vurgu, entonasyon, süre ve durak (juncture) birden fazla ses biriminin üzerine binen üstparçasal özelliklerdir[cite: 428].", "topic": "Prozodi" },
-  { "q": "24) Bir ifadedeki vurgulu heceler, vurgusuz olanlara kıyasla akustik olarak hangi üç temel özelliğe sahiptir? ", "choices": ["Daha yüksek temel frekans (F0), daha uzun süre ve daha yüksek şiddet (intensity)", "Daha düşük perde ve daha kısa hece süresi", "Sadece sesin tonunun tamamen kısılması", "Formant frekanslarının tamamen sıfırlanması"], "a": 0, "explanation": "Vurgulu heceler genellikle vurgusuz olanlara göre daha yüksek temel frekans (F0/perde), daha uzun süre ve daha yüksek şiddete (intensity/gürlük) sahiptir[cite: 432, 433, 434].", "topic": "Vurgu (Stress)" },
-  { "q": "25) Birçok dilde standart bildiri cümlelerinin sonunda perdenin doğal olarak düşmesinin (işaretlenmemiş nefes grubu) fizyolojik nedeni nedir? ", "choices": ["Nefes verme döngüsünün sonunda alt-glottal hava basıncının doğal olarak düşmesi", "Dudakların konuşma sonunda istemsiz olarak kapanması", "Dil kökünün yutağı tamamen kapatması", "Cricothyroid kasının aniden aşırı kasılması"], "a": 0, "explanation": "Bildiri cümlelerinin sonunda düşen perde grafiğinin (işaretlenmemiş nefes grubu) fizyolojik nedeni, nefes verme döngüsünün sonunda alt-glottal hava basıncının doğal olarak düşmesidir[cite: 440, 441].", "topic": "Entonasyon" },
-  { "q": "26) Nooteboom'a göre konuşmada asıl amacın 'anlaşılmak' olduğunu, ağızda bir engel varken bile /u/ sesini üretmek için alternatif olarak dili geriye çekme veya gırtlağı indirme gibi yolların seçilmesini açıklayan hedef modeli hangisidir? ", "choices": ["Uzamsal Hedef Modeli (Spatial Targets)", "Akustik-İşitsel Hedef Modeli (Acoustic-Auditory)", "Zamanlama Modeli (Scan-ahead)", "Kapalı Döngü Modeli (Closed Loop)"], "a": 1, "explanation": "Ağızda engel varken alternatif yollar izlenmesi, hedefin uzamsal değil, işitsel bir boşluktaki akustik bir hedef olduğunu savunan Akustik-İşitsel Hedef Modeli ile açıklanır[cite: 476, 477].", "topic": "Hedef Modelleri" },
-  { "q": "27) Konuşma esnasında dışarıdan gelen işitsel ve dokunsal geri bildirimlerin (feedback) süregelen çok hızlı motor hareketleri anlık düzeltmek için yavaş kalacağını, bu yüzden motor komutların geri bildirimi beklemeden merkezi olarak gönderildiğini savunan model hangisidir? ", "choices": ["Kapalı Döngü Modeli (Closed Loop) - Fairbanks", "Açık Döngü Modeli (Open Loop) - Kozhevnikov ve Chistovich", "Zamanlama Modeli - Martin", "Süperpozisyon Modeli - Öhman"], "a": 1, "explanation": "Kozhevnikov ve Chistovich geri bildirimin konuşma sırasında çok yavaş kalacağını, bu yüzden hece komutlarının açık döngü prensibiyle merkezi olarak gönderildiğini savunmuştur[cite: 491].", "topic": "Kapalı ve Açık Döngü Modelleri" },
-  { "q": "28) Güncel Konuşma Üretim Yaklaşımı'na göre, yetişkin ve yetkin bir konuşmacının duyusal/işitsel geri bildirimleri (feedback) kullanma prensibi hakkında aşağıdakilerden hangisi doğrudur? ", "choices": ["Yetişkinler dış duyusal geri bildirimleri anlık motor hareketleri kontrol etmek için değil; hatayı fark edip bir sonraki denemede düzeltmek ve içsel planı güncellemek için kullanır.", "Beyin her bir kasın milimetrik hareketini anlık olarak tek tek komutlarla yönetir.", "İşitsel ve dokunsal geri bildirimler konuşma anındaki milisaniyelik kas hareketlerini düzeltecek kadar hızlıdır.", "Yetişkinlerde konuşmayı sürdürmek için propriyosepsiyon duyusu çocuklardan çok daha hayati ve birincil öneme sahiptir."], "a": 0, "explanation": "Biz dış duyusal bilgileri konuşma esnasındaki motor hareketleri anlık kontrol etmek için değil; yapılan bir hatayı fark edip bir sonraki denemede düzeltmek ve beynimizdeki içsel planı güncel tutmak için kullanırız[cite: 500, 501].", "topic": "Güncel Konuşma Üretim Modeli" },
-  { "q": "29) Dinleyicinin konuşma sinyalini işlemek ve onu doğrudan 'konuşmacının amaçlanan artikülatör hareketleriyle' (gestures) ilişkilendirmek için evrimleşmiş özel bir nöral modüle sahip olduğunu savunan, algı ile üretimi birbirine bağlayan konuşma algısı teorisi hangisidir? ", "choices": ["Motor Teoriler (Liberman ve ark.)", "İşitsel Teoriler", "Şablon Eşleştirme Teorisi", "Aşamalı İşleme Modeli"], "a": 0, "explanation": "Liberman ve arkadaşlarının Motor Konuşma Algısı Teorisi, insanların konuşma sinyalini işlemek ve onu doğrudan amaçlanan artikülatör hareketlerle (gestures) ilişkilendirmek için evrimleşmiş özel bir nöral modüle sahip olduğunu savunur[cite: 531, 533].", "topic": "Motor Teoriler" },
-  { "q": "30) İşitsel algı teorileri kapsamında; her ses biriminin (örneğin patlamalı ünsüzlerin) spektrumunda, konuşmacıdan veya bağlamdan bağımsız olarak değişmeyen (invariant) bazı sabit akustik özelliklerin (spektral eğimler) bulunduğunu savunan model hangisidir? ", "choices": ["Sentez Yoluyla Analiz (Analysis-by-Synthesis)", "Değişmez Akustik İpuçları (Stevens ve Blumstein)", "Aşamalı İşleme Modeli (Pisoni ve Sawusch)", "Şablon Eşleştirme (Template Matching)"], "a": 1, "explanation": "Stevens ve Blumstein'ın modeli, her ses biriminin spektrumunda konuşmacıdan bağımsız olarak değişmeyen (invariant) bazı akustik özellikler (spektral eğimler) bulunduğunu ve algının bu sabit ipuçlarına dayandığını savunur[cite: 548].", "topic": "Değişmez Akustik İpuçları" },
-],
-      "Konuşma Üretimi": 
-
+      "Truncus Cerebri": 
   [
-  { "q": "1) Sinir sisteminde uyarıları yalnızca merkezi sinir sisteminden (CNS) alıp çevresel organlara ve kaslara doğru taşıyan nöron türü aşağıdakilerden hangisidir? ", "choices": ["Afferent (Duyusal) nöronlar", "Efferent (Motor) nöronlar", "Ranvier nöronları", "Miyelinli afferent nöronlar"], "a": 1, "explanation": "Motor (efferent) nöronlar uyarıları yalnızca merkezi sinir sisteminden çevresel organlara doğru taşırlar; duyusal (afferent) nöronlar ise bilgiyi merkeze iletir.", "topic": "Nöron Türleri" },
-  { "q": "2) Nöronların gelen uyarının şiddeti belirli bir eşiğin altındaysa tepki vermemesi, eşiğe ulaştığında ise uyarı şiddeti ne olursa olsun tam kapasiteyle ateşlenmesini açıklayan temel kural hangisidir? ", "choices": ["Boyle Yasası", "Hep ya da Hiç (All-or-none) Prensibi", "Geri Bildirim Döngüsü", "Dikey Faz Farkı"], "a": 1, "explanation": "Nöronların çalışma mantığı 'hep ya da hiç' prensibine dayanır; uyarının eşiğe ulaşması durumunda nöron her zaman aynı boyutta ve tam kapasiteyle ateşlenir.", "topic": "Nöron Fizyolojisi" },
-  { "q": "3) Nöronlar, gelen uyarının şiddetini aksondaki patlamanın büyüklüğüyle kodlayamadıklarına göre, beynimiz çok şiddetli bir uyaranı veya güçlü bir dokunuşu nasıl ayırt eder? ", "choices": ["Ateşlenen aksiyon potansiyelinin büyüklüğünü artırarak", "Ateşlenme sıklığı (frekansı) aracılığıyla nöronu daha sık ateşleyerek", "Miyelin kılıfın kalınlığını anlık olarak değiştirerek", "Sadece gri maddeyi devreye sokarak"], "a": 1, "explanation": "Nöron uyarının şiddetini patlamanın büyüklüğüyle değil, sıklığıyla (frekansıyla) kodlar; uyarı ne kadar güçlüyse o kadar sık peş peşe ateşlenir.", "topic": "Uyarının Kodlanması" },
-  { "q": "4) Elektriksel bir mesajın akson boyunca ilerleme hızını şaha kaldıran, aksonun etrafını bir yalıtım bandı gibi saran yağlı ve beyazımsı yapıya ne ad verilir? ", "choices": ["Dendrit", "Miyelin kılıf", "Sinaps kesesi", "Nörotransmitter"], "a": 1, "explanation": "İletimi asıl şaha kaldıran şey, aksonun etrafını bir yalıtım bandı gibi saran yağlı ve beyazımsı miyelin kılıftır.", "topic": "Miyelin Kılıf" },
-  { "q": "5) İki nöron arasında yer alan, elektrik sinyalinin doğrudan geçemediği ve kimyasallar (nörotransmitterler) aracılığıyla atlayabildiği mikroskobik boşluğa ne ad verilir? ", "choices": ["Ranvier boğumu", "Sinaps", "Rolando yarığı", "Axon hillock"], "a": 1, "explanation": "İki nöron arasında sinaps adı verilen mikroskobik bir boşluk bulunur; sinyal bu boşluğu ileten nöron ucundan salgılanan kimyasallarla geçer.", "topic": "Sinaps" },
-  { "q": "6) Neredeyse tüm sağlaklarda ve solak bireylerin çoğunda, konuşma ve dil kontrolü beynin hangi bölgesinin baskınlığı altındadır? ", "choices": ["Sağ yarımküre (Hemisfer)", "Sol yarımküre (Hemisfer)", "Bilateral (Her iki yarımküre eşit)", "Oksipital lob"], "a": 1, "explanation": "İletişim açısından en kritik kurallardan biri, neredeyse tüm sağlaklarda ve solakların çoğunda konuşma ve dil kontrolünün sol yarımkürenin baskınlığı altında olmasıdır.", "topic": "Serebral Lateralizasyon" },
-  { "q": "7) 1861 yılında Paul Broca tarafından keşfedilen, sol frontal lobun arka-alt kısmında yer alan ve konuşma üretimi ile konuşma kaslarına motor emirler göndermede kritik role sahip alan hangisidir? ", "choices": ["Wernicke Alanı", "Broca Alanı", "Rolando Yarığı", "Sylvius Yarığı"], "a": 1, "explanation": "Paul Broca, konuşma üretiminin sol frontal lobun belirli bir bölümü tarafından kontrol edildiğini keşfetmiştir; buraya günümüzde Broca Alanı denir.", "topic": "Broca Alanı" },
-  { "q": "8) Sol temporal lobun birinci kıvrımında yer alan ve konuşulan dili, kelimelerin anlamını anlama yeteneğinden sorumlu temel beyin alanı aşağıdakilerden hangisidir? ", "choices": ["Broca Alanı", "Wernicke Alanı", "Motor Şerit", "Supplementary Motor Alanı"], "a": 1, "explanation": "Carl Wernicke (1874), konuşmayı anlama yeteneğinin sol temporal lobun birinci kıvrımında yer aldığını bulmuştur; burası Wernicke Alanı olarak bilinir.", "topic": "Wernicke Alanı" },
-  { "q": "9) Epilepsi ameliyatları sırasında uyanık hastaların korteks yüzeyini düşük akımlı elektrikle uyararak dille ilgili alanların haritalandırılmasını gerçekleştiren bilim insanları kimlerdir? ", "choices": ["Chomsky ve Halle", "Wilder Penfield ve Lamar Roberts", "Peterson ve Shoup", "Kozhevnikov ve Chistovich"], "a": 1, "explanation": "Beyin alanlarının haritalandırılmasında en büyük devrimlerden birini beyin cerrahı Wilder Penfield ve meslektaşı Lamar Roberts (1959) elektriksel uyarım yöntemiyle yapmıştır.", "topic": "Kortikal Haritalandırma" },
-  { "q": "10) Beyin kabuğunda (korteks) frontal lob ile parietal lobu birbirinden dikey olarak ayıran, ön tarafı motor şerit arka tarafı ise duyusal şerit olarak adlandırılan oluk hangisidir? ", "choices": ["Sylvius Yarığı (Fissure of Sylvius)", "Rolando Yarığı (Fissure of Rolando)", "Boylamsal Yarık", "Conus Elasticus"], "a": 1, "explanation": "Frontal lob ile parietal lobu dikey olarak ayıran oluğa Rolando Yarığı denir; önü motor, arkası duyusal şerittir.", "topic": "Serebral Anatomi" },
-  { "q": "11) Konuşmanın zihinde motor olarak planlanması (programming) sorunu ile kaslar aracılığıyla fiziksel kontrol/uygulama sorunu sırasıyla hangi klinik terimlerle adlandırılır? ", "choices": ["Dizartri - Apraksi", "Apraksi - Dizartri", "Afazi - Spastisite", "Ataksi - Afazi"], "a": 1, "explanation": "Konuşma motor planlama sorunları apraksi olarak adlandırılırken, konuşmanın motor uygulama (kas kontrolü) sorunları dizartri olarak adlandırılır.", "topic": "Motor Konuşma Bozuklukları" },
-  { "q": "12) Beyin sapının arkasında ve serebrumun altında yer alan, karmaşık ve beceri gerektiren hareketlerin zamanlamasını düzenleyen, hasarında 'ataksik dizartri' görülen organ hangisidir? ", "choices": ["Medulla Oblongata", "Beyincik (Serebellum)", "Pons", "Baskın Hemisfer"], "a": 1, "explanation": "Beyincik (serebellum) hareketlerin koordinasyon ve zamanlamasını düzenler; rahatsızlıkları artikülasyon ve prosodi bozukluğu içeren ataksik dizartriye yol açar.", "topic": "Serebellum" },
-  { "q": "13) Konuşmacıların, bir ifadeyi söylemeden önce tüm cümleyi zihinlerinde planladıklarına kanıt oluşturan ve kelime/ses yer değiştirmeleriyle karakterize 'Spoonerism' hatalarının kuralı aşağıdakilerden hangisidir? ", "choices": ["Bir ünsüz her zaman bir ünlüyle yer değiştirir.", "Ses değişimlerinde her zaman iki ünsüz ya da iki ünlü kendi arasında yer değiştirir; kurallara her zaman uyar.", "Hatalar tamamen rastgeledir ve dilin hece kurallarını her zaman çiğner.", "Hatalar asla kelimelerin ilk hecelerinde görülmez."], "a": 1, "explanation": "Spoonerism hataları rastgele değildir; ses değişimlerinde her zaman iki ünsüz veya iki ünlü kendi arasında yer değiştirir ve hatalar dilin fonotaktik kurallarına tutarlıdır.", "topic": "Spoonerism" },
-  { "q": "14) Bir konuşmacının 'Seymour salamı bıçakla kesti' yerine yanlışlıkla 'Seymour bıçağı salamla kesti' demesine rağmen cümlenin orijinal vurgu grafiğinin bozulmaması neyi kanıtlar? ", "choices": ["Kelimelerin anlık olarak tek tek çağrıldığını", "Motor emirler gönderilmeden önce ardışık motor görevlerin (üstparçasal yapının) önceden planlandığını", "Açık döngü sisteminin geri bildirim kullandığını", "Serebellumun konuşmada hiçbir rol oynamadığını"], "a": 1, "explanation": "Kelimeler yer değiştirse bile cümlenin üstparçasal (prozodik) vurgu planının sabit kalması, motor emirler kaslara gönderilmeden önce ifadenin bütünsel olarak planlandığını gösterir.", "topic": "Konuşma Planlaması" },
-  { "q": "15) Beyinden çıkan istemli motor emirlerin konuşma kaslarına doğru aşağı inerken içinden geçtikleri ana sinir yollarına (otoyollarına) ne ad verilir? ", "choices": ["Frenik sinir yolu", "Piramidal (Kortikospinal) trakt", "Rekürrent laringeal yol", "Dorsal kök"], "a": 1, "explanation": "Motor kortekse ulaşan emirler, konuşma kaslarına doğru yola çıkarken piramidal (kortikospinal) trakt adı verilen ana sinir yollarını kullanarak aşağı inerler.", "topic": "Nöral İletim Yolları" },
-  { "q": "16) Bir motor nöron ile onun komut verip uyardığı çizgili (istemli) kas liflerinin oluşturduğu, sinir ve kas sistemi arasındaki asıl bağlantı birimine ne ad verilir? ", "choices": ["Sinaps", "Motor ünite", "Ranvier boşluğu", "Agonist bağ"], "a": 1, "explanation": "Sinir sistemi ile kas sistemi arasındaki asıl bağlantı noktasına motor ünite adı verilir; tek bir motor nöron ile onun komut verdiği kas liflerinden oluşur.", "topic": "Motor Ünite" },
-  { "q": "Solunum Yasası", "q": "17) Kapalı bir alanın hacmi ile içindeki hava basıncının ters orantılı olduğunu belirten ve insanın nefes alıp verme mekanizmasının temelini oluşturan fizik yasası hangisidir? ", "choices": ["Bernoulli Yasası", "Boyle Yasası", "Ohm Yasası", "Adem Yasası"], "a": 1, "explanation": "Boyle Yasası'na göre kapalı bir alanın hacmi ile içindeki basınç ters orantılıdır; hacim artarsa basınç düşer, hacim azalırsa basınç artır.", "topic": "Boyle Yasası" },
-  { "q": "18) Vücuttaki karbondioksit miktarının artması üzerine, otomatik solunum refleksini başlatmak üzere diyaframa ve interkostal kaslara sinir uyarısı gönderen beyin sapı merkezi hangisidir? ", "choices": ["Serebellum", "Medulla oblongata (Omurilik soğanı)", "Broca alanı", "Rolando şeridi"], "a": 1, "explanation": "Vücutta karbondioksit artışı, beyin sapında bulunan solunum refleks merkezi medulla oblongata'ya (omurilik soğanı) otomatik sinyal gönderir.", "topic": "Solunum Merkezi" },
-  { "q": "19) Göğüs kafesinin (toraks) en altında yer alan, sakin solunumda kasılarak aşağı doğru düzleşen ve göğüs boşluğunun dikey hacmini artıran kubbe şeklindeki geniş kas hangisidir? ", "choices": ["Eksternal interkostal kaslar", "Diyafram", "İnternal interkostal kaslar", "Sternocleidomastoid"], "a": 1, "explanation": "Fıçı şeklindeki göğüs boşluğunun zeminini, kubbe şeklinde geniş bir kas tabakası olan diyafram oluşturur; kasıldığında düzleşerek dikey hacmi artırır.", "topic": "Diyafram" },
-  { "q": "20) Omuriliğin boyun (servikal) seviyesinden çıkarak doğrudan diyafram kasına kasılma uyarısını taşıyan sinir aşağıdakilerden hangisidir? ", "choices": ["Rekürrent laringeal sinir", "Frenik sinir (Phrenic nerve)", "Trigeminal sinir", "İşitme siniri"], "a": 1, "explanation": "Omuriliğin boyun seviyesinden çıkan sinirler birleşerek frenik sinir (phrenic nerve) adını verilen sinir demetini oluşturur ve doğrudan diyaframı uyarır.", "topic": "Frenik Sinir" },
-  { "q": "21) Akciğerlerin kendi kasları olmadığı halde göğüs kafesinin hareketlerine adeta kilitlenerek onunla birlikte genişleyip daralmasını sağlayan ikili zar yapısına ne ad verilir? ", "choices": ["Conus elasticus", "Plevral bağlantı (Kostal ve Pulmoner plevra)", "Miyelin kılıfı", "Velofaringeal port"], "a": 1, "explanation": "Göğüs kafesinin iç yüzeyini saran kostal plevra ile akciğerin dışını saran pulmoner plevra arasındaki plevral bağlantı sayesinde akciğerler göğüs kafesine kilitlenir.", "topic": "Plevral Bağlantı" },
-  { "q": "22) Sakin solunumda nefes alma (inspirasyon) amacıyla kaburgaları önden, arkadan yukarı ve dışa doğru kaldırarak göğüs kafesini genişleten kas grupları hangileridir? ", "choices": ["Karın (abdominal) kasları", "Dış (eksternal) interkostallar ve iç interkostalların interkondral kısmı", "Sadece iç (internal) interkostalların kemik kısımları", "Sternohyoid kas grubu"], "a": 1, "explanation": "Nefes alma sırasında göğüs kafesini kaldırmak için dış interkostal kaslar ile iç interkostal kasların kıkırdaklar arasında kalan kısmı (interkondral kısım) birlikte kasılır.", "topic": "İnspirasyon Kasları" },
-  { "q": "23) Konuşma solunumu ile sakin solunum döngüsünün zamanlama (süre) oranları açısından karşılaştırılması hakkında aşağıdakilerden hangisi doğrudur? ", "choices": ["Sakin solunum: %90 I - %10 E, Konuşma: %40 I - %60 E", "Sakin solunum: %40 I - %60 E, Konuşma: %10 I - %90 E", "Her ikisinde de oranlar %50 Nefes alma - %50 Nefes verme şeklindedir.", "Konuşmada nefes alma süresi döngünün %60'ını kaplar."], "a": 1, "explanation": "Sakin solunumda nefes alma (I) %40, nefes verme (E) %60 iken; konuşma solunumunda nefes alma %10'a düşer, üzerine kelimelerin bindiği nefes verme (E) ise %90'a uzar.", "topic": "Solunum Zamanlaması" },
-  { "q": "24) Sakin solunumda nefes verme (ekspirasyon) işlemi kas çabası gerektirmeden pasif kuvvetlerle gerçekleşir. Aşağıdakilerden hangisi bu pasif kuvvetlerden biri değildir? ", "choices": ["Elastik Geri Tepme (Elastic Recoil)", "Diyaframın aktif olarak kasılması", "Detork (Detorque)", "Yerçekimi (Gravity)"], "a": 1, "explanation": "Sakin solunumda nefes verme herhangi bir itici kas gücüyle değil; elastik geri tepme, detork ve yerçekimi olmak üzere üç pasif kuvvetle gerçekleşir. Diyafram inspirasyonda kasılır.", "topic": "Pasif Ekspirasyon" },
-  { "q": "25) Akıcı konuşma sırasında karın (abdominal) kaslarının sürekli olarak kasılı (sertleşmiş) tutulmasının sağladığı biyomekanik avantaj nedir? ", "choices": ["Ses tellerinin boyunu uzatmak", "İç organları sıkıştırıp diyaframı alttan yukarı iterek, bir sonraki nefes alma için diyaframı en verimli pozisyonda hazır tutmak", "Havanın burun boşluğuna kaçmasını tamamen engellemek", "Akciğerlerin toplam elastik geri tepmesini sıfırlamak"], "a": 1, "explanation": "Karın kasılması iç organları sıkıştırır, organlar diyaframı yukarı iter. Böylece diyafram en yüksek pozisyonda tutularak yeniden nefes alırken en verimli şekilde düzleşmeye hazır bekler.", "topic": "Karın Kasları Desteği" },
-  { "q": "26) Konuşma solunumu sırasında bir ifadedeki belirli bir hecenin daha baskın (vurgulu) söylenmesi için gereken anlık ekstra subglottal basınç artışı fizyolojik olarak hangi kasların kasılmasıyla sağlanır? ", "choices": ["Dış (eksternal) interkostal kaslar", "İç (internal) interkostal ve karın (abdominal) kasları", "Sternohyoid ve cricothyroid kasları", "Yalancı ses telleri"], "a": 1, "explanation": "Vurgulu hecelerin gerektirdiği bu ekstra subglottal basınç ile temel frekans ve şiddet artışı, 'iç (internal) interkostal' ve 'karın (abdominal)' kaslarının anlık kasılmasıyla sağlanır.", "topic": "Hece Vurgusu Akustiği" },
-  { "q": "27) Bir kişinin dinlenme halindeki sakin solunumu ile normal konuşma solunumu sırasında akciğerlerin Vital Kapasitesinin (VC) sırasıyla yaklaşık yüzde kaçı kullanılır? ", "choices": ["Sakin: %50, Konuşma: %50", "Sakin: %10, Konuşma: %25", "Sakin: %25, Konuşma: %10", "Sakin: %90, Konuşma: %60"], "a": 1, "explanation": "Sakin solunumda Vital Kapasitenin (VC) yalnızca yaklaşık %10'u kullanılırken, normal konuşma solunumunda VC'nin yaklaşık %25'i kullanılır.", "topic": "Hava Hacimleri" },
-  { "q": "28) Konuşma üretiminin blok diyagramına ve 'Kaynak-Filtre' modeline göre, konuşma sesinin ham enerjisini üreten osilatör (kaynak) ile bu sesi şekillendiren rezonatör (filtre) sırasıyla hangi anatomik yapılardır? ", "choices": ["Ses yolu - Ses telleri", "Ses telleri (Gırtlak) - Ses yolu (Ağız ve Yutak boşluğu)", "Akciğerler - Trakea", "Yalancı ses telleri - Gerçek ses telleri"], "a": 1, "explanation": "Kaynak-Filtre modelinde ses tellerinin titreşimi 'kaynak' (osilatör), ses yolu yani ağız ve yutak boşluğu ise karmaşık sesi şekillendiren 'filtre' (rezonatör) işlevi görür.", "topic": "Kaynak-Filtre Modeli" },
-  { "q": "29) [s] ve [t] ünsüzlerinin akustik ve artikülasyon özellikleri düşünüldüğünde, bu seslerin periyodik ses kaynaklarından ayrılan ana ortak özelliği aşağıdakilerden hangisidir? ", "choices": ["Temel ses kaynağının ses telleri olması", "Kaynak sesin ağız boşluğundaki daralma/tıkanmalarla oluşan aperiodik (gürültü) ses olması", "Yalnızca 200 Hz nasal murmur içermeleri", "Formant rezonans yapılarının ünlülerle tamamen aynı olması"], "a": 1, "explanation": "Ünsüzlerde genellikle aperiodik (gürültü) ses kaynakları kullanılır; [s] daralmayla sürekli gürültü, [t] ise tıkanma ve anlık serbest kalmayla geçici patlama gürültüsü oluşturur.", "topic": "Ünsüz Kaynakları" },
-  { "q": "30) [z] ünsüzünün üretiminde duyulan sesin akustik kaynağı aşağıdakilerden hangisinde doğru olarak verilmiştir? ", "choices": ["Sadece ses tellerinin periyodik titreşimi", "Sadece ağız içi daralmasının yarattığı tıslama gürültüsü", "Ses tellerinin periyodik titreşimi (fonasyon) ile dar alandan geçen havanın aperiodik gürültüsünün (sürtünme) eşzamanlı birleşimi", "Yumuşak damağın inmesiyle oluşan antirezonans"], "a": 2, "explanation": "[z] ünsüzünde, dar alandan geçen havanın yarattığı aperiodik sürtünme gürültüsüne, ses tellerinin titreşiminden gelen periyodik kaynak (fonasyon) eşlik eder.", "topic": "Kaynak Birleşimi" },
-], 
+  {
+    "q": "1) Beyin sapı (truncus cerebri) midsagittal kesitte yukarıdan aşağıya doğru sırasıyla hangi 3 alt bölümde incelenir?",
+    "choices": [
+      "Mesencephalon - Medulla oblongata - Pons",
+      "Mesencephalon - Pons - Medulla oblongata",
+      "Pons - Mesencephalon - Medulla oblongata",
+      "Medulla oblongata - Pons - Mesencephalon"
+    ],
+    "a": 1,
+    "explanation": "Beyin sapı yapıları midsagittal kesitte yukarıdan aşağıya doğru sırasıyla mesencephalon (orta beyin), pons (köprü) ve medulla oblongata/bulbus (omurilik soğanı) olmak üzere 3 alt bölümde incelenir[cite: 901, 902, 903, 904].",
+    "topic": "Beyin Sapının Anatomik Bölümleri"
+  },
+  {
+    "q": "2) Toplam 12 kafa çiftinden (kranial sinir) kaç tanesi doğrudan beyin sapından veya beyin sapı düzeyinden çıkış sağlar?",
+    "choices": [
+      "8",
+      "9",
+      "10",
+      "12"
+    ],
+    "a": 2,
+    "explanation": "I. ve II. kranial sinir hariç, toplam 12 kranial sinirin 10 tanesi beyin sapından çıkar veya beyin sapına bağlanır[cite: 914, 1057].",
+    "topic": "Beyin Sapı ve Kranial Sinirler"
+  },
+  {
+    "q": "3) Mesencephalon'un arka yüzünde yer alan colliculus superior ve colliculus inferior çekirdekleri sırasıyla hangi refleksleri yönetmekle görevlidir?",
+    "choices": [
+      "İşitme - Görme",
+      "Solunum - Kardiyak",
+      "Görme - İşitme",
+      "Yutma - Öksürme"
+    ],
+    "a": 2,
+    "explanation": "Colliculus superior vizüel (görme) refleksleriyle ilgili çekirdekleri içerirken, colliculus inferior işitme refleksleriyle ilgili çekirdekleri barındırır[cite: 919, 920, 1070, 1072].",
+    "topic": "Mesencephalon Refleks Merkezleri"
+  },
+  {
+    "q": "4) Pons'tan çıkış yapan veya pons ile bağlantılı olan kranial sinir grubu aşağıdakilerden hangisinde doğru olarak verilmiştir?",
+    "choices": [
+      "N. oculomotorius (3), N. trochlearis (4), N. trigeminus (5)",
+      "N. trigeminus (5), N. abducens (6), N. facialis (7), N. vestibulocochlearis (8)",
+      "N. glossopharyngeus (9), N. vagus (10), N. accessorius (11)",
+      "N. vagus (10), N. accessorius (11), N. hypoglossus (12)"
+    ],
+    "a": 1,
+    "explanation": "Pons'tan 4 önemli kafa çifti siniri çıkar: N. trigeminus (5), N. abducens (6), N. facialis (7) ve N. vestibulocochlearis (8)[cite: 926, 927, 928, 929, 930, 1562].",
+    "topic": "Pons'tan Çıkan Kranial Sinirler"
+  },
+  {
+    "q": "5) Pons'un anatomik ve fonksiyonel olarak ikiye ayrılan bölümleri göz önüne alındığında, dorsal (arka) bölümü hangi işlevleri veya merkezleri içerir?",
+    "choices": [
+      "Korteksten cerebellum'a giden hareket ve duyu iletim yolları",
+      "Motor yolların piramidal çaprazlaşma noktası",
+      "Solunum, tat alma ve uyku ile ilgili bölümler",
+      "Vizüel ve işitsel reflekslerin ana entegrasyon merkezleri"
+    ],
+    "a": 2,
+    "explanation": "Pons'un ventral bölümü korteksten cerebellum'a giden hareket ve duyularla ilgili bilgileri iletirken; dorsal bölümü solunum, tat alma ve uyku ile ilgili merkezleri içerir[cite: 942, 946, 947, 948, 949, 1569, 1570].",
+    "topic": "Pons'un Bölümleri ve Fonksiyonları"
+  },
+  {
+    "q": "6) Medulla oblongata (bulbus) hasarında veya lezyonlarında aşağıdaki klinik tablolardan hangisinin görülmesi beklenmez?",
+    "choices": [
+      "Yaşamın kolaylıkla durması ve koma hali",
+      "Anormal solunum paterni ve inatçı öksürük",
+      "Denge bozuklukları (ataksi)",
+      "Gözün yukarı bakışında izole felç"
+    ],
+    "a": 3,
+    "explanation": "Medulla oblongata harabiyetinde yaşamın durması, solunum anomalileri, koma, ataksi ve inatçı öksürük görülebilir[cite: 976, 977, 979, 980, 981]. Gözün yukarı bakış felci ise pretektal/Parinaud sendromuna özgüdür[cite: 1377, 1378].",
+    "topic": "Medulla Oblongata Lezyonları"
+  },
+  {
+    "q": "7) Medulla oblongata'nın ön yüzünün ortasında fissura mediana anterior bulunur. Bu oluğun her iki yanında yer alan ve piramidal motor yolların oluşturduğu kabartılara ne ad verilir?",
+    "choices": [
+      "Colliculus superior",
+      "Pyramis bulbi",
+      "Eminentia medialis",
+      "Oliva"
+    ],
+    "a": 1,
+    "explanation": "Medulla oblongata'nın ön yüzünün ortasında fissura mediana anterior bulunur ve her iki yanında pyramis bulbi denilen kabartılar yer alır[cite: 985, 1514].",
+    "topic": "Medulla Oblongata Anatomisi"
+  },
+  {
+    "q": "8) Beyin sapı longitudinal (boylamasına) kesitte arkadan öne doğru sırasıyla hangi 3 katman şeklinde incelenir?",
+    "choices": [
+      "Basis - Tegmentum - Tectum",
+      "Tegmentum - Basis - Tectum",
+      "Tectum - Tegmentum - Basis",
+      "Tectum - Basis - Tegmentum"
+    ],
+    "a": 2,
+    "explanation": "Beyin sapı boylamasına (longitudinal) olarak arkadan öne doğru sırasıyla Tectum (tavan), Tegmentum (orta bölüm) ve Basis (taban) olmak üzere 3 alt bölümde incelenir[cite: 1024, 1025, 1028, 1029, 1030].",
+    "topic": "Beyin Sapının Longitudinal Tabakaları"
+  },
+  {
+    "q": "9) Beyin sapını anatomik komşulukları yönünden kortekse (cortex cerebri) ve beyinciğe (cerebellum) bağlayan yapılar sırasıyla aşağıdakilerden hangisidir?",
+    "choices": [
+      "Pedunculus cerebri - Pedunculus cerebellaris",
+      "Pedunculus cerebellaris - Pedunculus cerebri",
+      "Pyramis bulbi - Fossa rhomboidea",
+      "Tectum mesencephali - Tegmentum pons"
+    ],
+    "a": 0,
+    "explanation": "Beyin sapı, pedunculus cerebri ile cortex cerebri'ye; pedunculus cerebellaris'ler ile de cerebellum'a bağlanır[cite: 1055, 1056].",
+    "topic": "Beyin Sapı Bağlantı Yolları"
+  },
+  {
+    "q": "10) Mesencephalon'u arka yüzden terk eden ve beyin sapından arkadan çıkan tek kranial sinir olma özelliğine sahip kafa çifti hangisidir?",
+    "choices": [
+      "N. oculomotorius (CN-III)",
+      "N. trochlearis (CN-IV)",
+      "N. trigeminus (CN-V)",
+      "N. abducens (CN-VI)"
+    ],
+    "a": 1,
+    "explanation": "N. trochlearis (CN-IV), colliculus inferior'un altından orta hatta mesencephalon'u arka yüzden terk eden ve beyin sapından arkadan çıkan tek kranial sinirdir[cite: 1087, 1208, 1209].",
+    "topic": "N. Trochlearis'in Anatomik Özelliği"
+  },
+  {
+    "q": "11) Mesencephalon kesitlerinde tegmentum ile basisi (crus cerebri) birbirinden ayıran, motor kontrolde anahtar rol oynayan siyah pigmentli bazal çekirdek yapısı aşağıdakilerden hangisidir?",
+    "choices": [
+      "Nucleus ruber",
+      "Substantia grisea centralis",
+      "Substantia nigra",
+      "Nucleus interstitialis"
+    ],
+    "a": 2,
+    "explanation": "Substantia nigra, tegmentum ile basisi birbirinden ayıran, siyah pigmentli bir bazal çekirdektir ve motor kontrolde anahtar rol oynar[cite: 1109, 1253].",
+    "topic": "Substantia Nigra"
+  },
+  {
+    "q": "12) Göz hareketlerini kontrol eden somatik motor karakterli Nucleus nervi oculomotorii ile pupilla konstriksiyonu ve akomodasyonu sağlayan parasempatik karakterli Edinger-Westphal çekirdeği mesencephalon'un hangi seviyesinde yer alır?",
+    "choices": [
+      "Colliculus inferior seviyesinde",
+      "Colliculus superior seviyesinde",
+      "Sulcus bulbopontinus seviyesinde",
+      "Pyramis bulbi seviyesinde"
+    ],
+    "a": 1,
+    "explanation": "Hem Nucleus nervi oculomotorii (GSE) hem de Nucleus accessorius n. oculomotorii (Edinger-Westphal - GVE) colliculus superior seviyesindeki kesitlerde tegmentum'da yer alır[cite: 1136, 1164, 1165, 1166].",
+    "topic": "N. Oculomotorius Çekirdekleri"
+  },
+  {
+    "q": "13) Çiğneme kasları, dişler, dişetleri ve çene ekleminden gelen proprioseptif ve basınç duyularının 1. nöronlarını içeren ve Merkezi Sinir Sistemi (MSS) içinde 1. nöronun bulunduğu tek çekirdek olma özelliği taşıyan yapı hangisidir?",
+    "choices": [
+      "Nucleus nervi trochlearis",
+      "Nucleus ruber",
+      "Nucleus mesencephalicus nervi trigemini",
+      "Nucleus colliculi inferioris"
+    ],
+    "a": 2,
+    "explanation": "Nucleus mesencephalicus nervi trigemini; çiğneme kasları, çene eklemi ve dişlerden proprioseptif duyuyu alır ve MSS içinde I. nöronun bulunduğu tek çekirdektir[cite: 1220, 1229, 1230].",
+    "topic": "N. Trigeminus Mezensefalik Çekirdeği"
+  },
+  {
+    "q": "14) Ekstrapiramidal sistemin önemli bir yapısı olan, kas tonusunun düzenlenmesinde fleksor motor nöronları uyarırken ekstensor motor nöronları inhibe eden ve içinden Tractus rubrospinalis'in başladığı yuvarlak kırmızı pigmentli tegmentum çekirdeği hangisidir?",
+    "choices": [
+      "Substantia nigra",
+      "Nucleus ruber",
+      "Nuclei raphes",
+      "Nucleus interstitialis"
+    ],
+    "a": 1,
+    "explanation": "Nucleus ruber (kırmızı çekirdek), kas tonusunun düzenlenmesiyle ilgilidir (fleksorları uyarır, ekstensorları inhibe eder) ve tr.rubrospinalis bu çekirdekten başlar[cite: 1249, 1250, 1252].",
+    "topic": "Nucleus Ruber"
+  },
+  {
+    "q": "15) Aquaeductus cerebri'nin etrafını kuşatan, ağrı duyusunun supresyonunda (baskılanmasında) etkili endorfin üreten gri cevher kitlesine ne ad verilir?",
+    "choices": [
+      "Substantia nigra",
+      "Area pretectalis",
+      "Substantia grisea centralis",
+      "Formatio reticularis"
+    ],
+    "a": 2,
+    "explanation": "Substantia grisea centralis, aquaeductus cerebri'nin etrafını kuşatan gri cevher kitlesi olup ağrı duyusu supresyonunda etkili endorfin üreten çekirdekleri barındırır[cite: 1272].",
+    "topic": "Substantia Grisea Centralis"
+  },
+  {
+    "q": "16) Vücudun karşı taraf gövde ve ekstremitelerinden alınan bilinçli derin duyu, vibrasyon ve diskriminitif (ayırt edici) dokunma duyusunu talamusa ileten ve substantia nigranın hemen arkasında seyreden yutak/demet hangisidir?",
+    "choices": [
+      "Lemniscus medialis",
+      "Lemniscus spinalis",
+      "Lemniscus trigeminalis",
+      "Lemniscus lateralis"
+    ],
+    "a": 0,
+    "explanation": "Lemniscus medialis, karşı taraf gövde ve ekstremitelerden alınan bilinçli derin duyu, vibrasyon ve diskriminitif dokunma duyusunu talamusa iletir[cite: 1290].",
+    "topic": "Beyin Sapı Duysal Yolları"
+  },
+  {
+    "q": "17) Weber Sendromu; a. cerebri posterior dallarının tıkanması sonucu ventral alandaki lezyonlarda ortaya çıkar. Bu sendromda görülen karakteristik klinik bulgular hangi seçenekte doğru verilmiştir?",
+    "choices": [
+      "Karşı tarafta (kontralateral) N. trochlearis felci ve aynı tarafta ataksi",
+      "Aynı tarafta (ipsilateral) CN-III felci (oftalmopleji+midriyazis) ve yüzün alt yarımı ile vücutta kontralateral hemipleji",
+      "Aynı tarafta N. ruber hasarına bağlı tremor ve karşı tarafta işitme kaybı",
+      "Gözün yukarı bakış felci ve pupillerde ışık reaksiyonu kaybı"
+    ],
+    "a": 1,
+    "explanation": "Weber sendromunda ventral alandaki harabiyete bağlı olarak aynı tarafta (ipsilateral) CN-III felci (oftalmopleji + midriyazis) ve karşı tarafta (kontralateral) hemipleji belirtileri görülür[cite: 1374].",
+    "topic": "Weber Sendromu"
+  },
+  {
+    "q": "18) Medulla oblongata ve pons arasında bulunan, dıştan içe doğru sırasıyla 8, 7 ve 6. kranial sinirlerin çıkış yaptığı anatomik oluk aşağıdakilerden hangisidir?",
+    "choices": [
+      "Sulcus anterolateralis",
+      "Sulcus basilaris",
+      "Sulcus bulbopontinus",
+      "Sulcus retroolivaris"
+    ],
+    "a": 2,
+    "explanation": "Medulla oblongata ve pons arasında Sulcus bulbopontinus bulunur. Bu oluktan medialden laterale doğru 6, 7 ve 8. kranial sinirler çıkar[cite: 1460, 1461].",
+    "topic": "Sulcus Bulbopontinus"
+  },
+  {
+    "q": "19) Motor korteksten başlayarak aşağı inen piramidal motor yolların (kortikospinal traktus) liflerinin büyük kısmı vücudun karşı tarafını kontrol etmek amacıyla nerede çaprazlaşır?",
+    "choices": [
+      "Mesencephalon'da (Meynert çaprazı)",
+      "Pons tegmentumunda (Forel çaprazı)",
+      "Medulla oblongata alt ucunda (Decussatio pyramidum)",
+      "Diencephalon düzeyinde (Chiasma opticum)"
+    ],
+    "a": 2,
+    "explanation": "Piramidal yol (kortikospinal traktus) bulbus alt ucunda 'Decussatio pyramidum' denilen bölgede çapraz yapar; böylece sağ beyin sol vücut yarısını, sol beyin sağ vücut yarısını kontrol eder[cite: 1635, 1636, 1649, 1650].",
+    "topic": "Decussatio Pyramidum (Piramidal Çapraz)"
+  },
+  {
+    "q": "20) Beyin sapı retiküler formasyon çekirdeklerinin kas tonusu ve postür üzerindeki etkileri düşünüldüğünde, medulla ve pons kaynaklı çekirdekler sırasıyla nasıl bir etki gösterir?",
+    "choices": [
+      "Medulla kaynaklılar eksitatör (uyarıcı) - Pons kaynaklılar inhibitör (baskılayıcı)",
+      "Medulla kaynaklılar inhibitör (baskılayıcı) - Pons kaynaklılar eksitatör (uyarıcı)",
+      "Her iki sistem de sadece kasları gevşetmeye ayarlıdır",
+      "Her iki sistem de sadece kasları kasmaya ayarlıdır"
+    ],
+    "a": 1,
+    "explanation": "Retiküler formasyonda medulla kaynaklı çekirdekler inhibitör (fren gibi çalışır, antigravite kaslarını baskılar), pons kaynaklı çekirdekler ise eksitatör (gaz gibi çalışır, antigravite kaslarını aktive eder) fonksiyona sahiptir[cite: 1756, 1757, 1758, 1759, 1760, 1761, 1763, 1767, 1768].",
+    "topic": "Retiküler Formasyon ve Kas Kontrolü"
+  },
+],
+    "Diencephalon(Ara Beyin)": 
+  [
+{
+    q: "1) Diencephalon (ara beyin) temel olarak beynin hangi anatomik bölgesinde yer almaktadır?",
+    choices: [
+      "Beyin yarım küreleri tarafından hemen hemen tamamen kuşatılmış olarak merkezi bölümde",
+      "Beyincik ile omurilik soğanı arasında kalan arka çukurda",
+      "Kortex cerebri'nin en dış yüzeyinde, parietal lobun üstünde",
+      "Omuriliğin başlangıç noktasında, dura mater katmanının hemen altında"
+    ],
+    a: 0,
+    explanation: "Diencephalon, beyin yarım küreleri tarafından hemen hemen tamamı kuşatılmış olarak merkezi bölümde yer alır.",
+    topic: "Diencephalon Genel Anatomi"
+  },
+  {
+    q: "2) Diencephalon embryolojik olarak aşağıdakilerden hangisinin bir parçasını/bölümünü oluşturur?",
+    choices: [
+      "Rhombencephalon",
+      "Prosencephalon",
+      "Mesencephalon",
+      "Metencephalon"
+    ],
+    a: 1,
+    explanation: "Diencephalon, prosencephalon'un (ön beyin) iki ana bölümünden biridir ve onun merkezi kısmını meydana getirir.",
+    topic: "Embryolojik Gelişim"
+  },
+  {
+    q: "3) Aşağıdaki ventrikül boşluklarından hangisi diencephalon'un her iki yan tarafında konumlandığı boşluktur?",
+    choices: [
+      "1. Ventrikül",
+      "2. Ventrikül",
+      "3. Ventrikül",
+      "4. Ventrikül"
+    ],
+    a: 2,
+    explanation: "Diencephalon, 3. ventrikül boşluğunun her iki yan tarafında yer almaktadır.",
+    topic: "Ventrikül Komşulukları"
+  },
+  {
+    q: "4) Dışarıdan bakıldığında diencephalon'un sadece hangi kısmının doğrudan görülmesi mümkündür?",
+    choices: [
+      "Tavan kısmı",
+      "Üst yüzü",
+      "Dış yan yüzü",
+      "Alt kısmı"
+    ],
+    a: 3,
+    explanation: "Beyne dıştan bütünsel olarak bakıldığında diencephalon'un sadece alt kısmı görünür; üst ve yanları hemisferlerle sarılıdır, tavanı ise corpus callosum ile örtülüdür.",
+    topic: "Makroskobik Anatomi"
+  },
+  {
+    q: "5) Diencephalon'u horizontal kesitte iç yan taraftan sınırlayan anatomik oluşum aşağıdakilerden hangisidir?",
+    choices: [
+      "Capsula interna",
+      "III. ventrikül",
+      "Corpus mamillare",
+      "Lamina terminalis"
+    ],
+    a: 1,
+    explanation: "Horizontal kesitte diencephalon'un dış yan tarafında capsula interna, iç yan tarafında ise III. ventrikül yer alır.",
+    topic: "Diencephalon Sınırları"
+  },
+  {
+    q: "6) Diencephalon'un bölümlerinden Pars dorsalis diencephali kapsamında yer alan yapılar hangi seçenekte eksiksiz verilmiştir?",
+    choices: [
+      "Thalamus, Metathalamus, Epithalamus",
+      "Hypothalamus, Subthalamus",
+      "Thalamus, Hypothalamus, Subthalamus",
+      "Epithalamus, Hypothalamus, Metathalamus"
+    ],
+    a: 0,
+    explanation: "Pars dorsalis diencephali; Thalamus (Dorsal thalamus), Metathalamus ve Epithalamus bölümlerini içerir.",
+    topic: "Diencephalon Bölümleri"
+  },
+  {
+    q: "7) Diencephalon'un arteriyel beslenmesini (kanlanmasını) sağlayan ana damarlar arasında aşağıdakilerden hangisi yer almaz?",
+    choices: [
+      "a. cerebri posterior",
+      "a. communicans posterior",
+      "a. choroidea anterior",
+      "a. basilaris anterior profunda"
+    ],
+    a: 3,
+    explanation: "Diencephalon'un beslenmesi a. cerebri posterior, a. communicans posterior ve a. choroidea anterior tarafından sağlanır. 'a. basilaris anterior profunda' şeklinde bir damar kaynakta tanımlanmamıştır.",
+    topic: "Vaskülarizasyon"
+  },
+  {
+    q: "8) Diencephalon'un venöz kanı son aşamada aşağıdaki büyük venlerden hangisine dökülerek drene olur?",
+    choices: [
+      "v. jugularis interna",
+      "v. magna cerebri",
+      "v. basalis",
+      "sinus rectus"
+    ],
+    a: 0,
+    explanation: "Venöz damarlar vv. internae cerebri ve v. basalis'e dökülür, oradan v. magna cerebri yoluyla sinus rectus'a ve en son aşamada v. jugularis interna'ya boşalır.",
+    topic: "Venöz Drenaj"
+  },
+  {
+    q: "9) Yaklaşık 120 adet çekirdek içermesiyle sinir sisteminin en büyük çekirdek kitlesini oluşturan gri cevher yapısı hangisidir?",
+    choices: [
+      "Hypothalamus",
+      "Subthalamus",
+      "Thalamus",
+      "Epithalamus"
+    ],
+    a: 2,
+    explanation: "Thalamus, içeriğindeki yaklaşık 120 çekirdek (10-12 tanesi majordür) ile sinir sisteminin en büyük çekirdek kitlesidir.",
+    topic: "Thalamus Genel Bilgi"
+  },
+  {
+    q: "10) Thalamus'un iki yarım küresini üçüncü ventrikülün içinden geçerek birbirine bağlayan yapıya ne ad verilir?",
+    choices: [
+      "Pulvinar thalami",
+      "Adhesio interthalamica",
+      "Tuberculum anterius thalami",
+      "Lamina medullaris interna"
+    ],
+    a: 1,
+    explanation: "Thalamus'un iki yarımını birbirine bağlayan çekirdekler arasındaki köprüye adhesio interthalamica denir.",
+    topic: "Thalamus Anatomisi"
+  },
+  {
+    q: "11) Thalamus'un en büyük çekirdek grubunu oluşturan ve geniş/şişkin arka ucuna karşılık gelen kabartı hangisidir?",
+    choices: [
+      "Tuberculum anterius thalami",
+      "Nuc. centromedianus",
+      "Nuc. mediodorsalis",
+      "Pulvinar thalami"
+    ],
+    a: 3,
+    explanation: "Thalamus'un geniş ve daha şişkin olan arka ucuna pulvinar thalami denir ve burası talamusun en büyük çekirdek grubudur.",
+    topic: "Thalamus Yapısı"
+  },
+  {
+    q: "12) Aşağıdaki duyulardan hangisine ait uyarılar cortex cerebri'ye ulaşmadan önce Thalamus'a uğramaz?",
+    choices: [
+      "Görme duyusu",
+      "Koku duyusu",
+      "İşitme duyusu",
+      "Tat duyusu"
+    ],
+    a: 1,
+    explanation: "Thalamus, cortex cerebri'ye gelen tüm duysal uyarıların ilk durağıdır; ancak koku duyusu bu kuralın istisnasıdır.",
+    topic: "Thalamus Fonksiyonları"
+  },
+  {
+    q: "13) Thalamus çekirdeklerini Y şeklinde ikiye bölerek ön, iç yan ve dış yan olmak üzere 3 ana bölgeye organize eden beyaz cevher yapısı hangisidir?",
+    choices: [
+      "Lamina medullaris interna",
+      "Lamina medullaris externa",
+      "Radiatio thalami",
+      "Capsula interna"
+    ],
+    a: 0,
+    explanation: "Arkadan öne doğru uzanan 'Y' şeklindeki beyaz cevher yapısı olan lamina medullaris interna (veya medialis) sayesinde talamus çekirdekleri 3 ana grupta organize olur.",
+    topic: "Thalamus İç Yapısı"
+  },
+  {
+    q: "14) Bilinç ve atiklik düzeyini arttıran (uyanma sistemi) ve ağrı impulslarını gyrus cinguli'ye gönderen en büyük intralaminer talamus çekirdeği hangisidir?",
+    choices: [
+      "Nuc. mediodorsalis (MD)",
+      "Nuc. centromedianus (CM)",
+      "Nuc. ventralis anterior (VA)",
+      "Nuc. anterodorsalis"
+    ],
+    a: 1,
+    explanation: "Lamina medullaris interna içine gömülü nuc. intralaminares thalami grubunun en büyüğü nuc. centromedianus (CM) olup, bilinç/atiklik düzeyini artırır ve ağrıyı iletir.",
+    topic: "Thalamus Çekirdekleri"
+  },
+  {
+    q: "15) Baş ve yüz bölgesinden gelen genel somatik, proprioseptif duyular ile Tat duyusunu alan ventral talamus çekirdeği hangisidir?",
+    choices: [
+      "Nuc. ventralis posterolateralis (VPL)",
+      "Nuc. ventralis posteromedialis (VPM)",
+      "Nuc. ventralis anterior (VA)",
+      "Nuc. ventralis lateralis (VL)"
+    ],
+    a: 1,
+    explanation: "Nuc. ventralis posteromedialis (VPM), tr. trigeminothalamicus aracılığıyla baş ve yüz bölgesinden gelen duyuları ve tat duyusunu alan talamus çekirdeğidir.",
+    topic: "Thalamus Duyu Yolları"
+  },
+  {
+    q: "16) Görme yolunun III. nöronlarını içeren, tractus opticus'tan afferent alan ve oksipital lobdaki primer görme merkezine (Brodmann 17) efferent gönderen metathalamus yapısı hangisidir?",
+    choices: [
+      "Corpus geniculatum mediale",
+      "Corpus geniculatum laterale",
+      "Habenula",
+      "Commissura posterior"
+    ],
+    a: 1,
+    explanation: "Corpus geniculatum laterale (CGL) görme yoluyla ilgilidir ve liflerini radiatio optica ile oksipital loba (Brodmann 17, 18, 19) gönderir.",
+    topic: "Metathalamus / Görme"
+  },
+  {
+    q: "17) Karanlıkta aktif olan, melatonin ve serotonin hormonlarını salgılayarak biyolojik ritim ve gonadal fonksiyonlarda inhibitör rol oynayan epithalamus yapısı hangisidir?",
+    choices: [
+      "Habenula",
+      "Commissura posterior",
+      "Corpus pineale (Gl. pinealis)",
+      "Nuc. subthalamicus"
+    ],
+    a: 2,
+    explanation: "Corpus pineale (epifiz bezi), çam kozalağı şeklinde endokrin bir bez olup karanlıkta aktiftir; serotonin ve melatonin salgılar, biyolojik ritmi düzenler.",
+    topic: "Epithalamus"
+  },
+  {
+    q: "18) Hypothalamus'un otonom sinir sistemi üzerindeki kontrol mekanizmasında, ön/medial ile arka/lateral bölümlerinin rolleri sırasıyla hangi seçenekte doğru verilmiştir?",
+    choices: [
+      "Ön ve medial sempatik; Arka ve lateral parasempatik",
+      "Ön ve medial parasempatik; Arka ve lateral sempatik",
+      "Her iki bölge de tamamen sempatik fonksiyonları yürütür",
+      "Her iki bölge de tamamen parasempatik fonksiyonları yürütür"
+    ],
+    a: 1,
+    explanation: "Hypothalamus'un ön ve medial bölümü parasempatik, arka ve lateral bölümü ise sempatik fonksiyonları düzenler.",
+    topic: "Hypothalamus Fonksiyonları"
+  },
+  {
+    q: "19) Hypothalamus'un açlık ve tokluk merkezleri ile bunların lezyonlarında ortaya çıkan klinik tablolar hangi seçenekte doğru eşleştirilmiştir?",
+    choices: [
+      "Açlık merkezi ventromedial çekirdektir (lezyonunda kilo kaybı olur); Tokluk merkezi lateral bölgedir (lezyonunda obezite olur).",
+      "Açlık merkezi arka bölgedir (lezyonunda hipertermi olur); Tokluk merkezi ön bölgedir (lezyonunda insomnia olur).",
+      "Açlık merkezi lateral bölgedir (lezyonunda hipofaji/kilo kaybı olur); Tokluk merkezi ventromedial çekirdektir (lezyonunda obezite olur).",
+      "Açlık merkezi nuc. supraopticus'tur (lezyonunda diabetes insipidus olur); Tokluk merkezi nuc. centromedianus'tur (lezyonunda apati olur)."
+    ],
+    a: 2,
+    explanation: "Hypothalamus'un lateral bölgesi açlık merkezidir (lezyonunda aşırı kilo kaybı/hipofaji), ventromedial çekirdek ise tokluk merkezidir (lezyonunda obezite gelişir).",
+    topic: "Açlık ve Tokluk Regülasyonu"
+  },
+  {
+    q: "20) Hypothalamus'ta ADH (Antidiüretik Hormon) üretiminin bozulması veya yetersiz salgılanması durumunda ortaya çıkan klinik tablo aşağıdakilerden hangisidir?",
+    choices: [
+      "Anorexia nervosa",
+      "Diabetes insipidus (Şekersiz Şeker Hastalığı)",
+      "Hipertermi",
+      "Hipogonadizm"
+    ],
+    a: 1,
+    explanation: "Nuc. supraopticus ve bazı küçük çekirdeklerden salgılanan ADH yetersiz üretilirse idrarla aşırı su atılımına sebep olan 'diabetes insipidus' tablosu gelişir.",
+    topic: "Sıvı Dengesi ve Endokrin Kontrol"
+  },
+  ],
+   "Cerebellum Anatomisi": 
+  [
+    {
+    q: "1) Cerebellum (beyincik) filogenetik ve gelişimsel olarak beynin hangi ana bölümünün (vesicula) en büyük parçasını oluşturmaktadır?",
+    choices: [
+      "Prosencephalon",
+      "Mesencephalon",
+      "Rhombencephalon",
+      "Diencephalon"
+    ],
+    a: 2,
+    explanation: "Cerebellum, arka beyin anlamına gelen rhombencephalon'un en büyük bölümünü oluşturur.",
+    topic: "Gelişimsel Anatomi"
+  },
+  {
+    q: "2) Anatomik lokalizasyon olarak cerebellum, kafatası tabanındaki hangi çukurun (fossa) büyük bir bölümünü kaplamaktadır?",
+    choices: [
+      "Fossa cranii anterior",
+      "Fossa cranii media",
+      "Fossa temporalis",
+      "Fossa cranii posterior"
+    ],
+    a: 3,
+    explanation: "Cerebellum, kafatasının arka alt kısmında yer alan fossa cranii posterior'un (arka kafa çukuru) büyük bölümünü doldurur.",
+    topic: "Kafatası Komşulukları"
+  },
+  {
+    q: "3) Cerebellum'un üst yüzeyi ile cerebrum'un lobus occipitalis'i arasında bir çatı oluşturan duramater uzantısı hangisidir?",
+    choices: [
+      "Falx cerebri",
+      "Tentorium cerebelli",
+      "Falx cerebelli",
+      "Diaphragma sellae"
+    ],
+    a: 1,
+    explanation: "Serebellumun üstünde yer alarak onu üstteki oksipital lobdan ayıran çadır benzeri yatay duramater bölmesine tentorium cerebelli adı verilir.",
+    topic: "Duramater Yapıları"
+  },
+  {
+    q: "4) Cerebellum'un ön tarafında yer alan ve pons ile medulla oblongata ile komşuluk kurmasını sağlayan anatomik boşluk hangisidir?",
+    choices: [
+      "Ventriculus lateralis",
+      "Ventriculus tertius",
+      "Ventriculus quartus",
+      "Aqueductus cerebri"
+    ],
+    a: 2,
+    explanation: "Cerebellum önde, ventriculus quartus (4. ventrikül) boşluğu aracılığıyla pons ve medulla oblongata ile komşuluk yapar.",
+    topic: "Ventrikül Komşulukları"
+  },
+  {
+    q: "5) Cerebellum'un alt-arka bölümünde konumlanan, beyin omurilik sıvısının (BOS) subaraknoid mesafeye yayılmasında önemli rol oynayan en büyük subaraknoid aralık hangisidir?",
+    choices: [
+      "Cisterna superior",
+      "Cisterna ambiens",
+      "Cisterna cerebellomedullaris posterior (Cisterna magna)",
+      "Cisterna interpeduncularis"
+    ],
+    a: 2,
+    explanation: "Serebellumun alt bölümünde yer alan en geniş subaraknoid açıklık cisterna cerebellomedullaris posterior (Cisterna magna) olarak adlandırılır.",
+    topic: "Subaraknoid Sarnıçlar"
+  },
+  {
+    q: "6) Serebellumun makroskobik yapısında orta hatta yer alan, solucan benzeri görünümüyle gövde kaslarını ve postürü kontrol eden merkezi yapı hangisidir?",
+    choices: [
+      "Paravermis",
+      "Hemispherium cerebelli",
+      "Flocculus",
+      "Vermis"
+    ],
+    a: 3,
+    explanation: "Vermis, vücut postürü ve dengeyi kontrol eden, serebellum hemisferlerini orta hatta birleştiren yapıdır.",
+    topic: "Makroskobik Bölümler"
+  },
+  {
+    q: "7) Serebellum yüzeyindeki gri madde tabakasının derin yarıklarla bölünmesi sonucu oluşan ince, yaprak benzeri katmanlara ne ad verilir?",
+    choices: [
+      "Gyri cerebri",
+      "Folia cerebelli",
+      "Sulci cerebri",
+      "Pedunculi"
+    ],
+    a: 1,
+    explanation: "Serebellum (beyincik) yüzeyinde bulunan ince, yaprak benzeri girintili çıkıntılara folia cerebelli denir.",
+    topic: "Yüzey Anatomisi"
+  },
+  {
+    q: "8) Cerebellum kesitlerinde, dıştaki gri maddenin içeriye doğru dallanarak oluşturduğu beyaz madde ağacına verilen Latince isim hangisidir?",
+    choices: [
+      "Corpus striatum",
+      "Arbor vitae",
+      "Capsula interna",
+      "Cortex cerebelli"
+    ],
+    a: 1,
+    explanation: "Arbor vitae, serebellumun iç yapısında bulunan beyaz maddenin dallanma düzenine verilen isimdir ve 'hayat ağacı' anlamına gelir.",
+    topic: "İç Yapı"
+  },
+  {
+    q: "9) Cortex cerebelli (beyincik kabuğu) histolojik olarak dıştan içe doğru kaç tabaka şeklinde organize olmaktadır?",
+    choices: [
+      "2 Tabaka",
+      "3 Tabaka",
+      "5 Tabaka",
+      "6 Tabaka"
+    ],
+    a: 1,
+    explanation: "Cortex cerebelli; stratum moleculare, stratum gangliosum ve stratum granulosum olmak üzere 3 tabaka şeklinde organize olur.",
+    topic: "Histolojik Tabakalar"
+  },
+  {
+    q: "10) Yalnızca alt zeytinsi çekirdekten (olivary nucleus) köken alıp inferior serebellar pedünkül yoluyla serebelluma tırmanan afferent lif tipi hangisidir?",
+    choices: [
+      "Mossy (Yosunsu) fibrilleri",
+      "Tırmanan (Climbing) fibriller",
+      "Paralel lifler",
+      "Kortikospinal lifler"
+    ],
+    a: 1,
+    explanation: "Tırmanan fibriller (climbing fibers) oliver kompleksteki nöronlardan yükselir ve inferior serebellar pedünkülde ilerler.",
+    topic: "Afferent Lifler"
+  },
+  {
+    q: "11) Serebellumun en büyük, en gelişmiş ve filogenetik olarak en genç (Neocerebellum) derin çekirdeği hangisidir?",
+    choices: [
+      "Nucleus fastigii",
+      "Nucleus globosus",
+      "Nucleus emboliformis",
+      "Nucleus dentatus"
+    ],
+    a: 3,
+    explanation: "Nucleus dentatus, neocerebellum kapsamında yer alan ve serebellumun en büyük çekirdek grubudur.",
+    topic: "Derin Çekirdekler"
+  },
+  {
+    q: "12) Serebellumun filogenetik olarak en eski parçasını oluşturan, denge ve göz hareketlerinin koordinasyonundan sorumlu fonksiyonel bölüm hangisidir?",
+    choices: [
+      "Spinocerebellum",
+      "Cerebrocerebellum",
+      "Vestibulocerebellum (Archicerebellum)",
+      "Pontocerebellum"
+    ],
+    a: 2,
+    explanation: "Vestibulocerebellum, filogenetik olarak archicerebellum'a karşılık gelir; vestibüler çekirdeklerle bağlantılı olup denge, postür ve göz hareketlerini kontrol eder.",
+    topic: "Fonksiyonel Bölümler"
+  },
+  {
+    q: "13) Serebellum fonksiyonel olarak incelendiğinde, ekstremite kaslarının (kollar ve bacaklar) ince motor kontrolünün somatotopik olarak nerede organize olduğu görülür?",
+    choices: [
+      "Vermis",
+      "Hemispherium cerebelli (Lateral zon)",
+      "Nodulus",
+      "Nucleus fastigii"
+    ],
+    a: 1,
+    explanation: "Somatotopik organizasyonda vermis baş ve gövde kaslarını kontrol ederken, hemispherium cerebelli ekstremite kaslarından sorumludur.",
+    topic: "Somatotopik Organizasyon"
+  },
+  {
+    q: "14) Pons ve serebellumun birleşim bölgesinde yer alan, 7. ve 8. kranyal sinirlerin geçtiği cerrahi açıdan kritik anatomik bölgeye ne ad verilir?",
+    choices: [
+      "Incisura cerebelli anterior",
+      "Vallecula cerebelli",
+      "Angulus pontocerebellaris (Köşe bölgesi)",
+      "Fissura horizontalis"
+    ],
+    a: 2,
+    explanation: "Angulus pontocerebellaris (pontoserebellar köşe), beyin sapı ile serebellumun birleşim bölgesidir ve burada en sık vestibüler schwannoma tümörleri görülür.",
+    topic: "Klinik Anatomi"
+  },
+  {
+    q: "15) Cerebellum'u mesencephalon (orta beyin) ile bağlayan ve efferent (çıkış) lif yoğunluğu en fazla olan beyincik sapı hangisidir?",
+    choices: [
+      "Pedunculus cerebellaris superior",
+      "Pedunculus cerebellaris medius",
+      "Pedunculus cerebellaris inferior",
+      "Fornix"
+    ],
+    a: 0,
+    explanation: "Pedunculus cerebellaris superior mesencephalon'a bağlanır ve efferent ağırlıklı lif yapısına sahiptir.",
+    topic: "Serebellar Pedünküller"
+  },
+  {
+    q: "16) Sadece afferent (giriş) lif taşıyan, serebellumu pons'a bağlayan ve beyinden gelen cortico-ponto-cerebellar yol liflerini barındıran pedünkül hangisidir?",
+    choices: [
+      "Pedunculus cerebellaris superior",
+      "Pedunculus cerebellaris medius",
+      "Pedunculus cerebellaris inferior",
+      "Lemniscus medialis"
+    ],
+    a: 1,
+    explanation: "Pedunculus cerebellaris medius pons'a bağlanır ve sadece afferent liflerden (cortico-ponto-cerebellar yol) oluşur.",
+    topic: "Bağlantı Yolları"
+  },
+  {
+    q: "17) Serebellumu besleyen arterlerden a. inferior posterior cerebelli (PICA) hangi ana arterin bir dalıdır?",
+    choices: [
+      "A. basilaris",
+      "A. vertebralis",
+      "A. cerebri posterior",
+      "A. carotis interna"
+    ],
+    a: 1,
+    explanation: "Görsellerde ve anatomik olarak PICA (arteria cerebellaris inferior posterior), a. vertebralis'ten ayrılan önemli bir daldır.",
+    topic: "Vaskülarizasyon"
+  },
+  {
+    q: "18) Serebellum lezyonları ve hasarları ile ilgili klinik tablolarda bulguların ortaya çıkış yönü hakkında hangisi doğrudur?",
+    choices: [
+      "Bulgular lezyonun her zaman karşı tarafında (kontralateral) görülür",
+      "Bulgular lezyon ile aynı tarafta (ipsilateral) ortaya çıkar",
+      "Yalnızca baş bölgesindeki bulgular karşı tarafta ortaya çıkar",
+      "Bulgular her zaman iki taraflı (bilateral) simetrik yayılım gösterir"
+    ],
+    a: 1,
+    explanation: "Serebellum lezyonlarına ait muayene bulguları lezyon ile aynı tarafta (ipsilateral) ortaya çıkar.",
+    topic: "Klinik Bulgular"
+  },
+  {
+    q: "19) Klinikte hastanın bir hedefe dokunmaya çalışırken mesafeyi ayarlayamayıp elini hedefin ötesine geçirmesi (hipermetri) durumuna ne ad verilir?",
+    choices: [
+      "Disdiadokinezi",
+      "Dismetri",
+      "Hipotoni",
+      "Dizartri"
+    ],
+    a: 1,
+    explanation: "Dismetri, bir hareketin mesafesini veya hızını doğru şekilde ayarlayamama durumudur (örneğin hedefin ötesine geçme; hipermetri).",
+    topic: "Serebellar Patolojiler"
+  },
+  {
+    q: "20) Serebellum hastalarının muayenesinde saptanan ardışık ve hızlı hareketleri (örneğin elin ön ve arka yüzünü sırayla hızlıca bir yere vurma) yapma zorluğuna ne ad verilir?",
+    choices: [
+      "Ataksi",
+      "Kinetik Tremor",
+      "Disdiadokinezi",
+      "Nistagmus"
+    ],
+    a: 2,
+    explanation: "Disdiadokinezi, hızlı ve ardışık ritmik hareketleri yapmada zorluk yaşanması ve koordinasyonun bozulması durumudur.",
+    topic: "Muayene Bulguları"
+  },
+  ],
+    "Periferik Otonom Sistemi-Beyin Arterleri": 
+  [
+    {
+    q: "1) Periferik sinir sisteminde yer alan kraniyal ve spinal sinirlerin toplam çift sayıları sırasıyla hangi seçenekte doğru verilmiştir?",
+    choices: [
+      "10 çift kraniyal - 30 çift spinal sinir",
+      "12 çift kraniyal - 31 çift spinal sinir",
+      "12 çift kraniyal - 33 çift spinal sinir",
+      "14 çift kraniyal - 31 çift spinal sinir"
+    ],
+    a: 1,
+    explanation: "Periferik sinir sistemi toplam 12 çift kraniyal ve 31 çift spinal sinirden oluşur[cite: 2773].",
+    topic: "Periferik Sinir Sistemi Genel"
+  },
+  {
+    q: "2) Kraniyal sinirlerden hangisi kafatası tabanındaki deliklerden çıktıktan sonra diğerlerinin aksine göğüs ve karın bölgelerine kadar ilerleyerek geniş bir dağılım gösterir?",
+    choices: [
+      "N. trigeminus (V)",
+      "N. facialis (VII)",
+      "N. glossopharyngeus (IX)",
+      "N. vagus (X)"
+    ],
+    a: 3,
+    explanation: "Kraniyal sinirler baş boyun bölgesinde dağılırken, sadece n. vagus göğüs ve karın bölgelerine kadar ilerler[cite: 2779].",
+    topic: "Kraniyal Sinir Komşulukları"
+  },
+  {
+    q: "3) Kraniyal sinirlerin beyin sapındaki nükleuslarıyla olan bağlantı kuralına uymayan, adeta beynin birer uzantısı gibi kabul edilen istisnai sinir çiftleri hangileridir?",
+    choices: [
+      "I. ve II. Kraniyal sinirler",
+      "III. ve IV. Kraniyal sinirler",
+      "V. ve VII. Kraniyal sinirler",
+      "IX. ve X. Kraniyal sinirler"
+    ],
+    a: 0,
+    explanation: "I. ve II. kraniyal sinirler beynin uzantısı gibidir ve beyin sapındaki bir nükleusla bağlantılı değildir[cite: 2801].",
+    topic: "Kraniyal Sinir İstisnaları"
+  },
+  {
+    q: "4) Kraniyal sinirlerdeki liflerin işlevsel sınıflandırmasına göre, iç organlardan alınan duyuları ileten lif grubu (Örn: GVA) aşağıdakilerden hangisidir?",
+    choices: [
+      "Genel Somatik Afferent",
+      "Genel Visseral Afferent",
+      "Özel Visseral Afferent",
+      "Genel Visseral Efferent"
+    ],
+    a: 1,
+    explanation: "GVA (genel visseral afferent), iç organlardan alınan duyuları ifade eder[cite: 2785].",
+    topic: "Lif Sınıflandırması"
+  },
+  {
+    q: "5) N. olfactorius (I) yoluyla alınan koku duyusunun iletim mekanizmasını diğer duyulardan ayıran en temel fonksiyonel fark nedir?",
+    choices: [
+      "Beyin sapındaki motor nükleuslardan köken alması",
+      "Thalamus'a uğramadan doğrudan koku korteksine (piriform korteks) ulaşması",
+      "Liflerinin tamamen genel somatik efferent (GSE) yapıda olması",
+      "Chiasma opticum bölgesinde orta hatta çapraz yapması"
+    ],
+    a: 1,
+    explanation: "Koku hücrelerinin aksonları tractus olfactorius içinde ilerleyip thalamus’a uğramadan doğrudan koku korteksi olan piriform korteks’e ulaşır[cite: 2797].",
+    topic: "N. Olfactorius"
+  },
+  {
+    q: "6) Retina ganglion hücrelerinin aksonlarından oluşan N. opticus (II), kafatası boşluğuna (cranium) girmek için aşağıdaki kanallardan hangisini kullanır?",
+    choices: [
+      "Fissura orbitalis superior",
+      "Canalis nervi hypoglossi",
+      "Canalis opticus",
+      "Meatus acusticus internus"
+    ],
+    a: 2,
+    explanation: "N. opticus orbita içinde arkaya ilerler ve canalis opticus içinden geçerek kafatası boşluğuna girer[cite: 2801].",
+    topic: "N. Opticus"
+  },
+  {
+    q: "7) Göz küresini hareket ettiren 6 kastan m. rectus superior, m. rectus inferior, m. rectus medialis ve m. obliquus inferior'u donatan kraniyal sinir hangisidir?",
+    choices: [
+      "N. opticus (II)",
+      "N. oculomotorius (III)",
+      "N. trochlearis (IV)",
+      "N. abducens (VI)"
+    ],
+    a: 1,
+    explanation: "N. oculomotorius (III), göz küresini hareket ettiren 6 kastan bu dört tanesini ve ayrıca m. levator palpebrae superioris'i donatır[cite: 2808, 2809].",
+    topic: "Gözü Hareket Ettiren Sinirler"
+  },
+  {
+    q: "8) Diğer tüm kraniyal sinirlerin aksine beyin sapını arkasından (dorzal yüzünden) terk eden tek kraniyal sinir hangisidir?",
+    choices: [
+      "N. oculomotorius (III)",
+      "N. trochlearis (IV)",
+      "N. abducens (VI)",
+      "N. facialis (VII)"
+    ],
+    a: 1,
+    explanation: "N. troclearis (IV), diğer tüm kraniyal sinirlerin aksine beyin sapının arkasından çıkan tek kraniyal sinirdir[cite: 2813].",
+    topic: "N. Trochlearis"
+  },
+  {
+    q: "9) Pons'un ön dış yüzünden çıkan, en kalın kraniyal sinir olma özelliğine sahip ve üç ana dala (ophthalmicus, maxillaris, mandibularis) ayrılan sinir hangisidir?",
+    choices: [
+      "N. trigeminus (V)",
+      "N. facialis (VII)",
+      "N. glossopharyngeus (IX)",
+      "N. hypoglossus (XII)"
+    ],
+    a: 0,
+    explanation: "N. trigeminus (V) pons'un ön dış yüzünden çıkar, en kalın kraniyal sinirdir ve üç ana dala ayrılır[cite: 2816, 2817].",
+    topic: "N. Trigeminus"
+  },
+  {
+    q: "10) N. trigeminus'un çiğneme kaslarını donatan motor lifleri, sinirin sadece hangi dalı içinde ilerlemektedir?",
+    choices: [
+      "N. ophthalmicus",
+      "N. maxillaris",
+      "N. mandibularis",
+      "Chorda tympani"
+    ],
+    a: 2,
+    explanation: "Trigeminus'un motor lifleri sadece n. mandibularis içinde ilerleyip çiğneme kaslarını ve ağız tabanındaki bazı kasları donatır[cite: 2818, 2819].",
+    topic: "N. Trigeminus Motor Dallar"
+  },
+  {
+    q: "11) Göz küresini dışa baktıran (abduksiyon) m. rectus lateralis kasını donatan VI. kraniyal sinir aşağıdakilerden hangisidir?",
+    choices: [
+      "N. oculomotorius",
+      "N. trochlearis",
+      "N. abducens",
+      "N. facialis"
+    ],
+    a: 2,
+    explanation: "N. abducens (VI), göz küresini hareket ettiren kaslardan m. rectus lateralis’i donatır[cite: 2821, 2822].",
+    topic: "N. Abducens"
+  },
+  {
+    q: "12) N. facialis'in (VII) dilin 2/3 ön bölümünden tat duyusu (ÖVA) alan özel dalı aşağıdakilerden hangisidir?",
+    choices: [
+      "N. mandibularis",
+      "Chorda tympani",
+      "N. tympanicus",
+      "N. petrosus major"
+    ],
+    a: 1,
+    explanation: "N. facialis'in chorda tympani adlı dalı dilin 2/3 ön bölümünden tat duyusu alır[cite: 2827].",
+    topic: "N. Facialis"
+  },
+  {
+    q: "13) Dilin 1/3 arka kısmından tat duyusu alan, carotid arterden kan basıncı/oksijen satürasyonu bilgilerini toplayan ve parotis bezini uyaran sinir hangisidir?",
+    choices: [
+      "N. facialis (VII)",
+      "N. vestibulocochlearis (VIII)",
+      "N. glossopharyngeus (IX)",
+      "N. vagus (X)"
+    ],
+    a: 2,
+    explanation: "N. glossopharyngeus (IX) dilin 1/3 arkasından tat duyusu, carotid arterden duyu alır ve parotis bezini uyarır[cite: 2839, 2840].",
+    topic: "N. Glossopharyngeus"
+  },
+  {
+    q: "14) Medulla spinalis'in üst servikal segmentlerinden köken alan spinal kökü ile medulla oblongata'dan çıkan kraniyal kökün birleşmesiyle oluşan ve m. sternocleidomastoideus ile m. trapezius'u donatan sinir hangisidir?",
+    choices: [
+      "N. vagus (X)",
+      "N. accessorius (XI)",
+      "N. hypoglossus (XII)",
+      "Plexus cervicalis"
+    ],
+    a: 1,
+    explanation: "N. accessorius (XI) kraniyal ve spinal iki kökten oluşur; spinal kökten kaynaklanan lifler m. sternocleidomastoideus ve m. trapezius’u donatır[cite: 2847, 2849, 2850].",
+    topic: "N. Accessorius"
+  },
+  {
+    q: "15) M. palatoglossus hariç tüm intrensek ve ekstrensek dil kaslarının motor kontrolünü sağlayan XII. kraniyal sinir hangisidir?",
+    choices: [
+      "N. trigeminus",
+      "N. facialis",
+      "N. glossopharyngeus",
+      "N. hypoglossus"
+    ],
+    a: 3,
+    explanation: "N. hypoglossus (XII), m. palatoglossus hariç tüm intrensek ve ekstrensek dil kaslarını donatır[cite: 2852, 2853].",
+    topic: "N. Hypoglossus"
+  },
+  {
+    q: "16) Otonom sinir sisteminin hiyerarşik düzeninde, beyin sapında yerleşmiş otonom odakları denetleyen ana koordinasyon ve entegrasyon merkezi hangisidir?",
+    choices: [
+      "Thalamus",
+      "Hypothalamus",
+      "Cerebellum",
+      "Bulbus olfactorius"
+    ],
+    a: 1,
+    explanation: "Beynin korteks tabakasının ardından beyin sapındaki hypothalamus, otonom sinir sisteminin koordinasyon merkezidir[cite: 2857, 2858].",
+    topic: "Otonom Merkezler"
+  },
+  {
+    q: "17) Vücudu 'savaş veya kaç' (tehlike/stres) durumuna hazırlayarak kalp atım hızını artıran, solunum yollarını genişleten ve sindirim aktivitelerini yavaşlatan sistem hangisidir?",
+    choices: [
+      "Sempatik sinir sistemi",
+      "Parasempatik sinir sistemi",
+      "Somatik duyu sistemi",
+      "Santral sinir sistemi"
+    ],
+    a: 0,
+    explanation: "Sempatik sinir sistemi vücudu stresli şartlara, tehlike anında savaşma veya kaçmaya hazırlar ve bu yönde sistemleri aktive/inhibe eder[cite: 2864, 2866].",
+    topic: "Sempatik Sistem"
+  },
+  {
+    q: "18) Aşağıdaki kraniyal sinir çiftlerinin hangilerinde parasempatik sisteme ait genel visseral efferent (GVE) lifler ve bunlarla ilişkili otonom ganglionlar bulunur?",
+    choices: [
+      "1, 2, 3 ve 5. Kraniyal sinirler",
+      "3, 7, 9 ve 10. Kraniyal sinirler",
+      "5, 8, 11 ve 12. Kraniyal sinirler",
+      "4, 6, 9 ve 11. Kraniyal sinirler"
+    ],
+    a: 1,
+    explanation: "Bazı kraniyal sinirlerde parasempatik sisteme ait lifler ve ilgili gangliyonlar bulunur; bunlar 3, 7, 9 ve 10. kraniyal sinirlerdir[cite: 2869, 2870].",
+    topic: "Parasempatik Lif Taşıyan Sinirler"
+  },
+  {
+    q: "19) Serebral hemisferlerin dış yüzünün büyük bölümü ile derin ve merkezi kısımlarını besleyen, a. carotis interna'nın en büyük klinik öneme sahip ana dalı hangisidir?",
+    choices: [
+      "a. cerebri anterior",
+      "a. cerebri media",
+      "a. cerebri posterior",
+      "a. basilaris"
+    ],
+    a: 1,
+    explanation: "A. cerebri media (a. carotis interna'nın dalı), hemisferlerin dış yüzünün büyük bölümü ile derin ve merkezi kısımlarını besler[cite: 2881].",
+    topic: "Beyin Arterleri"
+  },
+  {
+    q: "20) Mesencephalon seviyesinde a. carotis interna ve a. basilaris'in uç dallarının bir araya gelerek oluşturduğu, tıkanıklıklarda kollateral dolaşım sağlayan arter halkası (Willis poligonu) hangisidir?",
+    choices: [
+      "Truncus sympathicus",
+      "Plexus brachialis",
+      "Circulus arteriosus cerebri",
+      "Sinus cavernosus"
+    ],
+    a: 2,
+    explanation: "Uç dalların birleşerek meydana getirdiği bu arter halkasına circulus arteriosus cerebri (Willis poligonu) denir[cite: 2890].",
+    topic: "Willis Poligonu"
+  },
+  ],
+    "Limbik Sistem Anatomisi": 
+  [{
+    q: "1) 'Limbik' kelimesi Latince kökenli hangi sözcükten türetilmiştir ve kelime anlamı nedir?",
+    choices: [
+      "Cortex - Kabuk anlamına gelir",
+      "Limbus - Kenar, sınır anlamına gelir",
+      "Soma - Gövde anlamına gelir",
+      "Viscera - İç organ anlamına gelir"
+    ],
+    a: 1,
+    explanation: "Limbik terimi, Latince 'kenar' veya 'sınır' anlamına gelen 'Limbus' kelimesinden türetilmiştir.",
+    topic: "Limbik Sistem Giriş"
+  },
+  {
+    q: "2) Limbik sistemin hiyerarşik organizasyonunda otonom, endokrin ve somatomotor fonksiyonların entegrasyonunu sağlayan ana koordinasyon merkezi hangisidir?",
+    choices: [
+      "Cerebellum",
+      "Bulbus olfactorius",
+      "Hypothalamus",
+      "Epifiz bezi"
+    ],
+    a: 2,
+    explanation: "Hypothalamus, limbik sistemin en önemli ünitelerinden biri olup otonom ve endokrin sistemlerin merkezi kontrolünü üstlenir.",
+    topic: "Merkezi Entegrasyon"
+  },
+  {
+    q: "3) Limbik lob (Lobus limbicus) kavramını ilk kez ortaya atan ve bu bölgeyi corpus callosum'u çevreleyen bir halka olarak tanımlayan bilim insanı kimdir?",
+    choices: [
+      "James Papez",
+      "Paul Broca",
+      "Korbinian Brodmann",
+      "Camillo Golgi"
+    ],
+    a: 1,
+    explanation: "Paul Broca, corpus callosum ve beyin sapı etrafında bir halka oluşturan girintileri 'büyük limbik lob' olarak adlandırmıştır.",
+    topic: "Tarihçe ve Tanımlamalar"
+  },
+  {
+    q: "4) Emosyonların (duyguların) anatomik temeli olarak tanımlanan ve 'Papez Halkası' olarak bilinen devrede yer alan talamus çekirdek grubu hangisidir?",
+    choices: [
+      "İç yan grup çekirdekler (Mediodorsal)",
+      "Ön grup çekirdekler (Nuclei anteriores thalami)",
+      "Dış yan grup çekirdekler (VPL/VPM)",
+      "Metatalamik çekirdekler (CGL/CGM)"
+    ],
+    a: 1,
+    explanation: "Papez devresinde corpus mamillare'den çıkan lifler (tr. mamillothalamicus), talamusun ön grup çekirdeklerine (nuclei anteriores) ulaşır.",
+    topic: "Papez Devresi"
+  },
+  {
+    q: "5) Papez halkasındaki fonksiyonel akış sırası göz önüne alındığında, gyrus cinguli'den kalkan emosyonel uyarılar hangi yapı aracılığıyla hippocampus'a iletilir?",
+    choices: [
+      "Fornix",
+      "Stria terminalis",
+      "Cingulum",
+      "Stria medullaris thalami"
+    ],
+    a: 2,
+    explanation: "Gyrus cinguli'den çıkan assosiasyon lifleri, 'cingulum' adı verilen demet aracılığıyla parahippokampal gyrus ve hippocampus'a taşınır.",
+    topic: "Papez Devresi Lif Yolları"
+  },
+  {
+    q: "6) Temporal lobun derinliklerinde yer alan, gri cevher yapısındaki Hippocampus formasyonu temel olarak hangi üç ana anatomik yapıdan meydana gelir?",
+    choices: [
+      "Subiculum, Gyrus dentatus, Hippocampus (Cornu ammonis)",
+      "Indusium griseum, Fornix, Fimbria",
+      "Uncus, Gyrus cinguli, Area subcallosa",
+      "Amygdala, Corpus mamillare, Alveus"
+    ],
+    a: 0,
+    explanation: "Hippocampus formasyonu; subiculum, gyrus dentatus ve esas hippocampus (cornu ammonis) yapılarından oluşur.",
+    topic: "Hippocampus Anatomisi"
+  },
+  {
+    q: "7) Hippocampus formasyonunun en önemli efferent (çıkış) lif demeti olan ve corpus mamillare'ye kadar uzanan C şeklindeki kalın beyaz cevher yapısı hangisidir?",
+    choices: [
+      "Stria terminalis",
+      "Fornix",
+      "Commissura anterior",
+      "Fasciculus longitudinalis superior"
+    ],
+    a: 1,
+    explanation: "Fornix, hippocampus'un en büyük projeksiyon ve efferent lif yoludur; hippocampus'tan aldığı uyarıları corpus mamillare'ye taşır.",
+    topic: "Fornix"
+  },
+  {
+    q: "8) Öğrenme, yeni bilgilerin uzun süreli hafızaya aktarılması (konsolidasyon) ve uzaysal yön bulma (navigasyon) süreçlerinde birinci derecede rol oynayan limbik yapı hangisidir?",
+    choices: [
+      "Amygdala",
+      "Nuc. subthalamicus",
+      "Hippocampus",
+      "Corpus pineale"
+    ],
+    a: 2,
+    explanation: "Hippocampus, kısa süreli hafızadaki bilgilerin uzun süreli hafızaya kaydedilmesinde ve mekansal hafızada hayati öneme sahiptir.",
+    topic: "Hippocampus Fonksiyonları"
+  },
+  {
+    q: "9) Özellikle korku, öfke, saldırganlık gibi emosyonel reaksiyonların oluşmasında, yüz ifadelerinin ve çevresel tehditlerin değerlendirilmesinde merkezi rol oynayan çekirdek kitlesi hangisidir?",
+    choices: [
+      "Corpus amygdaloideum (Amygdala)",
+      "Nucleus ruber",
+      "Substantia nigra",
+      "Nucleus caudatus"
+    ],
+    a: 0,
+    explanation: "Amygdala, limbik sistemin 'korku ve emosyonel alarm' merkezi olarak işlev görür; saldırganlık ve savunma davranışlarını düzenler.",
+    topic: "Amygdala"
+  },
+  {
+    q: "10) Amygdala'nın en önemli efferent yolu olan, thalamus ile nuc. caudatus arasında bir oluk içinde seyrederek hypothalamus'a ulaşan lif demeti hangisidir?",
+    choices: [
+      "Fornix",
+      "Stria terminalis",
+      "Fasciculus mamillothalamicus",
+      "Cingulum"
+    ],
+    a: 1,
+    explanation: "Stria terminalis, amygdala'nın ana efferent lif yoludur ve talamus-nuc. caudatus arasındaki sulcus terminalis içinde uzanarak hypothalamus'a gider.",
+    topic: "Amygdala Bağlantıları"
+  },
+  {
+    q: "11) Klinikte her iki temporal lobun (özellikle amygdala ve hippocampus yapılarının) bilateral hasarı sonucu ortaya çıkan; korkusuzluk, uysallık, hiperseksüalite ve görsel agnozi ile karakterize sendrom hangisidir?",
+    choices: [
+      "Wallenberg Sendromu",
+      "Klüver-Bucy Sendromu",
+      "Horner Sendromu",
+      "Parkinson Sendromu"
+    ],
+    a: 1,
+    explanation: "Klüver-Bucy sendromu, bilateral temporal lob lezyonlarında (özellikle amigdala hasarında) görülen uysallık, hiperorality ve hiperseksüalite tablosudur.",
+    topic: "Limbik Sistem Patolojileri"
+  },
+  {
+    q: "12) Alkolizm ve B1 vitamini (Tiamin) eksikliğine bağlı olarak gelişen, Papez halkasındaki corpus mamillare hasarı nedeniyle 'anterograd amnezi' ve 'konfabulasyon' (masallama) ile seyreden klinik tablo hangisidir?",
+    choices: [
+      "Alzheimer Hastalığı",
+      "Wernicke-Korsakoff Sendromu",
+      "Huntington Koresi",
+      "Multipl Skleroz"
+    ],
+    a: 1,
+    explanation: "Wernicke-Korsakoff sendromunda tiamin eksikliği nedeniyle corpus mamillare'ler etkilenir ve hasta yeni olayları hafızaya kaydedemez (anterograd amnezi).",
+    topic: "Klinik Sendromlar"
+  },
+  {
+    q: "13) Koku duyusunun (N. olfactorius) limbik sistem yapılarından amigdala ve entorhinal korteks ile olan doğrudan bağlantısı, bu duyuya hangi özel niteliği kazandırır?",
+    choices: [
+      "Kokuların sadece çizgili kas refleksleriyle algılanmasını",
+      "Koku hafızasının duygusal durum ve geçmiş anılarla çok güçlü bir ilişki kurmasını",
+      "Koku uyarılarının talamusta en yüksek düzeyde filtrelenmesini",
+      "Koku duyusunun sadece somatik motor çıktılar üretmesini"
+    ],
+    a: 1,
+    explanation: "Koku duyusunun talamusa uğramadan doğrudan limbik sistem yapılarına (amigdala/piriform/entorhinal korteks) ulaşması, kokuların duygusal ve hafızasallığını çok güçlü kılar.",
+    topic: "Koku ve Limbik Sistem"
+  },
+  {
+    q: "14) Corpus callosum'un hemen üstünde uzanan, Papez halkasının kortikal ayağını oluşturan ve ağrı, emosyon kontrolü ile yakından ilişkili olan gyrus hangisidir?",
+    choices: [
+      "Gyrus dentatus",
+      "Gyrus parahippocampalis",
+      "Gyrus cinguli",
+      "Gyrus frontalis inferior"
+    ],
+    a: 2,
+    explanation: "Gyrus cinguli, corpus callosum'un üst yüzeyini doğrudan saran ve emosyonel yanıtların düzenlenmesinde rol oynayan büyük kortikal yapıdır.",
+    topic: "Limbik Lob Yapıları"
+  },
+  {
+    q: "15) Fornix lifleri seyrine devam ederken, commissura anterior seviyesinde iki ana gruba ayrılır. Bu gruplar aşağıdakilerden hangisidir?",
+    choices: [
+      "Lifler anterior ve posterior olarak ikiye ayrılır",
+      "Lifler precommissural fornix ve postcommissural fornix olarak ikiye ayrılır",
+      "Lifler medial ve lateral lemniscus olarak ikiye ayrılır",
+      "Lifler alveus ve fimbria olarak ikiye ayrılır"
+    ],
+    a: 1,
+    explanation: "Fornix demeti commissura anterior hizasında ikiye ayrılır: Önünden geçen liflere precommissural, arkasından corpus mamillare'ye giden liflere postcommissural fornix denir.",
+    topic: "Fornix Anatomisi"
+  },
+  {
+    q: "16) Gyrus dentatus'un en dış yüzeyinde yer alan, gri cevherin hippocampus'un derinliklerine doğru kıvrılmasıyla oluşan ve mikroskobik olarak dişli bir görünüm sunan tabaka hangisidir?",
+    choices: [
+      "Alveus",
+      "Subiculum",
+      "Gyrus dentatus'un kendisi",
+      "Fimbria"
+    ],
+    a: 2,
+    explanation: "Gyrus dentatus, adını şerit benzeri tırtıklı/dişli makroskobik görünümünden alır ve hippocampus formasyonunun afferent istasyonudur.",
+    topic: "Hippocampus Histolojisi"
+  },
+  {
+    q: "17) Limbik sistem kapsamında değerlendirilen 'Septal Bölge' (Area septalis) temel olarak beynin hangi bölgesinde yer alır ve fonksiyonu nedir?",
+    choices: [
+      "Mesencephalon'un arkasındadır ve görme reflekslerini yönetir",
+      "Lamina terminalis'in önünde, area subcallosa komşuluğundadır; haz, ödül ve sakinleşme mekanizmalarıyla ilgilidir",
+      "Bulbus olfactorius'un içindedir ve koku keskinliğini artırır",
+      "Cerebellum'un altındadır ve ince motor koordinasyonu sağlar"
+    ],
+    a: 1,
+    explanation: "Septal bölge (area septalis), ödül ve haz mekanizmalarının yanı sıra limbik sistemin öfke/saldırganlığı baskılayan bir frenleme alanıdır.",
+    topic: "Septal Bölge"
+  },
+  {
+    q: "18) Hippocampus korteks yapısı, genel serebral neokorteksin 6 tabakalı yapısından farklı olarak kaç tabakalı bir organizasyona sahiptir ve bu tip eski kortekse ne ad verilir?",
+    choices: [
+      "4 tabakalıdır - Mezokorteks denir",
+      "3 tabakalıdır - Allocortex (Archicortex) denir",
+      "5 tabakalıdır - Paleokorteks denir",
+      "Tabakalaşma göstermez - Serebellar korteks denir"
+    ],
+    a: 1,
+    explanation: "Hippocampus filogenetik olarak archicortex yapısındadır ve neokorteksin aksine sadece 3 hücresel tabakadan oluşur.",
+    topic: "Kortikal Filojenez"
+  },
+  {
+    q: "19) Bir hastada sol hippocampus'un cerrahi olarak çıkarılması veya hasar görmesi durumunda aşağıdaki bellek bozukluklarından hangisinin ön planda olması beklenir?",
+    choices: [
+      "Görsel nesneleri ve mekanları hatırlayamama",
+      "Sözel bellek (kelimeler, isimler, sözel hikayeler) bozukluğu",
+      "Motor becerilerin (yüzme, bisiklete binme) tamamen unutulması",
+      "Geçmişe ait tüm çocukluk anılarının silinmesi"
+    ],
+    a: 1,
+    explanation: "Sol hemisfer dil ve sözel fonksiyonlarla dominant olduğundan, sol hippocampus hasarlarında sözel bellek süreçleri baskın olarak etkilenir.",
+    topic: "Fonksiyonel Lateralizasyon"
+  },
+  {
+    q: "20) Papez halkasını tamamlayan 'Fasciculus mamillothalamicus' (Vicq d'Azyr demeti) hangi iki anatomik yapı arasında doğrudan bağlantı sağlar?",
+    choices: [
+      "Hippocampus ile Amygdala",
+      "Corpus mamillare ile Thalamus'un ön çekirdekleri (Nuclei anteriores)",
+      "Gyrus cinguli ile Septal bölge",
+      "Hypothalamus ile Tegmentum mesencephali"
+    ],
+    a: 1,
+    explanation: "Fasciculus mamillothalamicus, corpus mamillare'den çıkan emosyonel uyarıları talamusun ön çekirdek grubuna ileten ana bağlantı köprüsüdür.",
+    topic: "Papez Devresi Detay"
+  },
+],
+    "Medulla Spinalis İnen Cikan Yollar": 
+  [
+    {
+    q: "1) Medulla spinalis'in (omurilik) makroskobik kesitlerinde dışta beyaz cevher, içte ise 'H' veya kelebek şeklinde gri cevher yer alır. Bu beyaz cevher yapısı hangi üç ana kordona (funiculus) ayrılmaktadır?",
+    choices: [
+      "Funiculus anterior, funiculus posterior, funiculus lateralis",
+      "Funiculus superior, funiculus inferior, funiculus medialis",
+      "Funiculus dorsal, funiculus ventral, funiculus central",
+      "Funiculus rostral, funiculus caudal, funiculus intermediate"
+    ],
+    a: 0,
+    explanation: "Medulla spinalis'in beyaz cevheri ön (anterior), arka (posterior) ve yan (lateral) olmak üzere üç ana kordona (funiculus) ayrılır.",
+    topic: "Medulla Spinalis Genel Anatomi"
+  },
+  {
+    q: "2) Omurilikteki çıkan (afferent) yollar genel olarak hangi tür bilgileri taşır ve inen (efferent) yollar ne tür komutları iletir?",
+    choices: [
+      "Çıkan yollar motor komutları; İnen yollar somatosensoriyel duyuları iletir",
+      "Çıkan yollar somatosensoriyel duyuları; İnen yollar motor komutları iletir",
+      "Her iki yol grubu da sadece otonom ve visseral fonksiyonları yürütür",
+      "Çıkan yollar sadece refleksleri; İnen yollar sadece ağrı duyusunu iletir"
+    ],
+    a: 1,
+    explanation: "Yükselen (çıkan) yollar çevreden merkeze duyu bilgilerini taşırken, inen yollar merkezden perifere motor emirleri iletir.",
+    topic: "Fonksiyonel Yol Grupları"
+  },
+  {
+    q: "3) Gövde ve ekstremitelerden gelen şuurlu propriosepsiyon (pozisyon/hareket), vibrasyon ve ince dokunma (iki nokta diskriminasyonu) duyularını taşıyan sistem hangisidir?",
+    choices: [
+      "Anterolateral Sistem (Tr. spinothalamicus)",
+      "Tr. spinocerebellaris anterior",
+      "Arka Kordon Sistemi (Funiculus posterior / Dorsal Kolon)",
+      "Tractus rubrospinalis"
+    ],
+    a: 2,
+    explanation: "Arka kordon sistemi (funiculus posterior), şuurlu propriosepsiyon, vibrasyon ve iki nokta diskriminasyonu duyularını taşır.",
+    topic: "Arka Kordon Sistemi"
+  },
+  {
+    q: "4) Arka kordon sisteminde (Dorsal Kolon), vücudun alt yarımından (T6 segmenti ve altı) gelen duyu liflerini barındıran medialdeki demet aşağıdakilerden hangisidir?",
+    choices: [
+      "Fasciculus cuneatus (Burdach)",
+      "Fasciculus gracilis (Goll)",
+      "Tractus spinothalamicus lateralis",
+      "Fasciculus proprius"
+    ],
+    a: 1,
+    explanation: "Medialde yer alan fasciculus gracilis (Goll demeti) T6 ve altından (bacaklar ve alt gövde), lateraldeki fasciculus cuneatus (Burdach) ise T6 üstünden (kollar ve üst gövde) duyu taşır.",
+    topic: "Fasciculus Gracilis ve Cuneatus"
+  },
+  {
+    q: "5) Arka kordon sistemine (Goll ve Burdach) ait birinci nöronların uzantıları omurilikte çapraz yapmadan yükseldikten sonra, ikinci nöronlarla nerede sinaps yapar?",
+    choices: [
+      "Medulla spinalis'in arka boynuzunda (Cornu posterius)",
+      "Thalamus'un VPL çekirdeğinde",
+      "Medulla oblongata'daki (omurilik soğanı) nucleus gracilis ve nucleus cuneatus'ta",
+      "Mesencephalon'daki nuc. ruber'de"
+    ],
+    a: 2,
+    explanation: "Bu sistemin birinci nöron gövdeleri spinal gangliondadır ve uzantıları medulla oblongata'daki (bulbus) nuc. gracilis ve nuc. cuneatus'ta ikinci nöronlarla sinaps yapar.",
+    topic: "Dorsal Kolon Akış Şeması"
+  },
+  {
+    q: "6) Bulbustaki nuc. gracilis ve nuc. cuneatus'tan çıkan ikinci nöron aksonları (fibrae arcuatae internae) orta hatta çapraz yaptıktan sonra thalamus'a doğru hangi isimle yükselir?",
+    choices: [
+      "Lemniscus lateralis",
+      "Lemniscus medialis",
+      "Tractus spinothalamicus",
+      "Fasciculus longitudinalis medialis"
+    ],
+    a: 1,
+    explanation: "Bulbusta çapraz yapan (decussatio lemniscorum) lifler, 'lemniscus medialis' adını alarak thalamus'un VPL çekirdeğine doğru tırmanır.",
+    topic: "Lemniscus Medialis"
+  },
+  {
+    q: "7) Gövde ve ekstremitelerden alınan ağrı, ısı, kaba dokunma ve basınç duyularını taşıyan ana yükselen yol hangisidir?",
+    choices: [
+      "Tractus spinothalamicus (Anterolateral Sistem)",
+      "Fasciculus cuneatus",
+      "Tractus spinocerebellaris posterior",
+      "Tractus corticospinalis"
+    ],
+    a: 0,
+    explanation: "Anterolateral sistem içinde yer alan tractus spinothalamicus lateralis ağrı ve ısı, tractus spinothalamicus anterior ise kaba dokunma ve basınç duyularını iletir.",
+    topic: "Tractus Spinothalamicus"
+  },
+  {
+    q: "8) Tractus spinothalamicus (anterolateral sistem) duyu hattında liflerin karşı tarafa geçişi (çapraz yapması) nerede gerçekleşir?",
+    choices: [
+      "Medulla oblongata'da (Bulbus düzeyinde)",
+      "Duyunun omuriliğe girdiği segment düzeyinde, commissura alba anterior'dan geçerek karşı tarafa",
+      "Thalamus'tan kortekse geçerken capsula interna içinde",
+      "Lifler hiçbir seviyede çapraz yapmaz, ipsilateral yükselir"
+    ],
+    a: 1,
+    explanation: "Spinal gangliondaki 1. nöron omuriliğe girdikten sonra arka boynuzda 2. nöronla sinaps yapar. 2. nöronun aksonları girdi segmenti düzeyinde commissura alba anterior'da karşı tarafa geçerek yükselir.",
+    topic: "Anterolateral Sistem Çaprazı"
+  },
+  {
+    q: "9) Şuursuz propriosepsiyon (kas ve eklemlerden gelen bilinç dışı koordinasyon bilgileri) duyusunu serebelluma (beyincik) taşıyan yollar hangileridir?",
+    choices: [
+      "Fasciculus gracilis ve cuneatus",
+      "Tractus spinothalamicus anterior ve lateralis",
+      "Tractus spinocerebellaris anterior ve posterior",
+      "Tractus vestibulospinalis ve reticulospinalis"
+    ],
+    a: 2,
+    explanation: "Tractus spinocerebellaris anterior ve posterior, gövde ve alt ekstremitelerden gelen şuursuz propriosepsiyon duyusunu beyinciğe taşır.",
+    topic: "Serebellar Yollar"
+  },
+  {
+    q: "10) Omuriliğin tek taraflı kesilerinde (Örn: Brown-Séquard Sendromu), ağrı ve ısı duyusu kaybı vücutta nasıl bir dağılım gösterir?",
+    choices: [
+      "Hasar seviyesinin altında, hasarla aynı tarafta (ipsilateral) duyu kaybı olur",
+      "Hasar seviyesinin altında, hasarın karşı tarafında (kontralateral) duyu kaybı olur",
+      "Sadece T6 segmentinin üstünde çift taraflı kayıp olur",
+      "Her iki tarafta da sadece vibrasyon duyusu korunurken ağrı tamamen kaybolur"
+    ],
+    a: 1,
+    explanation: "Tractus spinothalamicus lifleri omuriliğe girer girmez çapraz yaptığından, tek taraflı omurilik hasarında ağrı ve ısı duyusu hasarın karşı tarafında (kontralateral) kaybedilir.",
+    topic: "Klinik Anatomi / Lezyonlar"
+  },
+  {
+    q: "11) İstemli ve ince (beceri gerektiren) motor hareketlerin yürütülmesinden sorumlu, korteksteki piramidal hücrelerden başlayan en önemli inen motor yol hangisidir?",
+    choices: [
+      "Tractus rubrospinalis",
+      "Tractus vestibulospinalis",
+      "Tractus corticospinalis (Piramidal Yol)",
+      "Tractus reticulospinalis"
+    ],
+    a: 2,
+    explanation: "Tractus corticospinalis (piramidal traktus), istemli kas hareketlerimizin en temel inen motor yoludur.",
+    topic: "Piramidal Sistem"
+  },
+  {
+    q: "12) Tractus corticospinalis liflerinin büyük çoğunluğu (%80-85) medulla oblongata'nın alt sınırında (Pramislerin alt ucu) çapraz yaparak lateral kordona geçer. Bu çapraz yapısına ne ad verilir?",
+    choices: [
+      "Decussatio lemniscorum",
+      "Decussatio pyramidum",
+      "Commissura alba anterior",
+      "Chiasma opticum"
+    ],
+    a: 1,
+    explanation: "Bulbus alt ucunda motor liflerin yaptığı bu büyük çapraza decussatio pyramidum (piramidal çapraz) denir. Çapraz yapan lifler tr. corticospinalis lateralis olarak ilerler.",
+    topic: "Decussatio Pyramidum"
+  },
+  {
+    q: "13) Piramidal çaprazda (decussatio pyramidum) karşı tarafa geçmeyerek omuriliğin ön kordonunda düz inen lif demeti aşağıdakilerden hangisidir?",
+    choices: [
+      "Tractus corticospinalis lateralis",
+      "Tractus corticospinalis anterior",
+      "Tractus rubrospinalis",
+      "Tractus tectospinalis"
+    ],
+    a: 1,
+    explanation: "Çapraz yapmadan ön kordonda düz inen %15-20'lik motor lif demetine tractus corticospinalis anterior (veya direkt piramidal yol) denir. Bunlar da sonlanacakları omurilik segmentinde karşıya geçerler.",
+    topic: "Tractus Corticospinalis Anterior"
+  },
+  {
+    q: "14) Ekstrapiramidal motor sistem içinde yer alan, mesencephalon'daki nucleus ruber'den başlayıp omurilikte fleksör kas tonusunu artıran inen yol hangisidir?",
+    choices: [
+      "Tractus rubrospinalis",
+      "Tractus vestibulospinalis",
+      "Tractus tectospinalis",
+      "Tractus olivospinalis"
+    ],
+    a: 0,
+    explanation: "Tractus rubrospinalis, nuc. ruber'den başlar, çapraz yapar (Von Monakow çaprazı) ve üst ekstremite fleksör kaslarının tonusunu kolaylaştırır.",
+    topic: "Tractus Rubrospinalis"
+  },
+  {
+    q: "15) İç kulaktaki denge organından ve serebellumdan gelen uyarılar doğrultusunda, ekstansör (antigravite) kas tonusunu artırarak vücut dengesini ve postürü koruyan inen yol hangisidir?",
+    choices: [
+      "Tractus corticospinalis lateralis",
+      "Tractus vestibulospinalis",
+      "Tractus rubrospinalis",
+      "Tractus spinothalamicus"
+    ],
+    a: 1,
+    explanation: "Tractus vestibulospinalis, bulbus ve ponstaki vestibüler çekirdeklerden kalkarak ekstansör kasları aktive eder ve dik duruşu/dengeyi destekler.",
+    topic: "Tractus Vestibulospinalis"
+  },
+  {
+    q: "16) Üst motor nöron (1. motor nöron) lezyonlarında (Örn: Capsula interna kanaması veya piramidal yol hasarı) aşağıdakilerden hangisinin görülmesi beklenmez?",
+    choices: [
+      "Spastik felç (Kas tonusunda artış / Rijidite)",
+      "Hiperrefleksi (Derin tendon reflekslerinin artması)",
+      "Babinski delili (Patolojik refleks) pozitifliği",
+      "Şiddetli kas atrofisi (Kas erimesi) ve fasikülasyonlar"
+    ],
+    a: 3,
+    explanation: "Şiddetli erken dönem kas erimesi (atrofi), arefleksi ve fasikülasyonlar alt motor nöron (periferik motor nöron) lezyonlarının özelliğidir. Üst motor nöron lezyonunda spastisite ve hiperrefleksi görülür.",
+    topic: "Motor Nöron Lezyonları"
+  },
+  {
+    q: "17) Görme ve işitme uyarılarına karşı baş, boyun ve gözlerin koordineli olarak o yöne dönmesini (koruyucu refleks hareketler) sağlayan üst kollikulus kökenli inen yol hangisidir?",
+    choices: [
+      "Tractus tectospinalis",
+      "Tractus reticulospinalis",
+      "Tractus rubrospinalis",
+      "Tractus vestibulospinalis"
+    ],
+    a: 0,
+    explanation: "Tractus tectospinalis, mesencephalon'daki colliculus superior'dan başlar ve görsel/işitsel irkilme reflekslerine karşı baş-boyun hareketlerini organize eder.",
+    topic: "Tractus Tectospinalis"
+  },
+  {
+    q: "18) Retiküler formasyondan (Formatio reticularis) başlayıp omurilik ön boynuzundaki motor nöronları etkileyerek otonom fonksiyonları ve istemsiz lokomotor hareket kalıplarını düzenleyen inen sistem hangisidir?",
+    choices: [
+      "Tractus rubrospinalis",
+      "Tractus reticulospinalis",
+      "Tractus corticospinalis",
+      "Tractus spinocerebellaris"
+    ],
+    a: 1,
+    explanation: "Tractus reticulospinalis (pontin ve medüller kolları), kas tonusunun modülasyonu, otonom liflerin omurilikteki seyahati ve lokomotor kontrol üzerinde etkilidir.",
+    topic: "Tractus Reticulospinalis"
+  },
+  {
+    q: "19) Arka kordon (Dorsal Kolon) sisteminin tek taraflı tam hasarında hasar seviyesinin altında ne tür bir klinik kayıp ortaya çıkar?",
+    choices: [
+      "Karşı tarafta ağrı ve ısı duyusu kaybı",
+      "Aynı tarafta şuurlu propriosepsiyon, vibrasyon ve ince dokunma duyusu kaybı",
+      "Karşı tarafta spastik felç tablosu",
+      "Aynı tarafta kaba dokunma ve gıdıklanma duyusu kaybı"
+    ],
+    a: 1,
+    explanation: "Arka kordon lifleri omurilik içinde çapraz yapmadan bulbusa kadar yükseldiği için, tek taraflı kordon hasarında derin duyu kaybı hasarla aynı tarafta (ipsilateral) görülür.",
+    topic: "Dorsal Kolon Patolojisi"
+  },
+  {
+    q: "20) Thalamus'ta gövde ve ekstremitelerden gelen tüm somatosensoriyel duyu yollarının (Lemniscus medialis ve Tr. spinothalamicus) üçüncü nöronlarla sinaps yaptığı spesifik nükleus hangisidir?",
+    choices: [
+      "Nucleus corporis geniculati medialis (CGM)",
+      "Nucleus ventralis posterolateralis (VPL)",
+      "Nucleus ventralis posteromedialis (VPM)",
+      "Nucleus anterior thalami"
+    ],
+    a: 1,
+    explanation: "Baş bölgesi hariç vücuttan gelen tüm genel somatik duyular thalamus'un VPL (ventralis posterolateralis) çekirdeğinde sonlanır; baş bölgesi duyuları ise VPM'ye gider.",
+    topic: "Thalamus Entegrasyonu"
+  },
+  ],
+      "Quiz": 
+  [
+    {
+    q: "1) Diencephalon beyin yarım küreleri tarafından hemen hemen tamamı kuşatılmış merkezi bir bölgede yer alır. Dıştan bakıldığında diencephalon'un sadece hangi kısmı doğrudan görülebilir?",
+    choices: [
+      "Tavan kısmı",
+      "Üst yüzü",
+      "Dış yan yüzü",
+      "Alt kısmı"
+    ],
+    a: 3,
+    explanation: "Beyne dıştan bakıldığında diencephalon'un sadece alt kısmı görülür; dış yan tarafları hemisferlerle sarılı, tavan kısmı ise corpus callosum ile örtülüdür.",
+    topic: "Diencephalon Anatomisi"
+  },
+  {
+    q: "2) Diencephalon'u horizontal kesitte dış yan taraftan ve iç yan taraftan sınırlayan anatomik yapılar hangi seçenekte doğru sıralanmıştır?",
+    choices: [
+      "Dış yanda III. ventrikül - İç yanda Capsula interna",
+      "Dış yanda Capsula interna - İç yanda III. ventrikül",
+      "Dış yanda Corpus mamillare - İç yanda Lamina terminalis",
+      "Dış yanda Mesencephalon - İç yanda Corpus callosum"
+    ],
+    a: 1,
+    explanation: "Horizontal kesitte diencephalon'un dış yan tarafında capsula interna, iç yan tarafında ise III. ventrikül yer alır.",
+    topic: "Diencephalon Komşulukları"
+  },
+  {
+    q: "3) Thalamus, cortex cerebri'ye gelen duysal uyarıların düzenlendiği ve iletildiği en büyük gri cevher kitlesidir. Aşağıdaki duyulardan hangisine ait uyarılar kortekse açılmadan önce Thalamus'a uğramaz?",
+    choices: [
+      "Görme duyusu",
+      "Koku duyusu",
+      "İşitme duyusu",
+      "Tat duyusu"
+    ],
+    a: 1,
+    explanation: "Thalamus, cortex cerebri'ye gelen tüm duysal uyarıların ilk durağıdır; ancak koku duyusu bu iletim istasyonuna uğramayan tek istisnadır.",
+    topic: "Thalamus Fonksiyonları"
+  },
+  {
+    q: "4) Thalamus'un dış yan yüzünü saran lamina medullaris externa ile capsula interna arasında yer alan, aksonları talamusu terk etmeyen ve talamik çıkışı organize eden tek çekirdek hangisidir?",
+    choices: [
+      "Nuc. mediodorsalis (MD)",
+      "Nuc. centromedianus (CM)",
+      "Nuc. reticularis thalami",
+      "Nuc. ventralis anterior (VA)"
+    ],
+    a: 2,
+    explanation: "Nuc. reticularis thalami, talamusun dış yan yüzünü sarar ve aksonları talamusu terk etmeyen tek çekirdek olarak kabul edilir.",
+    topic: "Thalamus Çekirdekleri"
+  },
+  {
+    q: "5) Görme yolunun III. nöronlarını içeren, tractus opticus'tan afferent alan ve oksipital lobdaki primer görme merkezine (Brodmann 17) radiatio optica ile lifler gönderen metathalamus yapısı hangisidir?",
+    choices: [
+      "Corpus geniculatum mediale",
+      "Corpus geniculatum laterale",
+      "Habenula",
+      "Commissura posterior"
+    ],
+    a: 1,
+    explanation: "Corpus geniculatum laterale (CGL) görme yolu ile ilgilidir. İşitme ile ilgili olan ise corpus geniculatum mediale'dir.",
+    topic: "Metathalamus"
+  },
+  {
+    q: "6) Hypothalamus'ta bulunan açlık ve tokluk merkezlerinin lokalizasyonları hangi seçenekte doğru verilmiştir?",
+    choices: [
+      "Açlık merkezi ön bölüm - Tokluk merkezi arka bölüm",
+      "Açlık merkezi ventromedial çekirdek - Tokluk merkezi lateral bölge",
+      "Açlık merkezi lateral bölge - Tokluk merkezi ventromedial çekirdek",
+      "Açlık merkezi nuc. supraopticus - Tokluk merkezi nuc. paraventricularis"
+    ],
+    a: 2,
+    explanation: "Hypothalamus'un lateral bölgesi açlık merkezidir (lezyonunda kilo kaybı olur), ventromedial çekirdek ise tokluk merkezidir (lezyonunda obezite gelişir).",
+    topic: "Hypothalamus Fonksiyonları"
+  },
+
+  // --- BÖLÜM 2: CEREBELLUM (7 - 12) ---
+  {
+    q: "7) Cerebellum (beyincik), embriyolojik ve filogenetik olarak merkezi sinir sisteminin hangi ana bölümünün (vesicula) en büyük parçasıdır?",
+    choices: [
+      "Prosencephalon",
+      "Mesencephalon",
+      "Rhombencephalon",
+      "Diencephalon"
+    ],
+    a: 2,
+    explanation: "Cerebellum, arka beyin anlamına gelen rhombencephalon'un en büyük bölümünü oluşturur ve motor koordinasyonda rol oynar.",
+    topic: "Cerebellum Genel Anatomi"
+  },
+  {
+    q: "8) Cerebellum'un tavan kısmında yer alıp onu üstteki lobus occipitalis'ten ayıran duramater uzantısı ile ön tarafta pons/medulla oblongata ile komşuluk yapmasını sağlayan boşluk hangisidir?",
+    choices: [
+      "Falx cerebri - Ventriculus tertius",
+      "Tentorium cerebelli - Ventriculus quartus",
+      "Falx cerebelli - Aqueductus cerebri",
+      "Tentorium cerebelli - Ventriculus lateralis"
+    ],
+    a: 1,
+    explanation: "Serebellum üstte tentorium cerebelli aracılığıyla oksipital lobdan ayrılır; önde ise 4. ventrikül (ventriculus quartus) aracılığıyla pons ve bulbusla komşudur.",
+    topic: "Cerebellum Komşulukları"
+  },
+  {
+    q: "9) Cerebellum kesitlerinde, iç yapıda yer alan beyaz maddenin (laminae albae) dıştaki gri maddeye doğru bir ağaç gibi dallanma göstermesi durumuna ne ad verilir?",
+    choices: [
+      "Cortex cerebelli",
+      "Corpus medullare",
+      "Arbor vitae",
+      "Folia cerebelli"
+    ],
+    a: 2,
+    explanation: "Serebellumun iç yapısındaki beyaz maddenin dallanma düzenine görünümünden ötürü 'hayat ağacı' anlamına gelen 'Arbor vitae' adı verilir.",
+    topic: "Cerebellum İç Yapısı"
+  },
+  {
+    q: "10) Serebellumun filogenetik olarak en genç parçasını oluşturan (Neocerebellum), hemisferlerden gelen bilgileri alan ve en büyük derin serebellar çekirdek olan yapı hangisidir?",
+    choices: [
+      "Nucleus fastigii",
+      "Nucleus globosus",
+      "Nucleus emboliformis",
+      "Nucleus dentatus"
+    ],
+    a: 3,
+    explanation: "Nucleus dentatus, neocerebellum (cerebrocerebellum) ile ilişkili olan, serebellumun en büyük ve en gelişmiş derin çekirdeğidir.",
+    topic: "Serebellar Çekirdekler"
+  },
+  {
+    q: "11) Cerebellum'u pons'a bağlayan, sadece afferent (giriş) lif taşıyan ve beyin kabuğundan gelen cortico-ponto-cerebellar yol liflerini barındıran pedünkül hangisidir?",
+    choices: [
+      "Pedunculus cerebellaris superior",
+      "Pedunculus cerebellaris medius",
+      "Pedunculus cerebellaris inferior",
+      "Fornix"
+    ],
+    a: 1,
+    explanation: "Pedunculus cerebellaris medius serebellumu pons'a bağlar ve sadece afferent (giriş) liflerden oluşur.",
+    topic: "Serebellar Pedünküller"
+  },
+  {
+    q: "12) Serebellum hasarlarında (lezyonlarında) ortaya çıkan klinik bulgular ve bu bulguların vücuttaki yönü hakkında hangisi doğrudur?",
+    choices: [
+      "Bulgular lezyonun karşı tarafında (kontralateral) ortaya çıkar",
+      "Bulgular lezyon ile aynı tarafta (ipsilateral) ortaya çıkar",
+      "Bulgular her zaman iki taraflı ve simetrik yayılım gösterir",
+      "Serebellum hasarlarında spastik felç ve duyu kaybı baskındır"
+    ],
+    a: 1,
+    explanation: "Serebellar yolların çift çaprazlama veya doğrudan seyretme özelliklerinden dolayı, serebellum lezyonlarına ait bulgular lezyon ile aynı tarafta (ipsilateral) ortaya çıkar.",
+    topic: "Serebellar Klinik"
+  },
+
+  // --- BÖLÜM 3: PERİFERİK VE OTONOM SİSTEM (13 - 18) ---
+  {
+    q: "13) Periferik sinir sistemini oluşturan kraniyal ve spinal sinirlerin toplam çift sayıları aşağıdakilerden hangisinde doğru verilmiştir?",
+    choices: [
+      "10 çift kraniyal - 30 çift spinal sinir",
+      "12 çift kraniyal - 31 çift spinal sinir",
+      "12 çift kraniyal - 33 çift spinal sinir",
+      "14 çift kraniyal - 31 çift spinal sinir"
+    ],
+    a: 1,
+    explanation: "Vücudumuzda beyin ve beyin sapı bağlantılı 12 çift kraniyal sinir, medulla spinalis bağlantılı ise 31 çift spinal sinir bulunur.",
+    topic: "Periferik Sinir Sistemi"
+  },
+  {
+    q: "14) Göz küresini hareket ettiren kaslardan m. obliquus superior'u donatan ve diğer tüm kraniyal sinirlerin aksine beyin sapını arkasından terk eden sinir hangisidir?",
+    choices: [
+      "N. oculomotorius (III)",
+      "N. trochlearis (IV)",
+      "N. abducens (VI)",
+      "N. facialis (VII)"
+    ],
+    a: 1,
+    explanation: "N. trochlearis (IV), beyin sapının arkasından (dorzal yüzünden) çıkan tek kraniyal sinirdir ve m. obliquus superior kasını uyarır.",
+    topic: "Kraniyal Sinirler"
+  },
+  {
+    q: "15) Pons'un ön dış yüzünden çıkan, en kalın kraniyal sinir olan N. trigeminus'un (V) çiğneme kaslarını donatan motor lifleri sinirin sadece hangi dalında ilerler?",
+    choices: [
+      "N. ophthalmicus",
+      "N. maxillaris",
+      "N. mandibularis",
+      "Chorda tympani"
+    ],
+    a: 2,
+    explanation: "N. trigeminus karma bir sinirdir; ancak çiğneme kaslarına giden motor lifler sadece üçüncü dalı olan n. mandibularis içinde seyreder.",
+    topic: "N. Trigeminus"
+  },
+  {
+    q: "16) N. facialis'in (VII) dilin 2/3 ön bölümünden tat duyusu alan özel dalı ile XII. kraniyal sinir olan N. hypoglossus'un motor işlevi hangi seçenekte doğru verilmiştir?",
+    choices: [
+      "N. mandibularis - Çiğneme kaslarının kontrolü",
+      "Chorda tympani - Dil kaslarının motor kontrolü (m. palatoglossus hariç)",
+      "N. tympanicus - Yutak kaslarının motor kontrolü",
+      "Chorda tympani - Çiğneme kaslarının motor kontrolü"
+    ],
+    a: 1,
+    explanation: "Facialis'in chorda tympani dalı dilin 2/3 önünden tat alırken; n. hypoglossus (XII) m. palatoglossus hariç tüm dil kaslarının motor siniridir.",
+    topic: "Dilin Sinirleri"
+  },
+  {
+    q: "17) Otonom sinir sistemine ait parasempatik (kraniyosakral) lifler ve otonom ganglionlar aşağıdaki kraniyal sinirlerin hangilerinde bulunur?",
+    choices: [
+      "1, 2, 3 ve 5. Kraniyal sinirler",
+      "3, 7, 9 ve 10. Kraniyal sinirler",
+      "5, 8, 11 ve 12. Kraniyal sinirler",
+      "4, 6, 9 ve 11. Kraniyal sinirler"
+    ],
+    a: 1,
+    explanation: "Kraniyal otonom çıkışta parasempatik lif taşıyan sinirler 3 (Oculomotorius), 7 (Facialis), 9 (Glossopharyngeus) ve 10 (Vagus) numaralı sinirlerdir.",
+    topic: "Parasempatik Sistem"
+  },
+  {
+    q: "18) Hemisferlerin alt yüzünde, mesencephalon seviyesinde ön sirkülasyon (a. carotis interna dalları) ile arka sirkülasyonun (a. basilaris dalları) birleşerek oluşturduğu arter halkasına ne ad verilir?",
+    choices: [
+      "Truncus sympathicus",
+      "Sinus cavernosus",
+      "Circulus arteriosus cerebri (Willis Poligonu)",
+      "Sulcus terminalis"
+    ],
+    a: 2,
+    explanation: "Beyindeki kollateral arter dolaşımını sağlayan bu dairesel yapıya circulus arteriosus cerebri veya Willis poligonu denir.",
+    topic: "Beyin Damarları"
+  },
+
+  // --- BÖLÜM 4: LİMBİK SİSTEM (19 - 24) ---
+  {
+    q: "19) Latince 'kenar, sınır' anlamına gelen 'Limbus' kelimesinden türetilen ve emosyonlar, hafıza, öğrenme ile otonom/endokrin yanıtların entegrasyonundan sorumlu sistem hangisidir?",
+    choices: [
+      "Ekstrapiramidal sistem",
+      "Limbik sistem",
+      "Anterolateral sistem",
+      "Piramidal sistem"
+    ],
+    a: 1,
+    explanation: "Duygusal ve hafızasal süreçleri yöneten, beynin evrimsel olarak eski halkasal katmanına limbik sistem denir.",
+    topic: "Limbik Sistem Tanımı"
+  },
+  {
+    q: "20) Emosyonların anatomik temeli olarak tanımlanan 'Papez Halkası' (Papez devresi) dairesel akışında aşağıdaki yapılardan hangisi yer almaz?",
+    choices: [
+      "Hippocampus",
+      "Corpus mamillare",
+      "Nucleus ventralis posterolateralis (VPL)",
+      "Gyrus cinguli"
+    ],
+    a: 2,
+    explanation: "Papez halkasında talamusun ön çekirdek grubu (nuclei anteriores) yer alır; gövdeden genel somatik duyuları taşıyan VPL çekirdeği bu devrede bulunmaz.",
+    topic: "Papez Devresi"
+  },
+  {
+    q: "21) Hippocampus formasyonunun en önemli efferent (çıkış) projeksiyon yolu olan, corpus callosum'un altından C şeklinde kıvrılarak uzanıp corpus mamillare'de sonlanan beyaz cevher demeti hangisidir?",
+    choices: [
+      "Cingulum",
+      "Stria terminalis",
+      "Fornix",
+      "Stria medullaris thalami"
+    ],
+    a: 2,
+    explanation: "Fornix, hippocampus'un en büyük efferent lif köprüsüdür ve uyarıları hipotalamustaki corpus mamillare'ye taşır.",
+    topic: "Fornix"
+  },
+  {
+    q: "22) Özellikle korku, öfke, saldırganlık gibi emosyonel reaksiyonların tetiklenmesinde, çevresel tehditlerin ve yüz ifadelerinin okunmasında 'alarm merkezi' gibi çalışan limbik çekirdek hangisidir?",
+    choices: [
+      "Hippocampus",
+      "Corpus amygdaloideum (Amygdala)",
+      "Area septalis",
+      "Nuc. anterior thalami"
+    ],
+    a: 1,
+    explanation: "Amygdala, tehlikelere ve emosyonel girdilere karşı hızlı yanıtlar üreten, korku ve saldırganlığın ana merkezidir.",
+    topic: "Amygdala"
+  },
+  {
+    q: "23) Klinikte her iki temporal lobun (özellikle amigdala yapılarının) bilateral hasarı sonucu ortaya çıkan; korkusuzluk, aşırı uysallık, hiperorality (her şeyi ağza alma) ve hiperseksüalite ile karakterize sendrom hangisidir?",
+    choices: [
+      "Wernicke-Korsakoff Sendromu",
+      "Klüver-Bucy Sendromu",
+      "Brown-Séquard Sendromu",
+      "Wallenberg Sendromu"
+    ],
+    a: 1,
+    explanation: "Bilateral amigdala ve temporal derinlik hasarlarında Klüver-Bucy sendromu adı verilen karakteristik tablo gelişir.",
+    topic: "Limbik Sendromlar"
+  },
+  {
+    q: "24) Alkolizm ve B1 vitamini (Tiamin) eksikliğine bağlı olarak Papez halkasındaki corpus mamillare'lerin dejenerasyonu ile seyren, yeni bilgileri hafızaya kaydedememe (anterograd amnezi) ve konfabulasyon (masallama) ile karakterize tablo hangisidir?",
+    choices: [
+      "Alzheimer Hastalığı",
+      "Wernicke-Korsakoff Sendromu",
+      "Huntington Hastalığı",
+      "Klüver-Bucy Sendromu"
+    ],
+    a: 1,
+    explanation: "Tiamin eksikliği corpus mamillare'leri vurarak Wernicke-Korsakoff sendromuna yol açar; bu durum ağır hafıza ve masallama bozukluğu yaratır.",
+    topic: "Hafıza Patolojileri"
+  },
+
+  // --- BÖLÜM 5: MEDULLA SPİNALİS YOLLARI (25 - 30) ---
+  {
+    q: "25) Gövde ve ekstremitelerden gelen şuurlu propriosepsiyon (pozisyon ve hareket), vibrasyon ve ince dokunma (iki nokta diskriminasyonu) duyularını taşıyan yükselen sistem hangisidir?",
+    choices: [
+      "Anterolateral Sistem (Tr. spinothalamicus)",
+      "Arka Kordon Sistemi (Funiculus posterior / Dorsal Kolon)",
+      "Tr. spinocerebellaris posterior",
+      "Tractus corticospinalis"
+    ],
+    a: 1,
+    explanation: "Şuurlu propriosepsiyon, ince dokunma ve vibrasyon duyuları arka kordondaki fasciculus gracilis ve cuneatus tarafından taşınır.",
+    topic: "Dorsal Kolon Yolu"
+  },
+  {
+    q: "26) Arka kordon duyu yollarını (Goll ve Burdach) oluşturan birinci nöronların uzantıları medulla spinalis içinde çapraz yapmadan yükseldikten sonra, ikinci nöronlarla nerede sinaps yapar?",
+    choices: [
+      "Omuriliğin arka boynuzunda (Cornu posterius)",
+      "Thalamus'un VPL çekirdeğinde",
+      "Medulla oblongata'daki nucleus gracilis ve nucleus cuneatus'ta",
+      "Cortex cerebri'nin duysal alanında"
+    ],
+    a: 2,
+    explanation: "Arka kordon sistemi lifleri omurilikte düz yükselir ve medulla oblongata'da (bulbus) bulunan nuc. gracilis ve cuneatus'ta ikinci nöronlarıyla sinaps yapar.",
+    topic: "Duyu Yolları Sinapsları"
+  },
+  {
+    q: "27) Gövde ve ekstremitelerden alınan ağrı, ısı, kaba dokunma ve basınç duyularını taşıyan tractus spinothalamicus (anterolateral sistem) lifleri nerede çapraz yapar?",
+    choices: [
+      "Medulla oblongata düzeyinde (Decussatio lemniscorum)",
+      "Duyunun omuriliğe girdiği segment düzeyinde, commissura alba anterior'dan karşı tarafa geçerek",
+      "Thalamus içinde üçüncü nörona aktarılırken",
+      "Lifler tamamen ipsilateral seyreder, hiç çapraz yapmaz"
+    ],
+    a: 1,
+    explanation: "Anterolateral sistem (spinotalamik yol) lifleri, duyunun omuriliğe girdiği segment düzeyinde commissura alba anterior'da karşı tarafa geçerek (çaprazlaşarak) talamusa yükselir.",
+    topic: "Anterolateral Çapraz"
+  },
+  {
+    q: "28) İstemli, bilinçli ve beceri gerektiren motor hareketlerin yürütülmesinden sorumlu olan ana inen motor yol (piramidal yol) aşağıdakilerden hangisidir?",
+    choices: [
+      "Tractus rubrospinalis",
+      "Tractus vestibulospinalis",
+      "Tractus corticospinalis",
+      "Tractus reticulospinalis"
+    ],
+    a: 2,
+    explanation: "Tractus corticospinalis, cortex cerebri'deki motor alanlardan başlayıp çizgili kaslarımıza istemli emirleri götüren temel piramidal motor yoldur.",
+    topic: "Piramidal Motor Yol"
+  },
+  {
+    q: "29) Tractus corticospinalis motor liflerinin büyük çoğunluğu (%80-85) medulla oblongata ile medulla spinalis sınırında karşı tarafa geçer. Bu büyük motor çapraz yapısına ne ad verilir?",
+    choices: [
+      "Decussatio lemniscorum",
+      "Decussatio pyramidum",
+      "Commissura alba anterior",
+      "Chiasma opticum"
+    ],
+    a: 1,
+    explanation: "Motor liflerin bulbus alt ucunda yaptığı bu çapraza decussatio pyramidum (piramidal çapraz) adı verilir.",
+    topic: "Decussatio Pyramidum"
+  },
+  {
+    q: "30) Thalamus'ta, kafa bölgesi hariç gövde ve ekstremitelerden gelen tüm genel somatik duyuların (Lemniscus medialis ve Tr. spinothalamicus) kortekse açılmadan önce sonlandığı spesifik nükleus hangisidir?",
+    choices: [
+      "Nucleus ventralis posteromedialis (VPM)",
+      "Nucleus ventralis posterolateralis (VPL)",
+      "Nucleus anterior thalami",
+      "Corpus geniculatum mediale"
+    ],
+    a: 1,
+    explanation: "Vücuttan gelen tüm somatosensoriyel duyu yolları thalamus'un VPL çekirdeğinde sonlanır. Yüz/kafa bölgesinden gelenler ise VPM çekirdeğine gider.",
+    topic: "Thalamus Duyu Entegrasyonu"
+  },
+  ],
     };
 
     let state = {
